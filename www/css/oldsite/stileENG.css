@@ -1,1 +1,6 @@
-/* CSS Document *//********* INTESTAZIONE *********/#intestazione{	background: url(../images/intestazioneENG.jpg) no-repeat center;}
+/* CSS Document */
+
+/********* INTESTAZIONE *********/
+#intestazione{
+	background: url(../images/intestazioneENG.jpg) no-repeat center;
+}
