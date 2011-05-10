@@ -348,21 +348,23 @@ input.pulsante:active{
 	width: 766px;
 }
 
-#linguaITA{
+#linguaITA, #linguaENG {
 	float: right;
-	width: 20px;
 	margin: 2px;
-	background: url(../../img/ita.gif) no-repeat 0;
+	/*display: block;*/
+	width: 20px;
+	height: 13px;
 	/*border: 1px dotted yellow;*/
 }
 
-#linguaENG{
-	float: right;
-	width: 20px;
-	margin: 2px;
-	background: url(../../img/eng.gif) no-repeat 0;
-	/*border: 1px dotted yellow;*/
+#linguaITA {
+	background: url(../../img/ita.gif) no-repeat 0;
 }
+
+#linguaENG {
+	background: url(../../img/eng.gif) no-repeat 0;
+}
+
 
 /********* EXTRA *********/
 .imgTesto{

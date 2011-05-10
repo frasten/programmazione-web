@@ -13,14 +13,15 @@ var pageTracker = _gat._getTracker("UA-2553857-10");
 pageTracker._initData();
 pageTracker._trackPageview();
 </script>
-<link href="css/oldsite/stile.css" rel="stylesheet" type="text/css">
+<link href="css/oldsite/stile.css" rel="stylesheet" type="text/css" />
 <!--[if IE]>
-<link href="css/oldsite/stileIE.css" rel="stylesheet" type="text/css">
+<link href="css/oldsite/stileIE.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 <?php
-// <link href="css/oldsite/stileENG.css" rel="stylesheet" type="text/css">
+// <link href="css/oldsite/stileENG.css" rel="stylesheet" type="text/css" />
 ?>
-<LINK REL="shortcut icon" HREF="http://www.kweepy.it/unibs.ico"><script type="text/javascript" src="js/onfocus.js"></script>
+<link rel="shortcut icon" href="http://www.kweepy.it/unibs.ico" />
+<script type="text/javascript" src="js/onfocus.js"></script>
 <script type="text/javascript" src="js/button.js"></script>
 </head>
 
@@ -62,8 +63,8 @@ pageTracker._trackPageview();
 </div><!-- #menu -->
 
 <div id="flags">
-	<a href="/~deantone/corso.php?ita" title="Vai al sito italiano!"><div id="linguaITA">&nbsp;</div></a>
-	<a href="/~deantone/corso.php?eng" title="Go to English site!"><div id="linguaENG">&nbsp;</div></a>
+	<a id="linguaITA" href="/~deantone/corso.php?ita" title="Vai al sito italiano!"></a>
+	<a id="linguaENG" href="/~deantone/corso.php?eng" title="Go to English site!"></a>
 </div>
 
 <div id="centrale">
