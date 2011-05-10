@@ -13,12 +13,15 @@ var pageTracker = _gat._getTracker("UA-2553857-10");
 pageTracker._initData();
 pageTracker._trackPageview();
 </script>
-<link href="css/stile.css" rel="stylesheet" type="text/css">
+<link href="css/oldsite/stile.css" rel="stylesheet" type="text/css">
 <!--[if IE]>
-<link href="css/stileIE.css" rel="stylesheet" type="text/css">
+<link href="css/oldsite/stileIE.css" rel="stylesheet" type="text/css">
 <![endif]-->
-<link href="css/stileENG.css" rel="stylesheet" type="text/css"><LINK REL="shortcut icon" HREF="http://www.kweepy.it/unibs.ico"><script type="text/javascript" src="javascript/onfocus.js"></script>
-<script type="text/javascript" src="javascript/button.js"></script>
+<?php
+// <link href="css/oldsite/stileENG.css" rel="stylesheet" type="text/css">
+?>
+<LINK REL="shortcut icon" HREF="http://www.kweepy.it/unibs.ico"><script type="text/javascript" src="js/onfocus.js"></script>
+<script type="text/javascript" src="js/button.js"></script>
 </head>
 
 <body class="corsi" id="body">
@@ -56,7 +59,7 @@ pageTracker._trackPageview();
 	</li>
 	<li><a id="tesi" href="tesi.php">Thesis (ita)</a></li>
 </ul>
-</div>
+</div><!-- #menu -->
 
 <div id="flags">
 	<a href="/~deantone/corso.php?ita" title="Vai al sito italiano!"><div id="linguaITA">&nbsp;</div></a>

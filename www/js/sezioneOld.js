@@ -1,0 +1,1 @@
+/* SEZIONE */function sezione(nome) {	voce = document.getElementById(nome);/*	alert(voce.getAttribute("class")); */	voce.setAttribute("id", "attivo");/*	alert(voce.getAttribute("id")); */continua(e);}

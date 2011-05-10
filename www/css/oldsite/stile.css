@@ -58,7 +58,7 @@ a:hover, a:focus, a:active {
 /********* INTESTAZIONE *********/
 #intestazione{
 	margin: 2px 2px 0px 2px;
-	background: url(../images/intestazione2.jpg) no-repeat center;
+	background: url(../../img/intestazione2.jpg) no-repeat center;
 	width: 764px;
 	height: 96px;
 	overflow: hidden;
@@ -79,7 +79,7 @@ a:hover, a:focus, a:active {
 /********* INTESTAZIONE *********/
 #intestazione{
 	margin: 2px 2px 0px 2px;
-	background: url(../images/intestazioneITA.jpg) no-repeat center;
+	background: url(../../img/intestazioneITA.jpg) no-repeat center;
 	width: 764px;
 	height: 96px;
 	overflow: hidden;
@@ -201,7 +201,7 @@ input.pulsante {
 	font-size: 8pt;
 	background-color: #FFFFFF;
 	color: #000000;
-	background-image: url(../images/arrow.gif);
+	background-image: url(../../img/arrow.gif);
 	background-repeat: no-repeat;
 	background-position: 0px 3px;
 	line-height: 6px;
@@ -212,7 +212,7 @@ input.pulsante {
 input.pulsante:hover,
 input.pulsante:focus,
 input.pulsante:active{
-	background-image: url(../images/arrowH.gif);
+	background-image: url(../../img/arrowH.gif);
 	background-repeat: no-repeat;
 	background-color: #009933;
 	color: #FFFFFF;
@@ -236,7 +236,7 @@ input.pulsante:active{
 }
 
 #corpo li {
-	background-image: url(../images/arrow.gif);
+	background-image: url(../../img/arrow.gif);
 	background-repeat: no-repeat;
 	background-position: 0px 2px;
 	line-height: 13px;
@@ -352,7 +352,7 @@ input.pulsante:active{
 	float: right;
 	width: 20px;
 	margin: 2px;
-	background: url(../images/ita.gif) no-repeat 0;
+	background: url(../../img/ita.gif) no-repeat 0;
 	/*border: 1px dotted yellow;*/
 }
 
@@ -360,7 +360,7 @@ input.pulsante:active{
 	float: right;
 	width: 20px;
 	margin: 2px;
-	background: url(../images/eng.gif) no-repeat 0;
+	background: url(../../img/eng.gif) no-repeat 0;
 	/*border: 1px dotted yellow;*/
 }
 

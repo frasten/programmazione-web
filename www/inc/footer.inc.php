@@ -1,5 +1,6 @@
-</div>
+		</div><!-- #corpo -->
+	</div><!-- #centrale -->
 
-</div>
+</div><!-- #container -->
 </body>
 </html>
