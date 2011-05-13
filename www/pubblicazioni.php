@@ -39,24 +39,24 @@ require_once('inc/header.inc.php');
 
 	<!-- INFO OPZIONALI, dipendenti dalla categoria di pubblicazione  -->
 		<li class='opt_libro'>
-			<label for='autori_libro'>Autori Libro</label>
+			<label for='autori_libro'>Autori Libro:</label>
 			<input type='text' name='autori_libro' id='autori_libro' />
 		</li>
 
 		<li class='opt_libro'>
-			<label for='editore'>Editore</label>
+			<label for='editore'>Editore:</label>
 			<input type='text' name='editore' id='editore' />
 		</li>
 
 		<li class='opt_libro'>
-			<label for='isbn'>ISBN/ISSN</label>
+			<label for='isbn'>ISBN/ISSN:</label>
 			<input type='text' name='isbn' id='isbn' />
 		</li>
 
 
 
 		<li class='opt_congresso'>
-			<label for='citta'>Citt&agrave;</label>
+			<label for='citta'>Citt&agrave;:</label>
 			<input type='text' name='citta' id='citta' />
 		</li>
 
