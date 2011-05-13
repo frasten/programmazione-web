@@ -5,3 +5,17 @@
 #opt_libri, #opt_conferenze {
 	display: none;
 }
+
+.form_list {
+	list-style: none;
+}
+
+.form_list li {
+	padding-bottom: 1em;
+}
+
+.form_list li label {
+	float: left;
+	width: 7em;
+	margin-right: 1em;
+}

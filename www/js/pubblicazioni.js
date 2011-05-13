@@ -51,12 +51,12 @@
 	$('#categoria').change(function() {
 		$(this).find("option").each(function() {
 			if (this.selected) {
-				$("#opt_" + this.value).show(500);
+				$(".opt_" + this.value).show(500);
 
 				$("label[for=titolo_contesto]").html("Titolo " + this.value[0].toUpperCase() + this.value.substr(1))
 			}
 			else {
-				$("#opt_" + this.value).hide(500);
+				$(".opt_" + this.value).hide(500);
 			}
 		});
 	});
