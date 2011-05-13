@@ -77,9 +77,10 @@ require_once('inc/header.inc.php');
 
 	</ul>
 
+	<input type='submit' value='Salva' />
 
 </form>
-
+<!-- FAM FAM ICONS, pencil + cross -->
 
 <script type='text/javascript' src='js/pubblicazioni.js'></script>
 <?php
