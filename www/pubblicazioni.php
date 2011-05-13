@@ -4,7 +4,7 @@ require_once('inc/header.inc.php');
 ?>
 
 
-<h3>Publications</h3>
+<h3>Inserisci nuova pubblicazione</h3>
 <form method='post' action=''>
 
 	<ul class='form_list'>
