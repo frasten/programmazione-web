@@ -61,12 +61,21 @@ require_once('inc/header.inc.php');
 		</li>
 
 		<li class='opt_congresso'>
-			<label for='nazione'>Nazione</label>
+			<label for='nazione'>Nazione:</label>
 			<input type='text' name='nazione' id='nazione' />
 		</li>
 
-	</ul>
+		<li>
+			<label for='info_addizionali'>Informazioni Addizionali:</label>
+			<textarea name='info_addizionali' id='info_addizionali' rows="3" cols="50"></textarea>
+		</li>
 
+		<li>
+			<label for='file'>Allega file:</label>
+			<input type='file' name='file' id='file' />
+		</li>
+
+	</ul>
 
 
 </form>
