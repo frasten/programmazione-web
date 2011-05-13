@@ -29,7 +29,7 @@ require_once('inc/header.inc.php');
 
 		<li>
 			<label for='anno'>Anno:</label>
-			<input type='text' name='anno' id='anno' />
+			<input type='text' name='anno' id='anno' maxlength='4' />
 		</li>
 
 		<li>

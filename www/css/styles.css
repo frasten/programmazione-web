@@ -1,8 +1,12 @@
-#titolo, #autori {
-	width: 500px;
+#titolo, #autori, #autori_libro, #info_addizionali {
+	width: 40em;
 }
 
-#opt_libri, #opt_conferenze {
+#titolo_contesto {
+	width: 20em;
+}
+
+.opt_libro, .opt_conferenza {
 	display: none;
 }
 
@@ -18,4 +22,8 @@
 	float: left;
 	width: 7em;
 	margin-right: 1em;
+}
+
+#anno {
+	width: 4em;
 }
