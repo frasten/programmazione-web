@@ -21,6 +21,18 @@ pageTracker._trackPageview();
 // <link href="css/oldsite/stileENG.css" rel="stylesheet" type="text/css" />
 ?>
 <link rel="shortcut icon" href="http://www.kweepy.it/unibs.ico" />
+
+
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
+
+<!-- jQuery -->
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+
+<!-- jQuery UI -->
+<link href="css/jquery-ui-lightness/jquery-ui-1.8.12.custom.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
+
+
 <script type="text/javascript" src="js/onfocus.js"></script>
 <script type="text/javascript" src="js/button.js"></script>
 </head>

@@ -1,0 +1,7 @@
+#titolo, #autori {
+	width: 500px;
+}
+
+#opt_libri, #opt_conferenze {
+	display: none;
+}
