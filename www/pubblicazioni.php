@@ -59,9 +59,12 @@ require_once('inc/header.inc.php');
 		<input type='text' name='nazione' id='nazione' />
 
 	</div><!-- #opt_congresso -->
-
-
-
+        <br />
+        Informazioni Addizionali:
+        <br/>
+        <textarea rows="3" cols="50"></textarea>
+        <br/>
+        Allega File: <input type="file"></input>
 </form>
 
 
