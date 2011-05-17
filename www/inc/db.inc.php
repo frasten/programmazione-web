@@ -13,13 +13,23 @@ function stripslashes_deep( &$value ) {
 }
 
 if( ( function_exists( 'get_magic_quotes_gpc' ) && get_magic_quotes_gpc() ) ||
-    ( ini_get( 'magic_quotes_sybase' ) && ( strtolower( ini_get( 'magic_quotes_sybase' ) ) != 'off' ) ) {
+    ( ini_get( 'magic_quotes_sybase' ) && ( strtolower( ini_get( 'magic_quotes_sybase' ) ) != 'off' ) ) ) {
 	stripslashes_deep( $_GET ); 
 	stripslashes_deep( $_POST ); 
 	stripslashes_deep( $_COOKIE ); 
 }
 
+/***** CONNESSIONE AL DB *****/
+$db = @mysql_connect( $config['db_host'],
+                      $config['db_user'],
+                      $config['db_pass'] );
+@mysql_select_db( $config['db_name'], $db );
 
+
+if ( ! $db ) {
+	echo "Errore nella connessione al database.";
+	return 1;
+}
 
 
 
