@@ -11,6 +11,7 @@ $config['db_host'] = 'localhost';
 $config['db_user'] = 'pw';
 $config['db_pass'] = '12345';
 $config['db_name'] = 'pw2011';
+$config['db_prefix'] = 'unibs_is_';
 
 /*
  * COMANDI MYSQL PER LA CREAZIONE DEL DB
