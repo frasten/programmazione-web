@@ -12,7 +12,7 @@ if ( empty( $db ) ) return 1;
 
 // Se non sono loggato, mostro il form
 
-session_start();
+@session_start();
 
 // Se non ci sono ancora user e pass salvati, genero un nuovo utente.
 check_default_user();

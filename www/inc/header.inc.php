@@ -1,8 +1,7 @@
 <?php
 
 require_once( 'db.inc.php' );
-
-
+@session_start();
 
 
 
@@ -90,6 +89,10 @@ pageTracker._trackPageview();
 	<a id="linguaITA" href="/~deantone/corso.php?ita" title="Vai al sito italiano!"></a>
 	<a id="linguaENG" href="/~deantone/corso.php?eng" title="Go to English site!"></a>
 </div>
+
+<?php if ( ! empty( $_SESSION['loggato']) ): ?>
+<a href="logout.php">Logout</a>
+<?php endif; ?>
 
 <div id="centrale">
 	<div id="corpo">
