@@ -2,7 +2,11 @@
 
 require_once( 'inc/header.inc.php' );
 
-require_once( 'inc/proteggi.inc.php' );
+// La visualizzazione della lista delle pubblicazioni non deve essere
+// protetta da password.
+if ( ! empty( $_GET['action'] ) )
+	require_once( 'inc/proteggi.inc.php' );
+
 
 
 if ( empty( $_GET['action'] ) ) {
