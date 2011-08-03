@@ -123,11 +123,10 @@ EOF;
 }
 
 function generate_random_password() {
-	$pass_len = 8; // Lunghezza della password generata
-	$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.-;:_()+^=/!';
+	$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.-;:_()+^=/!%';
 
 	$newpass = '';
-	for ( $i = 0; $i < $pass_len; $i++ ) {
+	for ( $i = 0; $i < $config['default_pass_len']; $i++ ) {
 		$rnd = rand( 0, strlen( $chars ) - 1 );
 		$newpass .= $chars{$rnd};
 	}
