@@ -14,9 +14,9 @@ function stripslashes_deep( &$value ) {
 
 if( ( function_exists( 'get_magic_quotes_gpc' ) && get_magic_quotes_gpc() ) ||
     ( ini_get( 'magic_quotes_sybase' ) && ( strtolower( ini_get( 'magic_quotes_sybase' ) ) != 'off' ) ) ) {
-	stripslashes_deep( $_GET ); 
-	stripslashes_deep( $_POST ); 
-	stripslashes_deep( $_COOKIE ); 
+	stripslashes_deep( $_GET );
+	stripslashes_deep( $_POST );
+	stripslashes_deep( $_COOKIE );
 }
 
 

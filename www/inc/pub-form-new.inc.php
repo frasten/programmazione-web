@@ -1,5 +1,5 @@
 <h3>Inserisci nuova pubblicazione</h3>
-<form method='post' action=''>
+<form method='post' action='?action=savenew'>
 
 	<ul class='form_list'>
 		<li>
