@@ -84,7 +84,18 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubblicazione_pubautore` (
   PRIMARY KEY (`id_pubblicazione`, `id_autore`)
 );
 EOF;
+	mysql_query( $query, $db );
 
+	/* Tabella per il login */
+	$query = <<<EOF
+CREATE TABLE IF NOT EXISTS `$config[db_prefix]login` (
+  `username` VARCHAR(20)  NOT NULL,
+  `salt` VARCHAR(20)  NOT NULL,
+  `password` VARCHAR(40)  NOT NULL,
+  PRIMARY KEY (`username`)
+);
+EOF;
+	mysql_query( $query, $db );
 
 
 }
