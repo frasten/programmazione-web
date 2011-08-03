@@ -132,12 +132,15 @@ EOF;
 function generate_random_password() {
 	global $config;
 
-	$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.-;:_()+^=/!%';
+	$chars = 'abcdefghijklmnopqrstuvwxyz0123456789,.-;:_()+^=/!%';
 
 	$newpass = '';
 	for ( $i = 0; $i < $config['default_pass_len']; $i++ ) {
 		$rnd = rand( 0, strlen( $chars ) - 1 );
-		$newpass .= $chars{$rnd};
+		$c = $chars{$rnd};
+		// Ne randomizzo anche maiuscola/minuscola
+		if (rand(0, 1)) $c = strtoupper($c);
+		$newpass .= $c;
 	}
 	return $newpass;
 }
