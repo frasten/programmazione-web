@@ -32,6 +32,11 @@ if ( ! empty( $_POST['username'] ) || ! empty( $_POST['password'] ) ) {
 
 	// PAP con hash function HMAC e salted passwords.
 
+	/* HMAC e il salt rendono inutili attacchi di dizionario o rainbow
+	 * tables, e utenti con la stessa password avranno un valore differente
+	 * di hash salvato nel database.
+	 * */
+
 	$query = "SELECT `salt`, `password` FROM `$config[db_prefix]login` WHERE BINARY `username`='$user' LIMIT 1";
 	$result = @mysql_query( $query );
 	if ( $result && mysql_num_rows( $result ) > 0 ) {
@@ -43,6 +48,8 @@ if ( ! empty( $_POST['username'] ) || ! empty( $_POST['password'] ) ) {
 		if ( $hash_atteso == $hash_inserito ) {
 			// LOGIN OK
 			$_SESSION['loggato'] = true;
+			// FIXME: come mai non da errore? Ho gia' scritto in output delle cose,
+			// dovrebbe darmi errore.
 			header( "Location: $_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]" );
 
 			// TODO: fare il "ricorda auth", in modo da non doversi riloggare
