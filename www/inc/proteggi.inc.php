@@ -130,6 +130,8 @@ EOF;
 }
 
 function generate_random_password() {
+	global $config;
+
 	$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.-;:_()+^=/!%';
 
 	$newpass = '';
