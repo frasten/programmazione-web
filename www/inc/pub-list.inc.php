@@ -24,6 +24,18 @@ else {
 	echo "<ul>\n";
 	while ( $riga = mysql_fetch_assoc( $result ) ) {
 		echo "<li>\n";
+		// Titolo pubblicazione
+		echo "<span class='evidenza'>";
+		printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlentities( $riga['titolo'] ) );
+		echo "</span><br />";
+
+// Array ( [id] => [categoria] => rivista [titolo] => Titolo bellissismo [anno] => 2010 [titolo_contesto] => Bel titolo [info] => aspokdapsodk apsodk apsodk [autori_libro] => [editore] => [isbn] => [citta] => bienno [nazione] => italia [file] => [id_pubblicazione] => [id_autore] => [nome] => )
+
+		// Dati pubblicazione
+		echo "<span class='rientro'>";
+
+		echo "</span><br />";
+
 		print_r($riga);
 		echo "</li>\n";
 	}

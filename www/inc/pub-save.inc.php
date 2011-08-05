@@ -45,5 +45,9 @@ EOF;
 
 mysql_query( $query, $db );
 
+$id_pub = mysql_insert_id( $db );
+
+
+
 
 ?>
