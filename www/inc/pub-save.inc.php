@@ -8,46 +8,57 @@ echo "<pre>" . print_r($_POST, true) . "</pre>";
 $_POST = array_map('mysql_real_escape_string', $_POST);
 
 // Metto a NULL i dati opzionali, vengono eventualmente riempiti poco sotto.
-$data['autori_libro'] = $data['editore'] = $data['isbn'] = $data['citta'] = $data['nazione'] = 'NULL';
+$data['titolo_contesto'] = $data['volume'] = $data['numero'] =
+$data['pag_inizio'] = $data['pag_fine'] = $data['editore'] =
+$data['curatori_libro'] = $data['isbn'] = $data['num_pagine'] = 'NULL';
 
 
 switch ( $_POST['categoria'] ) {
 	case 'rivista':
+		$data['titolo_contesto'] = "'$_POST[titolo_contesto]'";
+		$data['volume'] = "'$_POST[volume]'";
+		$data['numero'] = "'$_POST[numero]'";
+		$data['pag_inizio'] = "'$_POST[pag_inizio]'";
+		$data['pag_fine'] = "'$_POST[pag_fine]'";
 		break;
 	case 'libro':
-		$data['autori_libro'] = "'$_POST[autori_libro]'";
+		$data['titolo_contesto'] = "'$_POST[titolo_contesto]'";
+		$data['pag_inizio'] = "'$_POST[pag_inizio]'";
+		$data['pag_fine'] = "'$_POST[pag_fine]'";
+		$data['curatori_libro'] = "'$_POST[curatori_libro]'";
 		$data['editore'] = "'$_POST[editore]'";
 		$data['isbn'] = "'$_POST[isbn]'";
 		break;
 	case 'conferenza':
-		$data['citta'] = "'$_POST[citta]'";
-		$data['nazione'] = "'$_POST[nazione]'";
+		$data['titolo_contesto'] = "'$_POST[titolo_contesto]'";
+		$data['pag_inizio'] = "'$_POST[pag_inizio]'";
+		$data['pag_fine'] = "'$_POST[pag_fine]'";
 		break;
 	case 'monografia':
-		$data['citta'] = "'$_POST[citta]'";
-		$data['nazione'] = "'$_POST[nazione]'";
+		$data['editore'] = "'$_POST[editore]'";
+		$data['num_pagine'] = "'$_POST[num_pagine]'";
 		break;
 	case 'curatela':
-		$data['citta'] = "'$_POST[citta]'";
-		$data['nazione'] = "'$_POST[nazione]'";
+		$data['editore'] = "'$_POST[editore]'";
 		break;
 	default:
 		// Possibile rischio di attacco
 		echo "Errore nei dati.";
 		return;
 }
-
 // TODO: autori
 
 // TODO: caricamento file
 
 $query = <<<EOF
 INSERT INTO `$config[db_prefix]pubblicazione`
-(`categoria`,`titolo`,`anno`,`titolo_contesto`,`info`,
-`autori_libro`,`editore`,`isbn`,`citta`,`nazione`,`file`)
+(`categoria`,`titolo`,`anno`,`titolo_contesto`,
+`volume`,`numero`,`pag_inizio`,`pag_fine`,`abstract`,
+`curatori_libro`,`editore`,`num_pagine`,`isbn`,`file`)
 VALUES
-('$_POST[categoria]','$_POST[titolo]','$_POST[anno]','$_POST[titolo_contesto]','$_POST[info_addizionali]',
-$data[autori_libro],$data[editore],$data[isbn],$data[citta],$data[nazione], NULL)
+('$_POST[categoria]','$_POST[titolo]','$_POST[anno]',$data[titolo_contesto],
+$data[volume],$data[numero],$data[pag_inizio],$data[pag_fine],'$_POST[abstract]',
+$data[curatori_libro],$data[editore],$data[num_pagine],$data[isbn],NULL)
 EOF;
 
 mysql_query( $query, $db );
