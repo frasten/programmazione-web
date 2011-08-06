@@ -49,19 +49,22 @@ function db_check_tables() {
 	/* Tabella Pubblicazioni */
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubblicazione` (
-  `id` INTEGER  NOT NULL AUTO_INCREMENT,
-  `categoria` ENUM('rivista','libro','congresso')  NOT NULL,
-  `titolo` VARCHAR(255)  NOT NULL,
+  `id_pubblicazione` INTEGER  NOT NULL AUTO_INCREMENT,
+  `categoria` ENUM('rivista','libro','conferenza','monografia','curatela')  NOT NULL,
+  `titolo` VARCHAR(255) NOT NULL,
   `anno` INTEGER  NOT NULL,
-  `titolo_contesto` VARCHAR(255)  NOT NULL,
-  `info` TEXT  NOT NULL,
-  `autori_libro` TEXT ,
+  `titolo_contesto` VARCHAR(255),
+  `volume` INTEGER,
+  `numero` INTEGER,
+  `pag_inizio` INTEGER,
+  `pag_fine` INTEGER,
+  `abstract` TEXT  NOT NULL,
+  `curatori_libro` TEXT ,
   `editore` VARCHAR(255) ,
+  `num_pagine` INTEGER,
   `isbn` VARCHAR(255) ,
-  `citta` VARCHAR(255) ,
-  `nazione` VARCHAR(255) ,
   `file` VARCHAR(255) ,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id_pubblicazione`)
 );
 EOF;
 	mysql_query( $query, $db );
@@ -69,9 +72,9 @@ EOF;
 	/* Tabella Autori Pubblicazioni */
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubautore` (
-  `id` INTEGER  NOT NULL AUTO_INCREMENT,
+  `id_autore` INTEGER  NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255)  NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id_autore`)
 );
 EOF;
 	mysql_query( $query, $db );
@@ -82,6 +85,16 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubblicazione_pubautore` (
   `id_pubblicazione` INTEGER  NOT NULL,
   `id_autore` INTEGER  NOT NULL,
   PRIMARY KEY (`id_pubblicazione`, `id_autore`)
+);
+EOF;
+	mysql_query( $query, $db );
+
+	/* Tabella per la lista di Journal */
+	$query = <<<EOF
+CREATE TABLE IF NOT EXISTS `$config[db_prefix]journal` (
+  `id_journal` INTEGER  NOT NULL,
+  `nome` INTEGER  NOT NULL,
+  PRIMARY KEY (`id_journal`)
 );
 EOF;
 	mysql_query( $query, $db );

@@ -3,7 +3,6 @@
 echo "<pre>" . print_r($_POST, true) . "</pre>";
 
 // TODO: VALIDAZIONE
-#ENUM('rivista','libro','congresso')
 
 
 $_POST = array_map('mysql_real_escape_string', $_POST);
@@ -20,7 +19,15 @@ switch ( $_POST['categoria'] ) {
 		$data['editore'] = "'$_POST[editore]'";
 		$data['isbn'] = "'$_POST[isbn]'";
 		break;
-	case 'congresso':
+	case 'conferenza':
+		$data['citta'] = "'$_POST[citta]'";
+		$data['nazione'] = "'$_POST[nazione]'";
+		break;
+	case 'monografia':
+		$data['citta'] = "'$_POST[citta]'";
+		$data['nazione'] = "'$_POST[nazione]'";
+		break;
+	case 'curatela':
 		$data['citta'] = "'$_POST[citta]'";
 		$data['nazione'] = "'$_POST[nazione]'";
 		break;

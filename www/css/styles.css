@@ -2,11 +2,11 @@
 	width: 40em;
 }
 
-#titolo_contesto {
+#titolo_contesto, #editore {
 	width: 20em;
 }
 
-.opt_libro, .opt_congresso {
+.opt_libro, .opt_conferenza, .opt_monografia, .opt_curatela {
 	display: none;
 }
 
@@ -20,10 +20,15 @@
 
 .form_list li label {
 	float: left;
-	width: 7em;
+	width: 8em;
 	margin-right: 1em;
 }
 
-#anno {
+.form_list li label.label_secondaria {
+	float: none;
+	width: auto;
+}
+
+#anno, #volume, #numero, #pag_inizio, #pag_fine {
 	width: 4em;
 }

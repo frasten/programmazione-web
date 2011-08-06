@@ -5,9 +5,9 @@ $query = <<<EOF
 SELECT * FROM
 	`$config[db_prefix]pubblicazione`
 	LEFT JOIN `$config[db_prefix]pubblicazione_pubautore`
-		ON `$config[db_prefix]pubblicazione`.`id` = `$config[db_prefix]pubblicazione_pubautore`.`id_pubblicazione`
+		ON `$config[db_prefix]pubblicazione`.`id_pubblicazione` = `$config[db_prefix]pubblicazione_pubautore`.`id_pubblicazione`
 	LEFT JOIN `$config[db_prefix]pubautore`
-		ON `$config[db_prefix]pubblicazione_pubautore`.`id_autore` = `$config[db_prefix]pubautore`.`id`
+		ON `$config[db_prefix]pubblicazione_pubautore`.`id_autore` = `$config[db_prefix]pubautore`.`id_autore`
 ORDER BY `$config[db_prefix]pubblicazione`.`anno` DESC
 EOF;
 

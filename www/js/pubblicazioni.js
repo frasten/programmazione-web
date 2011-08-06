@@ -48,19 +48,40 @@
 			});
 
 
-	$('#categoria').change(function() {
-		$(this).find("option").each(function() {
+	function update_pub_fields(field) {
+		var current_sel = $(field).val();
+		$(field).find("option").each(function() {
 			if (this.selected) {
 				$(".opt_" + this.value).show(500);
 
-				$("label[for=titolo_contesto]").html("Titolo " + this.value[0].toUpperCase() + this.value.substr(1))
+				var titolo = '';
+				switch(this.value) {
+					case 'rivista':
+						titolo = 'Nome del journal:';
+						break;
+					case 'libro':
+						titolo = 'Titolo del libro:';
+						break;
+					case 'conferenza':
+						titolo = 'Nome della conferenza:';
+						break;
+				}
+				$("label[for=titolo_contesto]").html(titolo)
 			}
 			else {
-				$(".opt_" + this.value).hide(500);
+				$(".opt_" + this.value).not(".opt_" + current_sel).hide(500);
 			}
 		});
+	}
+
+
+	$('#categoria').change(function() {
+		update_pub_fields(this);
 	});
 
+
+	// Impostiamo i fields all'avvio
+	update_pub_fields($('#categoria'));
 
 })(jQuery);
 
