@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubblicazione` (
 EOF;
 	mysql_query( $query, $db );
 
-	/* Tabella Autori Pubblicazioni */
+	/* Tabella Autori delle Pubblicazioni */
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubautore` (
   `id_autore` INTEGER  NOT NULL AUTO_INCREMENT,
