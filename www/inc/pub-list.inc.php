@@ -1,4 +1,4 @@
-<h2>Pubblicazioni</h2>
+		<h2>Pubblicazioni</h2>
 <?php
 
 $autori = load_autori();
@@ -61,7 +61,7 @@ function stampa_pub( $categoria ) {
 		'curatela'   => 'Curatele'
 	);
 
-	echo "<h3>{$titoli[$categoria]}</h3>\n";
+	echo "\t\t\t<h3>{$titoli[$categoria]}</h3>\n";
 
 	$query = <<<EOF
 SELECT *
@@ -84,16 +84,16 @@ EOF;
 			// Raggruppo le pubblicazioni per anno
 			if ( $old_anno != $riga['anno'] ) {
 				if ( $old_anno != -1 ) // se non sono all'inizio della lista di pubblicazioni
-					echo "</ul>\n"; // devo chiudere il vecchio elenco
-				printf( "<h4>%s</h4>", intval( $riga['anno'] ) );
-				echo "<ul>\n";
+					echo str_repeat( "\t", 5 ) . "</ul>\n"; // devo chiudere il vecchio elenco
+				printf( "%s<h4>%s</h4>\n", str_repeat( "\t", 4), intval( $riga['anno'] ) );
+				echo str_repeat( "\t", 5 ) . "<ul>\n";
 			}
-			echo "<li>\n";
+			echo str_repeat( "\t", 6 ) . "<li>\n";
 			call_user_func( "stampa_pub_$categoria", $riga );
-			echo "</li>\n";
+			echo str_repeat( "\t", 6 ) . "</li>\n";
 			$old_anno = $riga['anno'];
 		}
-		echo "</ul>\n";
+		echo str_repeat( "\t", 5 ) . "</ul>\n";
 	}
 
 
@@ -104,13 +104,13 @@ EOF;
 function stampa_pub_rivista( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
-	echo "<span class='evidenza'>";
+	echo "<span class='evidenza'>\n";
 	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
 	echo "</span><br />";
 
 
 	// Dati pubblicazione
-	echo "<span class='rientro'>";
+	echo "<span class='rientro'>\n";
 	stampa_autori( $autori, $riga['id_pubblicazione'] );
 	echo ", " . "";
 
@@ -141,13 +141,13 @@ function stampa_pub_rivista( $riga ) {
 function stampa_pub_libro( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
-	echo "<span class='evidenza'>";
+	echo "<span class='evidenza'>\n";
 	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
 	echo "</span><br />";
 
 
 	// Dati pubblicazione
-	echo "<span class='rientro'>";
+	echo "<span class='rientro'>\n";
 	stampa_autori( $autori, $riga['id_pubblicazione'] );
 	echo ", " . "";
 
@@ -174,13 +174,13 @@ function stampa_pub_libro( $riga ) {
 function stampa_pub_conferenza( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
-	echo "<span class='evidenza'>";
+	echo "<span class='evidenza'>\n";
 	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
 	echo "</span><br />";
 
 
 	// Dati pubblicazione
-	echo "<span class='rientro'>";
+	echo "<span class='rientro'>\n";
 	stampa_autori( $autori, $riga['id_pubblicazione'] );
 	echo ", " . "";
 
@@ -202,13 +202,13 @@ function stampa_pub_conferenza( $riga ) {
 function stampa_pub_monografia( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
-	echo "<span class='evidenza'>";
+	echo "<span class='evidenza'>\n";
 	echo htmlspecialchars( $riga['titolo'] );
-	echo "</span><br />";
+	echo "</span><br />\n";
 
 
 	// Dati pubblicazione
-	echo "<span class='rientro'>";
+	echo "<span class='rientro'>\n";
 	stampa_autori( $autori, $riga['id_pubblicazione'] );
 	echo ", " . "";
 
@@ -225,13 +225,13 @@ function stampa_pub_monografia( $riga ) {
 function stampa_pub_curatela( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
-	echo "<span class='evidenza'>";
+	echo "<span class='evidenza'>\n";
 	echo htmlspecialchars( $riga['titolo'] );
-	echo "</span><br />";
+	echo "</span><br />\n";
 
 
 	// Dati pubblicazione
-	echo "<span class='rientro'>";
+	echo "<span class='rientro'>\n";
 	stampa_autori( $autori, $riga['id_pubblicazione'] );
 	echo ", " . "";
 
