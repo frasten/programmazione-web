@@ -40,7 +40,12 @@ function stampa_autori( $autori, $id ) {
 		list( $nome, $resto ) = explode( ' ', $a, 2 );
 		$output[] = $nome{0} . ". $resto";
 	}
-	echo implode( ', ', $output );
+	if ( sizeof( $output ) == 1 )
+		echo $output[0];
+	else {
+		echo implode( ', ', array_slice( $output, 0, sizeof( $output ) - 1 ) );
+		echo " and " . $output[sizeof( $output ) - 1];
+	}
 }
 
 function stampa_pub( $categoria ) {
@@ -55,6 +60,8 @@ function stampa_pub( $categoria ) {
 	);
 
 	echo "<h3>{$titoli[$categoria]}</h3>\n";
+
+	// TODO: raggruppati per anno
 
 	$query = <<<EOF
 SELECT * FROM
@@ -94,7 +101,7 @@ function stampa_pub_rivista( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>";
-	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlentities( $riga['titolo'] ) );
+	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
 	echo "</span><br />";
 
 
@@ -124,8 +131,6 @@ function stampa_pub_rivista( $riga ) {
 	echo "$riga[anno].";
 
 	echo "</span><br />";
-
-	print_r($riga);
 }
 
 /* CAPITOLI DI LIBRO */
@@ -133,7 +138,7 @@ function stampa_pub_libro( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>";
-	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlentities( $riga['titolo'] ) );
+	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
 	echo "</span><br />";
 
 
@@ -147,24 +152,18 @@ function stampa_pub_libro( $riga ) {
 		echo ", ";
 	}
 
-	/* 13(1-2):3-31 */
-	echo intval( $riga['volume'] );
-	if ( $riga['numero'] ) {
-		echo "($riga[numero])";
-	}
+	if ( $riga['curatori_libro'] )
+		printf( "(ed. %s), ", htmlspecialchars( $riga['curatori_libro'] ) );
+
+	echo htmlspecialchars( $riga['editore'] ) . ", ";
 
 	if ( $riga['pag_inizio'] && $riga['pag_fine'] ) {
-		echo ":$riga[pag_inizio]-$riga[pag_fine]";
+		echo "pages $riga[pag_inizio]-$riga[pag_fine], ";
 	}
-	echo ", ";
-
-	// TODO: Nome del journal
 
 	echo "$riga[anno].";
 
 	echo "</span><br />";
-
-	print_r($riga);
 }
 
 /* ATTI DI CONFERENZA */
@@ -172,7 +171,7 @@ function stampa_pub_conferenza( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>";
-	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlentities( $riga['titolo'] ) );
+	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
 	echo "</span><br />";
 
 
@@ -182,28 +181,17 @@ function stampa_pub_conferenza( $riga ) {
 	echo ", " . "";
 
 	if ( $riga['titolo_contesto'] ) {
-		echo htmlspecialchars( $riga['titolo_contesto'] );
+		echo "Proc. of " . htmlspecialchars( $riga['titolo_contesto'] );
 		echo ", ";
 	}
 
-	/* 13(1-2):3-31 */
-	echo intval( $riga['volume'] );
-	if ( $riga['numero'] ) {
-		echo "($riga[numero])";
-	}
-
 	if ( $riga['pag_inizio'] && $riga['pag_fine'] ) {
-		echo ":$riga[pag_inizio]-$riga[pag_fine]";
+		echo "pages $riga[pag_inizio]-$riga[pag_fine], ";
 	}
-	echo ", ";
-
-	// TODO: Nome del journal
 
 	echo "$riga[anno].";
 
 	echo "</span><br />";
-
-	print_r($riga);
 }
 
 /* MONOGRAFIE */
@@ -211,7 +199,7 @@ function stampa_pub_monografia( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>";
-	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlentities( $riga['titolo'] ) );
+	echo htmlspecialchars( $riga['titolo'] );
 	echo "</span><br />";
 
 
@@ -220,29 +208,13 @@ function stampa_pub_monografia( $riga ) {
 	stampa_autori( $autori, $riga['id_pubblicazione'] );
 	echo ", " . "";
 
-	if ( $riga['titolo_contesto'] ) {
-		echo htmlspecialchars( $riga['titolo_contesto'] );
-		echo ", ";
-	}
+	echo htmlspecialchars( $riga['editore'] ) . ", ";
 
-	/* 13(1-2):3-31 */
-	echo intval( $riga['volume'] );
-	if ( $riga['numero'] ) {
-		echo "($riga[numero])";
-	}
-
-	if ( $riga['pag_inizio'] && $riga['pag_fine'] ) {
-		echo ":$riga[pag_inizio]-$riga[pag_fine]";
-	}
-	echo ", ";
-
-	// TODO: Nome del journal
+	echo "n. pagine: $riga[num_pagine], ";
 
 	echo "$riga[anno].";
 
 	echo "</span><br />";
-
-	print_r($riga);
 }
 
 /* CURATELE */
@@ -250,7 +222,7 @@ function stampa_pub_curatela( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>";
-	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlentities( $riga['titolo'] ) );
+	echo htmlspecialchars( $riga['titolo'] );
 	echo "</span><br />";
 
 
@@ -259,29 +231,13 @@ function stampa_pub_curatela( $riga ) {
 	stampa_autori( $autori, $riga['id_pubblicazione'] );
 	echo ", " . "";
 
-	if ( $riga['titolo_contesto'] ) {
-		echo htmlspecialchars( $riga['titolo_contesto'] );
-		echo ", ";
+	if ( $riga['editore'] ) {
+		echo htmlspecialchars( $riga['editore'] ) . ", ";
 	}
-
-	/* 13(1-2):3-31 */
-	echo intval( $riga['volume'] );
-	if ( $riga['numero'] ) {
-		echo "($riga[numero])";
-	}
-
-	if ( $riga['pag_inizio'] && $riga['pag_fine'] ) {
-		echo ":$riga[pag_inizio]-$riga[pag_fine]";
-	}
-	echo ", ";
-
-	// TODO: Nome del journal
 
 	echo "$riga[anno].";
 
 	echo "</span><br />";
-
-	print_r($riga);
 }
 
 ?>
