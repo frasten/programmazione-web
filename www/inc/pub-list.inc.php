@@ -83,11 +83,19 @@ EOF;
 		echo "Non &egrave; presente alcuna pubblicazione.";
 	}
 	else {
-		echo "<ul>\n";
+		$old_anno = -1;
 		while ( $riga = mysql_fetch_assoc( $result ) ) {
+			// Raggruppo le pubblicazioni per anno
+			if ( $old_anno != $riga['anno'] ) {
+				if ( $old_anno != -1 ) // se non sono all'inizio della lista di pubblicazioni
+					echo "</ul>\n"; // devo chiudere il vecchio elenco
+				printf( "<h4>%s</h4>", intval( $riga['anno'] ) );
+				echo "<ul>\n";
+			}
 			echo "<li>\n";
 			call_user_func( "stampa_pub_$categoria", $riga );
 			echo "</li>\n";
+			$old_anno = $riga['anno'];
 		}
 		echo "</ul>\n";
 	}
