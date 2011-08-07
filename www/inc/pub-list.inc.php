@@ -12,15 +12,17 @@ stampa_pub( 'curatela' );
 
 
 function load_autori() {
+	global $config, $db;
+
 	$autori = array();
 
-	global $config, $db;
 	$query = <<<EOF
-SELECT `$config[db_prefix]pubblicazione`.`id_pubblicazione`, `nome` FROM `$config[db_prefix]pubblicazione`
+SELECT `$config[db_prefix]pubblicazione`.`id_pubblicazione`, `nome`
+FROM `$config[db_prefix]pubblicazione`
 JOIN `$config[db_prefix]pubblicazione_pubautore`
-ON `$config[db_prefix]pubblicazione`.`id_pubblicazione` = `$config[db_prefix]pubblicazione_pubautore`.`id_pubblicazione`
+	USING (`id_pubblicazione`)
 JOIN `$config[db_prefix]pubautore`
-ON `$config[db_prefix]pubblicazione_pubautore`.`id_autore` = `$config[db_prefix]pubautore`.`id_autore`
+	USING (`id_autore`)
 EOF;
 	$result = mysql_query( $query, $db );
 	if ( ! $result ) return $autori;
@@ -61,15 +63,9 @@ function stampa_pub( $categoria ) {
 
 	echo "<h3>{$titoli[$categoria]}</h3>\n";
 
-	// TODO: raggruppati per anno
-
 	$query = <<<EOF
-SELECT * FROM
-	`$config[db_prefix]pubblicazione`
-	LEFT JOIN `$config[db_prefix]pubblicazione_pubautore`
-		ON `$config[db_prefix]pubblicazione`.`id_pubblicazione` = `$config[db_prefix]pubblicazione_pubautore`.`id_pubblicazione`
-	LEFT JOIN `$config[db_prefix]pubautore`
-		ON `$config[db_prefix]pubblicazione_pubautore`.`id_autore` = `$config[db_prefix]pubautore`.`id_autore`
+SELECT *
+FROM `$config[db_prefix]pubblicazione`
 WHERE `categoria` = '$categoria'
 ORDER BY `$config[db_prefix]pubblicazione`.`anno` DESC
 EOF;
