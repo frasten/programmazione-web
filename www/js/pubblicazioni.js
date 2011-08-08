@@ -1,7 +1,15 @@
 (function($) {
 
+	// Carichiamo la lista di autori
+	var pub_autori;
+	$.getJSON('ajax/pubblicazioni.php?action=get_lista_autori', function(data) {
+		if (data.constructor.toString().indexOf("Array") == -1)
+			pub_autori = new Array();
+		else pub_autori = data;
+	});
+
 	// Lista di professori
-	var professori = [
+	var pub_autori = [
 		"Devis Bianchini",
 		"Valeria De Antonellis",
 		"Michele Melchiori",
@@ -28,7 +36,7 @@
 			source: function( request, response ) {
 				// delegate back to autocomplete, but extract the last term
 				response( $.ui.autocomplete.filter(
-					professori, extractLast( request.term ) ) );
+					pub_autori, extractLast( request.term ) ) );
 			},
 			focus: function() {
 				// prevent value inserted on focus
