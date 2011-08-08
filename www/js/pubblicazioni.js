@@ -8,14 +8,6 @@
 		else pub_autori = data;
 	});
 
-	// Lista di professori
-	var pub_autori = [
-		"Devis Bianchini",
-		"Valeria De Antonellis",
-		"Michele Melchiori",
-		"Denise Salvi"
-	];
-	
 	function split( val ) {
 		return val.split( /,\s*/ );
 	}
