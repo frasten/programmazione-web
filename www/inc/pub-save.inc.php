@@ -1,10 +1,14 @@
 <?php
 
+// Path relativo alla root del sito web.
+$path_uploaded_dir = 'uploads/';
+
 echo "<pre>" . print_r($_POST, true) . "</pre>";
+#echo "<pre>" . print_r($_FILES, true) . "</pre>";
+#echo "<pre>" . print_r($_SERVER, true) . "</pre>";
 
 // TODO: VALIDAZIONE
 // TODO: se chiamo senza inviare dati, non devo fare nulla
-
 
 
 $_POST = array_map('mysql_real_escape_string', $_POST);
@@ -50,17 +54,15 @@ switch ( $_POST['categoria'] ) {
 }
 
 
-// TODO: caricamento file
-
 $query = <<<EOF
 INSERT INTO `$config[db_prefix]pubblicazione`
 (`categoria`,`titolo`,`anno`,`titolo_contesto`,
 `volume`,`numero`,`pag_inizio`,`pag_fine`,`abstract`,
-`curatori_libro`,`editore`,`num_pagine`,`isbn`,`file`)
+`curatori_libro`,`editore`,`num_pagine`,`isbn`)
 VALUES
 ('$_POST[categoria]','$_POST[titolo]','$_POST[anno]',$data[titolo_contesto],
 $data[volume],$data[numero],$data[pag_inizio],$data[pag_fine],'$_POST[abstract]',
-$data[curatori_libro],$data[editore],$data[num_pagine],$data[isbn],NULL)
+$data[curatori_libro],$data[editore],$data[num_pagine],$data[isbn])
 EOF;
 
 mysql_query( $query, $db );
@@ -70,9 +72,24 @@ $id_pub = mysql_insert_id( $db );
 
 // AUTORI
 $id_autori = get_id_autori( $_POST['autori'] );
-print_r( $id_autori );
 salva_autori_pub( $id_pub, $id_autori );
 
+
+// Upload del file
+$uploaded_file = gestisci_file_upload( $id_pub );
+if ( $uploaded_file !== false ) {
+	// Salvo questa impostazione nel database.
+	// Lo facciamo in un secondo tempo, poiche' il nome del file salvato
+	// dipende dall'ID assegnato alla pubblicazione.
+	$uploaded_file = mysql_real_escape_string( $uploaded_file );
+	$query = <<<EOF
+UPDATE `$config[db_prefix]pubblicazione`
+SET `file` = '$uploaded_file'
+WHERE `id_pubblicazione` = '$id_pub'
+LIMIT 1
+EOF;
+	mysql_query( $query, $db );
+}
 
 
 
@@ -126,4 +143,53 @@ EOF;
 	}
 }
 
+function gestisci_file_upload( $prefix ) {
+	global $path_uploaded_dir;
+
+	// Se non ho caricato nessun file, non faccio nulla
+	if ( empty( $_FILES['file']['tmp_name'] ) ) return false;
+
+	// Controllo le estensioni consentite. (ad es. escludere files .php)
+	$filename = basename( $_FILES['file']['name'] );
+	if ( preg_match( '/\.(.+)$/', $filename, $match ) ) {
+		$blacklist_extensions = array( 'php' );
+		if ( in_array( strtolower( $match[1] ), $blacklist_extensions ) ) {
+			echo "Errore: Il file caricato &egrave; di un tipo non consentito.";
+			return false;
+		}
+	}
+
+	// Trailing slash
+	if ( substr( $path_uploaded_dir, -1 ) !== '/' ) $path_uploaded_dir .= '/';
+
+	// Ho caricato un file
+	$path_uploaded_files = realpath( '.' ) . "/$path_uploaded_dir";
+
+	if ( ! is_dir( $path_uploaded_files ) ) {
+		// Directory non esistente, la creo.
+		@mkdir( $path_uploaded_files, 0777 );
+		// Creo anche un index file (vuoto), per evitare il listing dei files.
+		@file_put_contents( $path_uploaded_files . 'index.php', '' );
+	}
+
+	if ( ! is_writable( $path_uploaded_files ) ) {
+		echo 'Errore nel caricamento del file: ';
+		echo 'accesso negato. Controllare i permessi di scrittura sul server!';
+		return;
+	}
+
+	// Gestisco i files duplicati anteponendo l'ID della pubblicazione al
+	// nome del file.
+	// Es. 12_nomefile.pdf
+	$filename = $prefix . '_' . $filename;
+
+	$target_path = $path_uploaded_files . $filename;
+	if( move_uploaded_file( $_FILES['file']['tmp_name'], $target_path ) ) {
+		// File caricato correttamente.
+		return "http://$_SERVER[SERVER_NAME]" . dirname( $_SERVER['SCRIPT_NAME'] ) . "/$path_uploaded_dir$filename";
+	} else{
+		echo 'Errore nel caricamento del file, si prega di riprovare.';
+		return false;
+	}
+}
 ?>
