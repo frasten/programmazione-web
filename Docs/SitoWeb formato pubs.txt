@@ -1,0 +1,69 @@
+-------
+Rivista
+-------
+Autori: string (da scegliere da una lista e da stampare come, ad esempio, "D.Bianchini")
+Titolo: string
+Nome del journal: string (da scegliere da una lista)
+Volume: numerico
+Numero*: numerico (volume e numero devono essere scritti insieme, ad esempio, 32(2) significa volume=32 e numero=2, se non c'è numero, va scritto solo il volume)
+Pagina inizio: numerico
+Pagina fine: numerico
+Anno: numerico
+File*
+Abstract*: string 
+
+* Opzionale
+
+-----------------
+Capitolo di libro
+-----------------
+Autori: string (da scegliere da una lista e da stampare come, ad esempio, "D.Bianchini")
+Titolo: string
+Titolo del libro: string
+Curatore del libro: string (quando visualizzata, questa stringa deve essere seguita da "ed." e deve stare tra parentesi tonde)
+Editore: string (in cui metterei sia il nome dell'editore che la città, per esempio "Springer, Berlin")
+Pagina inizio: numerico
+Pagina fine: numerico
+Anno: numerico
+File*
+Abstract*: string 
+
+* Opzionale
+
+------------------
+Atti di conferenza
+------------------
+
+Autori: string (da scegliere da una lista e da stampare come, ad esempio, "D.Bianchini")
+Titolo: string
+Nome della conferenza: string (quando visualizzata, tale stringa deve essere preceduta da "Proc. of ")
+Pagina inizio: numerico
+Pagina fine: numerico
+Anno: numerico
+File*
+Abstract*: string 
+
+* Opzionale
+
+----------
+Monografia
+----------
+Autori: string (da scegliere da una lista e da stampare come, ad esempio, "D.Bianchini")
+Titolo: string
+Editore: string (in cui metterei sia il nome dell'editore che la città, per esempio "Springer, Berlin")
+Numero di pagine: numerico
+Anno: numerico
+Abstract*: string
+
+* Opzionale
+
+--------
+Curatele
+--------
+Autori: string (da scegliere da una lista e da stampare come, ad esempio, "D.Bianchini")
+Titolo: string
+Editore: string (in cui metterei sia il nome dell'editore che la città, per esempio "Springer, Berlin")
+Anno: numerico
+Abstract*: string
+
+* Opzionale
