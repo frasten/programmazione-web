@@ -134,7 +134,7 @@ function stampa_pub_rivista( $riga ) {
 
 	echo "$riga[anno].";
 
-	echo "</span><br />";
+	echo "</span>\n";
 }
 
 /* CAPITOLI DI LIBRO */
@@ -167,7 +167,7 @@ function stampa_pub_libro( $riga ) {
 
 	echo "$riga[anno].";
 
-	echo "</span><br />";
+	echo "</span>\n";
 }
 
 /* ATTI DI CONFERENZA */
@@ -195,7 +195,7 @@ function stampa_pub_conferenza( $riga ) {
 
 	echo "$riga[anno].";
 
-	echo "</span><br />";
+	echo "</span>\n";
 }
 
 /* MONOGRAFIE */
@@ -218,7 +218,7 @@ function stampa_pub_monografia( $riga ) {
 
 	echo "$riga[anno].";
 
-	echo "</span><br />";
+	echo "</span>\n";
 }
 
 /* CURATELE */
@@ -241,7 +241,7 @@ function stampa_pub_curatela( $riga ) {
 
 	echo "$riga[anno].";
 
-	echo "</span><br />";
+	echo "</span>\n";
 }
 
 ?>
