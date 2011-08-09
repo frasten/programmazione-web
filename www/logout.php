@@ -1,9 +1,19 @@
 <?php
 
 session_start();
+
+require_once( 'inc/remember-login.inc.php' );
+
+if ( ! empty( $_SESSION['persistent_hash'] ) ) {
+	// Se sto salvando login con "ricorda accesso", lo invalido
+	invalida_persistent_cookie();
+}
+
+
 session_destroy();
 // Riporto l'utente nella pagina dove si trovava prima.
-header( "Location: $_SERVER[HTTP_REFERER]" );
+$url = $_SERVER['HTTP_REFERER'] ? $_SERVER['HTTP_REFERER'] : 'index.php';
+header( "Location: $url" );
 exit;
 
 ?>

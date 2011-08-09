@@ -6,6 +6,7 @@
  * Vedere: http://www.php.net/manual/en/security.magicquotes.disabling.php
  */
 require_once( 'hmac.inc.php' );
+require_once( 'remember-login.inc.php' );
 
 
 if ( empty( $db ) ) return 1;
@@ -17,13 +18,13 @@ if ( empty( $db ) ) return 1;
 // Se non ci sono ancora user e pass salvati, genero un nuovo utente.
 check_default_user();
 
-
+// Periodicamente eliminiamo i cookies mantenuti per il "Ricorda accesso"
+elimina_persistent_cookies_scaduti();
 
 if ( ! empty( $_SESSION['loggato'] ) ) {
 	// Se sono gia' loggato:
 	return 0;
 }
-
 
 
 // Se sto ricevendo i dati di login:
@@ -48,12 +49,17 @@ if ( ! empty( $_POST['username'] ) || ! empty( $_POST['password'] ) ) {
 		if ( $hash_atteso == $hash_inserito ) {
 			// LOGIN OK
 			$_SESSION['loggato'] = true;
+			$_SESSION['user'] = $_POST['username'];
+
+			// In caso si voglia ricordare il login:
+			if ( ! empty( $_POST['rememberlogin'] ) ) {
+				crea_persistent_cookie( $_POST['username'] );
+			}
+
 			// FIXME: come mai non da errore? Ho gia' scritto in output delle cose,
 			// dovrebbe darmi errore.
 			header( "Location: $_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]" );
 
-			// TODO: fare il "ricorda auth", in modo da non doversi riloggare
-			// ogni poco.
 			return 0;
 		}
 		else {
@@ -70,6 +76,7 @@ if ( ! empty( $_POST['username'] ) || ! empty( $_POST['password'] ) ) {
 	unset( $pass );
 }
 
+if ( controlla_persistent_login() ) return 0;
 
 // Sono arrivato qui, mostro il form.
 ?>
@@ -78,13 +85,22 @@ if ( ! empty( $_POST['username'] ) || ! empty( $_POST['password'] ) ) {
 		if ( ! empty( $err ) ) echo "<p><strong>Errore di autenticazione.</strong></p>";
 		?>
 
-		<form action="<?php
+		<form id="loginform" action="<?php
 		echo $_SERVER['PHP_SELF'];
 		// htmlentities() per protezione da attacchi XSS
 		echo '?' . htmlentities( "$_SERVER[QUERY_STRING]", ENT_NOQUOTES );
+		// TODO: renderlo piu' carino con un po' di CSS
 		?>" method="post" >
-			Username: <input type="text" name="username" />
-			Password: <input type="password" name="password" />
+			<label for="username">Username:
+				<input type="text" id="username" name="username" />
+			</label>
+			<label for="password">Password:
+				<input type="password" id="password" name="password" />
+			</label>
+			<label for="rememberlogin">
+				<input type="checkbox" id="rememberlogin" name="rememberlogin" />
+				Ricorda l'accesso
+			</label>
 			<input type="submit" name="Entra" />
 		</form>
 <?php
@@ -104,7 +120,7 @@ function check_default_user() {
 	if ( mysql_num_rows( $result ) == 0 ) {
 		// Non esiste alcun utente, creiamolo.
 		$user = 'admin';
-		$pass = generate_random_password();
+		$pass = genera_random_string( $config['default_pass_len'] );
 		$salt = sha1( uniqid( rand(), true ) );
 		$salt = substr( $salt, 0, 20 ); // Solo i primi 20 caratteri
 
@@ -127,22 +143,6 @@ EOF;
 		$_SESSION['loggato'] = true;
 		$_SESSION['user'] = $user;
 	}
-}
-
-function generate_random_password() {
-	global $config;
-
-	$chars = 'abcdefghijklmnopqrstuvwxyz0123456789,.-;:_()+^=/!%';
-
-	$newpass = '';
-	for ( $i = 0; $i < $config['default_pass_len']; $i++ ) {
-		$rnd = rand( 0, strlen( $chars ) - 1 );
-		$c = $chars{$rnd};
-		// Ne randomizzo anche maiuscola/minuscola
-		if (rand(0, 1)) $c = strtoupper($c);
-		$newpass .= $c;
-	}
-	return $newpass;
 }
 
 function esci() {

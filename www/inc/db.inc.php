@@ -110,6 +110,17 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]login` (
 EOF;
 	mysql_query( $query, $db );
 
+	/* Tabella per il "ricorda login" */
+	$query = <<<EOF
+CREATE TABLE IF NOT EXISTS `$config[db_prefix]persistent_login` (
+  `username` VARCHAR(20)  NOT NULL,
+  `salt` VARCHAR(20) NOT NULL,
+  `tokenhash` VARCHAR(40) NOT NULL,
+  `timestamp` DATETIME NOT NULL
+);
+EOF;
+	mysql_query( $query, $db );
+
 
 }
 
