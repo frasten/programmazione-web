@@ -7,6 +7,7 @@
  */
 require_once( 'hmac.inc.php' );
 require_once( 'remember-login.inc.php' );
+require_once( 'funzioni-login.inc.php' );
 
 
 if ( empty( $db ) ) return 1;
@@ -29,43 +30,21 @@ if ( ! empty( $_SESSION['loggato'] ) ) {
 
 // Se sto ricevendo i dati di login:
 if ( ! empty( $_POST['username'] ) || ! empty( $_POST['password'] ) ) {
-	$user = mysql_real_escape_string( $_POST['username'] );
+	if ( verifica_login( $_POST['username'], $_POST['password'] ) ) {
+		// LOGIN OK
+		$_SESSION['loggato'] = true;
+		$_SESSION['user'] = $_POST['username'];
 
-	// PAP con hash function HMAC e salted passwords.
-
-	/* HMAC e il salt rendono inutili attacchi di dizionario o rainbow
-	 * tables, e utenti con la stessa password avranno un valore differente
-	 * di hash salvato nel database.
-	 * */
-
-	$query = "SELECT `salt`, `password` FROM `$config[db_prefix]login` WHERE BINARY `username`='$user' LIMIT 1";
-	$result = @mysql_query( $query );
-	if ( $result && mysql_num_rows( $result ) > 0 ) {
-		$row = mysql_fetch_assoc( $result );
-
-		// H( password | salt )
-		$hash_atteso = $row['password'];
-		$hash_inserito = hmac_sha1( $config['hmac_psk'], "$_POST[password]$row[salt]" );
-		if ( $hash_atteso == $hash_inserito ) {
-			// LOGIN OK
-			$_SESSION['loggato'] = true;
-			$_SESSION['user'] = $_POST['username'];
-
-			// In caso si voglia ricordare il login:
-			if ( ! empty( $_POST['rememberlogin'] ) ) {
-				crea_persistent_cookie( $_POST['username'] );
-			}
-
-			// FIXME: come mai non da errore? Ho gia' scritto in output delle cose,
-			// dovrebbe darmi errore.
-			header( "Location: $_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]" );
-
-			return 0;
+		// In caso si voglia ricordare il login:
+		if ( ! empty( $_POST['rememberlogin'] ) ) {
+			crea_persistent_cookie( $_POST['username'] );
 		}
-		else {
-			// Errore di autenticazione
-			$err = true;
-		}
+
+		// FIXME: come mai non da errore? Ho gia' scritto in output delle cose,
+		// dovrebbe darmi errore.
+		header( "Location: $_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]" );
+
+		return 0;
 	}
 	else {
 		// Errore di autenticazione

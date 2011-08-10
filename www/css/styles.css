@@ -1,3 +1,7 @@
+.iconalink:hover {
+	background: none;
+}
+
 #titolo, #autori, #autori_libro, #info_addizionali {
 	width: 40em;
 }
@@ -34,5 +38,18 @@
 }
 
 #loginform label {
+	display: block;
+}
+
+#corpo .iconlist li {
+	background-position: 0 7px;
+}
+
+.linkconicona {
+	background-repeat: no-repeat;
+	padding: 2px 0 2px 20px;
+}
+
+.frmchangepassword label {
 	display: block;
 }
