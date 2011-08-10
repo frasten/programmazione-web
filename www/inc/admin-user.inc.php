@@ -80,7 +80,7 @@ else if ( $_GET['action'] == 'changepassword' ) {
 			echo "<br /><a href='?action=listusers'>Torna</a>";
 			return 0;
 		}
-		echo "<br /><a href='javascript:history.back()'>Torna</a>";
+		stampa_form_change_password();
 	}
 }
 else if ( $_GET['action'] == 'newuser' ) {
@@ -140,12 +140,20 @@ VALUES
 EOF;
 			mysql_query( $query, $db );
 			echo "Utente salvato.<br /><a href='?action=listusers'>Torna</a>";
+			return 0;
 		}
+		echo "<br /><a href='javascript:history.back()'>Torna</a>";
 	}
+}
+else if ( $_GET['action'] == 'deleteuser' ) {
+	
 }
 
 function stampa_form_change_password() {
 			?>
+		<p>
+			<strong>Cambio password per l'utente <em><?php echo htmlspecialchars( $_GET['user'] ) ?></em></strong>
+		</p>
 		<form action='<?php
 			echo htmlspecialchars( "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]", ENT_QUOTES );
 		?>' method='post'>
