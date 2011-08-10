@@ -25,10 +25,13 @@ EOF;
 		echo "<img src='img/icone/key.png' alt='Cambia password' />";
 		echo "</a> ";
 
-		echo "<a href='$_SERVER[PHP_SELF]?action=deleteuser&user=" . urlencode( $riga['username'] );
-		echo "' class='iconalink' title='Elimina'>";
-		echo "<img src='img/icone/user_delete.png' alt='Elimina' />";
-		echo "</a> ";
+		if ( $riga['username'] != $_SESSION['user'] ) {
+			// Non posso eliminare l'utente corrente.
+			echo "<a href='$_SERVER[PHP_SELF]?action=deleteuser&user=" . urlencode( $riga['username'] );
+			echo "' class='iconalink' title='Elimina'>";
+			echo "<img src='img/icone/user_delete.png' alt='Elimina' />";
+			echo "</a> ";
+		}
 
 		echo "</li>\n";
 	}
@@ -146,7 +149,37 @@ EOF;
 	}
 }
 else if ( $_GET['action'] == 'deleteuser' ) {
-	
+	$query = "SELECT 1 FROM `$config[db_prefix]login` WHERE username='" .
+		mysql_real_escape_string( $_GET['user'] ) . "' LIMIT 1";
+	$result = mysql_query( $query, $db );
+	if ( ! mysql_num_rows( $result ) ) {
+		// Possibile attacco.
+		echo "Errore.";
+		return 1;
+	}
+
+	// Non posso eliminare l'utente corrente.
+	if ( $_GET['user'] == $_SESSION['user'] ) {
+		echo "Non &egrave; possibile eliminare l'utente corrente.";
+		echo "<br /><a href='javascript:history.back()'>Torna</a>";
+		return 1;
+	}
+
+	if ( empty( $_GET['conferma'] ) ) {
+		// Chiediamo conferma
+		echo "<p>Si &egrave; <strong>davvero</strong> sicuri di voler eliminare";
+		echo " l'utente <em>" . htmlspecialchars( $_GET['user'] ) . "</em>?</p>";
+		echo "<a href='?action=listusers'>Annulla</a>";
+		echo " <a href='?$_SERVER[QUERY_STRING]&conferma=1' class='btn_pericolo'>Elimina</a>";
+	}
+	else {
+		// Confermato, eliminazione vera e propria.
+		$query = "DELETE FROM `$config[db_prefix]login` WHERE username='" .
+			mysql_real_escape_string( $_GET['user'] ) . "' LIMIT 1";
+		$result = mysql_query( $query, $db );
+		echo "Utente eliminato.";
+		echo "<br /><a href='?action=listusers'>Torna</a>";
+	}
 }
 
 function stampa_form_change_password() {

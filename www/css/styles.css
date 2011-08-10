@@ -53,3 +53,12 @@
 .frmchangepassword label {
 	display: block;
 }
+
+.btn_pericolo {
+	padding: 2px 10px;
+	background-color: red;
+	border-radius: 4px;
+	color: white !important;
+	font-weight: bold;
+	text-decoration: none !important;
+}
