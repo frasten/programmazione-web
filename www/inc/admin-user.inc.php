@@ -81,7 +81,66 @@ else if ( $_GET['action'] == 'changepassword' ) {
 			return 0;
 		}
 		echo "<br /><a href='javascript:history.back()'>Torna</a>";
+	}
+}
+else if ( $_GET['action'] == 'newuser' ) {
+	if ( empty( $_POST['username'] ) ) {
+		// Form
+		?>
+		<form action='<?php
+		echo htmlspecialchars( "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]", ENT_QUOTES );
+		?>' method='post'>
+			<ul class='form_list'>
+				<li>
+					<label for='username'>Username:</label>
+					<input type='text' id='username' name='username' />
+				</li>
+				<li>
+					<label for='password'>Password:</label>
+					<input type='password' id='password' name='password' />
+				</li>
+			</ul>
+			<input type='submit' value='Crea utente' />
+		</form>
+		<?php
+	}
+	else {
+		// Richiesta di salvataggio
+		$_POST['username'] = trim( $_POST['username'] );
 
+		// Controlliamo se l'utente esiste gia'
+		$query = "SELECT 1 FROM `$config[db_prefix]login` WHERE username='" .
+			mysql_real_escape_string( $_POST['username'] ) . "' LIMIT 1";
+		$result = mysql_query( $query, $db );
+
+		if ( empty( $_POST['password'] ) ) {
+			echo 'Errore: la password non pu&ograve; essere vuota.';
+		}
+		else if ( ! preg_match( '#^[a-z0-9^-_.,:@+-=()/!]+$#i', $_POST['username'] ) ) {
+			echo 'Errore: il nome utente contiene caratteri non consentiti.';
+		}
+		else if ( mysql_num_rows( $result ) ) {
+			echo 'Errore: il nome utente inserito non &egrave; disponibile.';
+		}
+		else {
+			// Ok, salvo.
+			$_POST['username'] = mysql_real_escape_string( $_POST['username'] );
+			// Genero un salt
+			$salt = sha1( uniqid( rand(), true ) );
+			$salt = substr( $salt, 0, 20 ); // Solo i primi 20 caratteri
+
+			// Calcolo l'hash
+			$hash = hmac_sha1( $config['hmac_psk'], "$_POST[password]$salt" );
+
+			$query = <<<EOF
+INSERT INTO `$config[db_prefix]login`
+(`username`,`salt`,`password`)
+VALUES
+('$_POST[username]','$salt','$hash')
+EOF;
+			mysql_query( $query, $db );
+			echo "Utente salvato.<br /><a href='?action=listusers'>Torna</a>";
+		}
 	}
 }
 
