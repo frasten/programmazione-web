@@ -79,6 +79,12 @@ else if ( $_GET['action'] == 'changepassword' ) {
 				"SET `password` = '$hash' " .
 				"WHERE BINARY `username` = '" . mysql_real_escape_string( $_GET['user'] ) . "' LIMIT 1";
 			mysql_query( $query, $db );
+
+			/* Se la password e' stata modificata, per sicurezza elimino tutti
+			 * i permanent login (presenti su differenti computer) di questo
+			 * utente */
+			elimina_tutti_persistent_login( $_GET['user'] );
+
 			echo "Password modificata.";
 			echo "<br /><a href='?action=listusers'>Torna</a>";
 			return 0;
@@ -177,6 +183,9 @@ else if ( $_GET['action'] == 'deleteuser' ) {
 		$query = "DELETE FROM `$config[db_prefix]login` WHERE username='" .
 			mysql_real_escape_string( $_GET['user'] ) . "' LIMIT 1";
 		$result = mysql_query( $query, $db );
+
+		elimina_tutti_persistent_login( $_GET['user'] );
+
 		echo "Utente eliminato.";
 		echo "<br /><a href='?action=listusers'>Torna</a>";
 	}
@@ -207,6 +216,16 @@ function stampa_form_change_password() {
 			<input type='submit' value='Salva' style='margin-left: 100px' />
 		</form>
 		<?php
+}
+
+function elimina_tutti_persistent_login( $user ) {
+	global $config, $db;
+	$user = mysql_real_escape_string( $user );
+	$query = <<<EOF
+DELETE FROM `$config[db_prefix]persistent_login`
+WHERE BINARY `username` = '$user'
+EOF;
+	mysql_query( $query, $db );
 }
 
 ?>
