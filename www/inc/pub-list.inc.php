@@ -39,8 +39,11 @@ function stampa_autori( $autori, $id ) {
 
 	$output = array();
 	foreach ( $autori[$id] as $a ) {
-		list( $nome, $resto ) = explode( ' ', $a, 2 );
-		$output[] = $nome{0} . ". $resto";
+		if ( strpos( $a, ' ' ) ) {
+			list( $nome, $resto ) = explode( ' ', $a, 2 );
+			$a = $nome{0} . ". $resto";
+		}
+		$output[] = $a;
 	}
 	if ( sizeof( $output ) == 1 )
 		echo $output[0];
