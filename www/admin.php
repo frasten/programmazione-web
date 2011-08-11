@@ -7,7 +7,14 @@ require_once( 'inc/proteggi.inc.php' );
 
 
 if ( empty( $_GET['action'] ) ) {
-	echo "<a href='?action=listusers'>Gestione utenti</a>";
+	admin_menu();
+
+?>
+	<ul>
+		<li><a href='?action=listusers'>Gestione utenti</a></li>
+		<li><a href='pubblicazioni.php'>Gestione pubblicazioni</a></li>
+	</ul>
+<?php
 }
 else if ( $_GET['action'] == 'listusers' ||
           $_GET['action'] == 'changepassword' ||

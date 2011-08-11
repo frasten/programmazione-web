@@ -17,7 +17,7 @@ function genera_random_string( $len ) {
 	return $str;
 }
 
-function admin_menu( $links ) {
+function admin_menu( $links = array( array( '', '', '' ) ) ) {
 	if ( empty( $_SESSION['loggato'] ) ) return false;
 
 	echo "<ul class='adminmenu'>\n";
@@ -41,6 +41,7 @@ function admin_menu( $links ) {
 
 function stampa_admin_link( $url, $testo, $icona ) {
 	echo "<li>\n";
+	$style = '';
 	if ( ! empty( $icona ) )
 		$style = " style='background-image: url(img/icone/$icona)'"; 
 	printf( "<a href='%s' class='linkconicona'%s>%s</a>", htmlspecialchars( $url ), $style, htmlspecialchars( $testo ) );
