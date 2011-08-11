@@ -90,9 +90,5 @@ pageTracker._trackPageview();
 	<a id="linguaENG" href="/~deantone/corso.php?eng" title="Go to English site!"></a>
 </div>
 
-<?php if ( ! empty( $_SESSION['loggato']) ): ?>
-<a href="logout.php">Logout</a>
-<?php endif; ?>
-
 <div id="centrale">
 	<div id="corpo">

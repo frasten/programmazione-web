@@ -7,7 +7,7 @@ session_start();
 
 
 // Protezione contro accessi non autorizzati
-if ( ! $_SESSION['loggato'] ) die( '-1' );
+if ( empty( $_SESSION['loggato'] ) ) die( '-1' );
 
 if ( empty( $_GET['action'] ) ) die( '-1' );
 

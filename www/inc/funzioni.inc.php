@@ -17,4 +17,22 @@ function genera_random_string( $len ) {
 	return $str;
 }
 
+function admin_menu( $links ) {
+	if ( empty( $_SESSION['loggato'] ) ) return false;
+
+	$links[] = array( 'logout.php', 'Esci', 'user_go.png');
+
+	echo "<ul class='adminmenu'>\n";
+	foreach ( $links as $l ) {
+		list( $url, $testo, $icona ) = $l;
+		echo "<li>\n";
+		if ( ! empty( $icona ) )
+			$style = " style='background-image: url(img/icone/$icona)'"; 
+		printf( "<a href='%s' class='linkconicona'%s>%s</a>", htmlspecialchars( $url ), $style, htmlspecialchars( $testo ) );
+		echo "</li>\n";
+	}
+	echo "</ul>\n";
+}
+
+
 ?>

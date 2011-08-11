@@ -1,3 +1,7 @@
+#corpo {
+	float: none !important; /* Come mai??? */
+}
+
 .iconalink:hover {
 	background: none;
 }
@@ -61,4 +65,27 @@
 	color: white !important;
 	font-weight: bold;
 	text-decoration: none !important;
+}
+
+/***********
+    ADMIN
+***********/
+.adminmenu {
+	background-color: #D2F0FF;
+	padding: 10px 20px !important;
+	margin: 0 0 15px 0 !important;
+	border: 1px solid #6BD7BB;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px #bcc;
+}
+
+.adminmenu li {
+	display: inline;
+	background-image: none !important;
+	padding-left: 0 !important;
+	margin-right: 10px;
+}
+
+.adminmenu a {
+	text-decoration: none;
 }

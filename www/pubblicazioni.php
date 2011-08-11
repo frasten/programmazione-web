@@ -11,10 +11,16 @@ if ( ! empty( $_GET['action'] ) )
 
 if ( empty( $_GET['action'] ) ) {
 	// Mostro una lista di pubblicazioni
+	admin_menu( array(
+		array( '?action=new', 'Nuova pubblicazione', 'page_add.png' )
+	) );
 	include 'inc/pub-list.inc.php';
 }
 else if ( $_GET['action'] == 'new' ) {
 	// Mostro il form per l'inserimento di una pubblicazione
+	admin_menu( array(
+		array( '?', 'Lista pubblicazioni', 'table.png' )
+	) );
 	include 'inc/pub-form-new.inc.php';
 }
 else if ( $_GET['action'] == 'savenew' ) {
