@@ -1,6 +1,7 @@
 <?php
 
 require_once( 'db.inc.php' );
+require_once( 'hmac.inc.php' );
 
 function controlla_persistent_login() {
 	global $config, $db;

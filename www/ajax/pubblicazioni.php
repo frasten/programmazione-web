@@ -1,9 +1,7 @@
 <?php
 
+require_once( '../inc/framework.inc.php' );
 require_once( '../inc/json.inc.php' );
-require_once( '../inc/db.inc.php' );
-
-session_start();
 
 
 // Protezione contro accessi non autorizzati

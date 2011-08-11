@@ -1,8 +1,6 @@
 <?php
 
-session_start();
-
-require_once( 'inc/remember-login.inc.php' );
+require_once( 'inc/framework.inc.php' );
 
 if ( ! empty( $_SESSION['persistent_hash'] ) ) {
 	// Se sto salvando login con "ricorda accesso", lo invalido

@@ -12,15 +12,8 @@ require_once( 'funzioni-login.inc.php' );
 
 if ( empty( $db ) ) return 1;
 
-// Se non sono loggato, mostro il form
-
-@session_start();
-
 // Se non ci sono ancora user e pass salvati, genero un nuovo utente.
 check_default_user();
-
-// Periodicamente eliminiamo i cookies mantenuti per il "Ricorda accesso"
-elimina_persistent_cookies_scaduti();
 
 if ( ! empty( $_SESSION['loggato'] ) ) {
 	// Se sono gia' loggato:
@@ -55,9 +48,7 @@ if ( ! empty( $_POST['username'] ) || ! empty( $_POST['password'] ) ) {
 	unset( $pass );
 }
 
-if ( controlla_persistent_login() ) return 0;
-
-// Sono arrivato qui, mostro il form.
+// Sono arrivato qui, non sono loggato, e mostro il form.
 ?>
 		<h2>Area riservata</h2>
 		<?php

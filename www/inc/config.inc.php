@@ -1,12 +1,5 @@
 <?php
 
-// TEMP: abilitiamo il display degli errori per debug.
-if ( ! ini_get( 'display_errors' ) ) {
-	ini_set( 'display_errors', 1 );
-}
-
-
-
 $config['db_host'] = 'localhost';
 $config['db_user'] = 'pw';
 $config['db_pass'] = '12345';
@@ -29,7 +22,5 @@ GRANT ALL PRIVILEGES ON pw2011.* TO 'pw'@'localhost' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
  * */
-
-require_once( 'funzioni.inc.php' );
 
 ?>

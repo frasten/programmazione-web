@@ -1,10 +1,6 @@
 <?php
 
-require_once( 'db.inc.php' );
-@session_start();
-
-
-
+require_once( 'framework.inc.php' );
 
 
 
