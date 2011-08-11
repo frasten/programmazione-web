@@ -109,7 +109,7 @@ function get_id_autori( $str ) {
 	foreach ( $autori as $a ) {
 		if ( strlen( $a ) == 0 ) continue;
 
-		$query = "SELECT `id_autore` FROM `$config[db_prefix]pubautore` WHERE `nome` = '$a' LIMIT 1";
+		$query = "SELECT `id_autore` FROM `$config[db_prefix]pubautore` WHERE BINARY `nome` = '$a' LIMIT 1";
 		$result = mysql_query( $query, $db );
 		if ( ! $result ) continue;
 		if ( mysql_num_rows( $result ) == 0 ) {
