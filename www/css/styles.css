@@ -72,7 +72,7 @@
 ***********/
 .adminmenu {
 	background-color: #D2F0FF;
-	padding: 10px 20px !important;
+	padding: 10px 5px 10px 15px !important;
 	margin: 0 0 15px 0 !important;
 	border: 1px solid #6BD7BB;
 	border-radius: 5px;
@@ -88,4 +88,11 @@
 
 .adminmenu a {
 	text-decoration: none;
+}
+
+.adminmenu ul {
+	display: inline;
+	float: right;
+	margin: 0 !important;
+	padding: 0;
 }
