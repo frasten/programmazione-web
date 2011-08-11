@@ -3,6 +3,10 @@
 require_once( 'funzioni-login.inc.php' );
 
 if ( $_GET['action'] == 'listusers' ) {
+	admin_menu( array(
+		array( '?action=newuser', 'Nuovo utente', 'user_add.png' )
+	) );
+
 	$query = <<<EOF
 SELECT *
 FROM `$config[db_prefix]login`
@@ -37,12 +41,12 @@ EOF;
 	}
 	echo "</ul>\n";
 
-	echo "<a href='$_SERVER[PHP_SELF]?action=newuser' class='linkconicona' style='";
-	echo "background-image: url(img/icone/user_add.png)'>";
-	echo "Nuovo utente";
-	echo "</a> ";
 }
 else if ( $_GET['action'] == 'changepassword' ) {
+	admin_menu( array(
+		array( '?action=listusers', 'Gestione utenti', 'user_edit.png' )
+	) );
+
 	// Prima di tutto controllo che i dati siano validi e non ci sia un
 	// attacco
 	$query = "SELECT `salt` FROM `$config[db_prefix]login` WHERE username='" .
@@ -93,6 +97,10 @@ else if ( $_GET['action'] == 'changepassword' ) {
 	}
 }
 else if ( $_GET['action'] == 'newuser' ) {
+	admin_menu( array(
+		array( '?action=listusers', 'Gestione utenti', 'user_edit.png' )
+	) );
+
 	if ( empty( $_POST['username'] ) ) {
 		// Form
 		?>
@@ -155,6 +163,11 @@ EOF;
 	}
 }
 else if ( $_GET['action'] == 'deleteuser' ) {
+	admin_menu( array(
+		array( '?action=listusers', 'Gestione utenti', 'user_edit.png' )
+	) );
+
+
 	$query = "SELECT 1 FROM `$config[db_prefix]login` WHERE username='" .
 		mysql_real_escape_string( $_GET['user'] ) . "' LIMIT 1";
 	$result = mysql_query( $query, $db );
