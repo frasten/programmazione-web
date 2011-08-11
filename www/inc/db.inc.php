@@ -69,7 +69,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubblicazione` (
 	`isbn` VARCHAR(255) ,
 	`file` VARCHAR(255) ,
 	PRIMARY KEY (`id_pubblicazione`)
-);
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci;
 EOF;
 	mysql_query( $query, $db );
 
@@ -79,7 +80,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubautore` (
 	`id_autore` INTEGER  NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255)  NOT NULL,
 	PRIMARY KEY (`id_autore`)
-);
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci;
 EOF;
 	mysql_query( $query, $db );
 
@@ -89,7 +91,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubblicazione_pubautore` (
 	`id_pubblicazione` INTEGER  NOT NULL,
 	`id_autore` INTEGER  NOT NULL,
 	PRIMARY KEY (`id_pubblicazione`, `id_autore`)
-);
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci;
 EOF;
 	mysql_query( $query, $db );
 
@@ -99,7 +102,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]journal` (
 	`id_journal` INTEGER  NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255)  NOT NULL,
 	PRIMARY KEY (`id_journal`)
-);
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci;
 EOF;
 	mysql_query( $query, $db );
 
@@ -108,7 +112,6 @@ EOF;
 	/*****************
 	 *     CORSI     *
 	 *****************/
-
 	/* Tabella per i corsi */
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]corso` (
@@ -116,7 +119,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]corso` (
 	`id_facolta` INTEGER  NOT NULL,
 	`nome` VARCHAR(255) NOT NULL,
 	PRIMARY KEY (`id_corso`)
-);
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci;
 EOF;
 	mysql_query( $query, $db );
 
@@ -126,7 +130,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]facolta` (
 	`id_facolta` INTEGER  NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255)  NOT NULL,
 	PRIMARY KEY (`id_facolta`)
-);
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci;
 EOF;
 	mysql_query( $query, $db );
 
@@ -143,7 +148,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]login` (
 	`salt` VARCHAR(20)  NOT NULL,
 	`password` VARCHAR(40)  NOT NULL,
 	PRIMARY KEY (`username`)
-);
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci;
 EOF;
 	mysql_query( $query, $db );
 
@@ -154,7 +160,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]persistent_login` (
 	`salt` VARCHAR(20) NOT NULL,
 	`tokenhash` VARCHAR(40) NOT NULL,
 	`timestamp` DATETIME NOT NULL
-);
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci;
 EOF;
 	mysql_query( $query, $db );
 
