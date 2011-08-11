@@ -46,25 +46,29 @@ db_check_tables();
 function db_check_tables() {
 	global $db, $config;
 
+	/*******************
+	 *  PUBBLICAZIONI  *
+	 *******************/
+
 	/* Tabella Pubblicazioni */
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubblicazione` (
-  `id_pubblicazione` INTEGER  NOT NULL AUTO_INCREMENT,
-  `categoria` ENUM('rivista','libro','conferenza','monografia','curatela')  NOT NULL,
-  `titolo` VARCHAR(255) NOT NULL,
-  `anno` INTEGER  NOT NULL,
-  `titolo_contesto` VARCHAR(255),
-  `volume` INTEGER,
-  `numero` INTEGER,
-  `pag_inizio` INTEGER,
-  `pag_fine` INTEGER,
-  `abstract` TEXT  NOT NULL,
-  `curatori_libro` TEXT ,
-  `editore` VARCHAR(255) ,
-  `num_pagine` INTEGER,
-  `isbn` VARCHAR(255) ,
-  `file` VARCHAR(255) ,
-  PRIMARY KEY (`id_pubblicazione`)
+	`id_pubblicazione` INTEGER  NOT NULL AUTO_INCREMENT,
+	`categoria` ENUM('rivista','libro','conferenza','monografia','curatela')  NOT NULL,
+	`titolo` VARCHAR(255) NOT NULL,
+	`anno` INTEGER  NOT NULL,
+	`titolo_contesto` VARCHAR(255),
+	`volume` INTEGER,
+	`numero` INTEGER,
+	`pag_inizio` INTEGER,
+	`pag_fine` INTEGER,
+	`abstract` TEXT  NOT NULL,
+	`curatori_libro` TEXT ,
+	`editore` VARCHAR(255) ,
+	`num_pagine` INTEGER,
+	`isbn` VARCHAR(255) ,
+	`file` VARCHAR(255) ,
+	PRIMARY KEY (`id_pubblicazione`)
 );
 EOF;
 	mysql_query( $query, $db );
@@ -72,9 +76,9 @@ EOF;
 	/* Tabella Autori delle Pubblicazioni */
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubautore` (
-  `id_autore` INTEGER  NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(255)  NOT NULL,
-  PRIMARY KEY (`id_autore`)
+	`id_autore` INTEGER  NOT NULL AUTO_INCREMENT,
+	`nome` VARCHAR(255)  NOT NULL,
+	PRIMARY KEY (`id_autore`)
 );
 EOF;
 	mysql_query( $query, $db );
@@ -82,9 +86,9 @@ EOF;
 	/* Tabella per la relazione tra Pubblicazione e Autori */
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubblicazione_pubautore` (
-  `id_pubblicazione` INTEGER  NOT NULL,
-  `id_autore` INTEGER  NOT NULL,
-  PRIMARY KEY (`id_pubblicazione`, `id_autore`)
+	`id_pubblicazione` INTEGER  NOT NULL,
+	`id_autore` INTEGER  NOT NULL,
+	PRIMARY KEY (`id_pubblicazione`, `id_autore`)
 );
 EOF;
 	mysql_query( $query, $db );
@@ -92,20 +96,53 @@ EOF;
 	/* Tabella per la lista di Journal */
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]journal` (
-  `id_journal` INTEGER  NOT NULL,
-  `nome` INTEGER  NOT NULL,
-  PRIMARY KEY (`id_journal`)
+	`id_journal` INTEGER  NOT NULL AUTO_INCREMENT,
+	`nome` VARCHAR(255)  NOT NULL,
+	PRIMARY KEY (`id_journal`)
 );
 EOF;
 	mysql_query( $query, $db );
 
+
+
+	/*****************
+	 *     CORSI     *
+	 *****************/
+
+	/* Tabella per i corsi */
+	$query = <<<EOF
+CREATE TABLE IF NOT EXISTS `$config[db_prefix]corso` (
+	`id_corso` INTEGER  NOT NULL AUTO_INCREMENT,
+	`id_facolta` INTEGER  NOT NULL,
+	`nome` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id_corso`)
+);
+EOF;
+	mysql_query( $query, $db );
+
+	/* Tabella per le facolta' */
+	$query = <<<EOF
+CREATE TABLE IF NOT EXISTS `$config[db_prefix]facolta` (
+	`id_facolta` INTEGER  NOT NULL AUTO_INCREMENT,
+	`nome` VARCHAR(255)  NOT NULL,
+	PRIMARY KEY (`id_facolta`)
+);
+EOF;
+	mysql_query( $query, $db );
+
+
+
+	/*****************
+	 *     LOGIN     *
+	 *****************/
+
 	/* Tabella per il login */
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]login` (
-  `username` VARCHAR(20)  NOT NULL,
-  `salt` VARCHAR(20)  NOT NULL,
-  `password` VARCHAR(40)  NOT NULL,
-  PRIMARY KEY (`username`)
+	`username` VARCHAR(20)  NOT NULL,
+	`salt` VARCHAR(20)  NOT NULL,
+	`password` VARCHAR(40)  NOT NULL,
+	PRIMARY KEY (`username`)
 );
 EOF;
 	mysql_query( $query, $db );
@@ -113,10 +150,10 @@ EOF;
 	/* Tabella per il "ricorda login" */
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]persistent_login` (
-  `username` VARCHAR(20)  NOT NULL,
-  `salt` VARCHAR(20) NOT NULL,
-  `tokenhash` VARCHAR(40) NOT NULL,
-  `timestamp` DATETIME NOT NULL
+	`username` VARCHAR(20)  NOT NULL,
+	`salt` VARCHAR(20) NOT NULL,
+	`tokenhash` VARCHAR(40) NOT NULL,
+	`timestamp` DATETIME NOT NULL
 );
 EOF;
 	mysql_query( $query, $db );

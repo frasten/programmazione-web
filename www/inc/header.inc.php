@@ -9,7 +9,7 @@ require_once( 'framework.inc.php' );
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it" dir="ltr">
 <head>
 <title>Database and Information System Group</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="MSSmartTagsPreventParsing" content="TRUE" />
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -64,7 +64,7 @@ pageTracker._trackPageview();
 	</li>
 	<li><a id="progetti" href="progetti.php">Research Projects</a></li>
 	<li><a id="pubblicazioni" href="pubblicazioni.php">Publications</a></li>
-	<li id="long"><a id="corsi" href="didattica.php" class="continua">Teaching (ita)</a>
+	<li id="long"><a id="corsi" href="corso.php" class="continua">Teaching (ita)</a>
 		<ul>
 			<li><a href="corso.php?siNO">Sistemi informativi (N.O.) - Universit&agrave; di Brescia</a></li>
 			<li><a href="corso.php?sir">Sistemi informativi in rete (N.O.) - Universit&agrave; di Brescia</a></li>
