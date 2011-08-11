@@ -25,6 +25,7 @@
 		})
 		.autocomplete({
 			minLength: 0,
+			delay: 100,
 			source: function( request, response ) {
 				// delegate back to autocomplete, but extract the last term
 				response( $.ui.autocomplete.filter(
