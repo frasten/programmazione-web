@@ -33,9 +33,18 @@ if ( ! $db ) {
 	return 1;
 }
 
+/* Impostiamo il charset UTF-8 */
+if ( function_exists( 'mysql_set_charset' ) ) {
+	// PHP >= 5.2
+	mysql_set_charset( 'utf8', $db );
+}
+else {
+	mysql_query( "SET NAMES 'utf8'", $db );
+}
+
+
+// Controlliamo che esistano le tabelle, in caso le creiamo.
 db_check_tables();
-
-
 
 
 
