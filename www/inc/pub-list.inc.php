@@ -79,7 +79,7 @@ EOF;
 	}
 
 	if ( mysql_num_rows( $result ) == 0 ) {
-		echo "Non &egrave; presente alcuna pubblicazione.";
+		echo "<p>Non &egrave; presente alcuna pubblicazione.</p>";
 	}
 	else {
 		$old_anno = -1;
