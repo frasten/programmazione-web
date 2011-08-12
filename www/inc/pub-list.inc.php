@@ -41,7 +41,7 @@ function stampa_autori( $autori, $id ) {
 	foreach ( $autori[$id] as $a ) {
 		if ( strpos( $a, ' ' ) ) {
 			list( $nome, $resto ) = explode( ' ', $a, 2 );
-			$a = $nome{0} . ". $resto";
+			$a = mb_substr( $nome, 0, 1, 'UTF-8' ) . ". $resto";
 		}
 		$output[] = $a;
 	}
