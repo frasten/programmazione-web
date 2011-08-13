@@ -114,3 +114,37 @@
 	margin-bottom: 5px;
 }
 
+#frm_corso .lista_checkbox li {
+	background: none;
+}
+
+#frm_corso .lista_checkbox {
+	margin-top: 0;
+	margin-right: 50px;
+}
+
+#frm_corso #lista_facolta span,
+#frm_corso #lista_facolta ul,
+#frm_corso #lista_docenti span,
+#frm_corso #lista_docenti ul {
+	float: left;
+}
+
+#frm_corso .etichetta {
+	font-weight: bold;
+}
+
+.clear {
+	clear: both;
+}
+
+#frm_corso #nomecorso {
+	width: 500px;
+	margin-bottom: 20px;
+}
+
+#frm_corso .invio {
+	display: block;
+	width: 10em;
+	margin: 2em auto;
+}
