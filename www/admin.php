@@ -13,6 +13,7 @@ if ( empty( $_GET['action'] ) ) {
 	<ul>
 		<li><a href='?action=listusers'>Gestione utenti</a></li>
 		<li><a href='pubblicazioni.php'>Gestione pubblicazioni</a></li>
+		<li><a href='corso.php'>Gestione corsi</a></li>
 	</ul>
 <?php
 }
