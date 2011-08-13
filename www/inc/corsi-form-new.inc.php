@@ -1,5 +1,5 @@
 <form>
-	Corso:
+	<h3>Corso:</h3>
 	<label for=''>Nome corso:</label>
 	<input type='text' />
 
@@ -41,6 +41,30 @@ EOF;
 
 	<!-- Contenuti editabili liberamente -->
 	<h3>Pagina corso:</h3>
-	
+
+	<!-- TinyMCE -->
+	<script type="text/javascript" src="js/tiny_mce/jquery.tinymce.js"></script>
+	<script type="text/javascript" src="js/corsi.js"></script>
+
+	<label for='intestaz'>Intestazione:</label>
+	<textarea class='tinymce' cols='80' rows='6' name='intestaz' id='intestaz'></textarea>
+
+	<label for='orario'>Orario lezione:</label>
+	<textarea class='tinymce' cols='80' rows='6' name='orario' id='orario'></textarea>
+
+	<label for='ricevimento'>Orario di ricevimento:</label>
+	<textarea class='tinymce' cols='80' rows='6' name='ricevimento' id='ricevimento'></textarea>
+
+	<label for='obiettivi'>Obiettivi del corso:</label>
+	<textarea class='tinymce' cols='80' rows='6' name='obiettivi' id='obiettivi'></textarea>
+
+	<label for='programma'>Programma del corso:</label>
+	<textarea class='tinymce' cols='80' rows='6' name='programma' id='programma'></textarea>
+
+	<label for='esame'>Modalit&agrave; esame:</label>
+	<textarea class='tinymce' cols='80' rows='6' name='esame' id='esame'></textarea>
+
+	<label for='materiali'>Testi (materiali di riferimento):</label>
+	<textarea class='tinymce' cols='80' rows='6' name='materiali' id='materiali'></textarea>
 
 </form>
