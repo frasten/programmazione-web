@@ -43,5 +43,16 @@ $(document).ready(function() {
 	});
 	$( "#lista-news" ).disableSelection();
 
+	$("#btn-salva-news").click(function() {
+		//$("#news-dialog-form form").submit();
+		// !? Come mai non lo devo assegnare? Mistero.
+	});
+
+	$('#news-dialog-form form').iframePostForm({
+		json: false,
+		post: function() {console.log("Caricamento...")},
+		complete: function(data) {console.log(data);}
+	});
+
 });
 })(jQuery);

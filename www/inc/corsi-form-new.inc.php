@@ -101,15 +101,15 @@ EOF;
 	<input type='submit' value='Salva' class='invio' />
 </form>
 
-
+<script type='text/javascript' src='js/jquery.iframe-post-form.js'></script>
 <div id="news-dialog-form">
 	<!-- Inserimento di una nuova news -->
-	<form action='javascript:void(0)' method='post'>
+	<form action='ajax/corsi.php' method='post' enctype="multipart/form-data">
 	<fieldset>
 		<h4>Inserisci una nuova news</h4>
 		<p style='margin-bottom: 15px'>
 			<label for="" class='etichetta'>Testo news:</label>
-			<textarea class="tinymce" rows='5' cols='50'></textarea>
+			<textarea class="tinymce" rows='5' cols='50' id='testo-news' name='testo'></textarea>
 		</p>
 
 		<label for="attachment" class='etichetta'>Allegato:</label>
@@ -117,8 +117,13 @@ EOF;
 
 		<input type="checkbox" name='hide-news' id='hide-news' />
 		<label for="hide-news">Nascondi questa news</label>
+
+		<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn-salva-news' style='margin-left: 4em'>
+			<span class="ui-button-text">Salva</span>
+		</button>
 	</fieldset>
 	</form>
+
 	<!-- Lista news esistenti -->
 	<h4>News correnti:</h4>
 	<ul id='lista-news'>
