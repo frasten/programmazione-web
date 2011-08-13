@@ -65,9 +65,11 @@ EOF;
 
 	<div class='clear'></div>
 
-	<!-- Contenuti editabili liberamente -->
 	<div class='contenuti'>
 		<h3>Pagina corso:</h3>
+		<a href='javascript:void(0)' id='link-gestione-news' style='display: block' >Gestione News</a>
+
+		<!-- Contenuti editabili liberamente -->
 
 		<!-- TinyMCE -->
 		<script type="text/javascript" src="js/tiny_mce/jquery.tinymce.js"></script>
@@ -98,3 +100,34 @@ EOF;
 
 	<input type='submit' value='Salva' class='invio' />
 </form>
+
+
+<div id="news-dialog-form">
+	<!-- Inserimento di una nuova news -->
+	<form>
+	<fieldset>
+		<h4>Inserisci una nuova news</h4>
+		<p style='margin-bottom: 15px'>
+			<label for="" class='etichetta'>Testo news:</label>
+			<textarea class="tinymce" rows='5' cols='50'></textarea>
+		</p>
+
+		<label for="attachment" class='etichetta'>Allegato:</label>
+		<input type="file" name='attachment' id='attachment' class="ui-corner-all" />
+
+		<input type="checkbox" name='hide-news' id='hide-news' />
+		<label for="hide-news">Nascondi questa news</label>
+	</fieldset>
+	</form>
+	<!-- Lista news esistenti -->
+	<h4>News correnti:</h4>
+	<ul id='lista-news'>
+		<?php
+			for ($i = 0; $i <= 5; $i++) {
+				echo "<li class='ui-corner-all'>\n";
+				echo "Elemento numero $i\n";
+				echo "</li>\n";
+			}
+		?>
+	</ul>
+</div>

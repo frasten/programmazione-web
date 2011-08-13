@@ -18,5 +18,28 @@ $(document).ready(function() {
 	$('textarea.tinymce').tinymce(opzioni);
 
 
+	$( "#news-dialog-form" ).dialog({
+		autoOpen: false,
+		height: 500,
+		width: 600,
+		modal: true,
+		buttons: {
+			"Chiudi": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	$( "#link-gestione-news" )
+		.click(function() {
+			$( "#news-dialog-form" ).dialog( "open" );
+		});
+
+	$( "#lista-news" ).sortable({
+		axis: 'y',
+		containment: 'parent'
+	});
+	$( "#lista-news" ).disableSelection();
+
 });
 })(jQuery);

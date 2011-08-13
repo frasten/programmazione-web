@@ -37,7 +37,6 @@ pageTracker._trackPageview();
 
 <!-- jQuery UI -->
 <link href="css/jquery-ui-south-street/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" />
-<!--<link href="css/jquery-ui-lightness/jquery-ui-1.8.12.custom.css" rel="stylesheet" type="text/css" />-->
 <script type="text/javascript" src="js/jquery-ui-1.8.15.custom.min.js"></script>
 
 

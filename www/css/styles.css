@@ -6,6 +6,10 @@
 	background: none;
 }
 
+.etichetta {
+	font-weight: bold;
+}
+
 #titolo, #autori, #autori_libro, #info_addizionali {
 	width: 40em;
 }
@@ -130,10 +134,6 @@
 	float: left;
 }
 
-#frm_corso .etichetta {
-	font-weight: bold;
-}
-
 .clear {
 	clear: both;
 }
@@ -147,4 +147,22 @@
 	display: block;
 	width: 10em;
 	margin: 2em auto;
+}
+
+/*** GESTIONE NEWS ***/
+#news-dialog-form {
+	
+}
+
+#lista-news {
+	padding: 5px 0;
+}
+
+#lista-news li {
+	list-style: none;
+	background: none;
+	background-color: #f8f8f8;
+	border: 1px solid #63D657;
+	margin-bottom: 5px;
+	padding: 4px;
 }
