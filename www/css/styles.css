@@ -103,3 +103,14 @@
 	margin: 0 !important;
 	padding: 0;
 }
+
+/****************
+    CORSI
+****************/
+#frm_corso .contenuti label {
+	font-weight: bold;
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+
