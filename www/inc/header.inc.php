@@ -33,11 +33,12 @@ pageTracker._trackPageview();
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 
 <!-- jQuery -->
-<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 
 <!-- jQuery UI -->
-<link href="css/jquery-ui-lightness/jquery-ui-1.8.12.custom.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
+<link href="css/jquery-ui-south-street/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" />
+<!--<link href="css/jquery-ui-lightness/jquery-ui-1.8.12.custom.css" rel="stylesheet" type="text/css" />-->
+<script type="text/javascript" src="js/jquery-ui-1.8.15.custom.min.js"></script>
 
 
 <script type="text/javascript" src="js/onfocus.js"></script>
