@@ -155,7 +155,7 @@
 }
 
 #lista-news {
-	padding: 5px 0;
+	padding: 0;
 }
 
 #lista-news li {
@@ -164,5 +164,10 @@
 	background-color: #f8f8f8;
 	border: 1px solid #63D657;
 	margin-bottom: 5px;
-	padding: 4px;
+	padding: 4px 4px 4px 1.5em;
+}
+
+#lista-news li span {
+	position: absolute;
+	margin-left: -1.3em;
 }

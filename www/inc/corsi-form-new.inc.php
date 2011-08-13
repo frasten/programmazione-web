@@ -67,7 +67,7 @@ EOF;
 
 	<div class='contenuti'>
 		<h3>Pagina corso:</h3>
-		<a href='javascript:void(0)' id='link-gestione-news' style='display: block' >Gestione News</a>
+		<a href='javascript:void(0)' id='link-gestione-news'>Gestione News</a><br />
 
 		<!-- Contenuti editabili liberamente -->
 
@@ -104,7 +104,7 @@ EOF;
 
 <div id="news-dialog-form">
 	<!-- Inserimento di una nuova news -->
-	<form>
+	<form action='javascript:void(0)' method='post'>
 	<fieldset>
 		<h4>Inserisci una nuova news</h4>
 		<p style='margin-bottom: 15px'>
@@ -125,6 +125,10 @@ EOF;
 		<?php
 			for ($i = 0; $i <= 5; $i++) {
 				echo "<li class='ui-corner-all'>\n";
+				echo "<span class='ui-icon ui-icon-arrowthick-2-n-s'></span>";
+				echo "<a href='javascript:void(0)' class='iconalink' style='vertical-align: middle'>";
+				echo "<img src='img/icone/eye.png' alt=''/>";
+				echo "</a> ";
 				echo "Elemento numero $i\n";
 				echo "</li>\n";
 			}

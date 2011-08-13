@@ -37,7 +37,9 @@ $(document).ready(function() {
 
 	$( "#lista-news" ).sortable({
 		axis: 'y',
-		containment: 'parent'
+		containment: 'parent',
+		cursor: 'move',
+		tolerance: 'pointer' /* http://bugs.jqueryui.com/ticket/5772 */
 	});
 	$( "#lista-news" ).disableSelection();
 
