@@ -2,11 +2,6 @@
 
 require_once( '../inc/framework.inc.php' );
 
-// Path relativo a questa directory.
-// TODO: mettere in config.inc.php
-$path_uploaded_dir = '../uploads/';
-
-
 $json = array(
 	'success' => 0,
 	'error' => ''
@@ -82,7 +77,7 @@ function esci( $msg = '' ) {
 }
 
 function gestisci_file_upload( $prefix ) {
-	global $path_uploaded_dir;
+	global $config;
 
 	// Se non ho caricato nessun file, non faccio nulla
 	if ( empty( $_FILES['file']['tmp_name'] ) ) return false;
@@ -97,10 +92,10 @@ function gestisci_file_upload( $prefix ) {
 	}
 
 	// Trailing slash
-	if ( substr( $path_uploaded_dir, -1 ) !== '/' ) $path_uploaded_dir .= '/';
+	if ( substr( $config['upload_path'], -1 ) !== '/' ) $config['upload_path'] .= '/';
 
 	// Ho caricato un file
-	$path_uploaded_files = realpath( '.' ) . "/$path_uploaded_dir";
+	$path_uploaded_files = realpath( '..' ) . "/$config[upload_path]";
 
 	if ( ! is_dir( $path_uploaded_files ) ) {
 		// Directory non esistente, la creo.
@@ -109,7 +104,6 @@ function gestisci_file_upload( $prefix ) {
 		@file_put_contents( $path_uploaded_files . 'index.php', '' );
 	}
 
-	echo $path_uploaded_files;
 	if ( ! is_writable( $path_uploaded_files ) ) {
 		esci(
 			'Errore nel caricamento del file: ' .
@@ -125,7 +119,8 @@ function gestisci_file_upload( $prefix ) {
 	$target_path = $path_uploaded_files . $filename;
 	if( move_uploaded_file( $_FILES['file']['tmp_name'], $target_path ) ) {
 		// File caricato correttamente.
-		return "http://$_SERVER[SERVER_NAME]" . dirname( $_SERVER['SCRIPT_NAME'] ) . "/$path_uploaded_dir$filename";
+		// Nota: due volte dirname perche' dobbiamo risalire di un livello (siamo in /ajax/)
+		return "http://$_SERVER[SERVER_NAME]" . dirname( dirname( $_SERVER['SCRIPT_NAME'] ) ) . "/$config[upload_path]$filename";
 	} else{
 		echo 'Errore nel caricamento del file, si prega di riprovare.';
 		return false;

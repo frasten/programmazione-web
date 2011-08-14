@@ -12,6 +12,9 @@ $config['min_pass_len'] = 6;
 
 $config['persistent_cookies_timeout'] = 60 * 60 * 24 * 7; // Una settimana
 
+// Relativo alla root del sito
+$config['upload_path'] = 'uploads/';
+
 /*
  * COMANDI MYSQL PER LA CREAZIONE DEL DB
  * (NB: dati di test e autenticazione solo da localhost):
