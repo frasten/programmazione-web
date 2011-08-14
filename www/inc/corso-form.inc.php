@@ -1,7 +1,7 @@
 <?php
 	if ( empty( $corso ) ) $corso = false;
 ?>
-<form action='' method='post' id='frm_corso'>
+<form action='<?php echo "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]" ?>' method='post' id='frm_corso'>
 <?php
 	if ( $corso )
 		printf( "<input type='hidden' name='id' value='%d' />\n", $corso['id_corso'] );
@@ -34,7 +34,7 @@ EOF;
 			else if ( $corso && $corso['id_facolta'] == $riga['id_facolta'] ) {
 				$checked = 'checked="checked" ';
 			}
-			echo "<input type='radio' name='facolta' id='facolta_$riga[id_facolta]' $checked/>\n";
+			echo "<input type='radio' name='facolta' id='facolta_$riga[id_facolta]' value='$riga[id_facolta]' $checked/>\n";
 
 			printf( "<label for='facolta_$riga[id_facolta]'>%s</label>\n", htmlspecialchars( $riga['nome'] ) );
 			echo "</li>\n";
@@ -101,7 +101,7 @@ EOF;
 	</div>
 
 
-	<input type='submit' value='Salva' class='invio' />
+	<input type='submit' value='Salva' name='salva' class='invio' />
 </form>
 
 <?php if ( $corso ): ?>
