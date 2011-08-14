@@ -1,9 +1,5 @@
 <?php
 
-echo "<pre>" . print_r($_POST, true) . "</pre>";
-#echo "<pre>" . print_r($_FILES, true) . "</pre>";
-#echo "<pre>" . print_r($_SERVER, true) . "</pre>";
-
 // TODO: VALIDAZIONE
 // TODO: se chiamo senza inviare dati, non devo fare nulla
 
@@ -88,7 +84,9 @@ EOF;
 	mysql_query( $query, $db );
 }
 
-
+// Redirigo verso la pagina delle pubblicazioni.
+header( "Location: pubblicazioni.php" );
+exit;
 
 
 

@@ -91,10 +91,8 @@ EOF;
 		return;
 	}
 
-	// TODO: Con i CSS migliorarne l'aspetto
-	echo "Modifiche salvate.";
-
 	header( "Location: corso.php?id=$id" );
+	exit;
 
 endif;
 
