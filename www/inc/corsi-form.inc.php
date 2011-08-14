@@ -131,19 +131,34 @@ EOF;
 
 	<!-- Lista news esistenti -->
 	<h4>News correnti:</h4>
-	<ul id='lista-news'>
+
 		<?php
-			for ($i = 0; $i <= 5; $i++) {
+			$query = <<<EOF
+SELECT `id_news`,`nascondi`,`testo`
+FROM `$config[db_prefix]news`
+WHERE `id_corso` = '$corso[id_corso]'
+ORDER BY `ordine` ASC
+EOF;
+			$result = mysql_query( $query, $db );
+			if ( ! mysql_num_rows( $result ) ) {
+				echo "Nessuna news presente.";
+			}
+			echo "<ul id='lista-news'>\n";
+
+			while ( $riga = mysql_fetch_assoc( $result ) ) {
 				echo "<li class='ui-corner-all'>\n";
-				echo "<span class='ui-icon ui-icon-arrowthick-2-n-s'></span>";
-				echo "<a href='javascript:void(0)' class='iconalink' style='vertical-align: middle'>";
-				echo "<img src='img/icone/eye.png' alt=''/>";
-				echo "</a> ";
-				echo "Elemento numero $i\n";
+				echo "<span class='ui-icon ui-icon-arrowthick-2-n-s'></span>\n";
+				echo "<a href='javascript:void(0)' class='iconalink' style='vertical-align: middle'>\n";
+				if ( ! $riga['nascondi'] )
+					echo "<img src='img/icone/eye.png' alt='News visibile' />\n";
+				else
+					echo "<img src='img/icone/user.png' alt='News nascosta' />\n";
+				echo "</a>\n ";
+				echo strip_tags( $riga['testo'] );
 				echo "</li>\n";
 			}
+			echo "</ul>\n";
 		?>
-	</ul>
 </div>
 <?php
 endif; // if corso

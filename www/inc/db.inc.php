@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]news` (
 	`id_corso` INTEGER NOT NULL,
 	`ordine` INTEGER NOT NULL,
 	`nascondi` ENUM('0','1') NOT NULL DEFAULT '0',
-	`testo` VARCHAR(255) NOT NULL,
+	`testo` TEXT NOT NULL,
 	`file` VARCHAR(255),
 	PRIMARY KEY (`id_news`)
 )

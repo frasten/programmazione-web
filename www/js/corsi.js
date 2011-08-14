@@ -39,9 +39,12 @@ $(document).ready(function() {
 		axis: 'y',
 		containment: 'parent',
 		cursor: 'move',
-		tolerance: 'pointer' /* http://bugs.jqueryui.com/ticket/5772 */
-	});
-	$( "#lista-news" ).disableSelection();
+		tolerance: 'pointer', /* http://bugs.jqueryui.com/ticket/5772 */
+		change: function(event, ui) {
+			
+		}
+	})
+		.disableSelection();
 
 	$("#btn-salva-news").click(function() {
 		//$("#news-dialog-form form").submit();

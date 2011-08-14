@@ -2,6 +2,10 @@
 	float: none !important; /* Come mai??? */
 }
 
+.iconalink {
+	text-decoration: none !important;
+}
+
 .iconalink:hover {
 	background: none;
 }
