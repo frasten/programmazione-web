@@ -2,13 +2,18 @@
 
 require_once( '../inc/framework.inc.php' );
 
+// Path relativo a questa directory.
+// TODO: mettere in config.inc.php
+$path_uploaded_dir = '../uploads/';
+
+
 $json = array(
 	'success' => 0,
 	'error' => ''
 );
 
 // Protezione contro accessi non autorizzati
-if ( empty( $_SESSION['loggato'] ) ) esci();
+if ( empty( $_SESSION['loggato'] ) ) esci( 'Accesso negato.' );
 
 if ( empty( $_GET['action'] ) ) esci();
 
@@ -17,7 +22,7 @@ if ( $_GET['action'] == 'savenews' ) {
 	/* Creazione di una nuova news */
 
 	$id_corso = intval( $_POST['id_corso'] );
-	if ( ! $id_corso ) esci();
+	if ( ! $id_corso ) esci( 'ID non valido.' );
 
 	$nascondi = 0;
 	if ( ! empty( $_POST['hide-news'] ) )
@@ -43,7 +48,7 @@ EOF;
 	mysql_query( $query, $db );
 	$id_news = mysql_insert_id( $db );
 
-	if ( ! $id_news ) esci( '' );
+	if ( ! $id_news ) esci( 'Errore nel salvataggio.' );
 
 	// Eventuale salvataggio file
 	// Upload del file
@@ -104,6 +109,7 @@ function gestisci_file_upload( $prefix ) {
 		@file_put_contents( $path_uploaded_files . 'index.php', '' );
 	}
 
+	echo $path_uploaded_files;
 	if ( ! is_writable( $path_uploaded_files ) ) {
 		esci(
 			'Errore nel caricamento del file: ' .

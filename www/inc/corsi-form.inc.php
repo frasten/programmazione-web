@@ -118,7 +118,7 @@ EOF;
 			</p>
 
 			<label for="attachment" class='etichetta'>Allegato:</label>
-			<input type="file" name='attachment' id='attachment' class="ui-corner-all" />
+			<input type="file" name='file' id='attachment' class="ui-corner-all" />
 
 			<input type="checkbox" name='hide-news' id='hide-news' />
 			<label for="hide-news">Nascondi questa news</label>
