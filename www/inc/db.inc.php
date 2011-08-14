@@ -133,6 +133,21 @@ CHARACTER SET utf8 COLLATE utf8_general_ci;
 EOF;
 	mysql_query( $query, $db );
 
+	/* Tabella per le news */
+	$query = <<<EOF
+CREATE TABLE IF NOT EXISTS `$config[db_prefix]news` (
+	`id_news` INTEGER  NOT NULL AUTO_INCREMENT,
+	`id_corso` INTEGER NOT NULL,
+	`ordine` INTEGER NOT NULL,
+	`nascondi` ENUM('0','1') NOT NULL DEFAULT '0',
+	`testo` VARCHAR(255) NOT NULL,
+	`file` VARCHAR(255),
+	PRIMARY KEY (`id_news`)
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci;
+EOF;
+	mysql_query( $query, $db );
+
 	/* Tabella per le facolta' */
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]facolta` (

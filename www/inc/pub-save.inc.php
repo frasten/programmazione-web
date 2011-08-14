@@ -1,6 +1,7 @@
 <?php
 
 // Path relativo alla root del sito web.
+// TODO: mettere in config.inc.php
 $path_uploaded_dir = 'uploads/';
 
 echo "<pre>" . print_r($_POST, true) . "</pre>";
@@ -76,7 +77,7 @@ salva_autori_pub( $id_pub, $id_autori );
 
 
 // Upload del file
-$uploaded_file = gestisci_file_upload( $id_pub );
+$uploaded_file = gestisci_file_upload( "p$id_pub" );
 if ( $uploaded_file !== false ) {
 	// Salvo questa impostazione nel database.
 	// Lo facciamo in un secondo tempo, poiche' il nome del file salvato

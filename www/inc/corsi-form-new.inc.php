@@ -104,24 +104,25 @@ EOF;
 <script type='text/javascript' src='js/jquery.iframe-post-form.js'></script>
 <div id="news-dialog-form">
 	<!-- Inserimento di una nuova news -->
-	<form action='ajax/corsi.php' method='post' enctype="multipart/form-data">
-	<fieldset>
-		<h4>Inserisci una nuova news</h4>
-		<p style='margin-bottom: 15px'>
-			<label for="" class='etichetta'>Testo news:</label>
-			<textarea class="tinymce" rows='5' cols='50' id='testo-news' name='testo'></textarea>
-		</p>
+	<form action='ajax/corsi.php?action=savenews' method='post' enctype="multipart/form-data">
+		<input type='hidden' name='id_corso' value='<?php echo intval( $_GET['id'] ) ?>' />
+		<fieldset>
+			<h4>Inserisci una nuova news</h4>
+			<p style='margin-bottom: 15px'>
+				<label for="" class='etichetta'>Testo news:</label>
+				<textarea class="tinymce" rows='5' cols='50' id='testo-news' name='testo'></textarea>
+			</p>
 
-		<label for="attachment" class='etichetta'>Allegato:</label>
-		<input type="file" name='attachment' id='attachment' class="ui-corner-all" />
+			<label for="attachment" class='etichetta'>Allegato:</label>
+			<input type="file" name='attachment' id='attachment' class="ui-corner-all" />
 
-		<input type="checkbox" name='hide-news' id='hide-news' />
-		<label for="hide-news">Nascondi questa news</label>
+			<input type="checkbox" name='hide-news' id='hide-news' />
+			<label for="hide-news">Nascondi questa news</label>
 
-		<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn-salva-news' style='margin-left: 4em'>
-			<span class="ui-button-text">Salva</span>
-		</button>
-	</fieldset>
+			<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn-salva-news' style='margin-left: 4em'>
+				<span class="ui-button-text">Salva</span>
+			</button>
+		</fieldset>
 	</form>
 
 	<!-- Lista news esistenti -->

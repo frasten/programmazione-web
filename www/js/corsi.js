@@ -49,7 +49,7 @@ $(document).ready(function() {
 	});
 
 	$('#news-dialog-form form').iframePostForm({
-		json: false,
+		json: true,
 		post: function() {console.log("Caricamento...")},
 		complete: function(data) {console.log(data);}
 	});
