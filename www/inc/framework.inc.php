@@ -2,6 +2,11 @@
 
 @ session_start();
 
+// Ci permette di usare header() anche dopo l'inizio della pagina
+// Attenzione se si volessero stampare grosse quantita' di dati!!!
+ob_start();
+
+
 // TEMP: abilitiamo il display degli errori per debug.
 if ( ! ini_get( 'display_errors' ) ) {
 	ini_set( 'display_errors', 1 );
