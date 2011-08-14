@@ -27,7 +27,7 @@ else if ( $_GET['action'] == 'new' ) {
 	admin_menu( array(
 		array( '?', 'Lista corsi', 'table.png' )
 	) );
-	include 'inc/corsi-form.inc.php';
+	include 'inc/corso-form.inc.php';
 }
 else if ( $_GET['action'] == 'edit' ) {
 	// Mostro il form per la modifica dei dati di un corso

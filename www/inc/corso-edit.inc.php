@@ -20,6 +20,6 @@ if ( ! $result || ! mysql_num_rows( $result ) ) {
 $corso = mysql_fetch_assoc( $result );
 
 // Includo il form, che riempira' i vari campi con questi caricati dal DB.
-include 'inc/corsi-form.inc.php';
+include 'inc/corso-form.inc.php';
 
 ?>
