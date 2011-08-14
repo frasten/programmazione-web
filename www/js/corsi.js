@@ -51,7 +51,10 @@ $(document).ready(function() {
 	$('#news-dialog-form form').iframePostForm({
 		json: true,
 		post: function() {console.log("Caricamento...")},
-		complete: function(data) {console.log(data);}
+		complete: function(data) {console.log(data);
+		// TODO: svuotare il form in caso di successo
+		// TODO: aggiungere la news la' sotto
+		}
 	});
 
 });

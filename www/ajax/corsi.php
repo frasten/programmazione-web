@@ -47,7 +47,7 @@ EOF;
 
 	// Eventuale salvataggio file
 	// Upload del file
-	$uploaded_file = gestisci_file_upload( "c$id_pub" ); // c = corso
+	$uploaded_file = gestisci_file_upload( "c$id_news" ); // c = corso
 	if ( $uploaded_file !== false ) {
 		// Salvo questa impostazione nel database.
 		// Lo facciamo in un secondo tempo, poiche' il nome del file salvato
@@ -61,8 +61,9 @@ LIMIT 1
 EOF;
 		mysql_query( $query, $db );
 
-		$json['success'] = 1;
 	}
+	$json['success'] = 1;
+
 
 	esci();
 }

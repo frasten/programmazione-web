@@ -1,7 +1,14 @@
+<?php
+	if ( empty( $corso ) ) $corso = false;
+?>
 <form action='' method='post' id='frm_corso'>
+<?php
+	if ( $corso )
+		printf( "<input type='hidden' name='id' value='%d' />\n", $corso['id_corso'] );
+?>
 	<h3>Corso:</h3>
 	<label for='nome' class='etichetta'>Nome corso:</label>
-	<input type='text' name='nome' id='nomecorso' />
+	<input type='text' name='nome' id='nomecorso' value='<?php riempi( $corso['nome'], 'attr' ) ?>'/>
 
 	<div id='lista_facolta'>
 		<span class='etichetta'>Facolt&agrave;:</span>
@@ -20,9 +27,12 @@ EOF;
 
 			// Mettiamo il pallino sul primo
 			$checked = '';
-			if ( ! $gia_segnato ) {
+			if ( ! $corso && ! $gia_segnato ) {
 				$checked = 'checked="checked" ';
 				$gia_segnato = true;
+			}
+			else if ( $corso && $corso['id_facolta'] == $riga['id_facolta'] ) {
+				$checked = 'checked="checked" ';
 			}
 			echo "<input type='radio' name='facolta' id='facolta_$riga[id_facolta]' $checked/>\n";
 
@@ -44,16 +54,9 @@ ORDER BY `nome` ASC
 EOF;
 		$result = mysql_query( $query, $db );
 
-		$gia_segnato = false;
 		while ( $riga = mysql_fetch_assoc( $result ) ) {
 			echo "<li>\n";
 
-			// Mettiamo il pallino sul primo
-			$checked = '';
-			if ( ! $gia_segnato ) {
-				$checked = 'checked="checked" ';
-				$gia_segnato = true;
-			}
 			echo "<input type='checkbox' name='docente[]' id='docente_$riga[id_docente]' value='$riga[id_docente]' />\n";
 
 			printf( "<label for='docente_$riga[id_docente]'>%s</label>\n", htmlspecialchars( $riga['nome'] ) );
@@ -76,36 +79,37 @@ EOF;
 		<script type="text/javascript" src="js/corsi.js"></script>
 
 		<label for='intestaz'>Intestazione:</label>
-		<textarea class='tinymce' cols='90' rows='6' name='intestaz' id='intestaz'></textarea>
+		<textarea class='tinymce' cols='90' rows='6' name='intestaz' id='intestaz'><?php riempi( $corso['intestazione'], 'html' ) ?></textarea>
 
 		<label for='orario'>Orario lezione:</label>
-		<textarea class='tinymce' cols='90' rows='6' name='orario' id='orario'></textarea>
+		<textarea class='tinymce' cols='90' rows='6' name='orario' id='orario'><?php riempi( $corso['orario'], 'html' ) ?></textarea>
 
 		<label for='ricevimento'>Orario di ricevimento:</label>
-		<textarea class='tinymce' cols='90' rows='6' name='ricevimento' id='ricevimento'></textarea>
+		<textarea class='tinymce' cols='90' rows='6' name='ricevimento' id='ricevimento'><?php riempi( $corso['ricevimento'], 'html' ) ?></textarea>
 
 		<label for='obiettivi'>Obiettivi del corso:</label>
-		<textarea class='tinymce' cols='90' rows='6' name='obiettivi' id='obiettivi'></textarea>
+		<textarea class='tinymce' cols='90' rows='6' name='obiettivi' id='obiettivi'><?php riempi( $corso['obiettivi'], 'html' ) ?></textarea>
 
 		<label for='programma'>Programma del corso:</label>
-		<textarea class='tinymce' cols='90' rows='6' name='programma' id='programma'></textarea>
+		<textarea class='tinymce' cols='90' rows='6' name='programma' id='programma'><?php riempi( $corso['programma'], 'html' ) ?></textarea>
 
 		<label for='esame'>Modalit&agrave; esame:</label>
-		<textarea class='tinymce' cols='90' rows='6' name='esame' id='esame'></textarea>
+		<textarea class='tinymce' cols='90' rows='6' name='esame' id='esame'><?php riempi( $corso['esame'], 'html' ) ?></textarea>
 
 		<label for='materiali'>Testi (materiali di riferimento):</label>
-		<textarea class='tinymce' cols='90' rows='6' name='materiali' id='materiali'></textarea>
+		<textarea class='tinymce' cols='90' rows='6' name='materiali' id='materiali'><?php riempi( $corso['materiali'], 'html' ) ?></textarea>
 	</div>
 
 
 	<input type='submit' value='Salva' class='invio' />
 </form>
 
+<?php if ( $corso ): ?>
 <script type='text/javascript' src='js/jquery.iframe-post-form.js'></script>
 <div id="news-dialog-form">
 	<!-- Inserimento di una nuova news -->
 	<form action='ajax/corsi.php?action=savenews' method='post' enctype="multipart/form-data">
-		<input type='hidden' name='id_corso' value='<?php echo intval( $_GET['id'] ) ?>' />
+		<input type='hidden' name='id_corso' value='<?php riempi( $corso['id_corso'], 'int' ) ?>' />
 		<fieldset>
 			<h4>Inserisci una nuova news</h4>
 			<p style='margin-bottom: 15px'>
@@ -141,3 +145,30 @@ EOF;
 		?>
 	</ul>
 </div>
+<?php
+endif; // if corso
+
+
+// Funzione di comodita', per evitare duplicati di codice
+function riempi( $valore, $tipo ) {
+	global $corso;
+
+	if ( ! $corso ) return;
+
+	$out = '';
+	switch( $tipo ) {
+		case 'int':
+			$out = intval( $valore );
+			break;
+		case 'attr':
+			$out = htmlspecialchars( $valore, ENT_QUOTES );
+			break;
+		case 'html':
+			$out = htmlspecialchars( $valore );
+			break;
+	}
+
+	echo $out;
+}
+
+?>
