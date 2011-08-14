@@ -47,6 +47,21 @@ EOF;
 		<span class='etichetta'>Docenti:</span>
 		<ul class='lista_checkbox'>
 		<?php /* Elenco dei docenti, con checkbox */
+
+		// Carico i docenti di questo corso, se ne sto modificando uno gia' esistente:
+		if ( $corso ) {
+			$query = <<<EOF
+SELECT `id_docente`
+FROM `$config[db_prefix]docente_corso`
+WHERE `id_corso` = '$corso[id_corso]'
+EOF;
+			$result = mysql_query( $query, $db );
+			$docenti = array();
+			while ( $riga = mysql_fetch_assoc( $result ) ) {
+				$docenti[]  = $riga['id_docente'];
+			}
+		}
+
 		$query = <<<EOF
 SELECT `id_docente`, `nome`
 FROM `$config[db_prefix]docente`
@@ -57,7 +72,10 @@ EOF;
 		while ( $riga = mysql_fetch_assoc( $result ) ) {
 			echo "<li>\n";
 
-			echo "<input type='checkbox' name='docente[]' id='docente_$riga[id_docente]' value='$riga[id_docente]' />\n";
+			$checked = '';
+			if ( $corso && in_array( $riga['id_docente'], $docenti ) )
+				$checked = 'checked="checked" ';
+			echo "<input type='checkbox' name='docente[]' id='docente_$riga[id_docente]' value='$riga[id_docente]' $checked/>\n";
 
 			printf( "<label for='docente_$riga[id_docente]'>%s</label>\n", htmlspecialchars( $riga['nome'] ) );
 			echo "</li>\n";

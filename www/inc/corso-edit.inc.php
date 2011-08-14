@@ -28,12 +28,14 @@ else: // Richiedo il salvataggio vero e proprio.
 
 	// Controlli di routine e pulizia
 	$_POST['facolta'] = intval( $_POST['facolta'] );
-	if ( isset( $_POST['docente'] ) )
-		$_POST['docente'] = array_map( 'intval', $_POST['docente'] );
+
+	if ( isset( $_POST['docente'] ) ) {
+		$docenti = array_map( 'intval', $_POST['docente'] );
+		unset( $_POST['docente'] );
+	}
+	else $docenti = false;
 
 	$_POST = array_map( 'mysql_real_escape_string', $_POST );
-
-	// TODO: DOCENTI!!!
 
 	// Salvo
 	$query = <<<EOF
@@ -53,13 +55,43 @@ LIMIT 1
 EOF;
 	mysql_query( $query, $db);
 
-	if ( ! mysql_errno() ) {
-		echo "Modifiche salvate.";
-	}
-	else {
+	if ( mysql_errno() ) {
 		echo "Errore nel salvataggio, riprovare.";
 		echo "<br /><a href='javascript:history.back()'>Torna</a>";
+		return;
 	}
+
+	// Per salvare la lista di docenti associati, la via piu' breve e' quella
+	// di eliminare tutti i docenti associati e di aggiungere le associazioni
+	// da zero.
+	$query = <<<EOF
+DELETE FROM `$config[db_prefix]docente_corso`
+WHERE `id_corso` = '$id'
+EOF;
+	mysql_query( $query, $db );
+
+
+	if ( $docenti ) {
+		$query = <<<EOF
+INSERT INTO `$config[db_prefix]docente_corso`
+(`id_docente`,`id_corso`)
+VALUES 
+EOF;
+		$chunks = array();
+		foreach ( $docenti as $doc ) {
+			$chunks[] = "('$doc','$id')";
+		}
+		$query .= implode( ', ', $chunks );
+		mysql_query( $query, $db );
+	}
+
+	if ( mysql_errno() ) {
+		echo "Errore nel salvataggio, riprovare.";
+		echo "<br /><a href='javascript:history.back()'>Torna</a>";
+		return;
+	}
+
+	echo "Modifiche salvate.";
 
 endif;
 

@@ -181,6 +181,16 @@ CHARACTER SET utf8 COLLATE utf8_general_ci;
 EOF;
 	mysql_query( $query, $db );
 
+	$query = <<<EOF
+CREATE TABLE IF NOT EXISTS `$config[db_prefix]docente_corso` (
+	`id_docente` INTEGER  NOT NULL,
+	`id_corso` INTEGER  NOT NULL,
+	PRIMARY KEY (`id_docente`,`id_corso`)
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci;
+EOF;
+	mysql_query( $query, $db );
+
 
 	/*****************
 	 *     LOGIN     *
