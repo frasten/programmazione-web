@@ -40,8 +40,15 @@ $(document).ready(function() {
 		containment: 'parent',
 		cursor: 'move',
 		tolerance: 'pointer', /* http://bugs.jqueryui.com/ticket/5772 */
-		change: function(event, ui) {
-			
+		stop: function(event, ui) {
+			// TODO: dare un feedback grafico dei lavori in corso
+
+			$.get('ajax/corsi.php?action=saveorder&id_corso=' + $("[name='id_corso']").val() +
+				'&' + $('#lista-news').sortable("serialize"),
+				function(data) {
+					$('.result').html(data);
+				}
+			);
 		}
 	})
 		.disableSelection();

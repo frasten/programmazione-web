@@ -17,7 +17,7 @@ if ( $_GET['action'] == 'savenews' ) {
 	/* Creazione di una nuova news */
 
 	$id_corso = intval( $_POST['id_corso'] );
-	if ( ! $id_corso ) esci( 'ID non valido.' );
+	if ( $id_corso <= 0 ) esci( 'ID non valido.' );
 
 	$nascondi = 0;
 	if ( ! empty( $_POST['hide-news'] ) )
@@ -38,7 +38,7 @@ EOF;
 INSERT INTO `$config[db_prefix]news`
 (`id_corso`,`ordine`,`nascondi`,`testo`)
 VALUES
-('$id_corso','1','$nascondi','$testo')
+('$id_corso','0','$nascondi','$testo')
 EOF;
 	mysql_query( $query, $db );
 	$id_news = mysql_insert_id( $db );
@@ -65,6 +65,26 @@ EOF;
 	$json['success'] = 1;
 
 
+	esci();
+}
+else if ( $_GET['action'] == 'saveorder' ) {
+	$id_corso = intval( $_GET['id_corso'] );
+	if ( $id_corso <= 0 ) esci( 'ID corso non valido.' );
+
+	if ( ! is_array( $_GET['news'] ) ) esci( 'Nulla da fare.' );
+
+	foreach ( $_GET['news'] as $pos => $id_news ) {
+		$id_news = intval( $id_news );
+		$query = <<<EOF
+UPDATE `$config[db_prefix]news`
+SET `ordine` = '$pos'
+WHERE `id_news` = '$id_news' AND `id_corso` = '$id_corso'
+LIMIT 1
+EOF;
+		mysql_query( $query, $db );
+	}
+
+	$json['success'] = 1;
 	esci();
 }
 
