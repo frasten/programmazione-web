@@ -88,7 +88,8 @@ EOF;
 
 	<div class='contenuti'>
 		<h3>Pagina corso:</h3>
-		<a href='javascript:void(0)' id='link-gestione-news'>Gestione News</a><br />
+		<a href='javascript:void(0)' class='linkconicona' id='link-gestione-news' style='background-image: url(img/icone/newspaper.png)'>
+			Gestione News</a><br />
 
 		<!-- Contenuti editabili liberamente -->
 
@@ -124,7 +125,7 @@ EOF;
 
 <?php if ( $corso ): ?>
 <script type='text/javascript' src='js/jquery.iframe-post-form.js'></script>
-<div id="news-dialog-form">
+<div id="news-dialog-form" title='Gestione news'>
 	<!-- Inserimento di una nuova news -->
 	<form action='ajax/corsi.php?action=savenews' method='post' enctype="multipart/form-data">
 		<input type='hidden' name='id_corso' value='<?php riempi( $corso['id_corso'], 'int' ) ?>' />
