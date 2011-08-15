@@ -13,7 +13,7 @@ if ( empty( $_GET['action'] ) ) {
 	if ( empty( $_GET['id'] ) ) {
 		// Mostro una lista dei corsi
 		admin_menu( array(
-			array( '?action=new', 'Nuovo corso', 'page_add.png' )
+			array( '?action=new', 'Nuovo corso', 'table_add.png' )
 		) );
 		include 'inc/corsi-lista.inc.php';
 	}
