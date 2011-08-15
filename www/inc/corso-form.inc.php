@@ -88,8 +88,10 @@ EOF;
 
 	<div class='contenuti'>
 		<h3>Pagina corso:</h3>
+		<?php if ( $corso ): ?>
 		<a href='javascript:void(0)' class='linkconicona' id='link-gestione-news' style='background-image: url(img/icone/newspaper.png)'>
 			Gestione News</a><br />
+		<?php endif; ?>
 
 		<!-- Contenuti editabili liberamente -->
 
