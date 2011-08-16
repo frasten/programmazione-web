@@ -90,14 +90,45 @@ EOF;
 	$json['success'] = 1;
 	esci();
 }
-else if ( $_GET['action'] == 'savevisibility' ) {
-	if ( ! isset( $_POST['nascondi'] ) ) esci();
+else if ( $_GET['action'] == 'togglevisibility' ) {
+	$id = intval( $_POST['id_news'] );
+	if ( $id <= 0 ) esci();
 
-	$nascondi = $_POST['nascondi'] ? 1 : 0;
+	// Scambio la visibilita'
+	$query = <<<EOF
+UPDATE `$config[db_prefix]news`
+SET `nascondi`= IF(`nascondi`='1', '0', '1')
+WHERE `id_news` = '$id'
+LIMIT 1
+EOF;
+	mysql_query( $query, $db );
+
+	$ok = mysql_affected_rows( $db );
+	if ( $ok <= 0 ) {
+		$json['error'] = "Salvataggio fallito.";
+		esci();
+	}
 
 	$query = <<<EOF
-	
+SELECT `nascondi`
+FROM `$config[db_prefix]news`
+WHERE `id_news` = '$id'
+LIMIT 1
 EOF;
+	$result = mysql_query( $query, $db );
+
+	if ( ! $result || ! mysql_num_rows( $result ) ) {
+		$json['error'] = "Errore interno.";
+		esci();
+	}
+
+	$riga = mysql_fetch_assoc( $result );
+
+	$json['nascondi'] = intval( $riga['nascondi'] );
+	$json['success'] = 1;
+	$json['id'] = $id;
+
+	esci();
 }
 
 

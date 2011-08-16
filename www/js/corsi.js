@@ -37,6 +37,7 @@ $(document).ready(function() {
 
 	$( "#lista-news" ).sortable({
 		axis: 'y',
+		distance: 3,
 		containment: 'parent',
 		cursor: 'move',
 		tolerance: 'pointer', /* http://bugs.jqueryui.com/ticket/5772 */
@@ -58,6 +59,35 @@ $(document).ready(function() {
 		// !? Come mai non lo devo assegnare? Mistero.
 	});
 
+	var save_visibility = function(elem) {
+		$.post('ajax/corsi.php?action=togglevisibility', {
+			id_news: $(elem.currentTarget).parent("li").attr("id").split("_")[1]
+			},
+			function(data) {
+				if ( ! data || ! data.success ) {
+					// Errore
+					var txt = 'Errore';
+					if ( data.error )
+						txt += ": " + data.error;
+					alert(txt);
+					return;
+				}
+				// Cambio l'immaginetta
+				$(elem.currentTarget)
+					.find("img")
+					.attr("src", 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'))
+					.attr("alt", data.nascondi ? 'News nascosta' : 'News visibile')
+				.parent()
+					.attr("title", data.nascondi ? 'News nascosta' : 'News visibile')
+			},
+		"json"
+		);
+	};
+
+
+	$(".eyeicon").click(save_visibility)
+
+
 	$('#news-dialog-form form').iframePostForm({
 		json: true,
 		post: function() {
@@ -66,7 +96,6 @@ $(document).ready(function() {
 			console.log("Caricamento...");
 		},
 		complete: function(data) {
-			console.log(data);
 			if ( ! data || ! data.success ) {
 				// Errore
 				var txt = 'Errore';
@@ -81,11 +110,16 @@ $(document).ready(function() {
 					.prepend($("<li />", {
 						class: 'ui-corner-all',
 						id: 'news_' + data.id,
-						css: {display: 'none'}
+						css: {display: 'none'} // per farlo comparire dopo
 					}))
 					.find(":first")
 						.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
-						.append("<a href='javascript:void(0)' class='iconalink' />")
+						.append($("<a/>", {
+								href: 'javascript:void(0)',
+								class: 'iconalink eyeicon',
+								title: data.nascondi ? 'News nascosta' : 'News visibile',
+								click: save_visibility
+							}))
 							.find(":last")
 							.append($("<img>", {
 								src: 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'),
@@ -97,8 +131,6 @@ $(document).ready(function() {
 						"height": "toggle",
 						"opacity": "toggle"
 						}, 600);
-				// TODO: bindare l'evento click sull'icona dell'occhio sul salvataggio
-				// della visibilita'.
 
 				// Svuoto il form.
 				$('#testo-news').html('');
