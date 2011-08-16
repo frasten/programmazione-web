@@ -2,19 +2,25 @@
 
 @ session_start();
 
+require_once( 'config.inc.php' );
+
+if ( $config['debug'] ) {
+	// abilitiamo il display degli errori per debug.
+	if ( ! ini_get( 'display_errors' ) ) {
+		ini_set( 'display_errors', 1 );
+	}
+	error_reporting( E_ALL );
+}
+else {
+	// Disabilitiamo l'output per gli errori, fonte di preziose informazioni
+	// per gli attaccanti.
+	error_reporting( 0 );
+}
+
 // Ci permette di usare header() anche dopo l'inizio della pagina
 // Attenzione se si volessero stampare grosse quantita' di dati!!!
 ob_start();
 
-
-// TEMP: abilitiamo il display degli errori per debug.
-if ( ! ini_get( 'display_errors' ) ) {
-	ini_set( 'display_errors', 1 );
-}
-
-
-
-require_once( 'config.inc.php' );
 require_once( 'db.inc.php' );
 
 require_once( 'funzioni.inc.php' );

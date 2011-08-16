@@ -1,5 +1,10 @@
 <?php
 
+// Mostra/nasconde la visualizzazione degli errori
+// Consigliabile disabilitarlo in produzione.
+$config['debug'] = true;
+
+
 $config['db_host'] = 'localhost';
 $config['db_user'] = 'pw';
 $config['db_pass'] = '12345';
