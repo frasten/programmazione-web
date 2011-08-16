@@ -59,6 +59,7 @@ else {
 	while ( $news = mysql_fetch_assoc( $result ) ) {
 		// TODO
 		echo "";
+		if ( $news['file'] ) echo "<img src='img/icone/icon_pdf.png'>";
 		echo "$news[testo]";
 		echo "";
 	}
@@ -66,23 +67,44 @@ else {
 
 ?>
 
+<?php if ( trim( strip_tags( $corso['orario'] ) ) ): ?>
 <h3>Orario delle lezioni</h3>
 <?php
 // Valutare se val la pena creare un sistema strutturato per l'inserimento del calendario
 echo $corso['orario'];
 ?>
+<?php endif; ?>
 
+
+<?php if ( trim( strip_tags( $corso['ricevimento'] ) ) ): ?>
 <h3>Orario di ricevimento</h3>
 <?php echo $corso['ricevimento'] ?>
+<?php endif; ?>
 
+
+<?php if ( trim( strip_tags( $corso['obiettivi'] ) ) ): ?>
 <h3>Obiettivi del corso</h3>
 <?php echo $corso['obiettivi'] ?>
+<?php endif; ?>
 
+
+<?php if ( trim( strip_tags( $corso['programma'] ) ) ): ?>
 <h3>Programma d'esame</h3>
-<?php echo $corso['esame'] ?>
+<?php echo $corso['programma'] ?>
+<?php endif; ?>
 
+
+<?php if ( trim( strip_tags( $corso['esame'] ) ) ): ?>
+<h3>Modalit&agrave; d'esame</h3>
+<?php echo $corso['esame'] ?>
+<?php endif; ?>
+
+
+<?php if ( trim( strip_tags( $corso['materiali'] ) ) ): ?>
 <h3>Materiale di riferimento</h3>
 <?php echo $corso['materiali'] ?>
+<?php endif; ?>
+
 
 <h3>Materiale didattico</h3>
 TODO
