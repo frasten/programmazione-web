@@ -169,7 +169,7 @@ EOF;
 			while ( $riga = mysql_fetch_assoc( $result ) ) {
 				echo "<li class='ui-corner-all' id='news_$riga[id_news]'>\n";
 				echo "<span class='ui-icon ui-icon-arrowthick-2-n-s'></span>\n";
-				echo "<a href='javascript:void(0)' class='iconalink' style='vertical-align: middle'>\n";
+				echo "<a href='javascript:void(0)' class='iconalink'>\n";
 				if ( ! $riga['nascondi'] )
 					echo "<img src='img/icone/eye.png' alt='News visibile' />\n";
 				else

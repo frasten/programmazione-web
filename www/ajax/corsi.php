@@ -23,7 +23,7 @@ if ( $_GET['action'] == 'savenews' ) {
 	if ( ! empty( $_POST['hide-news'] ) )
 		$nascondi = 1;
 
-	// La mettiamo nella posizione 1, quindi facciamo scorrere di 1 le
+	// La mettiamo nella posizione 0, quindi facciamo scorrere di 1 le
 	// precedenti news per questo corso.
 	$query = <<<EOF
 UPDATE `$config[db_prefix]news`
@@ -63,6 +63,8 @@ EOF;
 
 	}
 	$json['success'] = 1;
+	$json['testo'] = strip_tags( $_POST['testo'] );
+	$json['id'] = $id_news;
 
 
 	esci();
@@ -87,6 +89,15 @@ EOF;
 	$json['success'] = 1;
 	esci();
 }
+else if ( $_GET['action'] == 'savevisibility' ) {
+	if ( ! isset( $_POST['nascondi'] ) ) esci();
+
+	$nascondi = $_POST['nascondi'] ? 1 : 0;
+
+	$query = <<<EOF
+	
+EOF;
+}
 
 
 function esci( $msg = '' ) {
@@ -107,7 +118,7 @@ function gestisci_file_upload( $prefix ) {
 	if ( preg_match( '/\.(.+)$/', $filename, $match ) ) {
 		$blacklist_extensions = array( 'php' );
 		if ( in_array( strtolower( $match[1] ), $blacklist_extensions ) ) {
-			esci( "Errore: Il file caricato &egrave; di un tipo non consentito." );
+			esci( "Il file caricato &egrave; di un tipo non consentito." );
 		}
 	}
 

@@ -175,3 +175,7 @@
 	position: absolute;
 	margin-left: -1.3em;
 }
+
+#lista-news a.iconalink {
+	vertical-align: middle;
+}

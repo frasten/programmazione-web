@@ -61,9 +61,29 @@ $(document).ready(function() {
 	$('#news-dialog-form form').iframePostForm({
 		json: true,
 		post: function() {console.log("Caricamento...")},
-		complete: function(data) {console.log(data);
+		complete: function(data) {
+			console.log(data);
+			if ( ! data || ! data.success ) {
+				// Errore
+				var txt = 'Errore';
+				if ( data.error )
+					txt += ": " + data.error;
+				alert(txt);
+				return;
+			}
+			else {
+				// Tutto OK
+				$("#lista-news")
+					.prepend("<li class='ui-corner-all' id='news_" + data.id + "' />")
+					.find(":first-child")
+						.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
+						.append("<a href='javascript:void(0)' class='iconalink' />")
+							.find(":last-child")
+							.append("<img src='img/icone/eye.png'/>")
+						.parent()
+						.append(" " + data.testo);
+			}
 		// TODO: svuotare il form in caso di successo
-		// TODO: aggiungere la news la' sotto
 		}
 	});
 
