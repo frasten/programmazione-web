@@ -60,7 +60,11 @@ $(document).ready(function() {
 
 	$('#news-dialog-form form').iframePostForm({
 		json: true,
-		post: function() {console.log("Caricamento...")},
+		post: function() {
+			// Probabilmente eliminabile, ma non si sa mai, un refresh fa sempre bene.
+			tinyMCE.triggerSave();
+			console.log("Caricamento...");
+		},
 		complete: function(data) {
 			console.log(data);
 			if ( ! data || ! data.success ) {
