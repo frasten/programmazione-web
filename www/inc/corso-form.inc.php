@@ -173,7 +173,7 @@ EOF;
 				if ( ! $riga['nascondi'] )
 					echo "<img src='img/icone/eye.png' alt='News visibile' />\n";
 				else
-					echo "<img src='img/icone/user.png' alt='News nascosta' />\n";
+					echo "<img src='img/icone/eye_no.png' alt='News nascosta' />\n";
 				echo "</a>\n ";
 				echo strip_tags( $riga['testo'] );
 				echo "</li>\n";

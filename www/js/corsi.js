@@ -75,13 +75,23 @@ $(document).ready(function() {
 				// Tutto OK
 				$("#lista-news")
 					.prepend("<li class='ui-corner-all' id='news_" + data.id + "' />")
-					.find(":first-child")
+					.find(":first")
 						.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
 						.append("<a href='javascript:void(0)' class='iconalink' />")
-							.find(":last-child")
-							.append("<img src='img/icone/eye.png'/>")
+							.find(":last")
+							.append($("<img>", {
+								src: 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'),
+								alt: data.nascondi ? 'News nascosta' : 'News visibile'
+								}))
 						.parent()
 						.append(" " + data.testo);
+				// TODO: bindare l'evento click sull'icona dell'occhio sul salvataggio
+				// della visibilita'.
+
+				// Svuoto il form.
+				$('#testo-news').html('');
+				$('#hide-news').attr('checked', false);
+				$('#attachment').val('')
 			}
 		// TODO: svuotare il form in caso di successo
 		}

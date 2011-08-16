@@ -62,6 +62,7 @@ EOF;
 		mysql_query( $query, $db );
 
 	}
+	$json['nascondi'] = $nascondi;
 	$json['success'] = 1;
 	$json['testo'] = strip_tags( $_POST['testo'] );
 	$json['id'] = $id_news;
