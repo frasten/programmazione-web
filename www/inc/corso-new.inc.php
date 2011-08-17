@@ -1,6 +1,6 @@
 <?php
 
-if ( sizeof( $_POST ) == 0 ) { // Mostro form per l'inserimento
+if ( ! isset( $_POST['salva'] ) ) { // Mostro form per l'inserimento
 
 	include 'corso-form.inc.php';
 

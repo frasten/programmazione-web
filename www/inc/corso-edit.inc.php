@@ -4,7 +4,7 @@ if ( empty( $_GET['id'] ) ) return;
 
 $id = intval( $_GET['id'] );
 
-if ( sizeof( $_POST ) == 0 ): // Mostro form per la modifica
+if ( ! isset( $_POST['salva'] ) ): // Mostro form per la modifica
 
 	// Carico i dati del corso dal DB
 	$query = <<<EOF
