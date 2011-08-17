@@ -17,6 +17,7 @@ function genera_random_string( $len ) {
 	return $str;
 }
 
+
 function admin_menu( $links = array( array( '', '', '' ) ) ) {
 	if ( empty( $_SESSION['loggato'] ) ) return false;
 
@@ -39,12 +40,38 @@ function admin_menu( $links = array( array( '', '', '' ) ) ) {
 	echo "</ul>\n";
 }
 
+
 function stampa_admin_link( $url, $testo, $icona ) {
 	echo "<li>\n";
 	$style = '';
 	if ( ! empty( $icona ) )
-		$style = " style='background-image: url(img/icone/$icona)'"; 
+		$style = " style='background-image: url(img/icone/$icona)'";
 	printf( "<a href='%s' class='linkconicona'%s>%s</a>", htmlspecialchars( $url ), $style, htmlspecialchars( $testo ) );
 	echo "</li>\n";
 }
+
+
+if ( ! function_exists( 'mb_substr' ) ):
+/**
+ * mb_substr()
+ * Funzione alternativa in caso in case mb_string() non sia disponibile
+ */
+function mb_substr( $str, $start, $length = null ) {
+	global $locale_char_set;
+
+	if ( ! $locale_char_set ) {
+		$locale_char_set = 'utf-8';
+	}
+	if ( $locale_char_set == 'utf-8' ) {
+		return ( $length === null ) ?
+			utf8_encode( substr( utf8_decode( $str ), $start ) ) :
+			utf8_encode( substr( utf8_decode( $str ), $start, $length ) );
+	} else {
+	return ( $length === null ) ?
+		substr( $str, $start ) :
+		substr( $str, $start, $length );
+	}
+}
+endif;
+
 ?>
