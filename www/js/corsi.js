@@ -12,6 +12,7 @@ $(document).ready(function() {
 		theme_advanced_toolbar_location : "top",
 		theme_advanced_toolbar_align : "left",
 		theme_advanced_statusbar_location : "bottom",
+		theme_advanced_path : false,
 		theme_advanced_resizing : true,
 		plugin_insertdate_dateFormat : "%d/%m/%Y",
 	}
