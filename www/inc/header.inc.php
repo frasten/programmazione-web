@@ -66,15 +66,23 @@ pageTracker._trackPageview();
 	<li><a id="pubblicazioni" href="pubblicazioni.php">Publications</a></li>
 	<li id="long"><a id="corsi" href="corso.php" class="continua">Teaching (ita)</a>
 		<ul>
-			<li><a href="corso.php?siNO">Sistemi informativi (N.O.) - Universit&agrave; di Brescia</a></li>
-			<li><a href="corso.php?sir">Sistemi informativi in rete (N.O.) - Universit&agrave; di Brescia</a></li>
-			<li><a href="corso.php?bd">Basi di dati (N.O.) - Universit&agrave; di Brescia</a></li>
-			<li><a href="corso.php?bde">Basi di dati evolute (N.O.) - Universit&agrave; di Brescia</a></li>
-			<li><a href="corso.php?siVO">Sistemi informativi (V.O.) - Universit&agrave; di Brescia</a></li>
-			<li><a href="corso.php?fib">Fondamenti di Informatica B (N.O.) - Universit&agrave; di Brescia</a></li>
-			<li><a href="corso.php?id">Informatica per Disegno Industriale - Universit&agrave; di Brescia</a></li>
-			<li><a href="corso.php?siPOLI">Sistemi informativi - Politecnico di Milano</a></li>
-			<li><a href="corso.php?pw">Programmazione Web - Universit&agrave; di Brescia</a></li>
+<?php
+	$query = <<<EOF
+SELECT `id_corso`, c.`nome` AS nome_corso, f.`nome` AS nome_facolta
+FROM `$config[db_prefix]corso` AS c
+JOIN `$config[db_prefix]facolta` AS f
+	USING (`id_facolta`)
+ORDER BY f.`id_facolta`, c.`nome` ASC
+EOF;
+	$result = mysql_query( $query, $db );
+	while ( $riga = mysql_fetch_assoc( $result ) ) {
+		echo str_repeat( "\t", 3 ) . "<li>";
+		echo "<a href='corso.php?id=$riga[id_corso]'>";
+		echo htmlspecialchars( $riga['nome_corso'] ) . ' - ' . htmlspecialchars( $riga['nome_facolta'] );
+		echo "</a>";
+		echo "</li>\n";
+	}
+?>
 		</ul>
 	</li>
 	<li><a id="tesi" href="tesi.php">Thesis (ita)</a></li>
