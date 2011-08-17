@@ -8,7 +8,10 @@ if ( ! isset( $_POST['salva'] ) ) { // Mostro form per l'inserimento
 	// Salvo i dati nel database
 
 	// Controlli di routine e pulizia
-	$_POST['facolta'] = intval( $_POST['facolta'] );
+	if ( isset( $_POST['facolta'] ) )
+		$_POST['facolta'] = intval( $_POST['facolta'] );
+	else
+		$_POST['facolta'] = 1;
 
 	if ( isset( $_POST['docente'] ) ) {
 		$docenti = array_map( 'intval', $_POST['docente'] );
