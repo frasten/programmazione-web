@@ -44,7 +44,11 @@ pageTracker._trackPageview();
 <script type="text/javascript" src="js/button.js"></script>
 </head>
 
-<body class="corsi" id="body">
+<body <?php 
+	$page = basename( $_SERVER['PHP_SELF'] );
+	preg_match( "/^(.+)\.php$/", $page, $match );
+	echo "class='" . htmlspecialchars( $match[1] ) . "' ";
+?>id="body">
 <div id="container">
 
 <div id="intestazione">
@@ -64,7 +68,7 @@ pageTracker._trackPageview();
 	</li>
 	<li><a id="progetti" href="progetti.php">Research Projects</a></li>
 	<li><a id="pubblicazioni" href="pubblicazioni.php">Publications</a></li>
-	<li id="long"><a id="corsi" href="corso.php" class="continua">Teaching (ita)</a>
+	<li id="long"><a id="corso" href="corso.php" class="continua">Teaching (ita)</a>
 		<ul>
 <?php
 	$query = <<<EOF
