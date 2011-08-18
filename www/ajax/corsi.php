@@ -243,7 +243,26 @@ EOF;
 		}
 		echo "</ul>\n";
 	}
+}
+else if ( $_GET['action'] == 'savefileorder' ) {
+	$id_sezione = intval( $_GET['id_sezione'] );
+	if ( $id_sezione <= 0 ) esci( 'ID sezione non valido.' );
 
+	if ( ! is_array( $_GET['file'] ) ) esci( 'Nulla da fare.' );
+
+	foreach ( $_GET['file'] as $pos => $id_file ) {
+		$id_file = intval( $id_file );
+		$query = <<<EOF
+UPDATE `$config[db_prefix]file_materiale`
+SET `ordine` = '$pos'
+WHERE `id_file` = '$id_file' AND `id_sezione` = '$id_sezione'
+LIMIT 1
+EOF;
+		mysql_query( $query, $db );
+	}
+
+	$json['success'] = 1;
+	esci();
 }
 
 

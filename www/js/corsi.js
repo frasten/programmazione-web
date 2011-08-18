@@ -48,7 +48,7 @@ $(document).ready(function() {
 			$.get('ajax/corsi.php?action=savenewsorder&id_corso=' + $("[name='id_corso']").val() +
 				'&' + $('#lista-news').sortable("serialize"),
 				function(data) {
-					$('.result').html(data);
+					// TODO
 				}
 			);
 		}
@@ -181,7 +181,7 @@ $(document).ready(function() {
 									class: 'ui-corner-all',
 									id: 'file_' + f.id_file
 								}))
-								.find(":first")
+								.find(":last")
 									.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
 									.append($("<a/>", {
 											href: 'javascript:void(0)',
@@ -238,6 +238,29 @@ $(document).ready(function() {
 		.click(function() {
 			apriDialogoSezione(0);
 		});
+
+	$( "#lista-file-sezione" ).sortable({
+		axis: 'y',
+		distance: 3,
+		containment: 'parent',
+		cursor: 'move',
+		tolerance: 'pointer', /* http://bugs.jqueryui.com/ticket/5772 */
+		stop: function(event, ui) {
+			// TODO: dare un feedback grafico dei lavori in corso
+
+			$.get('ajax/corsi.php?action=savefileorder&id_sezione=' + $("[name='id_sezione']").val() +
+				'&' + $('#lista-file-sezione').sortable("serialize"),
+				function(data) {
+					// TODO
+					console.log(data.success);
+					if (data.success)
+						caricaListaSezioni();
+				},
+				"json"
+			);
+		}
+	})
+		.disableSelection();
 
 	caricaListaSezioni();
 
