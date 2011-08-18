@@ -296,9 +296,44 @@ else if ( $_GET['action'] == 'savefile' ) {
 
 	if ( empty( $_POST['id_file'] ) ) {
 		// Nuovo file
+		if ( empty( $_POST['id_sezione'] ) ) esci( 'ID sezione non valido.' );
+		$id_sezione = intval( $_POST['id_sezione'] );
+
 		$query = <<<EOF
 INSERT INTO `$config[db_prefix]file_materiale`
+(`id_sezione`,`titolo`,`url`,`aggiornato`,`nascondi`)
+VALUES
+('$id_sezione','$titolo','','$aggiornato','$nascondi')
 EOF;
+		mysql_query( $query, $db );
+
+		$id = mysql_insert_id( $db );
+
+		if ( ! $id ) esci( 'Errore nell\'inserimento.' );
+
+		if ( $_POST['tipourl'] == 'url' ) {
+			$url = $_POST['url'];
+			// Ho inserito un path relativo
+			if ( ! preg_match( "#^(?:http|https|ftp?)://#i", $url ) )
+				$url = "http://$url";
+		}
+		else {
+			$url = gestisci_file_upload( "d$id", true );
+		}
+
+		if ( ! $url ) esci( 'Errore nel salvataggio del file.' );
+
+		$url = mysql_real_escape_string( $url );
+		$query = <<<EOF
+UPDATE `$config[db_prefix]file_materiale`
+SET `url` = '$url'
+WHERE `id_file` = '$id'
+LIMIT 1
+EOF;
+		mysql_query( $query, $db );
+		if ( mysql_errno() ) esci( 'Errore nel salvataggio dei dati.' );
+
+
 	}
 	else {
 		// Aggiorno un file esistente
@@ -306,6 +341,7 @@ EOF;
 
 		// Salvataggio file
 		$url = mysql_real_escape_string( gestisci_file_update( $id ) );
+		if ( ! $url ) esci( 'Errore nel caricamento del file.' );
 
 		$query = <<<EOF
 UPDATE `$config[db_prefix]file_materiale`
@@ -320,9 +356,15 @@ EOF;
 		$result = mysql_query( $query, $db );
 		if ( mysql_errno() ) esci( 'Errore nel salvataggio.' );
 
-		$json['success'] = 1;
-		esci();
 	}
+
+	$json['titolo'] = $_POST['titolo'];
+	$json['nascondi'] = $nascondi;
+	$json['aggiornato'] = $aggiornato;
+	$json['id_file'] = $id;
+	$json['success'] = 1;
+	esci();
+
 }
 
 

@@ -200,6 +200,7 @@ $(document).ready(function() {
 					},
 				"json"
 				);
+				$("#file-dialog-form input[name='id_sezione']").val(id)
 			}
 		},
 		buttons: {
@@ -247,16 +248,7 @@ $(document).ready(function() {
 		stop: function(event, ui) {
 			// TODO: dare un feedback grafico dei lavori in corso
 
-			$.get('ajax/corsi.php?action=savefileorder&id_sezione=' + $("[name='id_sezione']").val() +
-				'&' + $('#lista-file-sezione').sortable("serialize"),
-				function(data) {
-					// TODO
-					console.log(data.success);
-					if (data.success)
-						caricaListaSezioni();
-				},
-				"json"
-			);
+			salvaOrdineDati();
 		}
 	})
 		.disableSelection();
@@ -318,7 +310,7 @@ $(document).ready(function() {
 	});
 
 
-$('#file-dialog-form form').iframePostForm({
+	$('#file-dialog-form form').iframePostForm({
 		json: true,
 		post: function() {
 			console.log("Caricamento...");
@@ -334,12 +326,59 @@ $('#file-dialog-form form').iframePostForm({
 			}
 			// Tutto OK
 
-			caricaListaSezioni();
+			if ( $( "#sezioni-dialog-form" ).dialog("isOpen") ) {
+				// Aggiorniamo la lista di files nell'altro dialogo
+				$("#lista-file-sezione")
+					.prepend($("<li />", {
+						class: 'ui-corner-all',
+						id: 'file_' + data.id_file,
+						css: {display: 'none'}
+					}))
+					.find(":first")
+						.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
+						.append($("<a/>", {
+								href: 'javascript:void(0)',
+								class: 'iconalink eyeicon',
+								title: data.nascondi ? 'File nascosto' : 'File visibile',
+								click: save_visibility /* TODO */
+							}))
+							.find(":last")
+							.append($("<img>", {
+								src: 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'),
+								alt: data.nascondi ? 'File nascosto' : 'File visibile'
+								}))
+						.parent()
+						.append(" " + data.titolo)
+					.animate({
+						"height": "toggle",
+						"opacity": "toggle"
+						}, 600);
+				salvaOrdineDati(); // che carica il refresh della lista sezioni
+			}
+			else {
+				caricaListaSezioni();
+			}
+
 			$( "#file-dialog-form" ).dialog( "close" );
 		}
 	});
 
+	$("#url-file").focus(function() {
+		$("#tipourl_url").attr('checked', true);
+	});
 
+	function salvaOrdineDati() {
+		$.get('ajax/corsi.php?action=savefileorder&id_sezione=' + $("[name='id_sezione']").val() +
+			'&' + $('#lista-file-sezione').sortable("serialize"),
+			function(data) {
+				// TODO
+				if (data.success)
+					caricaListaSezioni();
+			},
+			"json"
+		);
+
+	}
 
 
 
