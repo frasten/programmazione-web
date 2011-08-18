@@ -154,11 +154,11 @@
 }
 
 /*** GESTIONE NEWS ***/
-#lista-news {
+.lista-dnd {
 	padding: 0;
 }
 
-#lista-news li {
+.lista-dnd li {
 	list-style: none;
 	background: none;
 	background-color: #f8f8f8;
@@ -167,12 +167,12 @@
 	padding: 4px 4px 4px 1.5em;
 }
 
-#lista-news li span {
+.lista-dnd li span {
 	position: absolute;
 	margin-left: -1.3em;
 }
 
-#lista-news a.iconalink {
+.lista-dnd a.iconalink {
 	vertical-align: middle;
 }
 

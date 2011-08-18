@@ -178,7 +178,7 @@ EOF;
 			if ( ! mysql_num_rows( $result ) ) {
 				echo "Nessuna news presente.";
 			}
-			echo "<ul id='lista-news'>\n";
+			echo "<ul id='lista-news' class='lista-dnd'>\n";
 
 			while ( $riga = mysql_fetch_assoc( $result ) ) {
 				echo "<li class='ui-corner-all' id='news_$riga[id_news]'>\n";
@@ -216,7 +216,7 @@ EOF;
 	<h4>File in questa sezione:</h4>
 		<a href='javascript:void(0)'>Aggiungi nuovo file</a>
 		<?php
-			echo "<ul id='lista-file-sezione'>\n";
+			echo "<ul id='lista-file-sezione' class='lista-dnd'>\n";
 			echo "</ul>\n";
 		?>
 </div><!-- /#sezioni-dialog-form -->

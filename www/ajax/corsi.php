@@ -146,6 +146,21 @@ EOF;
 	$riga = mysql_fetch_assoc( $result );
 	$json['titolo'] = $riga['titolo'];
 	$json['note'] = $riga['note'];
+
+	$query = <<<EOF
+SELECT `id_file`, `titolo`, `nascondi`
+FROM `$config[db_prefix]file_materiale`
+WHERE `id_sezione` = '$id'
+ORDER BY `ordine` ASC
+EOF;
+
+	$result = mysql_query( $query, $db );
+	$json['files'] = array();
+	while ( $riga = mysql_fetch_assoc( $result ) ) {
+		$riga['nascondi'] = intval( $riga['nascondi'] );
+		$json['files'][] = $riga;
+	}
+
 	$json['success'] = 1;
 	esci();
 }

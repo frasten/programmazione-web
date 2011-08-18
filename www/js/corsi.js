@@ -153,6 +153,7 @@ $(document).ready(function() {
 				// Nuova sezione, svuoto i campi
 				$("#titolo-sezione").val("");
 				$('#note-sezione').html('');
+				$("#lista-file-sezione").empty();
 			}
 			else {
 				// Carico i dati dal DB
@@ -172,6 +173,30 @@ $(document).ready(function() {
 						// Riempio il form
 						$("#titolo-sezione").val(data.titolo);
 						$('#note-sezione').html(data.note);
+						$("#lista-file-sezione").empty();
+						for (var key in data.files) {
+							var f = data.files[key];
+							$("#lista-file-sezione")
+								.append($("<li />", {
+									class: 'ui-corner-all',
+									id: 'file_' + f.id_file
+								}))
+								.find(":first")
+									.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
+									.append($("<a/>", {
+											href: 'javascript:void(0)',
+											class: 'iconalink eyeicon',
+											title: f.nascondi ? 'File nascosto' : 'File visibile',
+											click: save_visibility /* TODO */
+										}))
+										.find(":last")
+										.append($("<img>", {
+											src: 'img/icone/' + (f.nascondi ? 'eye_no.png' : 'eye.png'),
+											alt: f.nascondi ? 'File nascosto' : 'File visibile'
+											}))
+									.parent()
+									.append(" " + f.titolo);
+						}
 					},
 				"json"
 				);
@@ -206,6 +231,8 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+	// TODO: abilitare il drag-n-drop sulla lista files
 
 	$( "#link-nuova-sezione" )
 		.click(function() {
