@@ -141,5 +141,81 @@ $(document).ready(function() {
 		}
 	});
 
+	// GESTIONE SEZIONI
+	$( "#sezioni-dialog-form" ).dialog({
+		autoOpen: false,
+		height: 500,
+		width: 540,
+		modal: true,
+		open: function() {
+			var id = parseInt($("#id_sezione").val());
+			if (!id) {
+				// Nuova sezione, svuoto i campi
+				$("#titolo-sezione").val("");
+				$('#note-sezione').html('');
+			}
+			else {
+				// Carico i dati dal DB
+				$.post('ajax/corsi.php?action=getsezione', {
+					id: id
+					},
+					function(data) {
+						if ( ! data || ! data.success ) {
+							// Errore
+							var txt = 'Errore';
+							if ( data.error )
+								txt += ": " + data.error;
+							alert(txt);
+							$( "#sezioni-dialog-form" ).dialog( "close" );
+							return;
+						}
+						// Riempio il form
+						$("#titolo-sezione").val(data.titolo);
+						$('#note-sezione').html(data.note);
+					},
+				"json"
+				);
+			}
+		},
+		buttons: {
+			"Annulla": function() {
+				$( this ).dialog( "close" );
+			},
+			"Salva": function() {
+				// Salvo i dati nel db
+				$.post('ajax/corsi.php?action=savesezione', {
+					id: $("#id_sezione").val(),
+					id_corso: $("#sezioni-dialog-form [name='id_corso']").val(),
+					titolo: $("#titolo-sezione").val(),
+					note: $('#note-sezione').html()
+					},
+					function(data) {
+						if ( ! data || ! data.success ) {
+							// Errore
+							var txt = 'Errore';
+							if ( data.error )
+								txt += ": " + data.error;
+							alert(txt);
+							return;
+						}
+						$( "#sezioni-dialog-form" ).dialog( "close" );
+					},
+				"json"
+				);
+			}
+		}
+	});
+
+	$( "#link-nuova-sezione" )
+		.click(function() {
+			apriDialogoSezione(0);
+		});
+
+
 });
 })(jQuery);
+
+function apriDialogoSezione(id) {
+	jQuery( "#id_sezione" ).val( id );
+	jQuery( "#sezioni-dialog-form" ).dialog( "open" );
+}

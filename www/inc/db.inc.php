@@ -192,6 +192,38 @@ EOF;
 	mysql_query( $query, $db );
 
 
+	/***********************
+	 * MATERIALE DIDATTICO *
+	 ***********************/
+
+	/* Tabella per le sezioni */
+	$query = <<<EOF
+CREATE TABLE IF NOT EXISTS `$config[db_prefix]sezione` (
+	`id_sezione` INTEGER  NOT NULL AUTO_INCREMENT,
+	`id_corso` INTEGER  NOT NULL,
+	`titolo` VARCHAR(255)  NOT NULL,
+	`note` TEXT  NOT NULL,
+	PRIMARY KEY (`id_sezione`)
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci;
+EOF;
+	mysql_query( $query, $db );
+
+	/* Tabella per i file del materiale didattico */
+	$query = <<<EOF
+CREATE TABLE IF NOT EXISTS `$config[db_prefix]file_materiale` (
+	`id_file` INTEGER  NOT NULL AUTO_INCREMENT,
+	`id_sezione` INTEGER  NOT NULL,
+	`titolo` VARCHAR(255)  NOT NULL,
+	`url` VARCHAR(255)  NOT NULL,
+	`aggiornato` ENUM('0','1')  NOT NULL DEFAULT '0',
+	`nascondi` ENUM('0','1')  NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id_file`)
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci;
+EOF;
+	mysql_query( $query, $db );
+
 	/*****************
 	 *     LOGIN     *
 	 *****************/

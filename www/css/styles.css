@@ -154,10 +154,6 @@
 }
 
 /*** GESTIONE NEWS ***/
-#news-dialog-form {
-	
-}
-
 #lista-news {
 	padding: 0;
 }
@@ -178,4 +174,10 @@
 
 #lista-news a.iconalink {
 	vertical-align: middle;
+}
+
+/*** SEZIONI MATERIALE DIDATTICO ***/
+
+#titolo-sezione {
+	width: 400px;
 }

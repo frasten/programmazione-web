@@ -130,6 +130,67 @@ EOF;
 
 	esci();
 }
+else if ( $_GET['action'] == 'getsezione' ) {
+	if ( empty( $_POST['id'] ) ) esci();
+	$id = intval( $_POST['id'] );
+
+	$query = <<<EOF
+SELECT `titolo`, `note`
+FROM `$config[db_prefix]sezione`
+WHERE `id_sezione` = '$id'
+LIMIT 1
+EOF;
+	$result = mysql_query( $query, $db );
+	if ( ! mysql_num_rows( $result ) ) esci( 'ID non valido.' );
+
+	$riga = mysql_fetch_assoc( $result );
+	$json['titolo'] = $riga['titolo'];
+	$json['note'] = $riga['note'];
+	$json['success'] = 1;
+	esci();
+}
+else if ( $_GET['action'] == 'savesezione' ) {
+	if ( ! isset( $_POST['id'] ) ) esci();
+	if ( empty( $_POST['id_corso'] ) ) esci();
+	if ( ! isset( $_POST['note'] ) ) esci();
+	if ( empty( $_POST['titolo'] ) ) esci( 'Inserire un titolo!' );
+
+	$id = intval( $_POST['id'] );
+	$id_corso = intval( $_POST['id_corso'] );
+	$_POST['titolo'] = mysql_real_escape_string( $_POST['titolo'] );
+	$_POST['note'] = mysql_real_escape_string( $_POST['note'] );
+
+	if ( $id == 0 ) {
+		// Nuova sezione
+		$query = <<<EOF
+INSERT INTO `$config[db_prefix]sezione`
+(`id_corso`,`titolo`,`note`)
+VALUES
+('$id_corso','$_POST[titolo]','$_POST[note]')
+EOF;
+		mysql_query( $query, $db );
+		$id = mysql_insert_id( $db );
+		if ( ! $id ) esci( 'Errore nell\'inserimento.' );
+		$json['id'] = $id;
+	}
+	else {
+		// Aggiorniamo una sezione gia' esistente
+		$query = <<<EOF
+UPDATE `$config[db_prefix]sezione`
+SET
+	`titolo` = '$_POST[titolo]',
+	`note` = '$_POST[note]'
+WHERE `id_sezione` = '$id'
+LIMIT 1
+EOF;
+		mysql_query( $query, $db );
+		if ( mysql_errno() ) esci( 'Errore nel salvataggio.' );
+	}
+
+	$json['success'] = 1;
+	esci();
+}
+
 
 
 function esci( $msg = '' ) {

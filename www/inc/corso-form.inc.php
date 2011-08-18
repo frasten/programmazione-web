@@ -121,6 +121,8 @@ EOF;
 		<textarea class='tinymce' cols='90' rows='6' name='materiali' id='materiali'><?php riempi( $corso['materiali'], 'html' ) ?></textarea>
 	</div>
 
+	<a href='javascript:void(0)' id='link-nuova-sezione'>Nuova sezione</a>
+	<br /><a href='javascript:void(0)' onclick='apriDialogoSezione(1)'>Sezione 1</a>
 
 	<input type='submit' value='Salva' name='salva' class='invio' />
 </form>
@@ -134,7 +136,7 @@ EOF;
 		<fieldset>
 			<h4>Inserisci una nuova news</h4>
 			<p style='margin-bottom: 15px'>
-				<label for="" class='etichetta'>Testo news:</label>
+				<label for="testo-news" class='etichetta'>Testo news:</label>
 				<textarea class="tinymce" rows='5' cols='50' id='testo-news' name='testo'></textarea>
 			</p>
 
@@ -144,7 +146,7 @@ EOF;
 			<input type="checkbox" name='hide-news' id='hide-news' />
 			<label for="hide-news">Nascondi questa news</label>
 
-			<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn-salva-news' style='margin-left: 4em'>
+			<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn--news' style='margin-left: 4em'>
 				<span class="ui-button-text">Salva</span>
 			</button>
 		</fieldset>
@@ -181,7 +183,32 @@ EOF;
 			}
 			echo "</ul>\n";
 		?>
-</div>
+</div><!-- /#news-dialog-form -->
+
+
+<div id="sezioni-dialog-form" title='Sezione per materiale didattico:'>
+	<form action='ajax/corsi.php?action=' method='post'>
+		<input type='hidden' name='id_corso' value='<?php riempi( $corso['id_corso'], 'int' ) ?>' />
+		<input type='hidden' id='id_sezione' name='id_sezione' value='' />
+		<h4>Sezione:</h4>
+		<label for="titolo-sezione" class='etichetta'>Titolo sezione:</label>
+		<input type='text' name='titolo' id='titolo-sezione' /><br />
+
+		<p style='margin-bottom: 4px'>
+			<label for="note-sezione" class='etichetta'>Note:</label>
+		</p>
+		<textarea class="tinymce" name='note' id='note-sezione'></textarea>
+	</form>
+
+	<!-- Lista di files -->
+	<h4>File in questa sezione:</h4>
+		<a href='javascript:void(0)'>Aggiungi nuovo file</a>
+		<?php
+			echo "<ul id='lista-file-sezione'>\n";
+			echo "</ul>\n";
+		?>
+</div><!-- /#sezioni-dialog-form -->
+
 <?php
 endif; // if corso
 
