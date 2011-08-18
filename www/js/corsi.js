@@ -60,11 +60,28 @@ $(document).ready(function() {
 		// !? Come mai non lo devo assegnare? Mistero.
 	});
 
+	var swap_eye_icon = function( data ) {
+		
+	}
+
 	var save_visibility = function(elem) {
+		var txt_nascosto, txt_visibile;
+		var li_id = $(elem.currentTarget).parent("li").attr("id");
+		var obj_type = li_id.split("_")[0];
+		if (obj_type == 'file') {
+			txt_nascosto = "File nascosto";
+			txt_visibile = "File visibile";
+		}
+		else {
+			txt_nascosto = "News nascosta";
+			txt_visibile = "News visibile";
+		}
+
 		$.post('ajax/corsi.php?action=togglevisibility', {
-			id_news: $(elem.currentTarget).parent("li").attr("id").split("_")[1]
+			id: li_id.split("_")[1],
+			obj_type: obj_type
 			},
-			function(data) {
+			function (data) {
 				if ( ! data || ! data.success ) {
 					// Errore
 					var txt = 'Errore';
@@ -77,9 +94,11 @@ $(document).ready(function() {
 				$(elem.currentTarget)
 					.find("img")
 					.attr("src", 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'))
-					.attr("alt", data.nascondi ? 'News nascosta' : 'News visibile')
+					.attr("alt", data.nascondi ? txt_nascosto : txt_visibile)
 				.parent()
-					.attr("title", data.nascondi ? 'News nascosta' : 'News visibile')
+					.attr("title", data.nascondi ? txt_nascosto : txt_visibile);
+				if (obj_type == 'file')
+					caricaListaSezioni();
 			},
 		"json"
 		);

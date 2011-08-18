@@ -91,14 +91,23 @@ EOF;
 	esci();
 }
 else if ( $_GET['action'] == 'togglevisibility' ) {
-	$id = intval( $_POST['id_news'] );
+	$id = intval( $_POST['id'] );
 	if ( $id <= 0 ) esci();
+
+	if ( ! empty( $_POST['obj_type'] ) && $_POST['obj_type'] == 'file' ) {
+		$tabella = "$config[db_prefix]file_materiale";
+		$id_field = "id_file";
+	}
+	else {
+		$tabella = "$config[db_prefix]news";
+		$id_field = "id_news";
+	}
 
 	// Scambio la visibilita'
 	$query = <<<EOF
-UPDATE `$config[db_prefix]news`
+UPDATE `$tabella`
 SET `nascondi`= IF(`nascondi`='1', '0', '1')
-WHERE `id_news` = '$id'
+WHERE `$id_field` = '$id'
 LIMIT 1
 EOF;
 	mysql_query( $query, $db );
@@ -109,10 +118,11 @@ EOF;
 		esci();
 	}
 
+	// Prendo il dato salvato e lo restituisco all'utente
 	$query = <<<EOF
 SELECT `nascondi`
-FROM `$config[db_prefix]news`
-WHERE `id_news` = '$id'
+FROM `$tabella`
+WHERE `$id_field` = '$id'
 LIMIT 1
 EOF;
 	$result = mysql_query( $query, $db );
@@ -220,7 +230,7 @@ SELECT
 FROM `$config[db_prefix]sezione` AS s
 LEFT JOIN `$config[db_prefix]file_materiale` AS f
 	USING (`id_sezione`)
-WHERE `id_corso` = '$id_corso'
+WHERE `id_corso` = '$id_corso' AND `nascondi` = '0'
 ORDER BY `id_sezione` ASC, `ordine` ASC
 EOF;
 	$result = mysql_query( $query, $db );
