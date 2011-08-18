@@ -45,7 +45,7 @@ $(document).ready(function() {
 		stop: function(event, ui) {
 			// TODO: dare un feedback grafico dei lavori in corso
 
-			$.get('ajax/corsi.php?action=saveorder&id_corso=' + $("[name='id_corso']").val() +
+			$.get('ajax/corsi.php?action=savenewsorder&id_corso=' + $("[name='id_corso']").val() +
 				'&' + $('#lista-news').sortable("serialize"),
 				function(data) {
 					$('.result').html(data);

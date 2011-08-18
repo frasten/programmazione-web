@@ -70,7 +70,7 @@ EOF;
 
 	esci();
 }
-else if ( $_GET['action'] == 'saveorder' ) {
+else if ( $_GET['action'] == 'savenewsorder' ) {
 	$id_corso = intval( $_GET['id_corso'] );
 	if ( $id_corso <= 0 ) esci( 'ID corso non valido.' );
 
