@@ -1,5 +1,9 @@
 <?php
-	if ( empty( $corso ) ) $corso = false;
+	if ( empty( $corso ) )
+		$corso = false;
+	else {
+		echo "<script type='text/javascript'>var id_corso = $corso[id_corso];</script>\n";
+	}
 ?>
 <form action='<?php echo "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]" ?>' method='post' id='frm_corso'>
 <?php
@@ -127,41 +131,8 @@ EOF;
 		<a href='javascript:void(0)' class='linkconicona' id='link-nuova-sezione' style='background-image: url(img/icone/page_add.png)'>
 			Nuova sezione</a>
 	</p>
+	<div id='lista-sezioni'></div>
 
-<?php
-	$query = <<<EOF
-SELECT
-	s.`id_sezione`,
-	s.`titolo` AS titolo_sez,
-	`id_file`,
-	f.`titolo` AS titolo_file,
-	`nascondi`
-FROM `$config[db_prefix]sezione` AS s
-LEFT JOIN `$config[db_prefix]file_materiale` AS f
-	USING (`id_sezione`)
-WHERE `id_corso` = '$corso[id_corso]'
-ORDER BY `id_sezione` ASC, `ordine` ASC
-EOF;
-	$result = mysql_query( $query, $db );
-
-	$oldsez = false;
-	while ( $riga = mysql_fetch_assoc( $result ) ) {
-		if ( $oldsez != $riga['id_sezione'] ) {
-			if ( $oldsez !== false ) echo "</ul>\n";
-			printf( "<a href='javascript:void(0)' onclick='apriDialogoSezione(%d)' style='font-weight: bold'>%s</a>\n",
-				$riga['id_sezione'], htmlspecialchars( $riga['titolo_sez'] ) );
-			echo "<ul>\n";
-			$oldsez = $riga['id_sezione'];
-			if ( ! $riga['id_file'] ) continue;
-		}
-		echo "<li>\n";
-		printf( "<a href='javascript:void(0)' onclick=''>%s</a>\n",
-			htmlspecialchars( $riga['titolo_file'] ) );
-		echo "</li>\n";
-	}
-	echo "</ul>\n";
-
-?>
 <?php endif;/* materiale didattico */ ?>
 
 

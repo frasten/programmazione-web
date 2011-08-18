@@ -190,6 +190,46 @@ EOF;
 	$json['success'] = 1;
 	esci();
 }
+else if ( $_GET['action'] == 'loadlistasezioni' ) {
+	if ( empty( $_GET['id_corso'] ) ) esci( 'ID non valido.' );
+
+	$id_corso = intval( $_GET['id_corso'] );
+
+	$query = <<<EOF
+SELECT
+	s.`id_sezione`,
+	s.`titolo` AS titolo_sez,
+	`id_file`,
+	f.`titolo` AS titolo_file,
+	`nascondi`
+FROM `$config[db_prefix]sezione` AS s
+LEFT JOIN `$config[db_prefix]file_materiale` AS f
+	USING (`id_sezione`)
+WHERE `id_corso` = '$id_corso'
+ORDER BY `id_sezione` ASC, `ordine` ASC
+EOF;
+	$result = mysql_query( $query, $db );
+
+	if ( mysql_num_rows( $result ) ) {
+		$oldsez = false;
+		while ( $riga = mysql_fetch_assoc( $result ) ) {
+			if ( $oldsez != $riga['id_sezione'] ) {
+				if ( $oldsez !== false ) echo "</ul>\n";
+				printf( "<a href='javascript:void(0)' onclick='apriDialogoSezione(%d)' style='font-weight: bold'>%s</a>\n",
+					$riga['id_sezione'], htmlspecialchars( $riga['titolo_sez'] ) );
+				echo "<ul>\n";
+				$oldsez = $riga['id_sezione'];
+				if ( ! $riga['id_file'] ) continue;
+			}
+			echo "<li>\n";
+			printf( "<a href='javascript:void(0)' onclick=''>%s</a>\n",
+				htmlspecialchars( $riga['titolo_file'] ) );
+			echo "</li>\n";
+		}
+		echo "</ul>\n";
+	}
+
+}
 
 
 

@@ -198,6 +198,7 @@ $(document).ready(function() {
 							alert(txt);
 							return;
 						}
+						caricaListaSezioni();
 						$( "#sezioni-dialog-form" ).dialog( "close" );
 					},
 				"json"
@@ -211,6 +212,7 @@ $(document).ready(function() {
 			apriDialogoSezione(0);
 		});
 
+	caricaListaSezioni();
 
 });
 })(jQuery);
@@ -218,4 +220,8 @@ $(document).ready(function() {
 function apriDialogoSezione(id) {
 	jQuery( "#id_sezione" ).val( id );
 	jQuery( "#sezioni-dialog-form" ).dialog( "open" );
+}
+
+function caricaListaSezioni() {
+	$("#lista-sezioni").load('ajax/corsi.php?action=loadlistasezioni&id_corso=' + id_corso)
 }
