@@ -237,7 +237,8 @@ EOF;
 				if ( ! $riga['id_file'] ) continue;
 			}
 			echo "<li>\n";
-			printf( "<a href='javascript:void(0)' onclick=''>%s</a>\n",
+			printf( "<a href='javascript:void(0)' onclick='apriDialogoFile(%s)'>%s</a>\n",
+				intval( $riga['id_file'] ),
 				htmlspecialchars( $riga['titolo_file'] ) );
 			echo "</li>\n";
 		}

@@ -181,3 +181,20 @@
 #titolo-sezione {
 	width: 400px;
 }
+
+#file-dialog-form {
+	position: relative;
+}
+
+#file-dialog-form .dx {
+	position: absolute;
+	left: 8em;
+}
+
+#file-dialog-form p {
+	clear: both;
+}
+
+#titolo-file, #url-file {
+	width: 350px;
+}

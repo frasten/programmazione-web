@@ -199,7 +199,7 @@ EOF;
 
 
 <div id="sezioni-dialog-form" title='Sezione per materiale didattico:'>
-	<form action='ajax/corsi.php?action=' method='post'>
+	<form action='javascript:void(0)' method='post'>
 		<input type='hidden' name='id_corso' value='<?php riempi( $corso['id_corso'], 'int' ) ?>' />
 		<input type='hidden' id='id_sezione' name='id_sezione' value='' />
 		<h4>Sezione:</h4>
@@ -216,10 +216,51 @@ EOF;
 	<h4>File in questa sezione:</h4>
 		<a href='javascript:void(0)'>Aggiungi nuovo file</a>
 		<?php
-			echo "<ul id='lista-file-sezione' class='lista-dnd'>\n";
-			echo "</ul>\n";
+			echo "<ul id='lista-file-sezione' class='lista-dnd'></ul>\n";
 		?>
 </div><!-- /#sezioni-dialog-form -->
+
+<div id="file-dialog-form" title='File:'>
+	<form action='ajax/corsi.php?action=' method='post'>
+		<input type='hidden' name='id_sezione' value='' />
+		<input type='hidden' id='id_file' name='id_sezione' value='' />
+
+		<h4>File:</h4>
+
+		<p>
+			<label for="titolo-file" class='etichetta'>Titolo file:</label>
+			<input type='text' name='titolo' id='titolo-file'class='dx' />
+		</p>
+
+		<p>
+			<input type='radio' name='tipourl' id='tipourl_url' value=''>
+			<label for='tipourl_url' class='etichetta'>
+				URL:
+				<input type='text' name='url' id='url-file' class='dx'/>
+			</label>
+		</p>
+
+		<p>
+			<input type='radio' name='tipourl' id='tipourl_upload' value=''>
+			<label for='tipourl_upload' class='etichetta'>
+				Carica file:
+				<input type='file' class='dx' />
+			</label>
+		</p>
+
+		<p style='margin-bottom: 3px'>
+			<input type='checkbox' name='aggiornato' id='file-aggiornato'/>
+			<label for='file-aggiornato' class='etichetta'>Aggiornato</label>
+		</p>
+
+		<p style='margin-top: 3px'>
+			<input type='checkbox' name='nascondi' id='nascondi-file'/>
+			<label for='nascondi-file' class='etichetta'>Nascondi</label>
+		</p>
+
+	</form>
+
+</div><!-- /#file-dialog-form -->
 
 <?php
 endif; // if corso

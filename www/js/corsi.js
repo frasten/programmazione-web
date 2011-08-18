@@ -264,12 +264,34 @@ $(document).ready(function() {
 
 	caricaListaSezioni();
 
+
+	$( "#file-dialog-form" ).dialog({
+		autoOpen: false,
+		height: 270,
+		width: 600,
+		modal: true,
+		buttons: {
+			"Annulla": function() {
+				$( this ).dialog( "close" );
+			},
+			"Salva": function() {
+				// TODO
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
 });
 })(jQuery);
 
 function apriDialogoSezione(id) {
 	jQuery( "#id_sezione" ).val( id );
 	jQuery( "#sezioni-dialog-form" ).dialog( "open" );
+}
+
+function apriDialogoFile(id) {
+	jQuery( "#id_file" ).val( id );
+	jQuery( "#file-dialog-form" ).dialog( "open" );
 }
 
 function caricaListaSezioni() {
