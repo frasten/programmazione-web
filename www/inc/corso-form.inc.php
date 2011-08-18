@@ -221,9 +221,9 @@ EOF;
 </div><!-- /#sezioni-dialog-form -->
 
 <div id="file-dialog-form" title='File:'>
-	<form action='ajax/corsi.php?action=' method='post'>
+	<form action='ajax/corsi.php?action=savefile' method='post' enctype="multipart/form-data">
 		<input type='hidden' name='id_sezione' value='' />
-		<input type='hidden' id='id_file' name='id_sezione' value='' />
+		<input type='hidden' id='id_file' name='id_file' value='' />
 
 		<h4>File:</h4>
 
@@ -233,7 +233,7 @@ EOF;
 		</p>
 
 		<p>
-			<input type='radio' name='tipourl' id='tipourl_url' value='' />
+			<input type='radio' name='tipourl' id='tipourl_url' value='url' />
 			<label for='tipourl_url' class='etichetta'>
 				URL:
 				<input type='text' name='url' id='url-file' class='dx'/>
@@ -241,10 +241,10 @@ EOF;
 		</p>
 
 		<p>
-			<input type='radio' name='tipourl' id='tipourl_upload' value='' />
+			<input type='radio' name='tipourl' id='tipourl_upload' value='upload' />
 			<label for='tipourl_upload' class='etichetta'>
 				Carica file:
-				<input type='file' class='dx' />
+				<input type='file' class='dx' name='file' />
 			</label>
 		</p>
 

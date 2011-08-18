@@ -21,6 +21,10 @@ else {
 // Attenzione se si volessero stampare grosse quantita' di dati!!!
 ob_start();
 
+// Trailing slash
+if ( substr( $config['upload_path'], -1 ) !== '/' ) $config['upload_path'] .= '/';
+
+
 require_once( 'db.inc.php' );
 
 require_once( 'funzioni.inc.php' );

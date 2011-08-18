@@ -312,11 +312,36 @@ $(document).ready(function() {
 				$( this ).dialog( "close" );
 			},
 			"Salva": function() {
-				// TODO
-				$( this ).dialog( "close" );
+				$('#file-dialog-form form').submit();
 			}
 		}
 	});
+
+
+$('#file-dialog-form form').iframePostForm({
+		json: true,
+		post: function() {
+			console.log("Caricamento...");
+		},
+		complete: function(data) {
+			if ( ! data || ! data.success ) {
+				// Errore
+				var txt = 'Errore';
+				if ( data.error )
+					txt += ": " + data.error;
+				alert(txt);
+				return;
+			}
+			// Tutto OK
+
+			caricaListaSezioni();
+			$( "#file-dialog-form" ).dialog( "close" );
+		}
+	});
+
+
+
+
 
 });
 })(jQuery);

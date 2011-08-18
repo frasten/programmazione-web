@@ -287,6 +287,43 @@ EOF;
 	$json['success'] = 1;
 	esci();
 }
+else if ( $_GET['action'] == 'savefile' ) {
+
+	$titolo = ! empty( $_POST['titolo'] ) ? mysql_real_escape_string( $_POST['titolo'] ) : '';
+	$aggiornato = empty( $_POST['aggiornato'] ) ? 0 : 1;
+	$nascondi = empty( $_POST['nascondi'] ) ? 0 : 1;
+	if ( ! isset( $_POST['tipourl'] ) ) $_POST['tipourl'] = 'url';
+
+	if ( empty( $_POST['id_file'] ) ) {
+		// Nuovo file
+		$query = <<<EOF
+INSERT INTO `$config[db_prefix]file_materiale`
+EOF;
+	}
+	else {
+		// Aggiorno un file esistente
+		$id = intval( $_POST['id_file'] );
+
+		// Salvataggio file
+		$url = mysql_real_escape_string( gestisci_file_update( $id ) );
+
+		$query = <<<EOF
+UPDATE `$config[db_prefix]file_materiale`
+SET
+	`titolo` = '$titolo',
+	`aggiornato` = '$aggiornato',
+	`nascondi` = '$nascondi',
+	`url` = '$url'
+WHERE `id_file` = '$id'
+LIMIT 1
+EOF;
+		$result = mysql_query( $query, $db );
+		if ( mysql_errno() ) esci( 'Errore nel salvataggio.' );
+
+		$json['success'] = 1;
+		esci();
+	}
+}
 
 
 
@@ -297,7 +334,7 @@ function esci( $msg = '' ) {
 	exit;
 }
 
-function gestisci_file_upload( $prefix ) {
+function gestisci_file_upload( $prefix, $return_relativo = false ) {
 	global $config;
 
 	// Se non ho caricato nessun file, non faccio nulla
@@ -311,9 +348,6 @@ function gestisci_file_upload( $prefix ) {
 			esci( "Il file caricato &egrave; di un tipo non consentito." );
 		}
 	}
-
-	// Trailing slash
-	if ( substr( $config['upload_path'], -1 ) !== '/' ) $config['upload_path'] .= '/';
 
 	// Ho caricato un file
 	$path_uploaded_files = realpath( '..' ) . "/$config[upload_path]";
@@ -340,12 +374,65 @@ function gestisci_file_upload( $prefix ) {
 	$target_path = $path_uploaded_files . $filename;
 	if( move_uploaded_file( $_FILES['file']['tmp_name'], $target_path ) ) {
 		// File caricato correttamente.
+		if ( $return_relativo ) return $filename;
+
 		// Nota: due volte dirname perche' dobbiamo risalire di un livello (siamo in /ajax/)
 		return "http://$_SERVER[SERVER_NAME]" . dirname( dirname( $_SERVER['SCRIPT_NAME'] ) ) . "/$config[upload_path]$filename";
 	} else{
 		echo 'Errore nel caricamento del file, si prega di riprovare.';
 		return false;
 	}
+}
+
+
+/*
+ * metto un URL
+ *  => era uguale => non faccio niente
+ *  => e' diverso
+ *    => era un path relativo => cancello il vecchio file => scrivo il nuovo url (assoluto)
+ *    => era un path assoluto => sovrascrivo l'url e basta
+ * uploado un file
+ *  => era un path relativo => cancello il vecchio file => salvo il nuovo => scrivo il nuovo url relativo
+ *  => era un path assoluto => salvo il nuovo file => scrivo il nuovo url relativo
+ * */
+function gestisci_file_update( $id ) {
+	global $config, $db;
+
+	$query = <<<EOF
+SELECT `url`
+FROM `$config[db_prefix]file_materiale`
+WHERE `id_file` = '$id'
+LIMIT 1
+EOF;
+	$result = mysql_query( $query, $db );
+	$riga = mysql_fetch_assoc( $result );
+	if ( $_POST['tipourl'] == 'url' && $riga['url'] == $_POST['url'] ) return $_POST['url'];
+
+	if ( ! preg_match( "#^(?:http|https|ftp?)://#i", $riga['url'] ) ) {
+		// Era un path relativo, un file caricato con il form di upload
+		elimina_file( $riga['url'] );
+	}
+
+	if ( $_POST['tipourl'] == 'upload' ) {
+		return gestisci_file_upload( "d$id", true ); // d = didattica
+	}
+
+	if ( ! preg_match( "#^(?:http|https|ftp?)://#i", $_POST['url'] ) )
+		$_POST['url'] = "http://$_POST[url]";
+	return $_POST['url'];
+}
+
+
+function elimina_file( $path ) {
+	global $config;
+
+	// Per motivi di sicurezza non sono ammesse sottocartelle
+	$path = basename( $path );
+
+	$upload_path = realpath( '..' ) . "/$config[upload_path]";
+	$path = "$upload_path/$path";
+	if ( ! is_file( $path ) ) return false;
+	unlink( $path );
 }
 
 ?>
