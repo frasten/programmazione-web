@@ -265,6 +265,28 @@ EOF;
 	$json['success'] = 1;
 	esci();
 }
+else if ( $_GET['action'] == 'getfile' ) {
+	if ( empty( $_POST['id'] ) ) esci();
+	$id = intval( $_POST['id'] );
+
+	$query = <<<EOF
+SELECT `titolo`, `url`, `aggiornato`, `nascondi`
+FROM `$config[db_prefix]file_materiale`
+WHERE `id_file` = '$id'
+LIMIT 1
+EOF;
+	$result = mysql_query( $query, $db );
+	if ( ! mysql_num_rows( $result ) ) esci( 'ID non valido.' );
+
+	$riga = mysql_fetch_assoc( $result );
+	$riga['aggiornato'] = intval($riga['aggiornato']);
+	$riga['nascondi'] = intval($riga['nascondi']);
+
+	$json = array_merge( $json, $riga );
+
+	$json['success'] = 1;
+	esci();
+}
 
 
 

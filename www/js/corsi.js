@@ -232,7 +232,6 @@ $(document).ready(function() {
 		}
 	});
 
-	// TODO: abilitare il drag-n-drop sulla lista files
 
 	$( "#link-nuova-sezione" )
 		.click(function() {
@@ -270,6 +269,44 @@ $(document).ready(function() {
 		height: 270,
 		width: 600,
 		modal: true,
+		open: function() {
+			var id = parseInt($("#id_file").val());
+			if (!id) {
+				// Nuovo file, svuoto i campi
+				$("#titolo-file").val("");
+				$("#tipourl_upload").attr('checked', true);
+				$("#file-aggiornato").attr('checked', true);
+				$("#nascondi-file").attr('checked', false);
+				$("#url-file").val("");
+				$("#file-dialog-form input[type='file']").val("");
+			}
+			else {
+				// Carico i dati dal DB
+				$.post('ajax/corsi.php?action=getfile', {
+					id: id
+					},
+					function(data) {
+						if ( ! data || ! data.success ) {
+							// Errore
+							var txt = 'Errore';
+							if ( data.error )
+								txt += ": " + data.error;
+							alert(txt);
+							$( "#file-dialog-form" ).dialog( "close" );
+							return;
+						}
+						// Riempio il form
+						$("#titolo-file").val(data.titolo);
+						$("#tipourl_url").attr('checked', true);
+						$("#url-file").val(data.url);
+						$("#file-aggiornato").attr('checked', data.aggiornato == true);
+						$("#nascondi-file").attr('checked', data.nascondi == true);
+						$("#file-dialog-form input[type='file']").val("");
+					},
+				"json"
+				);
+			}
+		},
 		buttons: {
 			"Annulla": function() {
 				$( this ).dialog( "close" );

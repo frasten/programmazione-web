@@ -214,7 +214,7 @@ EOF;
 
 	<!-- Lista di files -->
 	<h4>File in questa sezione:</h4>
-		<a href='javascript:void(0)'>Aggiungi nuovo file</a>
+		<a href='javascript:void(0)' onclick='apriDialogoFile(0)'>Aggiungi nuovo file</a>
 		<?php
 			echo "<ul id='lista-file-sezione' class='lista-dnd'></ul>\n";
 		?>
@@ -233,7 +233,7 @@ EOF;
 		</p>
 
 		<p>
-			<input type='radio' name='tipourl' id='tipourl_url' value=''>
+			<input type='radio' name='tipourl' id='tipourl_url' value='' />
 			<label for='tipourl_url' class='etichetta'>
 				URL:
 				<input type='text' name='url' id='url-file' class='dx'/>
@@ -241,7 +241,7 @@ EOF;
 		</p>
 
 		<p>
-			<input type='radio' name='tipourl' id='tipourl_upload' value=''>
+			<input type='radio' name='tipourl' id='tipourl_upload' value='' />
 			<label for='tipourl_upload' class='etichetta'>
 				Carica file:
 				<input type='file' class='dx' />
