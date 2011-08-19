@@ -184,11 +184,15 @@ $(document).ready(function() {
 			var id = parseInt($("#id_sezione").val());
 			if (!id) {
 				// Nuova sezione, svuoto i campi
+				$("#sezione-blocco-listafile").hide();
 				$("#titolo-sezione").val("");
 				$('#note-sezione').html('');
 				$("#lista-file-sezione").empty();
+				$(this).dialog("option", "height", 370);
 			}
 			else {
+				$("#sezione-blocco-listafile").show();
+				$(this).dialog("option", "height", 500);
 				// Carico i dati dal DB
 				caricaListaFile(id);
 				$("#file-dialog-form input[name='id_sezione']").val(id)

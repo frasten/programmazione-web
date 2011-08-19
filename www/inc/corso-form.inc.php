@@ -232,12 +232,14 @@ EOF;
 		<textarea class="tinymce" name='note' id='note-sezione'></textarea>
 	</form>
 
-	<!-- Lista di files -->
-	<h4>File in questa sezione:</h4>
-		<a href='javascript:void(0)' onclick='apriDialogoFile(0)'>Aggiungi nuovo file</a>
-		<?php
-			echo "<ul id='lista-file-sezione' class='lista-dnd'></ul>\n";
-		?>
+	<div id='sezione-blocco-listafile'>
+		<!-- Lista di files -->
+		<h4>File in questa sezione:</h4>
+			<a href='javascript:void(0)' onclick='apriDialogoFile(0)'>Aggiungi nuovo file</a>
+			<?php
+				echo "<ul id='lista-file-sezione' class='lista-dnd'></ul>\n";
+			?>
+	</div>
 </div><!-- /#sezioni-dialog-form -->
 
 <div id="file-dialog-form" title='File:'>
