@@ -221,38 +221,54 @@ else if ( $_GET['action'] == 'loadlistasezioni' ) {
 	$id_corso = intval( $_GET['id_corso'] );
 
 	$query = <<<EOF
-SELECT
-	s.`id_sezione`,
-	s.`titolo` AS titolo_sez,
-	`id_file`,
-	f.`titolo` AS titolo_file,
-	`nascondi`
-FROM `$config[db_prefix]sezione` AS s
-LEFT JOIN `$config[db_prefix]file_materiale` AS f
-	USING (`id_sezione`)
-WHERE `id_corso` = '$id_corso' AND `nascondi` = '0'
-ORDER BY `id_sezione` ASC, `ordine` ASC
+SELECT `id_sezione`, `titolo`
+FROM `$config[db_prefix]sezione`
+WHERE `id_corso` = '$id_corso'
+ORDER BY `id_sezione` ASC
 EOF;
 	$result = mysql_query( $query, $db );
 
-	if ( mysql_num_rows( $result ) ) {
-		$oldsez = false;
-		while ( $riga = mysql_fetch_assoc( $result ) ) {
-			if ( $oldsez != $riga['id_sezione'] ) {
-				if ( $oldsez !== false ) echo "</ul>\n";
-				printf( "<a href='javascript:void(0)' onclick='apriDialogoSezione(%d)' style='font-weight: bold'>%s</a>\n",
-					$riga['id_sezione'], htmlspecialchars( $riga['titolo_sez'] ) );
-				echo "<ul>\n";
-				$oldsez = $riga['id_sezione'];
-				if ( ! $riga['id_file'] ) continue;
-			}
-			echo "<li>\n";
-			printf( "<a href='javascript:void(0)' onclick='apriDialogoFile(%s)'>%s</a>\n",
-				intval( $riga['id_file'] ),
-				htmlspecialchars( $riga['titolo_file'] ) );
-			echo "</li>\n";
+	$sezioni = array();
+	while ( $riga = mysql_fetch_assoc( $result ) ) {
+		$s = array(
+			'id'     => $riga['id_sezione'],
+			'titolo' => $riga['titolo'],
+			'files'      => array()
+		);
+
+		// Per ogni sezione carico eventuali files
+		$query = <<<EOF
+SELECT `id_file`, `titolo`
+FROM `$config[db_prefix]file_materiale`
+WHERE `id_sezione` = '$riga[id_sezione]' AND `nascondi` = '0'
+ORDER BY `ordine` ASC
+EOF;
+		$resultfile = mysql_query( $query, $db );
+		while ( $f = mysql_fetch_assoc( $resultfile ) ) {
+			$s['files'][] = array(
+				'id'     => $f['id_file'],
+				'titolo' => $f['titolo']
+			);
 		}
-		echo "</ul>\n";
+		$sezioni[] = $s;
+	}
+
+
+	if ( sizeof( $sezioni ) ) {
+		foreach ( $sezioni as $sez ) {
+			printf( "<a href='javascript:void(0)' onclick='apriDialogoSezione(%d)' style='font-weight: bold'>%s</a>\n",
+				intval( $sez['id'] ), htmlspecialchars( $sez['titolo'] ) );
+
+			echo "<ul>\n";
+			foreach ( $sez['files'] as $f ) {
+				echo "<li>\n";
+				printf( "<a href='javascript:void(0)' onclick='apriDialogoFile(%s)'>%s</a>\n",
+					intval( $f['id'] ),
+					htmlspecialchars( $f['titolo'] ) );
+				echo "</li>\n";
+			}
+			echo "</ul>\n";
+		}
 	}
 }
 else if ( $_GET['action'] == 'savefileorder' ) {
