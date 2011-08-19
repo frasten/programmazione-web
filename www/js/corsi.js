@@ -122,6 +122,7 @@ $(document).ready(function() {
 	$(".eyeicon").click(save_visibility)
 
 
+	if ($("#news-dialog-form").size()) {
 	$('#news-dialog-form form').iframePostForm({
 		json: true,
 		post: function() {
@@ -173,6 +174,7 @@ $(document).ready(function() {
 			}
 		}
 	});
+	}
 
 	// GESTIONE SEZIONI
 	$( "#sezioni-dialog-form" ).dialog({
@@ -305,6 +307,7 @@ $(document).ready(function() {
 	});
 
 
+	if ($("#file-dialog-form").size()) {
 	$('#file-dialog-form form').iframePostForm({
 		json: true,
 		post: function() {
@@ -377,6 +380,7 @@ $(document).ready(function() {
 			$( "#file-dialog-form" ).dialog( "close" );
 		}
 	});
+	}
 
 	$("#url-file").focus(function() {
 		$("#tipourl_url").attr('checked', true);
@@ -469,5 +473,6 @@ function apriDialogoFile(id) {
 }
 
 function caricaListaSezioni() {
+	if ( typeof(id_corso) == 'undefined' ) return;
 	$("#lista-sezioni").load('ajax/corsi.php?action=loadlistasezioni&id_corso=' + id_corso)
 }
