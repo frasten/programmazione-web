@@ -176,49 +176,7 @@ $(document).ready(function() {
 			}
 			else {
 				// Carico i dati dal DB
-				$.post('ajax/corsi.php?action=getsezione', {
-					id: id
-					},
-					function(data) {
-						if ( ! data || ! data.success ) {
-							// Errore
-							var txt = 'Errore';
-							if ( data.error )
-								txt += ": " + data.error;
-							alert(txt);
-							$( "#sezioni-dialog-form" ).dialog( "close" );
-							return;
-						}
-						// Riempio il form
-						$("#titolo-sezione").val(data.titolo);
-						$('#note-sezione').html(data.note);
-						$("#lista-file-sezione").empty();
-						for (var key in data.files) {
-							var f = data.files[key];
-							$("#lista-file-sezione")
-								.append($("<li />", {
-									class: 'ui-corner-all',
-									id: 'file_' + f.id_file
-								}))
-								.find(":last")
-									.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
-									.append($("<a/>", {
-											href: 'javascript:void(0)',
-											class: 'iconalink eyeicon',
-											title: f.nascondi ? 'File nascosto' : 'File visibile',
-											click: save_visibility /* TODO */
-										}))
-										.find(":last")
-										.append($("<img>", {
-											src: 'img/icone/' + (f.nascondi ? 'eye_no.png' : 'eye.png'),
-											alt: f.nascondi ? 'File nascosto' : 'File visibile'
-											}))
-									.parent()
-									.append(" " + f.titolo);
-						}
-					},
-				"json"
-				);
+				caricaListaFile(id);
 				$("#file-dialog-form input[name='id_sezione']").val(id)
 			}
 		},
@@ -346,33 +304,53 @@ $(document).ready(function() {
 			// Tutto OK
 
 			if ( $( "#sezioni-dialog-form" ).dialog("isOpen") ) {
-				// Aggiorniamo la lista di files nell'altro dialogo
-				$("#lista-file-sezione")
-					.prepend($("<li />", {
-						class: 'ui-corner-all',
-						id: 'file_' + data.id_file,
-						css: {display: 'none'}
-					}))
-					.find(":first")
-						.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
-						.append($("<a/>", {
-								href: 'javascript:void(0)',
-								class: 'iconalink eyeicon',
-								title: data.nascondi ? 'File nascosto' : 'File visibile',
-								click: save_visibility /* TODO */
-							}))
-							.find(":last")
-							.append($("<img>", {
-								src: 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'),
-								alt: data.nascondi ? 'File nascosto' : 'File visibile'
+				if (!parseInt($('#id_file').val())) {
+					// Aggiorniamo la lista di files nell'altro dialogo
+					$("#lista-file-sezione")
+						.prepend($("<li />", {
+							class: 'ui-corner-all',
+							id: 'file_' + data.id_file,
+							css: {display: 'none'}
+						}))
+						.find(":first")
+							.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
+							.append($("<a/>", {
+									href: 'javascript:void(0)',
+									class: 'iconalink eyeicon',
+									title: data.nascondi ? 'File nascosto' : 'File visibile',
+									click: save_visibility
 								}))
-						.parent()
-						.append(" " + data.titolo)
-					.animate({
-						"height": "toggle",
-						"opacity": "toggle"
-						}, 600);
-				salvaOrdineDati(); // che carica il refresh della lista sezioni
+								.find(":last")
+								.append($("<img>", {
+									src: 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'),
+									alt: data.nascondi ? 'File nascosto' : 'File visibile'
+									}))
+							.parent()
+							.append($("<a/>", {
+									href: 'javascript:void(0)',
+									class: 'iconalink',
+									title: 'Modifica'
+								})
+								.click(data.id_file, function(ev){apriDialogoFile(ev.data)})
+								)
+								.find(":last")
+								.append($("<img>", {
+									src: 'img/icone/page_white_edit.png',
+									alt: 'Modifica'
+									}))
+							.parent()
+							.append(" " + data.titolo)
+						.animate({
+							"height": "toggle",
+							"opacity": "toggle"
+							}, 600);
+					salvaOrdineDati(); // che carica il refresh della lista sezioni
+				} // fine nuovo file
+				else {
+					// modifica file esistente
+					caricaListaFile(parseInt($( "#id_sezione" ).val()));
+					caricaListaSezioni();
+				}
 			}
 			else {
 				caricaListaSezioni();
@@ -399,6 +377,64 @@ $(document).ready(function() {
 
 	}
 
+	function caricaListaFile(id_sezione) {
+		$.post('ajax/corsi.php?action=getsezione', {
+			id: id_sezione
+			},
+			function(data) {
+				if ( ! data || ! data.success ) {
+					// Errore
+					var txt = 'Errore';
+					if ( data.error )
+						txt += ": " + data.error;
+					alert(txt);
+					$( "#sezioni-dialog-form" ).dialog( "close" );
+					return;
+				}
+				// Riempio il form
+				$("#titolo-sezione").val(data.titolo);
+				$('#note-sezione').html(data.note);
+				$("#lista-file-sezione").empty();
+				for (var key in data.files) {
+					var f = data.files[key];
+					$("#lista-file-sezione")
+						.append($("<li />", {
+							class: 'ui-corner-all',
+							id: 'file_' + f.id_file
+						}))
+						.find(":last")
+							.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
+							.append($("<a/>", {
+									href: 'javascript:void(0)',
+									class: 'iconalink eyeicon',
+									title: f.nascondi ? 'File nascosto' : 'File visibile',
+									click: save_visibility
+								}))
+								.find(":last")
+								.append($("<img>", {
+									src: 'img/icone/' + (f.nascondi ? 'eye_no.png' : 'eye.png'),
+									alt: f.nascondi ? 'File nascosto' : 'File visibile'
+									}))
+							.parent()
+							.append($("<a/>", {
+									href: 'javascript:void(0)',
+									class: 'iconalink',
+									title: 'Modifica'
+								})
+								.click(f.id_file, function(ev){apriDialogoFile(ev.data)})
+								)
+								.find(":last")
+								.append($("<img>", {
+									src: 'img/icone/page_white_edit.png',
+									alt: 'Modifica'
+									}))
+							.parent()
+							.append(" " + f.titolo);
+				}
+			},
+		"json"
+		);
+	}
 
 
 });
