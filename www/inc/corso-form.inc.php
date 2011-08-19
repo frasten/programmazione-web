@@ -49,20 +49,26 @@ EOF;
 
 	<div id='lista_docenti'>
 		<span class='etichetta'>Docenti:</span>
-		<ul class='lista_checkbox'>
+		<table id='tbl_insert_docenti'>
+			<thead>
+				<th></th>
+				<th>Docente</th>
+				<th>Esercitat.</th>
+			</thead>
+			<tbody>
 		<?php /* Elenco dei docenti, con checkbox */
 
 		// Carico i docenti di questo corso, se ne sto modificando uno gia' esistente:
 		if ( $corso ) {
 			$query = <<<EOF
-SELECT `id_docente`
+SELECT `id_docente`,`esercitatore`
 FROM `$config[db_prefix]docente_corso`
 WHERE `id_corso` = '$corso[id_corso]'
 EOF;
 			$result = mysql_query( $query, $db );
 			$docenti = array();
 			while ( $riga = mysql_fetch_assoc( $result ) ) {
-				$docenti[]  = $riga['id_docente'];
+				$docenti[$riga['id_docente']] = $riga['esercitatore'];
 			}
 		}
 
@@ -74,18 +80,32 @@ EOF;
 		$result = mysql_query( $query, $db );
 
 		while ( $riga = mysql_fetch_assoc( $result ) ) {
-			echo "<li>\n";
-
+			echo "<tr>\n";
+			echo "<td>\n";
 			$checked = '';
-			if ( $corso && in_array( $riga['id_docente'], $docenti ) )
+			if ( $corso && array_key_exists( $riga['id_docente'], $docenti ) )
 				$checked = 'checked="checked" ';
 			echo "<input type='checkbox' name='docente[]' id='docente_$riga[id_docente]' value='$riga[id_docente]' $checked/>\n";
 
 			printf( "<label for='docente_$riga[id_docente]'>%s</label>\n", htmlspecialchars( $riga['nome'] ) );
-			echo "</li>\n";
+			echo "</td>\n";
+
+			// Docente
+			$checked = $corso && isset( $docenti[$riga['id_docente']] ) && $docenti[$riga['id_docente']] == '0' ? 'checked="checked" ' : '';
+			echo "<td class='option'>\n";
+			echo "<input type='radio' name='tipodocente_$riga[id_docente]' value='0' $checked/>\n";
+			echo "</td>\n";
+			// Esercitatore
+			$checked = $corso && isset( $docenti[$riga['id_docente']] ) && $docenti[$riga['id_docente']] == '1' ? 'checked="checked" ' : '';
+			echo "<td class='option'>\n";
+			echo "<input type='radio' name='tipodocente_$riga[id_docente]' value='1' $checked/>\n";
+			echo "</td>\n";
+
+			echo "</tr>\n";
 		}
 		?>
-		</ul>
+			</tbody>
+		</table>
 	</div>
 
 	<div class='clear'></div>

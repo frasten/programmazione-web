@@ -1,6 +1,20 @@
 (function($) {
 $(document).ready(function() {
 
+	$("#tbl_insert_docenti [id^='docente_']").click(function(event) {
+		if ($(this).attr('checked'))
+			$($("#tbl_insert_docenti [name='tipodocente_" + $(this).val() + "']")[0]).attr('checked', true);
+		else
+			$("#tbl_insert_docenti [name='tipodocente_" + $(this).val() + "']").attr('checked', false)
+	});
+
+	$("#tbl_insert_docenti [name^='tipodocente_']").click(function(event) {
+		var id = $(this).attr('name').split('_')[1];
+
+		$("#docente_" + id).attr('checked', true);
+	});
+
+
 	var opzioni = {
 		script_url : 'js/tiny_mce/tiny_mce.js',
 		language: 'it',

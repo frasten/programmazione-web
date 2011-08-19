@@ -22,22 +22,34 @@ if ( ! $result || ! mysql_num_rows( $result ) ) {
 $corso = mysql_fetch_assoc( $result );
 ?>
 <h2><?php echo htmlspecialchars( $corso['nome'] ) /* TODO: anno scolastico */?></h2>
-<span class='docente'>Docenti:
+<span class='docente'>
 <?php
 $query = <<<EOF
-SELECT `nome`
+SELECT `nome`, `esercitatore`
 FROM `$config[db_prefix]docente`
 JOIN `$config[db_prefix]docente_corso`
 	USING (`id_docente`)
 WHERE `id_corso` = '$id'
 EOF;
 $result = mysql_query( $query, $db );
-$stampa = array();
-while( $doc = mysql_fetch_assoc( $result ) ) {
-	$stampa[] = "Prof. $doc[nome]";
+$esercitatori = array();
+$docenti = array();
+while( $riga = mysql_fetch_assoc( $result ) ) {
+	if ( ! $riga['esercitatore'] )
+		$docenti[] = "Prof. $riga[nome]";
+	else
+		$esercitatori[] = "$riga[nome]";
 }
-echo implode( ', ', $stampa );
-unset( $stampa );
+printf( "Docent%s: ", sizeof( $docenti ) == 1 ? 'e': 'i');
+echo implode( ', ', $docenti );
+unset( $docenti );
+echo "<br />\n";
+
+if ( sizeof( $esercitatori ) ) {
+	echo "Esercitazioni: ";
+	echo implode( ', ', $esercitatori );
+}
+unset( $esercitatori );
 
 ?></span>
 

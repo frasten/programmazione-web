@@ -198,3 +198,7 @@
 #titolo-file, #url-file {
 	width: 350px;
 }
+
+#tbl_insert_docenti .option {
+	text-align: center;
+}

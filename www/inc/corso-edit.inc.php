@@ -74,12 +74,15 @@ EOF;
 	if ( $docenti ) {
 		$query = <<<EOF
 INSERT INTO `$config[db_prefix]docente_corso`
-(`id_docente`,`id_corso`)
+(`id_docente`,`id_corso`,`esercitatore`)
 VALUES 
 EOF;
 		$chunks = array();
 		foreach ( $docenti as $doc ) {
-			$chunks[] = "('$doc','$id')";
+			$es = 0;
+			if ( isset( $_POST["tipodocente_$doc"] ) )
+				$es = intval( $_POST["tipodocente_$doc"] );
+			$chunks[] = "('$doc','$id','$es')";
 		}
 		$query .= implode( ', ', $chunks );
 		mysql_query( $query, $db );
