@@ -315,10 +315,11 @@ EOF;
 }
 else if ( $_GET['action'] == 'savefile' ) {
 
-	$titolo = ! empty( $_POST['titolo'] ) ? mysql_real_escape_string( $_POST['titolo'] ) : '';
+	$titolo = ! empty( $_POST['titolo'] ) ? strip_tags( $_POST['titolo'] ) : ''; // Anti XSS
 	$aggiornato = empty( $_POST['aggiornato'] ) ? 0 : 1;
 	$nascondi = empty( $_POST['nascondi'] ) ? 0 : 1;
 	if ( ! isset( $_POST['tipourl'] ) ) $_POST['tipourl'] = 'url';
+	$titolo_esc = mysql_real_escape_string( $titolo );
 
 	if ( empty( $_POST['id_file'] ) ) {
 		// Nuovo file
@@ -329,7 +330,7 @@ else if ( $_GET['action'] == 'savefile' ) {
 INSERT INTO `$config[db_prefix]file_materiale`
 (`id_sezione`,`titolo`,`url`,`aggiornato`,`nascondi`)
 VALUES
-('$id_sezione','$titolo','','$aggiornato','$nascondi')
+('$id_sezione','$titolo_esc','','$aggiornato','$nascondi')
 EOF;
 		mysql_query( $query, $db );
 
@@ -372,7 +373,7 @@ EOF;
 		$query = <<<EOF
 UPDATE `$config[db_prefix]file_materiale`
 SET
-	`titolo` = '$titolo',
+	`titolo` = '$titolo_esc',
 	`aggiornato` = '$aggiornato',
 	`nascondi` = '$nascondi',
 	`url` = '$url'
@@ -384,7 +385,7 @@ EOF;
 
 	}
 
-	$json['titolo'] = $_POST['titolo'];
+	$json['titolo'] = $titolo;
 	$json['nascondi'] = $nascondi;
 	$json['aggiornato'] = $aggiornato;
 	$json['id_file'] = $id;
