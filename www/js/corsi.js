@@ -129,10 +129,11 @@ $(document).ready(function() {
 		json: true,
 		post: function() {
 			// Probabilmente eliminabile, ma non si sa mai, un refresh fa sempre bene.
+			$('#news-dialog-form').mask("Salvataggio...", 200);
 			tinyMCE.triggerSave();
-			console.log("Caricamento...");
 		},
 		complete: function(data) {
+			$('#news-dialog-form').unmask();
 			if ( ! data || ! data.success ) {
 				// Errore
 				var txt = 'Errore';
@@ -315,9 +316,10 @@ $(document).ready(function() {
 	$('#file-dialog-form form').iframePostForm({
 		json: true,
 		post: function() {
-			console.log("Caricamento...");
+			$('#file-dialog-form').mask("Salvataggio...",100);
 		},
 		complete: function(data) {
+			$('#file-dialog-form').unmask();
 			if ( ! data || ! data.success ) {
 				// Errore
 				var txt = 'Errore';
