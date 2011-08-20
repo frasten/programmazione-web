@@ -1,5 +1,7 @@
 <?php
 
+require_once( 'json.inc.php' );
+
 function ajax_esci( $msg = '' ) {
 	global $json;
 	if ( $msg ) $json['error'] = $msg;
