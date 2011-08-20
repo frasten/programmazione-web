@@ -19,6 +19,21 @@ if ( ! isset( $_POST['salva'] ) ) { // Mostro form per l'inserimento
 	else
 		$_POST['facolta'] = 1;
 
+
+	$questanno = intval( date( 'Y' ) );
+	if ( isset( $_POST['annoaccademico'] ) )
+		$_POST['annoaccademico'] = intval( $_POST['annoaccademico'] );
+	else
+		$_POST['annoaccademico'] = $questanno;
+
+
+	if ( $_POST['annoaccademico'] < $questanno - $config['anni_accademici_passati'] ||
+	     $_POST['annoaccademico'] > $questanno + $config['anni_accademici_futuri'] ) {
+		echo "Anno non valido.";
+		echo "<br /><a href='javascript:history.back()'>Torna</a>";
+	}
+
+
 	if ( isset( $_POST['docente'] ) ) {
 		$docenti = array_map( 'intval', $_POST['docente'] );
 		unset( $_POST['docente'] );
@@ -32,11 +47,11 @@ if ( ! isset( $_POST['salva'] ) ) { // Mostro form per l'inserimento
 INSERT INTO `$config[db_prefix]corso`
 (`id_facolta`,`nome`,`intestazione`,`orario`,
 `ricevimento`,`obiettivi`,`programma`,
-`esame`,`materiali`)
+`esame`,`materiali`,`annoaccademico`)
 VALUES
 ('$_POST[facolta]','$_POST[nome]','$_POST[intestaz]','$_POST[orario]',
 '$_POST[ricevimento]','$_POST[obiettivi]','$_POST[programma]',
-'$_POST[esame]','$_POST[materiali]')
+'$_POST[esame]','$_POST[materiali]','$_POST[annoaccademico]')
 EOF;
 	mysql_query( $query, $db );
 	$id = mysql_insert_id( $db );

@@ -14,6 +14,32 @@
 	<label for='nome' class='etichetta'>Nome corso:</label>
 	<input type='text' name='nome' id='nomecorso' value='<?php riempi( $corso['nome'], 'attr' ) ?>'/>
 
+	<p>
+		<label for='annoaccademico' class='etichetta'>Anno accademico:</label>
+		<select name='annoaccademico' id='annoaccademico'>
+<?php
+	$questanno = intval( date( 'Y' ) );
+	for ( $i = $questanno - $config['anni_accademici_passati']; $i <= $questanno + $config['anni_accademici_futuri']; $i++ ) {
+		$annocheck = '';
+		if ( ! $corso ) {
+			if ( intval( date( 'n' ) ) >= 5 ) {
+				// Da maggio in poi consideriamo per i nuovi corsi l'anno accademico futuro
+				$annocheck = $questanno;
+			}
+			else // Prima di maggio, l'anno accademico in corso.
+				$annocheck = $questanno - 1;
+		}
+		else {
+			$annocheck = $corso['annoaccademico'];
+		}
+
+		$selected = $i == $annocheck ? 'selected="selected" ' : '';
+		printf( "<option value='%d' %s>%d/%d</option>\n", $i, $selected, $i, $i + 1 );
+	}
+?>
+		</select>
+	</p>
+
 	<div id='lista_facolta'>
 		<span class='etichetta'>Facolt&agrave;:</span>
 		<ul class='lista_checkbox'>

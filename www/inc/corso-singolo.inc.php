@@ -21,7 +21,8 @@ if ( ! $result || ! mysql_num_rows( $result ) ) {
 
 $corso = mysql_fetch_assoc( $result );
 ?>
-<h2><?php echo htmlspecialchars( $corso['nome'] ) /* TODO: anno scolastico */?></h2>
+<h2><?php echo htmlspecialchars( $corso['nome'] );
+echo " - a.a. $corso[annoaccademico]/" . ( $corso['annoaccademico'] + 1 ) ?></h2>
 <span class='docente'>
 <?php
 $query = <<<EOF

@@ -20,6 +20,9 @@ $config['persistent_cookies_timeout'] = 60 * 60 * 24 * 7; // Una settimana
 // Relativo alla root del sito
 $config['upload_path'] = 'uploads/';
 
+$config['anni_accademici_passati'] = 4;
+$config['anni_accademici_futuri'] = 1;
+
 /*
  * COMANDI MYSQL PER LA CREAZIONE DEL DB
  * (NB: dati di test e autenticazione solo da localhost):

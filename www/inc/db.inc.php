@@ -134,6 +134,7 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]corso` (
 	`programma` TEXT,
 	`esame` TEXT,
 	`materiali` TEXT,
+	`annoaccademico` INTEGER NOT NULL DEFAULT 2011,
 	PRIMARY KEY (`id_corso`)
 )
 CHARACTER SET utf8 COLLATE utf8_general_ci;

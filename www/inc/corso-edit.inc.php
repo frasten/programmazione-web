@@ -34,6 +34,19 @@ else: // Richiedo il salvataggio vero e proprio.
 	}
 	$_POST['facolta'] = intval( $_POST['facolta'] );
 
+	$questanno = intval( date( 'Y' ) );
+	if ( isset( $_POST['annoaccademico'] ) )
+		$_POST['annoaccademico'] = intval( $_POST['annoaccademico'] );
+	else
+		$_POST['annoaccademico'] = $questanno;
+
+
+	if ( $_POST['annoaccademico'] < $questanno - $config['anni_accademici_passati'] ||
+	     $_POST['annoaccademico'] > $questanno + $config['anni_accademici_futuri'] ) {
+		echo "Anno non valido.";
+		echo "<br /><a href='javascript:history.back()'>Torna</a>";
+	}
+
 	if ( isset( $_POST['docente'] ) ) {
 		$docenti = array_map( 'intval', $_POST['docente'] );
 		unset( $_POST['docente'] );
@@ -54,7 +67,8 @@ SET
 `obiettivi` = '$_POST[obiettivi]',
 `programma` = '$_POST[programma]',
 `esame` = '$_POST[esame]',
-`materiali` = '$_POST[materiali]'
+`materiali` = '$_POST[materiali]',
+`annoaccademico` = '$_POST[annoaccademico]'
 WHERE `id_corso` = '$id'
 LIMIT 1
 EOF;
