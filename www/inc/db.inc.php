@@ -185,7 +185,7 @@ EOF;
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]docente_corso` (
 	`id_docente` INTEGER  NOT NULL,
 	`id_corso` INTEGER  NOT NULL,
-	`esercitatore` ENUM('0','1')  NOT NULL DEFAULT '0'
+	`esercitatore` ENUM('0','1')  NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id_docente`,`id_corso`)
 )
 CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -219,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]file_materiale` (
 	`url` VARCHAR(255)  NOT NULL,
 	`aggiornato` ENUM('0','1')  NOT NULL DEFAULT '0',
 	`nascondi` ENUM('0','1')  NOT NULL DEFAULT '0',
-	`ordine` INTEGER NOT NULL DEFAULT 0
+	`ordine` INTEGER NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id_file`)
 )
 CHARACTER SET utf8 COLLATE utf8_general_ci;
