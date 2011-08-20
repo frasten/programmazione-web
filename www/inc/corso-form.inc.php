@@ -163,7 +163,7 @@ EOF;
 <script type='text/javascript' src='js/jquery.iframe-post-form.js'></script>
 <div id="news-dialog-form" title='Gestione news'>
 	<!-- Inserimento di una nuova news -->
-	<form action='ajax/corsi.php?action=savenews' method='post' enctype="multipart/form-data">
+	<form action='ajax/news.php?action=savenews' method='post' enctype="multipart/form-data">
 		<input type='hidden' name='id_corso' value='<?php riempi( $corso['id_corso'], 'int' ) ?>' />
 		<fieldset>
 			<h4>Inserisci una nuova news</h4>
@@ -243,7 +243,7 @@ EOF;
 </div><!-- /#sezioni-dialog-form -->
 
 <div id="file-dialog-form" title='File:'>
-	<form action='ajax/corsi.php?action=savefile' method='post' enctype="multipart/form-data">
+	<form action='ajax/files.php?action=savefile' method='post' enctype="multipart/form-data">
 		<input type='hidden' name='id_sezione' value='' />
 		<input type='hidden' id='id_file' name='id_file' value='' />
 

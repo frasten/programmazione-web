@@ -74,7 +74,7 @@ $(document).ready(function() {
 		stop: function(event, ui) {
 			$("#lista-news").mask("Salvataggio...", 200);
 
-			$.get('ajax/corsi.php?action=savenewsorder&id_corso=' + $("[name='id_corso']").val() +
+			$.get('ajax/news.php?action=savenewsorder&id_corso=' + $("[name='id_corso']").val() +
 				'&' + $('#lista-news').sortable("serialize"),
 				function(data) {
 					$("#lista-news").unmask();
@@ -290,7 +290,7 @@ $(document).ready(function() {
 			else {
 				// Carico i dati dal DB
 				$("#file-dialog-form").mask("Caricamento...", 100);
-				$.post('ajax/corsi.php?action=getfile', {
+				$.post('ajax/files.php?action=getfile', {
 					id: id
 					},
 					function(data) {
@@ -409,7 +409,7 @@ $(document).ready(function() {
 
 	function salvaOrdineFiles() {
 		$("#lista-file-sezione").mask("Salvataggio...", 100);
-		$.get('ajax/corsi.php?action=savefileorder&id_sezione=' + $("[name='id_sezione']").val() +
+		$.get('ajax/files.php?action=savefileorder&id_sezione=' + $("[name='id_sezione']").val() +
 			'&' + $('#lista-file-sezione').sortable("serialize"),
 			function(data) {
 				$("#lista-file-sezione").unmask();
