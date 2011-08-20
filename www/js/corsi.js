@@ -1,6 +1,7 @@
 (function($) {
 $(document).ready(function() {
 
+	// Gestione click crocette/radio buttons per i docenti
 	$("#tbl_insert_docenti [id^='docente_']").click(function(event) {
 		if ($(this).attr('checked'))
 			$($("#tbl_insert_docenti [name='tipodocente_" + $(this).val() + "']")[0]).attr('checked', true);
@@ -13,6 +14,20 @@ $(document).ready(function() {
 
 		$("#docente_" + id).attr('checked', true);
 	});
+
+
+	// Validazione form corso
+	var validator = $("#frm_corso").validate({
+		rules: {
+			nome: "required"
+		},
+		// Dove mettiamo gli errori
+		errorPlacement: function(error, element) {
+			console.log(element);
+			element.after(error);
+		}
+	});
+
 
 
 	var opzioni = {

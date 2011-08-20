@@ -27,6 +27,11 @@ EOF;
 else: // Richiedo il salvataggio vero e proprio.
 
 	// Controlli di routine e pulizia
+	if ( empty( $_POST['nome'] ) ) {
+		echo "Errore: il campo 'nome corso' &egrave; vuoto.";
+		echo "<br /><a href='javascript:history.back()'>Torna</a>";
+		return;
+	}
 	$_POST['facolta'] = intval( $_POST['facolta'] );
 
 	if ( isset( $_POST['docente'] ) ) {

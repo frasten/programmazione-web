@@ -23,6 +23,7 @@ form label.error {
 	color: red;
 	display: inline;
 	float: none !important;
+	padding-left: 5px;
 }
 
 /* FORM INSERIMENTO PUBBLICAZIONE */
