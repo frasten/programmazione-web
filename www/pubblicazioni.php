@@ -25,7 +25,12 @@ else if ( $_GET['action'] == 'new' ) {
 }
 else if ( $_GET['action'] == 'savenew' ) {
 	// Effettuo il salvataggio nel database di una pubblicazione
-	include 'inc/pub-save.inc.php';
+	$msg = include( 'inc/pub-save.inc.php' );
+	if ( $msg ) {
+		echo "Errore: ";
+		echo $msg;
+		echo "<br /><a href='javascript:history.back()'>Torna</a>";
+	}
 }
 
 

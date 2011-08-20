@@ -1,7 +1,15 @@
 <?php
 
-// TODO: VALIDAZIONE
-// TODO: se chiamo senza inviare dati, non devo fare nulla
+// se chiamo senza inviare dati, non devo fare nulla
+if ( ! isset( $_POST['salva'] ) ) {
+	header( "Location: pubblicazioni.php" );
+	exit;
+}
+
+if ( empty( $_POST['titolo'] ) ) return "Titolo mancante.";
+if ( empty( $_POST['anno'] ) ) return "Anno mancante.";
+if ( intval( $_POST['anno'] ) != $_POST['anno'] ) return "L'anno deve essere un numero.";
+if ( intval( $_POST['anno'] ) > intval( date( "Y" ) ) ) return "Impossibile salvare un anno nel futuro.";
 
 
 $_POST = array_map('mysql_real_escape_string', $_POST);
@@ -45,6 +53,19 @@ switch ( $_POST['categoria'] ) {
 		echo "Errore nei dati.";
 		return;
 }
+if ( check_empty( 'titolo_contesto') ) return "Nome contesto mancante.";
+if ( check_empty( 'volume') ) return "Volume mancante.";
+if ( check_int( 'volume') ) return "Il volume deve essere un numero intero.";
+if ( check_int( 'numero') ) return "Il numero deve essere un numero intero.";
+if ( check_empty( 'pag_inizio') ) return "Numero di pagina d'inizio mancante.";
+if ( check_int( 'pag_inizio') ) return "Il numero di pagina iniziale deve essere un numero intero.";
+if ( check_empty( 'pag_fine') ) return "Numero di pagina finale mancante.";
+if ( check_int( 'pag_fine') ) return "Il numero di pagina finale deve essere un numero intero.";
+if ( $data['pag_inizio'] != 'NULL' && $_POST['pag_inizio'] > $_POST['pag_fine'] ) return "Il numero di pagina d'inizio deve essere minore di quello di fine.";
+if ( check_empty( 'curatori_libro') ) return "Curatori del libro mancanti.";
+if ( check_empty( 'editore') ) return "Editore mancante.";
+if ( check_empty( 'num_pagine') ) return "Numero di pagine mancante.";
+if ( check_int( 'num_pagine') ) return "Il numero di pagine deve essere un numero intero.";
 
 
 $query = <<<EOF
@@ -61,6 +82,7 @@ EOF;
 mysql_query( $query, $db );
 
 $id_pub = mysql_insert_id( $db );
+if ( ! $id_pub ) return "Errore nel salvataggio.";
 
 
 // AUTORI
@@ -187,4 +209,21 @@ function gestisci_file_upload( $prefix ) {
 		return false;
 	}
 }
+
+function check_int( $key ) {
+	global $data;
+
+	if ( $data[$key] == 'NULL' ) return false;
+	if ( intval( $_POST[$key] ) == $_POST[$key] ) return false;
+	return true;
+}
+
+function check_empty( $key ) {
+	global $data;
+
+	if ( $data[$key] == 'NULL' ) return false;
+	if ( empty( $_POST[$key] ) ) return true;
+	return false;
+}
+
 ?>
