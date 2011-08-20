@@ -18,6 +18,8 @@ if ( empty( $_GET['action'] ) ) ajax_esci();
 if ( $_GET['action'] == 'savenews' ) {
 	/* Creazione di una nuova news */
 
+	if ( empty( $_POST['testo'] ) ) ajax_esci( 'Inserire il contenuto della news.' );
+
 	$id_corso = intval( $_POST['id_corso'] );
 	if ( $id_corso <= 0 ) ajax_esci( 'ID non valido.' );
 
