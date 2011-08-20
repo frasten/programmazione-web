@@ -58,10 +58,21 @@ EOF;
 }
 else if ( $_GET['action'] == 'savefile' ) {
 
-	$titolo = ! empty( $_POST['titolo'] ) ? strip_tags( $_POST['titolo'] ) : ''; // Anti XSS
+	if ( empty( $_POST['titolo'] ) ) ajax_esci( 'Inserire un titolo per il file.' );
+	$titolo = strip_tags( $_POST['titolo'] ); // Anti XSS
 	$aggiornato = empty( $_POST['aggiornato'] ) ? 0 : 1;
 	$nascondi = empty( $_POST['nascondi'] ) ? 0 : 1;
 	if ( ! isset( $_POST['tipourl'] ) ) $_POST['tipourl'] = 'url';
+	if ( $_POST['tipourl'] != 'url' ) $_POST['tipourl'] = 'upload';
+
+	if ( $_POST['tipourl'] == 'url' ) {
+		if ( empty( $_POST['url'] ) ) ajax_esci( 'Inserire un indirizzo.' );
+	}
+	else {
+		if ( empty( $_FILES['file']['name'] ) ) ajax_esci( 'Selezionare un file da caricare.' );
+	}
+
+
 	$titolo_esc = mysql_real_escape_string( $titolo );
 
 	if ( empty( $_POST['id_file'] ) ) {
