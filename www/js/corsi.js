@@ -57,12 +57,12 @@ $(document).ready(function() {
 		cursor: 'move',
 		tolerance: 'pointer', /* http://bugs.jqueryui.com/ticket/5772 */
 		stop: function(event, ui) {
-			// TODO: dare un feedback grafico dei lavori in corso
+			$("#lista-news").mask("Salvataggio...", 200);
 
 			$.get('ajax/corsi.php?action=savenewsorder&id_corso=' + $("[name='id_corso']").val() +
 				'&' + $('#lista-news').sortable("serialize"),
 				function(data) {
-					// TODO
+					$("#lista-news").unmask();
 				}
 			);
 		}
@@ -91,11 +91,13 @@ $(document).ready(function() {
 			txt_visibile = "News visibile";
 		}
 
+		$("#" + li_id).mask("Caricamento...", 200);
 		$.post('ajax/corsi.php?action=togglevisibility', {
 			id: li_id.split("_")[1],
 			obj_type: obj_type
 			},
 			function (data) {
+				$("#" + li_id).unmask();
 				if ( ! data || ! data.success ) {
 					// Errore
 					var txt = 'Errore';
@@ -206,6 +208,7 @@ $(document).ready(function() {
 			},
 			"Salva": function() {
 				// Salvo i dati nel db
+				$("#sezioni-dialog-form").mask("Salvataggio...", 100);
 				$.post('ajax/corsi.php?action=savesezione', {
 					id: $("#id_sezione").val(),
 					id_corso: $("#sezioni-dialog-form [name='id_corso']").val(),
@@ -213,6 +216,7 @@ $(document).ready(function() {
 					note: $('#note-sezione').html()
 					},
 					function(data) {
+						$("#sezioni-dialog-form").unmask();
 						if ( ! data || ! data.success ) {
 							// Errore
 							var txt = 'Errore';
@@ -243,9 +247,7 @@ $(document).ready(function() {
 		cursor: 'move',
 		tolerance: 'pointer', /* http://bugs.jqueryui.com/ticket/5772 */
 		stop: function(event, ui) {
-			// TODO: dare un feedback grafico dei lavori in corso
-
-			salvaOrdineDati();
+			salvaOrdineFiles();
 		}
 	})
 		.disableSelection();
@@ -271,10 +273,12 @@ $(document).ready(function() {
 			}
 			else {
 				// Carico i dati dal DB
+				$("#file-dialog-form").mask("Caricamento...", 100);
 				$.post('ajax/corsi.php?action=getfile', {
 					id: id
 					},
 					function(data) {
+						$("#file-dialog-form").unmask();
 						if ( ! data || ! data.success ) {
 							// Errore
 							var txt = 'Errore';
@@ -365,7 +369,7 @@ $(document).ready(function() {
 							"height": "toggle",
 							"opacity": "toggle"
 							}, 600);
-					salvaOrdineDati(); // che carica il refresh della lista sezioni
+					salvaOrdineFiles(); // che carica il refresh della lista sezioni
 				} // fine nuovo file
 				else {
 					// modifica file esistente
@@ -386,11 +390,12 @@ $(document).ready(function() {
 		$("#tipourl_url").attr('checked', true);
 	});
 
-	function salvaOrdineDati() {
+	function salvaOrdineFiles() {
+		$("#lista-file-sezione").mask("Salvataggio...", 100);
 		$.get('ajax/corsi.php?action=savefileorder&id_sezione=' + $("[name='id_sezione']").val() +
 			'&' + $('#lista-file-sezione').sortable("serialize"),
 			function(data) {
-				// TODO
+				$("#lista-file-sezione").unmask();
 				if (data.success)
 					caricaListaSezioni();
 			},
@@ -400,10 +405,12 @@ $(document).ready(function() {
 	}
 
 	function caricaListaFile(id_sezione) {
+		$("#sezione-dialog-form").mask("Caricamento...", 100);
 		$.post('ajax/corsi.php?action=getsezione', {
 			id: id_sezione
 			},
 			function(data) {
+				$("#sezione-dialog-form").unmask();
 				if ( ! data || ! data.success ) {
 					// Errore
 					var txt = 'Errore';
@@ -474,5 +481,9 @@ function apriDialogoFile(id) {
 
 function caricaListaSezioni() {
 	if ( typeof(id_corso) == 'undefined' ) return;
-	$("#lista-sezioni").load('ajax/corsi.php?action=loadlistasezioni&id_corso=' + id_corso)
+	$("#lista-sezioni").mask("Caricamento...", 200);
+	$("#lista-sezioni")
+		.load('ajax/corsi.php?action=loadlistasezioni&id_corso=' + id_corso, function() {
+			$("#lista-sezioni").unmask();
+		})
 }

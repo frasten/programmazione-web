@@ -35,10 +35,14 @@ pageTracker._trackPageview();
 <!-- jQuery -->
 <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 
+<?php if ( ! empty( $_SESSION['loggato'] ) ): ?>
 <!-- jQuery UI -->
 <link href="css/jquery-ui-south-street/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-ui-1.8.15.custom.min.js"></script>
 
+<link href="css/jquery.loadmask.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.loadmask.js"></script>
+<?php endif; ?>
 
 <script type="text/javascript" src="js/onfocus.js"></script>
 <script type="text/javascript" src="js/button.js"></script>
