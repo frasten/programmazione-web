@@ -14,7 +14,26 @@
 	font-weight: bold;
 }
 
-#titolo, #autori, #autori_libro, #info_addizionali {
+em.richiesto {
+	color: red;
+}
+
+form label.error {
+	font-weight: bold;
+	color: red;
+	display: inline;
+	float: none !important;
+}
+
+/* FORM INSERIMENTO PUBBLICAZIONE */
+#form-pubblicazione #titolo,
+#form-pubblicazione #autori,
+#form-pubblicazione #autori_libro {
+	width: 30em;
+}
+
+
+#info_addizionali {
 	width: 40em;
 }
 

@@ -40,8 +40,15 @@ pageTracker._trackPageview();
 <link href="css/jquery-ui-south-street/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-ui-1.8.15.custom.min.js"></script>
 
+<!-- Loading -->
 <link href="css/jquery.loadmask.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.loadmask.js"></script>
+
+<!-- Validazione form -->
+<script type="text/javascript" src="js/validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/validate/additional-methods.min.js"></script>
+<script type="text/javascript" src="js/validate/messages_it.js"></script>
+
 <?php endif; ?>
 
 <script type="text/javascript" src="js/onfocus.js"></script>

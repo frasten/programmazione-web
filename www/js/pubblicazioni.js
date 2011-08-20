@@ -67,7 +67,7 @@
 						titolo = 'Nome della conferenza:';
 						break;
 				}
-				$("label[for=titolo_contesto]").html(titolo)
+				$("label[for=titolo_contesto]").html(titolo + " <em class='richiesto'>*</em>")
 			}
 			else {
 				$(".opt_" + this.value).not(".opt_" + current_sel).hide(500);
@@ -83,6 +83,92 @@
 
 	// Impostiamo i fields all'avvio
 	update_pub_fields($('#categoria'));
+
+
+
+
+
+	// VALIDAZIONE DEL FORM
+	$.validator.addMethod("lessThan",
+		function(value, element, param) {
+			var target = $(param).unbind(".validate-lessThan").bind("blur.validate-moreThan", function() {
+				$(element).valid();
+			});
+			var i = parseFloat(value);
+			var j = parseFloat(target.val());
+			return i <= j;
+		}
+	);
+	$.validator.addMethod("moreThan",
+		function(value, element, param) {
+			var target = $(param).unbind(".validate-moreThan").bind("blur.validate-lessThan", function() {
+				$(element).valid();
+			});
+			var i = parseFloat(value);
+			var j = parseFloat(target.val());
+			return i >= j;
+		}
+	);
+	jQuery.extend(jQuery.validator.messages, {
+		integer: "Inserire un numero intero."
+	});
+
+	var validator = $("#form-pubblicazione").validate({
+		rules: {
+			titolo: "required",
+			autori: "required",
+			anno: {
+				required: true,
+				integer: true,
+				range: [1900,(new Date).getFullYear()]
+			},
+			volume: {
+				required: true,
+				integer: true
+			},
+			titolo_contesto: "required",
+			pag_inizio: {
+				required: true,
+				integer: true,
+				lessThan: "#pag_fine"
+			},
+			pag_fine: {
+				required: true,
+				integer: true,
+				moreThan: "#pag_inizio"
+			},
+			numero: {
+				integer: true
+			},
+			editore: "required",
+			curatori_libro: "required",
+			num_pagine: {
+				integer: true
+			}
+		},
+		messages: {
+			pag_inizio: {
+				lessThan: "Inserire un numero minore della pagina di fine."
+			},
+			pag_fine: {
+				moreThan: "Inserire un numero maggiore della pagina d'inizio."
+			}
+		},
+		/* Ignoro i campi invisibili perche' non applicabili a questa
+		 * categoria di pubblicazione: */
+		ignore: ":hidden",
+
+		// Dove mettiamo gli errori
+		errorPlacement: function(error, element) {
+			if ( element.attr('id') == 'volume' ||
+			     element.attr('id') == 'pag_inizio'
+			)
+				element.after(error);
+			else
+				error.appendTo( element.parent() );
+		}
+	});
+
 
 })(jQuery);
 
