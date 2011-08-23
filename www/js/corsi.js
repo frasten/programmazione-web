@@ -273,7 +273,7 @@ $(document).ready(function() {
 
 	$( "#file-dialog-form" ).dialog({
 		autoOpen: false,
-		height: 270,
+		height: 300,
 		width: 600,
 		modal: true,
 		open: function() {
@@ -377,7 +377,7 @@ $(document).ready(function() {
 								)
 								.find(":last")
 								.append($("<img>", {
-									src: 'img/icone/page_white_edit.png',
+									src: 'img/icone/page_edit.png',
 									alt: 'Modifica'
 									}))
 							.parent()
@@ -471,7 +471,7 @@ $(document).ready(function() {
 								)
 								.find(":last")
 								.append($("<img>", {
-									src: 'img/icone/page_white_edit.png',
+									src: 'img/icone/page_edit.png',
 									alt: 'Modifica'
 									}))
 							.parent()

@@ -19,7 +19,7 @@ if ( empty( $_GET['action'] ) ) {
 else if ( $_GET['action'] == 'new' ) {
 	// Mostro il form per l'inserimento di una pubblicazione
 	admin_menu( array(
-		array( '?', 'Lista pubblicazioni', 'table.png' )
+		array( '?', 'Lista pubblicazioni', 'page.png' )
 	) );
 	include 'inc/pub-form-new.inc.php';
 }

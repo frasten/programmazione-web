@@ -9,11 +9,24 @@ require_once( 'inc/proteggi.inc.php' );
 if ( empty( $_GET['action'] ) ) {
 	admin_menu();
 
+
 ?>
-	<ul>
-		<li><a href='?action=listusers'>Gestione utenti</a></li>
-		<li><a href='pubblicazioni.php'>Gestione pubblicazioni</a></li>
-		<li><a href='corso.php'>Gestione corsi</a></li>
+	<ul class='iconlist'>
+		<li>
+			<a href='?action=listusers' class='linkconicona' style='background-image: url(img/icone/user.png)'>
+				Gestione utenti
+			</a>
+		</li>
+		<li>
+			<a href='pubblicazioni.php' class='linkconicona' style='background-image: url(img/icone/page.png)'>
+				Gestione pubblicazioni
+			</a>
+		</li>
+		<li>
+			<a href='corso.php' class='linkconicona' style='background-image: url(img/icone/corso.png)'>
+				Gestione corsi
+			</a>
+		</li>
 	</ul>
 <?php
 }

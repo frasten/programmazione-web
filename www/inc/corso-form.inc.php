@@ -261,7 +261,7 @@ EOF;
 	<div id='sezione-blocco-listafile'>
 		<!-- Lista di files -->
 		<h4>File in questa sezione:</h4>
-			<a href='javascript:void(0)' onclick='apriDialogoFile(0)'>Aggiungi nuovo file</a>
+			<a href='javascript:void(0)' class='linkconicona' onclick='apriDialogoFile(0)' style='background-image: url(img/icone/file_add.png)'>Aggiungi nuovo file</a>
 			<?php
 				echo "<ul id='lista-file-sezione' class='lista-dnd'></ul>\n";
 			?>

@@ -80,6 +80,7 @@ form label.error {
 .linkconicona {
 	background-repeat: no-repeat;
 	padding: 2px 0 2px 20px;
+	line-height: 20px;
 }
 
 .frmchangepassword label {
