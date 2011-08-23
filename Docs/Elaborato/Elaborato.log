@@ -1,0 +1,307 @@
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.6.8)  23 AUG 2011 13:12
+entering extended mode
+**C:/Users/Roberta/Documents/Università/Programmazione*Web/Elaborato/PdfMockup/
+Elaborato.tex
+
+("C:/Users/Roberta/Documents/Università/Programmazione Web/Elaborato/PdfMockup/
+Elaborato.tex"
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
+vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
+an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
+romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
+sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
+senglishmax, welsh, loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size11.clo"
+File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\latin1.def"
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+Package: babel 2008/07/06 v3.8l The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\italian.ldf"
+Language: italian 2008/03/14 v1.2t Italian support from the babel system
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2008/07/06 v3.8l Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+)
+Package babel Info: Making " an active character on input line 94.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\makeidx.sty"
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/01/28 v0.05d Graphics/color for pdfTeX
+\Gread@gobject=\count89
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+("C:\Users\Roberta\Documents\Università\Programmazione Web\Elaborato\PdfMockup\
+Elaborato.aux"
+
+LaTeX Warning: Label `nome' multiply defined.
+
+
+LaTeX Warning: Label `nome' multiply defined.
+
+
+LaTeX Warning: Label `nome' multiply defined.
+
+
+LaTeX Warning: Label `nome' multiply defined.
+
+
+LaTeX Warning: Label `nome' multiply defined.
+
+
+LaTeX Warning: Label `nome' multiply defined.
+
+
+LaTeX Warning: Label `nome' multiply defined.
+
+
+LaTeX Warning: Label `nome' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 12.
+LaTeX Font Info:    Try loading font information for LGR+cmr on input line 12.
+ ("C:\Program Files\MiKTeX 2.9\tex\generic\babel\lgrcmr.fd"
+File: lgrcmr.fd 2008/06/17 v2.3 Greek Computer Modern
+)
+LaTeX Font Info:    ... okay on input line 12.
+
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count90
+\scratchdimen=\dimen106
+\scratchbox=\box26
+\nofMPsegments=\count91
+\nofMParguments=\count92
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count93
+\MPscratchDim=\dimen107
+\MPnumerator=\count94
+\everyMPtoPDFconversion=\toks18
+) <logoUnibs.jpg, id=1, 772.8875pt x 770.88pt>
+File: logoUnibs.jpg Graphic file (type jpg)
+ <use logoUnibs.jpg>
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 18.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 18.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 18.
+ [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+ <C:/Users/Roberta/Documents/Università/Programmazione Web/Elaborato/PdfMockup/
+logoUnibs.jpg>]
+("C:\Users\Roberta\Documents\Università\Programmazione Web\Elaborato\PdfMockup\
+Elaborato.toc"
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 3.
+)
+\tf@toc=\write3
+ [1
+
+]
+Capitolo 1.
+[2
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 28--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--39
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 40.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 40.
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--63
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 70--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--74
+
+ []
+
+[4]
+<Mockup/Pubblicazioni/Image/PubblicazioniRiviste.png, id=26, 658.46pt x 528.976
+26pt>
+File: Mockup/Pubblicazioni/Image/PubblicazioniRiviste.png Graphic file (type pn
+g)
+ <use Mockup/Pubblicazioni/Image/PubblicazioniRiviste.png> [5 <C:/Users/Roberta
+/Documents/Università/Programmazione Web/Elaborato/PdfMockup/Mockup/Pubblicazio
+ni/Image/PubblicazioniRiviste.png>]
+<Mockup/Pubblicazioni/Image/CapitoliLibro.png, id=32, 658.46pt x 607.26875pt>
+File: Mockup/Pubblicazioni/Image/CapitoliLibro.png Graphic file (type png)
+
+<use Mockup/Pubblicazioni/Image/CapitoliLibro.png> [6
+
+ <C:/Users/Roberta/Documents/Università/Programmazione Web/Elaborato/PdfMockup/
+Mockup/Pubblicazioni/Image/CapitoliLibro.png>]
+<Mockup/Pubblicazioni/Image/AttiConferenza.png, id=38, 658.46pt x 507.8975pt>
+File: Mockup/Pubblicazioni/Image/AttiConferenza.png Graphic file (type png)
+
+<use Mockup/Pubblicazioni/Image/AttiConferenza.png> [7
+
+ <C:/Users/Roberta/Documents/Università/Programmazione Web/Elaborato/PdfMockup/
+Mockup/Pubblicazioni/Image/AttiConferenza.png>]
+<Mockup/Pubblicazioni/Image/Monografia.png, id=43, 658.46pt x 460.72125pt>
+File: Mockup/Pubblicazioni/Image/Monografia.png Graphic file (type png)
+
+<use Mockup/Pubblicazioni/Image/Monografia.png> [8
+
+ <C:/Users/Roberta/Documents/Università/Programmazione Web/Elaborato/PdfMockup/
+Mockup/Pubblicazioni/Image/Monografia.png>]
+<Mockup/Pubblicazioni/Image/Curatela.png, id=48, 658.46pt x 416.55624pt>
+File: Mockup/Pubblicazioni/Image/Curatela.png Graphic file (type png)
+
+<use Mockup/Pubblicazioni/Image/Curatela.png> [9
+
+ <C:/Users/Roberta/Documents/Università/Programmazione Web/Elaborato/PdfMockup/
+Mockup/Pubblicazioni/Image/Curatela.png>]
+<Mockup/Corsi/Image/PaginaCorso.png, id=53, 628.3475pt x 1080.035pt>
+File: Mockup/Corsi/Image/PaginaCorso.png Graphic file (type png)
+
+<use Mockup/Corsi/Image/PaginaCorso.png> [10 <C:/Users/Roberta/Documents/Univer
+sità/Programmazione Web/Elaborato/PdfMockup/Mockup/Corsi/Image/PaginaCorso.png>
+] <Mockup/Corsi/Image/GestioneNews.png, id=58, 628.3475pt x 322.20375pt>
+File: Mockup/Corsi/Image/GestioneNews.png Graphic file (type png)
+
+<use Mockup/Corsi/Image/GestioneNews.png>
+Overfull \hbox (56.16797pt too wide) in paragraph at lines 174--175
+ [][] 
+ []
+
+[11 <C:/Users/Roberta/Documents/Università/Programmazione Web/Elaborato/PdfMock
+up/Mockup/Corsi/Image/GestioneNews.png>]
+<Mockup/Corsi/Image/Sezione.png, id=63, 628.3475pt x 364.36125pt>
+File: Mockup/Corsi/Image/Sezione.png Graphic file (type png)
+
+<use Mockup/Corsi/Image/Sezione.png>
+Overfull \hbox (7.99887pt too wide) in paragraph at lines 190--191
+ [][] 
+ []
+
+<Mockup/Corsi/Image/File.png, id=64, 628.3475pt x 209.78375pt>
+File: Mockup/Corsi/Image/File.png Graphic file (type png)
+
+<use Mockup/Corsi/Image/File.png>
+Overfull \hbox (23.50235pt too wide) in paragraph at lines 206--207
+ [][] 
+ []
+
+[12
+
+ <C:/Users/Roberta/Documents/Università/Programmazione Web/Elaborato/PdfMockup/
+Mockup/Corsi/Image/Sezione.png> <C:/Users/Roberta/Documents/Università/Programm
+azione Web/Elaborato/PdfMockup/Mockup/Corsi/Image/File.png>] [13] [14
+
+]
+("C:\Users\Roberta\Documents\Università\Programmazione Web\Elaborato\PdfMockup\
+Elaborato.aux")
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1539 strings out of 494053
+ 22386 string characters out of 3148598
+ 76126 words of memory out of 3000000
+ 4830 multiletter control sequences out of 15000+200000
+ 10716 words of font info for 37 fonts, out of 3000000 for 9000
+ 715 hyphenation exceptions out of 8191
+ 25i,6n,24p,263b,224s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmti12.pfb>
+Output written on Elaborato.pdf (15 pages, 483364 bytes).
+PDF statistics:
+ 103 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+
