@@ -222,3 +222,7 @@ form label.error {
 #tbl_insert_docenti .option {
 	text-align: center;
 }
+
+.listafiles img {
+	vertical-align: sub;
+}

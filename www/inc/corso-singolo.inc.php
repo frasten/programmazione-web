@@ -149,7 +149,7 @@ EOF;
 			if ( trim( strip_tags( $riga['note'] ) ) )
 				echo $riga['note'];
 
-			echo "<ul>\n";
+			echo "<ul class='listafiles'>\n";
 			$oldsez = $riga['id_sezione'];
 		}
 		echo "<li>\n";
