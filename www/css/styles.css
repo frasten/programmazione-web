@@ -226,3 +226,7 @@ form label.error {
 .listafiles img {
 	vertical-align: sub;
 }
+
+.listafiles li {
+	margin-bottom: 2px;
+}
