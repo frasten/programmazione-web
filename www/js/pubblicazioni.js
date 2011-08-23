@@ -27,9 +27,19 @@
 			minLength: 0,
 			delay: 100,
 			source: function( request, response ) {
-				// delegate back to autocomplete, but extract the last term
-				response( $.ui.autocomplete.filter(
-					pub_autori, extractLast( request.term ) ) );
+				var matches = $.map( pub_autori, function(tag) {
+					var parole = tag.split(' ');
+					var corrisponde = false;
+					for ( var i in parole ) {
+						var p = parole[i];
+						if ( p.toUpperCase().indexOf(request.term.toUpperCase()) === 0 ) {
+							corrisponde = true;
+							break;
+						}
+					}
+					if (corrisponde) return tag;
+				});
+				response(matches);
 			},
 			focus: function() {
 				// prevent value inserted on focus
