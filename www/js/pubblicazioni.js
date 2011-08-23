@@ -96,6 +96,7 @@
 			});
 			var i = parseFloat(value);
 			var j = parseFloat(target.val());
+			if (target.val() == '') return true;
 			return i <= j;
 		}
 	);
