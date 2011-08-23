@@ -1,5 +1,7 @@
-# File di log generati da LaTeX
+# File generati da LaTeX
 *.log
+*.aux
+*.toc
 
-# File generati con LaTeX
+# PDF finale di LaTeX
 elaborato.pdf
