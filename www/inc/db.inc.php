@@ -25,12 +25,10 @@ if( ( function_exists( 'get_magic_quotes_gpc' ) && get_magic_quotes_gpc() ) ||
 $db = @mysql_connect( $config['db_host'],
                       $config['db_user'],
                       $config['db_pass'] );
-@mysql_select_db( $config['db_name'], $db );
 
-
-if ( ! $db ) {
+if ( ! $db || ! mysql_select_db( $config['db_name'], $db ) ) {
 	echo "Errore nella connessione al database.";
-	return 1;
+	exit;
 }
 
 /* Impostiamo il charset UTF-8 */
@@ -79,7 +77,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubblicazione` (
 	`file` VARCHAR(255) ,
 	PRIMARY KEY (`id_pubblicazione`)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
@@ -90,7 +89,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubautore` (
 	`nome` VARCHAR(255)  NOT NULL,
 	PRIMARY KEY (`id_autore`)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
@@ -99,9 +99,22 @@ EOF;
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubblicazione_pubautore` (
 	`id_pubblicazione` INTEGER  NOT NULL,
 	`id_autore` INTEGER  NOT NULL,
-	PRIMARY KEY (`id_pubblicazione`, `id_autore`)
+	PRIMARY KEY (`id_pubblicazione`, `id_autore`),
+	CONSTRAINT `fk_$config[db_prefix]pubblicazione_pubautore_pubblicazione`
+		FOREIGN KEY (`id_pubblicazione` )
+		REFERENCES `$config[db_prefix]pubblicazione` (`id_pubblicazione` )
+		ON DELETE CASCADE
+		ON UPDATE CASCADE, 
+	CONSTRAINT `fk_$config[db_prefix]pubblicazione_pubautore_autore`
+		FOREIGN KEY (`id_autore` )
+		REFERENCES `$config[db_prefix]pubautore` (`id_autore` )
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	INDEX `fk_$config[db_prefix]pubblicazione_pubautore_pubblicazione` (`id_pubblicazione` ASC),
+	INDEX `fk_$config[db_prefix]pubblicazione_pubautore_autore` (`id_autore` ASC)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
@@ -112,7 +125,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]journal` (
 	`nome` VARCHAR(255)  NOT NULL,
 	PRIMARY KEY (`id_journal`)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
@@ -121,6 +135,18 @@ EOF;
 	/*****************
 	 *     CORSI     *
 	 *****************/
+	/* Tabella per le facolta' */
+	$query = <<<EOF
+CREATE TABLE IF NOT EXISTS `$config[db_prefix]facolta` (
+	`id_facolta` INTEGER  NOT NULL AUTO_INCREMENT,
+	`nome` VARCHAR(255)  NOT NULL,
+	PRIMARY KEY (`id_facolta`)
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
+EOF;
+	mysql_query( $query, $db );
+
 	/* Tabella per i corsi */
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]corso` (
@@ -135,9 +161,16 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]corso` (
 	`esame` TEXT,
 	`materiali` TEXT,
 	`annoaccademico` INTEGER NOT NULL DEFAULT 2011,
-	PRIMARY KEY (`id_corso`)
+	PRIMARY KEY (`id_corso`),
+	CONSTRAINT `fk_$config[db_prefix]corso_facolta`
+		FOREIGN KEY (`id_facolta` )
+		REFERENCES `$config[db_prefix]facolta` (`id_facolta` )
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	INDEX `fk_$config[db_prefix]corso_facolta` (`id_facolta` ASC)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
@@ -150,20 +183,16 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]news` (
 	`nascondi` ENUM('0','1') NOT NULL DEFAULT '0',
 	`testo` TEXT NOT NULL,
 	`file` VARCHAR(255),
-	PRIMARY KEY (`id_news`)
+	PRIMARY KEY (`id_news`),
+	CONSTRAINT `fk_$config[db_prefix]news_corso`
+		FOREIGN KEY (`id_corso` )
+		REFERENCES `$config[db_prefix]corso` (`id_corso` )
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	INDEX `fk_$config[db_prefix]news_corso` (`id_corso` ASC)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;
-EOF;
-	mysql_query( $query, $db );
-
-	/* Tabella per le facolta' */
-	$query = <<<EOF
-CREATE TABLE IF NOT EXISTS `$config[db_prefix]facolta` (
-	`id_facolta` INTEGER  NOT NULL AUTO_INCREMENT,
-	`nome` VARCHAR(255)  NOT NULL,
-	PRIMARY KEY (`id_facolta`)
-)
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
@@ -178,7 +207,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]docente` (
 	`nome` VARCHAR(255) NOT NULL,
 	PRIMARY KEY (`id_docente`)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
@@ -187,9 +217,22 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]docente_corso` (
 	`id_docente` INTEGER  NOT NULL,
 	`id_corso` INTEGER  NOT NULL,
 	`esercitatore` ENUM('0','1')  NOT NULL DEFAULT '0',
-	PRIMARY KEY (`id_docente`,`id_corso`)
+	PRIMARY KEY (`id_docente`,`id_corso`),
+	CONSTRAINT `fk_$config[db_prefix]docente_corso_docente`
+		FOREIGN KEY (`id_docente` )
+		REFERENCES `$config[db_prefix]docente` (`id_docente` )
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	CONSTRAINT `fk_$config[db_prefix]docente_corso_corso`
+		FOREIGN KEY (`id_corso` )
+		REFERENCES `$config[db_prefix]corso` (`id_corso` )
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	INDEX `fk_$config[db_prefix]docente_corso_docente` (`id_docente` ASC),
+	INDEX `fk_$config[db_prefix]docente_corso_corso` (`id_corso` ASC)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
@@ -205,9 +248,16 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]sezione` (
 	`id_corso` INTEGER  NOT NULL,
 	`titolo` VARCHAR(255)  NOT NULL,
 	`note` TEXT  NOT NULL,
-	PRIMARY KEY (`id_sezione`)
+	PRIMARY KEY (`id_sezione`),
+	CONSTRAINT `fk_$config[db_prefix]sezione_corso`
+		FOREIGN KEY (`id_corso` )
+		REFERENCES `$config[db_prefix]corso` (`id_corso` )
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	INDEX `fk_$config[db_prefix]sezione_corso` (`id_corso` ASC)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
@@ -221,9 +271,16 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]file_materiale` (
 	`aggiornato` ENUM('0','1')  NOT NULL DEFAULT '0',
 	`nascondi` ENUM('0','1')  NOT NULL DEFAULT '0',
 	`ordine` INTEGER NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id_file`)
+	PRIMARY KEY (`id_file`),
+	CONSTRAINT `fk_$config[db_prefix]file_materiale_sezione`
+		FOREIGN KEY (`id_sezione` )
+		REFERENCES `$config[db_prefix]sezione` (`id_sezione` )
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	INDEX `fk_$config[db_prefix]file_materiale_sezione` (`id_sezione` ASC)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
@@ -239,7 +296,8 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]login` (
 	`password` VARCHAR(40)  NOT NULL,
 	PRIMARY KEY (`username`)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
@@ -249,9 +307,16 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]persistent_login` (
 	`username` VARCHAR(20)  NOT NULL,
 	`salt` VARCHAR(20) NOT NULL,
 	`tokenhash` VARCHAR(40) NOT NULL,
-	`timestamp` DATETIME NOT NULL
+	`timestamp` DATETIME NOT NULL,
+	CONSTRAINT `fk_$config[db_prefix]persistent_login_username`
+		FOREIGN KEY (`username` )
+		REFERENCES `$config[db_prefix]login` (`username` )
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	INDEX `fk_$config[db_prefix]persistent_login_username` (`username` ASC)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CHARACTER SET utf8 COLLATE utf8_general_ci,
+ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
