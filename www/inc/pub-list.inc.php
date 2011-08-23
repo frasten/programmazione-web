@@ -168,6 +168,9 @@ function stampa_pub_libro( $riga ) {
 		echo "pages $riga[pag_inizio]-$riga[pag_fine], ";
 	}
 
+	if ( ! empty( $riga['isbn'] ) )
+		printf( "ISBN/ISSN: %s, ", htmlspecialchars( $riga['isbn'] ) );
+
 	echo "$riga[anno].";
 
 	echo "</span>\n";
@@ -217,7 +220,7 @@ function stampa_pub_monografia( $riga ) {
 
 	echo htmlspecialchars( $riga['editore'] ) . ", ";
 
-	echo "n. pagine: $riga[num_pagine], ";
+	echo "n. of pages: $riga[num_pagine], ";
 
 	echo "$riga[anno].";
 

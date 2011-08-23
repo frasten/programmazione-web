@@ -35,11 +35,6 @@ else if ( $_GET['action'] == 'savenew' ) {
 
 
 
-
-?>
-
-
-<?php
 require_once('inc/footer.inc.php');
 
 ?>
