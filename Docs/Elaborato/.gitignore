@@ -1,2 +1,5 @@
 # File di log generati da LaTeX
 *.log
+
+# File generati con LaTeX
+elaborato.pdf
