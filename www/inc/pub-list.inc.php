@@ -137,6 +137,9 @@ function stampa_pub_rivista( $riga ) {
 
 	echo "$riga[anno].";
 
+	if ( ! empty( $riga['abstract'] ) )
+		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'] ) );
+
 	echo "</span>\n";
 }
 
@@ -173,6 +176,9 @@ function stampa_pub_libro( $riga ) {
 
 	echo "$riga[anno].";
 
+	if ( ! empty( $riga['abstract'] ) )
+		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'] ) );
+
 	echo "</span>\n";
 }
 
@@ -201,6 +207,9 @@ function stampa_pub_conferenza( $riga ) {
 
 	echo "$riga[anno].";
 
+	if ( ! empty( $riga['abstract'] ) )
+		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'] ) );
+
 	echo "</span>\n";
 }
 
@@ -224,6 +233,9 @@ function stampa_pub_monografia( $riga ) {
 
 	echo "$riga[anno].";
 
+	if ( ! empty( $riga['abstract'] ) )
+		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'] ) );
+
 	echo "</span>\n";
 }
 
@@ -246,6 +258,9 @@ function stampa_pub_curatela( $riga ) {
 	}
 
 	echo "$riga[anno].";
+
+	if ( ! empty( $riga['abstract'] ) )
+		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'] ) );
 
 	echo "</span>\n";
 }
