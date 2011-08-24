@@ -5,6 +5,8 @@ require_once( 'hmac.inc.php' );
 
 function controlla_persistent_login() {
 	global $config, $db;
+	// Se son gia' loggato non faccio niente
+	if ( ! empty( $_SESSION['loggato'] ) ) return true;
 
 	// Controlliamo se loggare l'utente tramite "Ricorda accesso"
 	if ( ! empty( $_COOKIE['remember_auth'] ) ) {
@@ -76,7 +78,6 @@ EOF;
 function crea_persistent_cookie( $user ) {
 	global $config, $db;
 
-	$user = mysql_real_escape_string( $user );
 	$token = genera_random_string( 20 );
 	$salt = genera_random_string( 20 );
 
@@ -86,6 +87,7 @@ function crea_persistent_cookie( $user ) {
 
 	$hash = hmac_sha1( $config['hmac_psk'], "$token$salt" );
 	$salt = mysql_real_escape_string( $salt );
+	$user = mysql_real_escape_string( $user );
 	$query = <<<EOF
 INSERT INTO `$config[db_prefix]persistent_login`
 (`username`,`salt`,`tokenhash`,`timestamp`)
