@@ -161,6 +161,7 @@ strong.errore {
 }
 
 #loginform .input {
+	color: #555;
 	font-family:"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-weight:200;
 	font-size:24px;
