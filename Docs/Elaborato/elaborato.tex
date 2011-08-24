@@ -240,7 +240,7 @@ Di seguito vengono analizzate le tabelle utilizzate\\
 \begin{itemize}
 \item Tabella \textit{'unibs\_is\_pubblicazione'}\\
 Contiene la singola pubblicazione.
-Le categoria della pubblicazione sono elencate attraverso il campo categoria:
+Le categoria della pubblicazione sono elencate attraverso il campo \textit{categoria}:
 \begin{center}
 enum('rivista','libro','conferenza','monografia','curatela').
 \end{center}
@@ -249,7 +249,101 @@ Gli autori di ogni singola pubblicazione vengono salvati in una tabella a parte,
 semplice proporre gli stessi durante l'inserimento.
 \item Tabella \textit{'unibs\_is\_pubblicazione\_pubautore'}\\
 Tabella di collegamento fra autore e pubblicazione.
+\item Tabella \textit{'unibs\_is\_journal'}
 \end{itemize}
 
+\textbf{2 - Corsi}\\
+\begin{figure}[h]
+\centering
+\includegraphics[height=10cm]{diagramma-er/corsi.png}
+\caption{Diagramma ER: Corsi \label{nome}}
+\end{figure}
+\\
+\begin{itemize}
+\item Tabella \textit{'unibs\_is\_corso'}\\
+Contiene il singolo corso.
+E' collegata alla tabella \textit{'unibs\_is\_facolta'}, che contiene le facoltà nelle quale si 
+svolgono i corsi.
+\item Tabella \textit{'unibs\_is\_docente'}\\
+Contiene i docenti, che possono essere esercitatori o docenti del corso.
+\item Tabella \textit{'unibs\_is\_docente\_corso'}\\
+Tabella di collegamento fra docente e corso.
+\item Tabella \textit{'unibs\_is\_file\_materiale'}\\
+Contiene i file che vengono aggiunti a una sezione (collegato alla tabella \textit{'unibs\_is\_sezione'}
+con \textit{id\_sezione}). Un file può essere aggiornato o meno, grazie al campo \textit{aggiornato}:
+enum('0','1'), nascosto o meno, grazie al campo \textit{nascondi}: enum('0','1').\\
+Il campo \textit{ordine} serve per indicare l'ordine di visualizzazione dei file aggiunti, modificabile
+dall'apposita schermata tramite drag\&drop.
+\item Tabella \textit{'unibs\_is\_sezione'}\\
+Contiene le singole sezioni, collegato alla tabella \textit{'unibs\_is\_corso'} con \textit{id\_corso}.
+\item Tabella \textit{'unibs\_is\_news'}\\
+Contiene le news che vengono aggiunte a un corso (collegato alla tabella \textit{'unibs\_is\_corso'}
+con \textit{id\_corso}). Una news può essere nascosta o meno, grazie al campo \textit{nascondi}: enum('0','1').\\
+Il campo \textit{ordine} serve per indicare l'ordine di visualizzazione delle news aggiunti, modificabile
+dall'apposita schermata tramite drag\&drop.
+\end{itemize}
 
+\textbf{3 - Login}\\
+\begin{figure}[h]
+\centering
+\includegraphics[height=5.5cm]{diagramma-er/login.png}
+\caption{Diagramma ER: Login \label{nome}}
+\end{figure}
+\\
+\begin{itemize}
+\item Tabella \textit{'unibs\_is\_login'}\\
+Vengono salvate le coppie username - salt - password.
+\item Tabella \textit{'unibs\_is\_persistent\_login'}\\
+Vengono salvati i dati per riconoscere i login persistenti.
+\end{itemize}
+\clearpage
+
+\subsection{Diagrammi UML: casi d'uso}
+Il progetto realizzita si avvale dei seguenti casi d'uso, divisi per due diversi utenti:
+\begin{itemize}
+\item Utente Amministratore:
+	\begin{itemize}
+	\item Gestione Utenti
+		\begin{itemize}
+			\item Creazione nuovo utente
+			\item Cambiare password a utenti già esistenti
+			\item Cancellazione utente
+		\end{itemize}
+	\item Gestione Pubblicazioni
+		\begin{itemize}
+			\item Visualizzazione delle pubblicazioni
+			\item Inserimento di una nuova pubblicazione
+		\end{itemize}
+	\item Gestione Corsi
+		\begin{itemize}
+			\item Visualizzazione dei corsi divisi per facoltà
+			\item Inserimento di un nuovo corso
+			\item Modifica di un corso
+		\end{itemize}
+	\item Gestione News
+		\begin{itemize}
+			\item Inserimento di una nuova news
+			\item Modifica ordine delle news
+			\item Nascondere una news
+		\end{itemize}
+	\item Gestione Sezione
+		\begin{itemize}
+			\item Inserimento di una nuova sezione 
+			\item Modifica di una sezione 
+			\item Aggiunta nuovo file
+			\item Modifica ordine dei file
+			\item Nascondere un file
+		\end{itemize}
+	\item Gestione File
+		\begin{itemize}
+			\item Modifica dati del file
+		\end{itemize}
+	\end{itemize}
+\item Utente Finale:
+	\begin{itemize}
+		\item Visualizzazione Pubblicazioni
+		\item Visualizzazione lista corsi divisi per facoltà
+		\item Visualizzazione singolo Corso
+	\end{itemize}
+\end{itemize}
 \end{document}
