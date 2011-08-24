@@ -7,11 +7,13 @@ if ( ! function_exists( 'json_encode' ) ) {
   function json_encode( $val ) {
     $json = new Services_JSON();
     $output = $json->encode( $val );
-    print( $output ); 
+    return $output;
   }
 
   function json_decode() {
-    // TODO
+    $json = new Services_JSON();
+    $output = $json->decode( $val );
+    return $output;
   }
 }
 else {
