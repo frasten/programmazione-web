@@ -301,6 +301,11 @@ strong.errore {
 	vertical-align: middle;
 }
 
+#lista-news .scaricafile {
+	float: left;
+	margin-right: 5px;
+}
+
 /*** SEZIONI MATERIALE DIDATTICO ***/
 
 #titolo-sezione {

@@ -79,4 +79,31 @@ function mb_substr( $str, $start, $length = null ) {
 }
 endif;
 
+
+function get_img_tipofile( $file ) {
+	preg_match( "/([^.]+)$/", $file, $match );
+	$estensione = $match[1];
+
+	switch ( strtolower( $estensione ) ) {
+		case 'pdf':
+			$img = 'icon_pdf.png';
+			break;
+		case 'zip':
+		case 'rar':
+		case 'bz2':
+		case 'gz':
+			$img = 'icon_zip.png';
+			break;
+		case 'doc':
+		case 'odt':
+		case 'docx':
+			$img = 'icon_doc.png';
+			break;
+		default:
+			$img = 'file.png';
+			break;
+	}
+	return $img;
+}
+
 ?>

@@ -69,19 +69,22 @@ if ( ! mysql_num_rows( $result ) ) {
 	echo "Non ci sono avvisi per il momento.";
 }
 else {
+	echo "<ul id='lista-news'>\n";
 	while ( $news = mysql_fetch_assoc( $result ) ) {
-		// TODO
-		echo "";
-                
-                // 24/08/2011: SOLUZIONE PROPOSTA PER ALLINEARE ICONA E TESTO
-                /*echo "<p>";
-		if ( $news['file'] ) echo "<img src='img/icone/icon_pdf.png'> &nbsp;";
-		echo substr($news['testo'], 3);*/
-                
-                if ( $news['file'] ) echo "<img src='img/icone/icon_pdf.png'> &nbsp;";
-                echo "$news[testo]";
-		echo "";
+		echo "<li class='avviso'>\n";
+		if ( $news['file'] ) {
+			$file = basename( $news['file'] );
+			$img = get_img_tipofile( $file );
+			echo "<span class='scaricafile'>";
+			printf( "<a href='%s' class='iconalink' title='Scarica il file'>", htmlspecialchars( $news['file'], ENT_QUOTES ) );
+			echo "<img src='img/icone/$img' alt='Scarica il file' />";
+			echo "</a>";
+			echo "</span>\n";
+		}
+		echo $news['testo'];
+		echo "</li>\n";
 	}
+	echo "</ul>\n";
 }
 
 ?>
@@ -168,28 +171,7 @@ EOF;
 		}
 
 		$file = basename( $url );
-		preg_match( "/([^.]+)$/", $url, $match );
-		$estensione = $match[1];
-
-		switch ( strtolower( $estensione ) ) {
-			case 'pdf':
-				$img = 'icon_pdf.png';
-				break;
-			case 'zip':
-			case 'rar':
-			case 'bz2':
-			case 'gz':
-				$img = 'icon_zip.png';
-				break;
-			case 'doc':
-			case 'odt':
-			case 'docx':
-				$img = 'icon_doc.png';
-				break;
-			default:
-				$img = 'software.gif';
-				break;
-		}
+		$img = get_img_tipofile( $file );
 
 		printf( "<a href='%s' class='iconalink' title='Scarica il file'><img src='img/icone/%s' alt='Scarica il file' /></a>\n",
 			htmlspecialchars( $url, ENT_QUOTES ),
