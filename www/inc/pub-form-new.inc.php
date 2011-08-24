@@ -81,7 +81,7 @@
 
 	<p><em class='richiesto'>*</em><em>: campo obbligatorio.</em></p>
 
-	<input type='submit' name='salva' value='Salva' />
+	<input type='submit' class='submitbutton' name='salva' value='Salva' />
 
 </form>
 <!-- FAM FAM ICONS, pencil + cross -->

@@ -117,7 +117,7 @@ else if ( $_GET['action'] == 'newuser' ) {
 					<input type='password' id='password' name='password' />
 				</li>
 			</ul>
-			<input type='submit' value='Crea utente' />
+			<input type='submit' class='submitbutton' value='Crea utente' />
 		</form>
 		<?php
 	}
@@ -226,7 +226,7 @@ function stampa_form_change_password() {
 					<input type='password' name='repeatpassword' id='repeatpassword' />
 				</li>
 			</ul>
-			<input type='submit' value='Salva' style='margin-left: 100px' />
+			<input type='submit' class='submitbutton' value='Salva' style='margin-left: 100px' />
 		</form>
 		<?php
 }

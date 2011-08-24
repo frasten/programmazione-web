@@ -182,7 +182,7 @@ EOF;
 <?php endif;/* materiale didattico */ ?>
 
 
-	<input type='submit' value='Salva' name='salva' class='invio' />
+	<input type='submit' value='Salva' name='salva' class='invio submitbutton' />
 </form>
 
 <?php if ( $corso ): ?>
