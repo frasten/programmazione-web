@@ -1,6 +1,6 @@
-all: elaborato.pdf
+all: elaborato
 
-elaborato.pdf:
+elaborato:
 	pdflatex -shell-escape elaborato.tex
 
 clean:
