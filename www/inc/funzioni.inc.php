@@ -28,12 +28,12 @@ function admin_menu( $links = array( array( '', '', '' ) ) ) {
 	}
 
 	// Icone fisse
-	$right[] = array( 'admin.php', htmlspecialchars( $_SESSION['user'] ), 'user_suit.png' );
+	$right[] = array( 'admin.php', htmlspecialchars( $_SESSION['user'] ), 'user_suit.png', "Accedi all'area amministrativa" );
 	$right[] = array( 'logout.php', 'Esci', 'user_go.png' );
 	echo "<li><ul>\n";
 	foreach ( $right as $l ) {
-		list( $url, $testo, $icona ) = $l;
-		stampa_admin_link( $url, $testo, $icona );
+		@list( $url, $testo, $icona, $hint ) = $l;
+		stampa_admin_link( $url, $testo, $icona, $hint );
 	}
 	echo "</ul></li>\n";
 
@@ -41,12 +41,17 @@ function admin_menu( $links = array( array( '', '', '' ) ) ) {
 }
 
 
-function stampa_admin_link( $url, $testo, $icona ) {
+function stampa_admin_link( $url, $testo, $icona, $hint = '' ) {
 	echo "<li>\n";
 	$style = '';
 	if ( ! empty( $icona ) )
 		$style = " style='background-image: url(img/icone/$icona)'";
-	printf( "<a href='%s' class='linkconicona'%s>%s</a>", htmlspecialchars( $url ), $style, htmlspecialchars( $testo ) );
+
+	$title = '';
+	if ( ! empty( $hint ) )
+		$title = sprintf( " title='%s'", htmlspecialchars( $hint, ENT_QUOTES ) );
+
+	printf( "<a href='%s' class='linkconicona'%s%s>%s</a>", htmlspecialchars( $url ), $style, $title, htmlspecialchars( $testo ) );
 	echo "</li>\n";
 }
 
