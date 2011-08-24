@@ -52,27 +52,33 @@ if ( ! empty( $_POST['username'] ) || ! empty( $_POST['password'] ) ) {
 ?>
 		<h2>Area riservata</h2>
 		<?php
-		if ( ! empty( $err ) ) echo "<p><strong>Errore di autenticazione.</strong></p>";
+		if ( ! empty( $err ) ) echo "<p><strong class='errore'>Errore di autenticazione.</strong></p>";
 		?>
 
 		<form id="loginform" action="<?php
 		echo $_SERVER['PHP_SELF'];
 		// htmlentities() per protezione da attacchi XSS
 		echo '?' . htmlentities( "$_SERVER[QUERY_STRING]", ENT_NOQUOTES );
-		// TODO: renderlo piu' carino con un po' di CSS
 		?>" method="post" >
-			<label for="username">Username:
-				<input type="text" id="username" name="username" />
-			</label>
-			<label for="password">Password:
-				<input type="password" id="password" name="password" />
-			</label>
-			<label for="rememberlogin">
+			<p>
+				<label for="username">Nome utente:<br />
+				<input type="text" id="username" name="username" class='input' /></label>
+			</p>
+			<p>
+				<label for="password">Password:<br />
+				<input type="password" id="password" name="password" class='input' /></label>
+			</p>
+			<p class="forgetmenot">
+				<label for="rememberlogin">
 				<input type="checkbox" id="rememberlogin" name="rememberlogin" />
-				Ricorda l'accesso
-			</label>
-			<input type="submit" name="Entra" />
+				Ricordami
+				</label>
+			</p>
+			<p class='submit'>
+				<input type="submit" class='submitbutton' value="Entra" />
+			</p>
 		</form>
+		<script type='text/javascript'>jQuery(function() {jQuery("#username").focus();});</script>
 <?php
 
 esci();

@@ -26,6 +26,55 @@ form label.error {
 	padding-left: 5px;
 }
 
+
+.submitbutton {
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+
+	color: #E1F0DE;
+	border: solid 1px #228312;
+	background: #27991E;
+	background: -webkit-gradient(linear, left top, left bottom, from(#41b72f), to(#137d0e));
+	background: -moz-linear-gradient(top,  #41b72f,  #137d0e);
+	background: -o-linear-gradient(#41b72f, #137d0e);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#41B72F', endColorstr='#137d0e');
+	font-weight: bold;
+}
+
+.submitbutton:hover {
+	text-decoration: none;
+	background: #1d8018;
+	background: -webkit-gradient(linear, left top, left bottom, from(#2f9d28), to(#136b0c));
+	background: -moz-linear-gradient(top,  #2f9d28,  #136b0c);
+	background: -o-linear-gradient(#2f9d28, #136b0c);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#2f9d28', endColorstr='#136b0c');
+}
+
+.submitbutton:active {
+	position: relative;
+	top: 1px;
+	color: #92c08c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#137d0e), to(#41b72f));
+	background: -moz-linear-gradient(top,  #137d0e,  #41b72f);
+	background: -o-linear-gradient(#137d0e, #41b72f);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#137d0e', endColorstr='#41b72f');
+}
+
+strong.errore {
+	color: #E30700;
+}
+
 /* FORM INSERIMENTO PUBBLICAZIONE */
 #form-pubblicazione #titolo,
 #form-pubblicazione #autori,
@@ -71,6 +120,61 @@ form label.error {
 
 #loginform label {
 	display: block;
+	color:#777;
+	font-size:14px;
+}
+
+#loginform {
+	width: 272px;
+	margin: 3em auto;
+	padding: 26px 24px 46px;
+	font-weight: normal;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	-moz-box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
+	-webkit-box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
+	-khtml-box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
+	box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
+}
+
+#loginform p {
+	margin: 0;
+}
+
+#loginform .forgetmenot{
+	font-weight:normal;
+	float:left;
+	margin-bottom:0;
+}
+
+#loginform .forgetmenot label {
+	font-size:12px;
+	line-height:19px;
+}
+
+#loginform .submit {
+	float:right;
+}
+
+#loginform .input {
+	font-family:"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight:200;
+	font-size:24px;
+	width:97%;
+	padding:3px;
+	margin-top:2px;
+	margin-right:6px;
+	margin-bottom:16px;
+	border:1px solid #e5e5e5;
+	background:#fbfbfb;
+	outline:none;
+	-moz-box-shadow:inset 1px 1px 2px rgba(200,200,200,0.2);
+	-webkit-box-shadow:inset 1px 1px 2px rgba(200,200,200,0.2);
+	box-shadow:inset 1px 1px 2px rgba(200,200,200,0.2);
 }
 
 #corpo .iconlist li {
