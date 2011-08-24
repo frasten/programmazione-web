@@ -219,6 +219,37 @@ il titolo del file nella pagina web del corso.
 
 \section{Progettazione della base dati}
 \subsection{Progettazione della struttura dati su cui si basa l'applicazione}
+Di seguito viene mostrato il Diagramma ER relativo alla struttura della base di dati realizzata per 
+il progetto.
+\begin{figure}[h]
+\centering
+\includegraphics[height=15cm]{diagramma-er/diagramma-er.png}
+\caption{Diagramma ER \label{nome}}
+\end{figure}
+\clearpage
+
+Di seguito vengono analizzate le tabelle utilizzate\\
+\\
+\textbf{1 - Pubblicazioni}
+\begin{figure}[h]
+\centering
+\includegraphics[height=10cm]{diagramma-er/pubblicazioni.png}
+\caption{Diagramma ER: Pubblicazioni \label{nome}}
+\end{figure}
+\\
+\begin{itemize}
+\item Tabella \textit{'unibs\_is\_pubblicazione'}\\
+Contiene la singola pubblicazione.
+Le categoria della pubblicazione sono elencate attraverso il campo categoria:
+\begin{center}
+enum('rivista','libro','conferenza','monografia','curatela').
+\end{center}
+\item Tabella \textit{'unibs\_is\_pubautore'}\\
+Gli autori di ogni singola pubblicazione vengono salvati in una tabella a parte, in modo che sia 
+semplice proporre gli stessi durante l'inserimento.
+\item Tabella \textit{'unibs\_is\_pubblicazione\_pubautore'}\\
+Tabella di collegamento fra autore e pubblicazione.
+\end{itemize}
 
 
 \end{document}

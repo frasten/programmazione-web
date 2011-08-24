@@ -72,8 +72,14 @@ else {
 	while ( $news = mysql_fetch_assoc( $result ) ) {
 		// TODO
 		echo "";
-		if ( $news['file'] ) echo "<img src='img/icone/icon_pdf.png'>";
-		echo "$news[testo]";
+                
+                // 24/08/2011: SOLUZIONE PROPOSTA PER ALLINEARE ICONA E TESTO
+                /*echo "<p>";
+		if ( $news['file'] ) echo "<img src='img/icone/icon_pdf.png'> &nbsp;";
+		echo substr($news['testo'], 3);*/
+                
+                if ( $news['file'] ) echo "<img src='img/icone/icon_pdf.png'> &nbsp;";
+                echo "$news[testo]";
 		echo "";
 	}
 }
