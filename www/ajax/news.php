@@ -19,39 +19,76 @@ if ( $_GET['action'] == 'savenews' ) {
 	/* Creazione di una nuova news */
 
 	if ( empty( $_POST['testo'] ) ) ajax_esci( 'Inserire il contenuto della news.' );
+	if ( empty( $_POST['id_corso'] ) ) ajax_esci( 'ID non valido.' );
 
 	$id_corso = intval( $_POST['id_corso'] );
-	if ( $id_corso <= 0 ) ajax_esci( 'ID non valido.' );
 
 	$nascondi = 0;
 	if ( ! empty( $_POST['hide-news'] ) )
 		$nascondi = 1;
 
-	// La mettiamo nella posizione 0, quindi facciamo scorrere di 1 le
-	// precedenti news per questo corso.
-	$query = <<<EOF
+	$testo = mysql_real_escape_string( $_POST['testo'] );
+
+	if ( empty( $_POST['id_news'] ) ) {
+		/* INSERIMENTO NUOVA NEWS */
+
+		// La mettiamo nella posizione 0, quindi facciamo scorrere di 1 le
+		// precedenti news per questo corso.
+		$query = <<<EOF
 UPDATE `$config[db_prefix]news`
 SET `ordine` = (`ordine`+1)
 WHERE `id_corso` = '$id_corso'
 EOF;
-	mysql_query( $query, $db );
+		mysql_query( $query, $db );
 
-	$testo = mysql_real_escape_string( $_POST['testo'] );
-	// Inseriamo la news
-	$query = <<<EOF
+		// Inseriamo la news
+		$query = <<<EOF
 INSERT INTO `$config[db_prefix]news`
 (`id_corso`,`ordine`,`nascondi`,`testo`)
 VALUES
 ('$id_corso','0','$nascondi','$testo')
 EOF;
-	mysql_query( $query, $db );
-	$id_news = mysql_insert_id( $db );
+		mysql_query( $query, $db );
+		$id_news = mysql_insert_id( $db );
 
-	if ( ! $id_news ) ajax_esci( 'Errore nel salvataggio.' );
+		if ( ! $id_news ) ajax_esci( 'Errore nel salvataggio.' );
+	}
+	else {
+		/* MODIFICA DI UNA NEWS ESISTENTE */
+		$id_news = intval( $_POST['id_news'] );
+		$query = <<<EOF
+UPDATE `$config[db_prefix]news`
+SET
+	`nascondi` = '$nascondi',
+	`testo` = '$testo'
+WHERE `id_news` = '$id_news'
+LIMIT 1
+EOF;
+		$result = mysql_query( $query, $db );
+		if ( ! $result ) ajax_esci( 'Errore nel salvataggio.' );
+
+		// Controllo se aveva un file precedentemente salvato, e se lo sto
+		// sovrascrivendo.
+		if ( ! empty( $_FILES['file']['tmp_name'] ) ) {
+			$query = <<<EOF
+SELECT `file`
+FROM `$config[db_prefix]news`
+WHERE `id_news` = '$id_news'
+LIMIT 1
+EOF;
+			$result = mysql_query( $query, $db );
+			$riga = mysql_fetch_assoc( $result );
+			if ( ! empty( $riga['file'] ) ) {
+				// In tal caso devo eliminare il vecchio file.
+				elimina_file( $riga['file'] );
+			}
+		}
+	}
+
 
 	// Eventuale salvataggio file
 	// Upload del file
-	$uploaded_file = gestisci_file_upload( "c$id_news" ); // c = corso
+	$uploaded_file = gestisci_file_upload( "n$id_news" ); // n = news
 	if ( $uploaded_file !== false ) {
 		// Salvo questa impostazione nel database.
 		// Lo facciamo in un secondo tempo, poiche' il nome del file salvato
@@ -90,6 +127,25 @@ LIMIT 1
 EOF;
 		mysql_query( $query, $db );
 	}
+
+	$json['success'] = 1;
+	ajax_esci();
+}
+else if ( $_GET['action'] == 'getnews' ) {
+	if ( empty( $_POST['id'] ) ) ajax_esci( 'ID non valido.' );
+	$id_news = intval( $_POST['id'] );
+
+	$query = <<<EOF
+SELECT `id_news`, `nascondi`, `testo`
+FROM `$config[db_prefix]news`
+WHERE `id_news` = '$id_news'
+LIMIT 1
+EOF;
+	$result = mysql_query( $query, $db );
+	if ( ! mysql_num_rows( $result ) ) ajax_esci( 'ID non valido.' );
+	$news = mysql_fetch_assoc( $result );
+
+	$json = array_merge( $json, $news );
 
 	$json['success'] = 1;
 	ajax_esci();

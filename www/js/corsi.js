@@ -53,6 +53,13 @@ $(document).ready(function() {
 		height: 500,
 		width: 600,
 		modal: true,
+		open: function() {
+			$("#news-dialog-form [name='id_news']").val('');
+			$('#testo-news').html('');
+			$('#hide-news').attr('checked', false);
+			$('#attachment').val('');
+			jQuery('#testo-news').tinymce().focus();
+		},
 		buttons: {
 			"Chiudi": function() {
 				$( this ).dialog( "close" );
@@ -143,8 +150,8 @@ $(document).ready(function() {
 	$('#news-dialog-form form').iframePostForm({
 		json: true,
 		post: function() {
-			// Probabilmente eliminabile, ma non si sa mai, un refresh fa sempre bene.
 			$('#news-dialog-form').mask("Salvataggio...", 200);
+			// Probabilmente eliminabile, ma non si sa mai, un refresh fa sempre bene.
 			tinyMCE.triggerSave();
 		},
 		complete: function(data) {
@@ -159,36 +166,67 @@ $(document).ready(function() {
 			}
 			else {
 				// Tutto OK
-				$("#lista-news")
-					.prepend($("<li />", {
-						class: 'ui-corner-all',
-						id: 'news_' + data.id,
-						css: {display: 'none'} // per farlo comparire dopo
-					}))
-					.find(":first")
-						.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
-						.append($("<a/>", {
-								href: 'javascript:void(0)',
-								class: 'iconalink eyeicon',
-								title: data.nascondi ? 'News nascosta' : 'News visibile',
-								click: save_visibility
-							}))
-							.find(":last")
-							.append($("<img>", {
-								src: 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'),
-								alt: data.nascondi ? 'News nascosta' : 'News visibile'
+				if ($("#news-dialog-form [name='id_news']").val()) {
+					// Modifica di una news gia' esistente
+					var li = $("li#news_" + data.id);
+					li.find(".eyeicon img")
+						.attr("src", 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'))
+						.attr("alt", data.nascondi ? 'News nascosta' : 'News visibile')
+						.parent().attr("title", data.nascondi ? 'News nascosta' : 'News visibile');
+					li.find(".testo").html(data.testo);
+				}
+				else {
+					// Inserimento di una nuova news
+					$("#lista-news")
+						.prepend($("<li />", {
+							class: 'ui-corner-all',
+							id: 'news_' + data.id,
+							css: {display: 'none'} // per farlo comparire dopo
+						}))
+						.find(":first")
+							.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
+							.append($("<a/>", {
+									href: 'javascript:void(0)',
+									class: 'iconalink eyeicon',
+									title: data.nascondi ? 'News nascosta' : 'News visibile',
+									click: save_visibility
 								}))
-						.parent()
-						.append(" " + data.testo)
-					.animate({
-						"height": "toggle",
-						"opacity": "toggle"
-						}, 600);
+								.find(":last")
+								.append($("<img>", {
+									src: 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'),
+									alt: data.nascondi ? 'News nascosta' : 'News visibile'
+									}))
+							.parent()
+							.append(" ")
+							.append($("<a/>", {
+									href: 'javascript:void(0)',
+									class: 'iconalink',
+									title: 'Modifica newss',
+									click: function() {caricaNews(data.id)}
+								}))
+								.find(":last")
+								.append($("<img>", {
+									src: 'img/icone/newspaper_edit.png',
+									alt: 'Modifica news'
+									}))
+							.parent()
+							.append(" ")
+							.append($("<span />", {
+								class: 'testo'
+								})
+								.append(data.testo)
+							)
+						.animate({
+							"height": "toggle",
+							"opacity": "toggle"
+							}, 600);
+				}
 
 				// Svuoto il form.
 				$('#testo-news').html('');
 				$('#hide-news').attr('checked', false);
-				$('#attachment').val('')
+				$('#attachment').val('');
+				$("#news-dialog-form [name='id_news']").val('');
 			}
 		}
 	});
@@ -462,6 +500,7 @@ $(document).ready(function() {
 									alt: f.nascondi ? 'File nascosto' : 'File visibile'
 									}))
 							.parent()
+							.append(" ")
 							.append($("<a/>", {
 									href: 'javascript:void(0)',
 									class: 'iconalink',
@@ -498,9 +537,35 @@ function apriDialogoFile(id) {
 
 function caricaListaSezioni() {
 	if ( typeof(id_corso) == 'undefined' ) return;
-	$("#lista-sezioni").mask("Caricamento...", 200);
-	$("#lista-sezioni")
+	jQuery("#lista-sezioni").mask("Caricamento...", 200);
+	jQuery("#lista-sezioni")
 		.load('ajax/corsi.php?action=loadlistasezioni&id_corso=' + id_corso, function() {
-			$("#lista-sezioni").unmask();
+			jQuery("#lista-sezioni").unmask();
 		})
+}
+
+function caricaNews(id) {
+	$('#news-dialog-form').mask("Salvataggio...", 200);
+	jQuery.post('ajax/news.php?action=getnews', {
+			id: id
+			},
+			function (data) {
+				$("#news-dialog-form").unmask();
+				if ( ! data || ! data.success ) {
+					// Errore
+					var txt = 'Errore';
+					if ( data.error )
+						txt += ": " + data.error;
+					alert(txt);
+					return;
+				}
+				// Carico i dati nel form
+				jQuery('#testo-news').html(data.testo);
+				jQuery('#hide-news').attr('checked', data.nascondi == '1');
+				jQuery('#attachment').val('');
+				jQuery('#testo-news').tinymce().focus();
+				jQuery("#news-dialog-form [name='id_news']").val(data.id_news);
+			},
+		"json"
+		);
 }

@@ -61,4 +61,16 @@ function gestisci_file_upload( $prefix, $return_relativo = false ) {
 }
 
 
+function elimina_file( $path ) {
+	global $config;
+
+	// Per motivi di sicurezza non sono ammesse sottocartelle
+	$path = basename( $path );
+
+	$upload_path = realpath( '..' ) . "/$config[upload_path]";
+	$path = "$upload_path/$path";
+	if ( ! is_file( $path ) ) return false;
+	unlink( $path );
+}
+
 ?>

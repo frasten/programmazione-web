@@ -292,7 +292,7 @@ strong.errore {
 	padding: 4px 4px 4px 1.5em;
 }
 
-.lista-dnd li span {
+.lista-dnd li span.ui-icon-arrowthick-2-n-s {
 	position: absolute;
 	margin-left: -1.3em;
 }

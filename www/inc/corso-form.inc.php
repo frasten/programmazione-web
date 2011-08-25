@@ -191,6 +191,7 @@ EOF;
 	<!-- Inserimento di una nuova news -->
 	<form action='ajax/news.php?action=savenews' method='post' enctype="multipart/form-data">
 		<input type='hidden' name='id_corso' value='<?php riempi( $corso['id_corso'], 'int' ) ?>' />
+		<input type='hidden' name='id_news' value='' />
 		<fieldset>
 			<h4>Inserisci una nuova news</h4>
 			<p style='margin-bottom: 15px'>
@@ -229,14 +230,24 @@ EOF;
 			while ( $riga = mysql_fetch_assoc( $result ) ) {
 				echo "<li class='ui-corner-all' id='news_$riga[id_news]'>\n";
 				echo "<span class='ui-icon ui-icon-arrowthick-2-n-s'></span>\n";
+
+				// Icona mostra/nascondi
 				$title = $riga['nascondi'] ? 'News nascosta' : 'News visibile';
 				echo "<a href='javascript:void(0)' class='iconalink eyeicon' title='$title'>\n";
 				if ( ! $riga['nascondi'] )
-					echo "<img src='img/icone/eye.png' alt='News visibile' />\n";
+					echo "<img src='img/icone/eye.png' alt='$title' />\n";
 				else
-					echo "<img src='img/icone/eye_no.png' alt='News nascosta' />\n";
+					echo "<img src='img/icone/eye_no.png' alt='$title' />\n";
 				echo "</a>\n ";
+
+				// Icona modifica
+				echo "<a href='javascript:void(0)' class='iconalink' onclick='caricaNews($riga[id_news])' title='Modifica news'>\n";
+				echo "<img src='img/icone/newspaper_edit.png' alt='Modifica news' />\n";
+				echo "</a>\n ";
+
+				echo "<span class='testo'>";
 				echo strip_tags( $riga['testo'] );
+				echo "</span>";
 				echo "</li>\n";
 			}
 			echo "</ul>\n";
