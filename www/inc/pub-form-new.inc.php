@@ -86,5 +86,26 @@
 </form>
 <!-- FAM FAM ICONS, pencil + cross -->
 
+<script type='text/javascript'>
+/* <![CDATA[ */
+var lista_journal = [
+<?php
+	$query = <<<EOF
+SELECT DISTINCT `titolo_contesto`
+FROM `$config[db_prefix]pubblicazione`
+WHERE `categoria` = 'rivista'
+ORDER BY `titolo_contesto` ASC;
+EOF;
+	$result = mysql_query( $query, $db );
+	$pub = array();
+	while ( $riga = mysql_fetch_assoc( $result ) ) {
+		$pub[] = '"' . addslashes( $riga['titolo_contesto'] ) . '"';
+	}
+	echo implode( ",\n", $pub );
+?>
+
+];
+/* ]]> */
+</script>
 <script type='text/javascript' src='js/pubblicazioni.js'></script>
 

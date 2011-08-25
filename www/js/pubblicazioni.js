@@ -60,6 +60,41 @@
 		});
 
 
+	// AUTOCOMPLETAMENTO NOMI JOURNAL
+	$( "#titolo_contesto" )
+		// don't navigate away from the field on tab when selecting an item
+		.bind( "keydown", function( event ) {
+			if ( event.keyCode === $.ui.keyCode.TAB &&
+					$( this ).data( "autocomplete" ).menu.active ) {
+				event.preventDefault();
+			}
+		})
+		.autocomplete({
+			minLength: 0,
+			delay: 100,
+			source: function( request, response ) {
+				if ($('#categoria').val() != "rivista") return;
+				var matches = $.map( lista_journal, function(tag) {
+					var parole = tag.split(' ');
+					var corrisponde = false;
+					for ( var i in parole ) {
+						var p = parole[i];
+						if ( p.toUpperCase().indexOf(request.term.toUpperCase()) === 0 ) {
+							corrisponde = true;
+							break;
+						}
+					}
+					if (corrisponde) return tag;
+				});
+				response(matches);
+			},
+			focus: function() {
+				// prevent value inserted on focus
+				return false;
+			}
+		});
+
+
 	function update_pub_fields(field) {
 		var current_sel = $(field).val();
 		$(field).find("option").each(function() {

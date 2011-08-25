@@ -118,18 +118,6 @@ ENGINE = InnoDB;
 EOF;
 	mysql_query( $query, $db );
 
-	/* Tabella per la lista di Journal */
-	$query = <<<EOF
-CREATE TABLE IF NOT EXISTS `$config[db_prefix]journal` (
-	`id_journal` INTEGER  NOT NULL AUTO_INCREMENT,
-	`nome` VARCHAR(255)  NOT NULL,
-	PRIMARY KEY (`id_journal`)
-)
-CHARACTER SET utf8 COLLATE utf8_general_ci,
-ENGINE = InnoDB;
-EOF;
-	mysql_query( $query, $db );
-
 
 
 	/*****************

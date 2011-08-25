@@ -133,7 +133,11 @@ function stampa_pub_rivista( $riga ) {
 	}
 	echo ", ";
 
-	// TODO: Nome del journal
+	// Nome del journal
+	if ( $riga['titolo_contesto'] ) {
+		echo htmlspecialchars( $riga['titolo_contesto'] );
+		echo ", ";
+	}
 
 	echo "$riga[anno].";
 
