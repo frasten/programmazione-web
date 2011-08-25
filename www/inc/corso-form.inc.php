@@ -245,6 +245,11 @@ EOF;
 				echo "<img src='img/icone/newspaper_edit.png' alt='Modifica news' />\n";
 				echo "</a>\n ";
 
+				// Icona elimina
+				echo "<a href='javascript:void(0)' class='iconalink' onclick='askEliminaNews($riga[id_news])' title='Elimina news'>\n";
+				echo "<img src='img/icone/newspaper_delete.png' alt='Elimina news' />\n";
+				echo "</a>\n ";
+
 				echo "<span class='testo'>";
 				echo strip_tags( $riga['testo'] );
 				echo "</span>";

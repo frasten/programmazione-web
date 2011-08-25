@@ -201,13 +201,26 @@ $(document).ready(function() {
 							.append($("<a/>", {
 									href: 'javascript:void(0)',
 									class: 'iconalink',
-									title: 'Modifica newss',
+									title: 'Modifica news',
 									click: function() {caricaNews(data.id)}
 								}))
 								.find(":last")
 								.append($("<img>", {
 									src: 'img/icone/newspaper_edit.png',
 									alt: 'Modifica news'
+									}))
+							.parent()
+							.append(" ")
+							.append($("<a/>", {
+									href: 'javascript:void(0)',
+									class: 'iconalink',
+									title: 'Elimina news',
+									click: function() {askEliminaNews(data.id);}
+								}))
+								.find(":last")
+								.append($("<img>", {
+									src: 'img/icone/newspaper_delete.png',
+									alt: 'Elimina news'
 									}))
 							.parent()
 							.append(" ")
@@ -568,4 +581,58 @@ function caricaNews(id) {
 			},
 		"json"
 		);
+}
+
+function eliminaNews(id) {
+	var li = $("li#news_" + id);
+	li.mask("Eliminazione...", 200);
+	jQuery.post('ajax/news.php?action=eliminanews', {
+			id: id
+			},
+			function (data) {
+				li.unmask();
+				if ( ! data || ! data.success ) {
+					// Errore
+					var txt = 'Errore';
+					if ( data.error )
+						txt += ": " + data.error;
+					alert(txt);
+					return;
+				}
+				// Race condition:
+				// Se sto modificando una news, e prima di salvarla clicco su
+				// elimina? Cercherei di updatare una news non piu' valida,
+				// generando un errore.
+				// Soluzione: se l'id della news appena eliminata e' uguale a
+				// quello della news correntemente in modifica, azzerare quest'ultimo.
+				// cosi' facendo verra' creata una nuova news.
+				if ( data.id == jQuery("#news-dialog-form [name='id_news']").val())
+					jQuery("#news-dialog-form [name='id_news']").val('');
+
+				// Faccio sparire la news
+				li.animate({
+							"height": "toggle",
+							"opacity": "toggle"
+							}, 600, function() { jQuery(this).remove(); });
+			},
+		"json"
+		);
+}
+
+function askEliminaNews(id) {
+	jQuery("<p>Si &egrave; sicuri di voler eliminare questa news?</p>")
+		.dialog({
+			resizable: false,
+			height: 130,
+			modal: true,
+			buttons: {
+				"Annulla": function() {
+					jQuery( this ).dialog( "close" );
+				},
+				"Elimina": function() {
+					eliminaNews(id);
+					jQuery( this ).dialog( "close" );
+				}
+			}
+		});
 }

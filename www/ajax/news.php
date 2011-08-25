@@ -150,7 +150,36 @@ EOF;
 	$json['success'] = 1;
 	ajax_esci();
 }
+else if ( $_GET['action'] == 'eliminanews' ) {
+	if ( empty( $_POST['id'] ) ) ajax_esci( 'ID non valido.' );
+	$id_news = intval( $_POST['id'] );
 
+	// Controllo che l'id sia valido e gia' che ci sono prendo l'eventuale
+	// file allegato salvato, che andrà dunque eliminato.
+	$query = <<<EOF
+SELECT `file`
+FROM `$config[db_prefix]news`
+WHERE `id_news` = '$id_news'
+LIMIT 1
+EOF;
+	$result = mysql_query( $query, $db );
+	if ( ! mysql_num_rows( $result ) ) ajax_esci( 'ID non valido.' );
+	$riga = mysql_fetch_assoc( $result );
+	if ( ! empty( $riga['file'] ) ) {
+		elimina_file( $riga['file'] );
+	}
 
+	$query = <<<EOF
+DELETE FROM `$config[db_prefix]news`
+WHERE `id_news` = '$id_news'
+LIMIT 1
+EOF;
+	$result = mysql_query( $query, $db );
+	if ( mysql_errno() ) ajax_esci( 'Errore nell\'eliminazione.' );
+
+	$json['id'] = $id_news;
+	$json['success'] = 1;
+	ajax_esci();
+}
 
 ?>
