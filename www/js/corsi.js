@@ -419,6 +419,7 @@ $(document).ready(function() {
 									alt: data.nascondi ? 'File nascosto' : 'File visibile'
 									}))
 							.parent()
+							.append(" ")
 							.append($("<a/>", {
 									href: 'javascript:void(0)',
 									class: 'iconalink',
