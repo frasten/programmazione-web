@@ -57,7 +57,8 @@ $(document).ready(function() {
 			$('#testo-news').html('');
 			$('#hide-news').attr('checked', false);
 			$('#attachment').val('');
-			jQuery('#testo-news').tinymce().focus();
+			if (typeof($('#testo-news').tinymce) != "undefined")
+				$('#testo-news').tinymce().focus();
 		},
 		buttons: {
 			"Chiudi": function() {
