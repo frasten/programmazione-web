@@ -3,8 +3,7 @@
 function hmac_md5($key, $message) {
 	$blocksize = 64; // 64 per MD5/SHA-1
 	if (strlen($key) > $blocksize) {
-		// TODO:
-		// Non credo vada fatto cosi', quindi evitiamo chiavi + lunghe del block
+		// NB: probabilmente non va fatto cosi', quindi evitiamo chiavi + lunghe del block
 		$key = md5($key, true);
 	}
 	if (strlen($key) < $blocksize) {
@@ -20,8 +19,7 @@ function hmac_md5($key, $message) {
 function hmac_sha1($key, $message) {
 	$blocksize = 64; // 64 per MD5/SHA-1
 	if (strlen($key) > $blocksize) {
-		// TODO:
-		// Non credo vada fatto cosi', quindi evitiamo chiavi + lunghe del block
+		// NB: probabilmente non va fatto cosi', quindi evitiamo chiavi + lunghe del block
 		$key = sha1($key, true);
 	}
 	if (strlen($key) < $blocksize) {
