@@ -28,6 +28,7 @@
 			delay: 100,
 			source: function( request, response ) {
 				var matches = $.map( pub_autori, function(tag) {
+					request.term = extractLast(request.term);
 					var parole = tag.split(' ');
 					var corrisponde = false;
 					for ( var i in parole ) {
