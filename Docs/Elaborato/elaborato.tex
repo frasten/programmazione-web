@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt]{report}
+ \documentclass[a4paper, 11pt]{report}
 
 \usepackage[latin1]{inputenc}
 \usepackage[italian]{babel}
@@ -326,7 +326,7 @@ Il progetto realizzita si avvale dei seguenti casi d'uso, divisi per due diversi
 			\item Modifica ordine delle news
 			\item Nascondere una news
 		\end{itemize}
-	\item Gestione Sezione
+	\item Gestione Sezioni
 		\begin{itemize}
 			\item Inserimento di una nuova sezione 
 			\item Modifica di una sezione 
@@ -346,4 +346,872 @@ Il progetto realizzita si avvale dei seguenti casi d'uso, divisi per due diversi
 		\item Visualizzazione singolo Corso
 	\end{itemize}
 \end{itemize}
+
+\subsubsection{Utente Amministratore}
+\begin{enumerate}
+
+%GESTIONE UTENTI
+
+\item \textbf{Gestione Utenti}
+	\begin{enumerate}
+		\item \textit{Creazione nuovo utente}\\
+			Si tratta del caso d'uso inerente all'inserimento, da parte dell'utente amministratore, di un nuovo
+utente.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Creazione nuovo utente\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate} 
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione utenti'
+				\item La pagina web che viene caricata mostra l'elenco degli utenti presenti, l'utente 
+				clicca sulla voce nella barra 'Nuovo utente'
+				\item Viene quindi caricata la pagina web con il form in cui l'utente inserirà username e password
+				\item L'utente conferma il salvataggio cliccando sul bottone 'Crea utente'
+				\item Viene caricata una pagina di avvenuto salvataggio dell'utente inserito e un tasto 'Torna' che 
+				riporta all'elenco degli utenti
+				\end{enumerate}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{iii(a).} L'utente non inserisce username e password, oppure non inserisce lo username ma solo 
+				la password
+				\item{iv.} L'utente conferma il salvataggio cliccando sul bottone 'Crea utente'
+				\item{} Torna al punto iii.
+				\end{description}\\
+				\hline
+			\end{tabular}
+
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{iii(a).} L'utente non inserisce la password
+				\item{iv.} Viene caricata una pagina che mostra l'errore: 'Errore: la password non può essere vuota.'
+				\item{} Torna al punto ii oppure clicca sul tasto 'Torna' che riporta all'elenco degli utenti.
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Cambiare password a utenti già esistenti}\\
+		Si tratta del caso d'uso inerente la modifica, da parte dell'utente amministratore, della 
+		password di un utente precedentemente inserito.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Cambiare password a utenti già esistenti\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	 \begin{enumerate} 
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce nella barra 'Gestione utenti'
+				\item La pagina web che viene caricata mostra l'elenco degli utenti presenti, l'utente clicca
+				sull'icona della chiave posta accanto allo username dell'utente di cui vuole cambiare
+				la password
+				\item La pagina web che viene caricata mostra il form in cui l'utente immette la password 
+				vecchia e la nuova password (da digitare due volte)
+				\item L'utente conferma la modifica cliccando su 'Salva'
+				\item Viene caricata una pagina di avvenuta modifica della password dell'utente e un tasto 'Torna' che 
+				riporta all'elenco degli utenti
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline		
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{iv(a).} L'utente clicca sulla voce nella barra 'Gestione utenti'
+				\item{v(a).} Viene caricata la pagine web che visualizza l'elenco degli utenti
+				\item{} Torna al punto ii
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{iii(b).} La pagina web che viene caricata mostra il form in cui l'utente immette la password 
+				vecchia e la nuova password (da digitare due volte). Ma la password vecchia risulta sbagliata
+				\item{iv(b).} L'utente conferma la modifica cliccando su 'Salva'
+				\item Torna al punto ii e la pagina mostra in alto la scritta 'Errore: password errata.'
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{iii(b).} La pagina web che viene caricata mostra il form in cui l'utente immette la password 
+				vecchia e la nuova password (da digitare due volte). Ma le due nuove password non coincidono
+				\item{iv(b).} L'utente conferma la modifica cliccando su 'Salva'
+				\item Torna al punto ii e la pagina mostra in alto la scritta 'Errore: le password inserite non coincidono'
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Cancellazione utente}\\
+			Si tratta del caso d'uso inerente alla cancellazione, da parte dell'utente amministratore, di un
+utente precedentemente inserito.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Cancellazione utente\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate} 
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce nella barra 'Gestione utenti'
+				\item La pagina web che viene caricata mostra l'elenco degli utenti presenti, l'utente clicca
+				sull'icona con l'omino e il divieto posta accanto allo username dell'utente che vuole cancellare
+				\item La pagina web che viene caricata mostra la seguente domanda 'Si è \textbf{davvero}
+				sicuri di voler eliminare l'utente \textit{username utente che si vuole cancellare}?'
+				\item L'utente conferma la cancellazione cliccando su 'Elimina'
+				\item Viene caricata una pagina di avvenuta cancellazione dell'utente e un tasto 'Torna' che 
+				riporta all'elenco degli utenti
+				\end{enumerate}\\
+				\hline	
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{iv(a).} L'utente clicca su 'Annulla'
+				\item{v} Viene caricata la pagina web che visualizza l'elenco degli utenti
+				\item{} Torna al punto ii
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{enumerate}
+	
+	%GESTIONE PUBBLICAZIONI
+	
+\item \textbf{Gestione Pubblicazioni}
+	\begin{enumerate}
+		\item \textit{Visualizzazione delle pubblicazioni}\\
+			Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente amministratore, 
+			della lista delle pubblicazioni inserite.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Visualizzazione delle pubblicazioni\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate} 
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione pubblicazioni'
+				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata 
+				da un utente non amministratore.
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Inserimento di una nuova pubblicazione}\\
+			Si tratta del caso d'uso inerente all'inserimento, da parte dell'utente amministratore,
+			di una nuova pubblicazione.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Inserimento di una nuova pubblicazione\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione pubblicazioni'
+				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata 
+				da un utente non amministratore.
+				\item L'utente clicca sulla voce nella barra 'Nuova pubblicazione'
+				\item Viene caricata la pagina web con il form per inserire i dati della nuova pubblicazione
+				\item Una volta che l'utente ha inserito i dati, almeno tutti quelli obbligatori 
+				(contrassegnati da un asterisco rosso), clicca sul pulsante 'Salva'
+				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata 
+				da un utente non amministratore, con inserita la pubblicazione appena aggiunta.
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{iv(a).} L'utente non inserire uno o più dei campi obbligatori e clicca sul 
+				pulsante 'Salva'
+				\item{v(a).} La pagina web non cambia, ma accanto al/i campo/i compare la scritta in
+				rosso 'Campo obbligatorio' e la pubblicazione non è salvata.
+				\item{} Torna al punto iv per inserire i campi omessi
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{iv(b).} L'utente inserire un anno non compreso fra il 1900 
+				\item{v(b).} La pagina web non cambia, ma accanto al campo compare, prima di 
+				cliccare sul pulsante 'Salva', la scritta in rosso 'Inserisci un valore compreso tra 1900 e 2011.'
+				\item{} Torna al punto iv per inserire il campo in modo adeguato
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{iv(c).} L'utente inserire un pagina iniziale inferiore alla pagina finale o una
+				pagine finale inferiore alla pagina iniziale
+				\item{v(c).} La pagina web non cambia, ma accanto al campo 'Pag. inizio' compare, prima di 
+				cliccare sul pulsante 'Salva', la scritta in rosso 'Inserire un numero minore della pagina di fine.'
+				e accanto al campo 'Pag. fine' compare la scritta in rosso 'Inserire un numero maggiore della pagina d'inizio.'
+				\item{} Torna al punto iv per inserire i campi in modo adeguato
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{enumerate}
+	
+	%GESTIONE CORSI
+	
+	\clearpage
+	\item \textbf{Gestione Corsi}
+	\begin{enumerate}
+		\item \textit{Visualizzazione dei corsi divisi per facoltà}\\
+		Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente amministratore, 
+			della lista dei corsi inseriti divisi per facoltà.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Visualizzazione dei corsi divisi per facoltà\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Inserimento di un nuovo corso}\\
+			Si tratta del caso d'uso inerente all'inserimento, da parte dell'utente amministratore,
+			di un nuovo corso.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Inserimento di un nuovo corso\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\item L'utente clicca sulla voce nella barra 'Nuovo corso'
+				\item Viene caricata la pagina web con il form per inserire i dati del nuovo corso
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{v.} Una volta che l'utente ha inserito i dati, almeno il campo 'Nome corso' e un 
+				almeno un docente (campi obbligatori, clicca sul pulsante 'Salva'
+				\item{vi.} Viene caricata la pagina web del corso appena inserito così come viene visualizzata 
+				da un utente non amministratore.
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{v(a).} L'utente non inserire uno o più dei campi obbligatori e clicca sul 
+				pulsante 'Salva'
+				\item{vi(a).} La pagina web non cambia, ma accanto al/i campo/i compare la scritta in
+				rosso 'Campo obbligatorio' e il corso non è salvato.
+				\item{} Torna al punto iv per inserire i campi omessi
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Modifica di un corso}\\
+			Si tratta del caso d'uso inerente alla modifica, da parte dell'utente amministratore,
+			di un corso precedentemente inserito.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Modifica di un corso\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina			
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{iv.} Viene caricata la pagina web del singolo corso
+				\item{v.} L'utente clicca sulla voce della barra 'Modifica corso'
+				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
+				sezione'
+				\item{vii.} Dopo che l'utente ha modificato i campi del form che desidera clicca sul pulsante
+				'Salva'
+				\item{viii.} Viene caricata la pagina web del corso appena modificato così come viene visualizzata 
+				da un utente non amministratore.
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{enumerate}
+	
+	%GESTIONE NEWS
+	
+	\item \textbf{Gestione News}
+	\begin{enumerate}
+		\item \textit{Inserimento di una nuova news}\\
+		Si tratta del caso d'uso inerente l'inserimento, da parte dell'utente amministratore,
+			di una news in un corso precedentemente inserito.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Inserimento di una nuova news\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole aggiungere
+				la news.
+				\item Viene caricata la pagina web del singolo corso
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{v.} L'utente clicca sulla voce della barra 'Modifica corso'
+				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
+				sezione'
+				\item{vii.} L'utente clicca sulla voce 'Gestione News'
+				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può inserire il testo della news 
+				nell'editor. Una volta inserito il testo, può inserire anche un file allegato alla news
+				appena inserita.
+				\item{ix.} L'utente salva l'inserimento cliccando sul pulsante 'Salva'. La news appena 
+				inserita compare nel pop-up in basso
+				\item{x.} L'utente clicca sul pulsante 'Chiudi' e il pop-up viene chiuso e si ritorna alla
+				pagina web con il form del corso.
+				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				per tornare alla pagina con la lista dei corsi divisi per facoltà.
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{viii(a).} Viene aperta una finestra pop-up in cui l'utente può inserire il testo della news 
+				nell'editor. L'utente non inserisce il testo della news nè l'allegato oppure aggiunge 
+				soltanto un allegato
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Alternativo	&	\begin{description}
+				\item{ix(a).} Viene aperta una finestra pop-up che contiene la seguente segnalazione:
+				'Errore: Inserire il contenuto della news' e un pulsante 'O.K.'
+				\item{x(a).} L'utente clicca sul pulsante 'O.K.'
+				\item{} Torna al punto viii.
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Modifica ordine delle news}\\
+		Si tratta del caso d'uso inerente alla modifica, da parte dell'utente amministratore,
+			dell'ordine di visualizzazione delle news in un corso precedentemente inserite.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Modifica ordine delle news\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole aggiungere
+				la news.
+				\item Viene caricata la pagina web del singolo corso
+				\item L'utente clicca sulla voce della barra 'Modifica corso'
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
+				sezione'
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{vii.} L'utente clicca sulla voce 'Gestione News'
+				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso le 
+				news inserite. L'ordine che vede è l'ordine di visualizzazzione.
+				\item{ix.} L'utente clicca sulla news a cui vuole cambiare ordine e la trascina fino 
+				alla posizione desiderata
+				\item{x.} L'utente clicca sul pulsante 'Chiudi' e il pop-up viene chiuso e si ritorna alla
+				pagina web con il form del corso
+				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				per tornare alla pagina con la lista dei corsi divisi per facoltà
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Nascondere una news}\\
+		Si tratta del caso d'uso inerente al fatto di nascondere, da parte dell'utente amministratore,
+			la visualizzazione di una news in un corso precedentemente inserite.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Nascondere una news\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{iii.} L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole nascondere
+				la news.
+				\item{iv.} Viene caricata la pagina web del singolo corso
+				\item{v.} L'utente clicca sulla voce della barra 'Modifica corso'
+				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
+				sezione'
+				\item{vii.} L'utente clicca sulla voce 'Gestione News'
+				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso le 
+				news inserite.
+				\item{ix.} Accanto ad ogni news c'è l'icona di un occhio, l'utente clicca sull'icona
+				della news che vuole nascondere. In questo modo la news non comparirà più nella pagina
+				web del corso.
+				\item{x.} L'utente clicca sul pulsante 'Chiudi' e il pop-up viene chiuso e si ritorna alla
+				pagina web con il form del corso
+				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				per tornare alla pagina con la lista dei corsi divisi per facoltà
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{enumerate}
+	
+	%GESTIONE SEZIONE
+	
+	\item \textbf{Gestione Sezioni}
+	\begin{enumerate}
+		\item \textit{Inserimento di una nuova sezione}\\
+		Si tratta del caso d'uso inerente l'inserimento, da parte dell'utente amministratore,
+			di una nuova sezione in un corso precedentemente inserito.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Inserimento di una nuova sezione\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole aggiungere
+				la news.
+				\item Viene caricata la pagina web del singolo corso
+				\item L'utente clicca sulla voce della barra 'Modifica corso'
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
+				sezione'
+				\item L'utente clicca sulla voce 'Nuova sezione'
+				\item Viene aperta una finestra pop-up in cui l'utente può inserire il titolo della 
+				sezione e nell'editor eventuali note
+				\item L'utente salva l'inserimento cliccando sul pulsante 'Salva'. La finestra
+				pop-up viene automaticamente chiusa e il titolo della sezione compare nella pagine web 
+				con il form del corso
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{x.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				per tornare alla pagina con la lista dei corsi divisi per facoltà
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{viii(a).} Viene aperta una finestra pop-up in cui l'utente può inserire il titolo della 
+				sezione e nell'editor eventuali note. L'utente non inserisce il titolo della sezione nè 
+				le note oppure aggiunge soltanto le note.
+				\item{ix(a).} Viene aperta una finestra pop-up che contiene la seguente segnalazione:
+				'Errore: Inserire un titolo!' e un pulsante 'O.K.'
+				\item{x(a).} L'utente clicca sul pulsante 'O.K.'
+				\item{} Torna al punto viii.
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Modifica di una sezione}\\
+		Si tratta del caso d'uso inerente la modifica, da parte dell'utente amministratore,
+			di una sezione in un corso precedentemente inserita.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Modifica di una sezione\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{iii.} L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole aggiungere
+				la news.
+				\item{iv.} Viene caricata la pagina web del singolo corso
+				\item{v.} L'utente clicca sulla voce della barra 'Modifica corso'
+				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. In Materiale didattico compare l'elenco delle sezioni 
+				inserite precedentemente
+				\item{vii.} L'utente clicca sul titolo della sezione che vuole modificare
+				\item{viii.} Compare un pop-up della sezione con i campi precompilati secondo il precedente
+				inserimento. Inoltre compare la voce 'Aggiungi un nuovo file' sotto l'editor delle note
+				\item{ix.} Dopo che l'utente ha modificato i campi che desidera clicca sul pulsante
+				'Salva'. La finestra pop-up viene automaticamente chiusa e il titolo della sezione modifica 
+				compare nella pagine web con il form del corso 
+				\item{x.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				per tornare alla pagina con la lista dei corsi divisi per facoltà
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Aggiunta nuovo file}\\
+		Si tratta del caso d'uso inerente all'aggiunta, da parte dell'utente amministratore,
+			di un nuovo file ad una sezione in un corso precedentemente inserito.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Aggiunta nuovo file\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\item Viene caricata la pagina web del singolo corso
+				\item L'utente clicca sulla voce della barra 'Modifica corso'
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. In Materiale didattico compare l'elenco delle sezioni 
+				inserite precedentemente
+				\item L'utente clicca sul titolo della sezione a cui vuole aggiungere un file
+				\item Compare un pop-up della sezione con i campi precompilati secondo il precedente
+				inserimento. Inoltre compare la voce 'Aggiungi nuovo file' sotto l'editor delle note
+				\item L'utente clicca sulla voce 'Aggiungi nuovo file' e compare una finestra pop-up
+				con il form per inserire i dati del file da aggiungere
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{ix.} Dopo che l'utente ha inserito i dati, titolo e un file da caricare, può scegliere 
+				se il file è aggiornato (comparirà con un'icona nella pagina web) oppure
+				nascosto (non verrà mostrato nella pagina web) e clicca sul pulsante 'Salva'. La finestra 
+				pop-up viene automaticamente chiusa e il titolo del file aggiunto compare nella pagina web 
+				con il form del corso sotto la relativa sezione.
+				\item{x.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				per tornare alla pagina con la lista dei corsi divisi per facoltà
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{ix(a).} L'utente non inserisce titolo del file da caricare e clicca sul pulsante 
+				'Salva'. 
+				\item{x(a).} Viene aperta una finestra pop-up che contiene la seguente segnalazione:
+				'Errore: Inserire un titolo per il file' e un pulsante 'O.K.'
+				\item{x(a).} L'utente clicca sul pulsante 'O.K.'
+				\item{} Torna al punto ix.
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{ix(b).} L'utente non inserisce il file da caricare e clicca sul pulsante 
+				'Salva'. 
+				\item{x(b).} Viene aperta una finestra pop-up che contiene la seguente segnalazione:
+				'Errore: Selezionare un file da caricare.' e un pulsante 'O.K.'
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Alternativo	&	\begin{description}
+				\item{x(b).} L'utente clicca sul pulsante 'O.K.'
+				\item{} Torna al punto ix.
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Modifica ordine dei file}\\
+		Si tratta del caso d'uso inerente alla modifica, da parte dell'utente amministratore,
+			dell'ordine di visualizzazione dei file in una sezione in un corso precedentemente inseriti.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Modifica ordine delle file\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole aggiungere
+				la news.
+				\item Viene caricata la pagina web del singolo corso
+				\item L'utente clicca sulla voce della barra 'Modifica corso'
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. In Materiale didattico compare l'elenco delle sezioni 
+				inserite precedentemente
+				\item L'utente clicca sul titolo della sezione in cui vuole modificare l'ordine
+				dei file sottostanti					
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{viii.} Compare un pop-up della sezione con i campi precompilati secondo il precedente
+				inserimento. Inoltre al di sotto della voce 'Aggiungi nuovo file' l'utente può visualizzare
+				i file inseriti. L'ordine che vede è l'ordine di visualizzazzione.	
+				\item{ix.} L'utente clicca sul file a cui vuole cambiare ordine e lo trascina fino 
+				alla posizione desiderata
+				\item{x.} L'utente clicca sul pulsante 'Salva' e il pop-up viene chiuso e si ritorna alla
+				pagina web con il form del corso e l'ordine di visualizzazione dei file è modificato.
+				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				per tornare alla pagina con la lista dei corsi divisi per facoltà
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Nascondere un file}\\
+		Si tratta del caso d'uso inerente al fatto di nascondere, da parte dell'utente amministratore,
+			la visualizzazione di un file in una sezione in un corso precedentemente inseriti.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Nascondere un file\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{iii.} L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole 
+				nascondere il file
+				\item{iv.} Viene caricata la pagina web del singolo corso
+				\item{v.} L'utente clicca sulla voce della barra 'Modifica corso'
+				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. In Materiale didattico compare l'elenco delle sezioni 
+				inserite precedentemente con i file a esse legati
+				\item{vii.} L'utente clicca sul titolo del file che vuole nascondere
+				\item{viii.} Viene aperta una finestra pop-up con i campi precompilati coi dati del file
+				\item{ix.} L'utente clicca spunta la voce 'Nascondi'. In questo modo il file non comparirà
+				più nella pagina web del corso.
+				\item{x.} L'utente clicca sul pulsante 'Salva' e il pop-up viene chiuso e si ritorna alla
+				pagina web con il form del corso in cui non compare più il titolo del file nascosto
+				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				per tornare alla pagina con la lista dei corsi divisi per facoltà
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{enumerate}
+	
+	%GESTIONE FILE
+	
+	\item \textbf{Gestione File}
+	\begin{enumerate}
+		\item \textit{Modifica dati del file}\\
+		Si tratta del caso d'uso inerente la modifica , da parte dell'utente amministratore, di un file
+		in una sezione in un corso precedentemente inserito.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Modifica dati del file\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole 
+				modificare i dati di un file
+				\item Viene caricata la pagina web del singolo corso
+				\item L'utente clicca sulla voce della barra 'Modifica corso'
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. In Materiale didattico compare l'elenco delle sezioni 
+				inserite precedentemente con i file a esse legati
+				\item L'utente clicca sul titolo del file che vuole modificare
+				\item Viene aperta una finestra pop-up con i campi precompilati coi dati del file
+				\item L'utente modifica i dati del file
+				\item L'utente clicca sul pulsante 'Salva' e il pop-up viene chiuso e si ritorna alla
+				pagina web con il form del corso in cui compare anche il titolo del file modificato
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				per tornare alla pagina con la lista dei corsi divisi per facoltà
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{enumerate}
+\end{enumerate}
+
+\clearpage
+\begin{figure}[th]
+\centering
+\includegraphics[height=20cm]{CasiUso/DiagrammaDeiCasiDUso.png}
+\caption{Diagramma dei Casi d'Uso: Utente Amministratore \label{nome}}
+\end{figure}
+
+\clearpage
+\subsubsection{Utente Finale}
+\begin{enumerate}
+	\item \textbf{Visualizzazione delle pubblicazioni}\\
+			Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente finale, 
+			della lista delle pubblicazioni inserite.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Visualizzazione delle pubblicazioni\\
+				\hline
+				\textbf{Attore}	&	Utente Finale\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{description} 
+				\item{i.} L'utente clicca sulla tab nel menù in alto 'Pubblicazioni'
+				\item{ii.} Viene caricata la pagina web con l'elenco di tutte le pubblicazioni divise per
+				tipologia e per anno.
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+	\item \textbf{Visualizzazione dei corsi divisi per facoltà}\\
+		Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente finale, 
+			della lista dei corsi inseriti divisi per facoltà.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Visualizzazione dei corsi divisi per facoltà\\
+				\hline
+				\textbf{Attore}	&	Utente Finale\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{description}
+				\item{i.} L'utente clicca sulla tab nel menù in alto 'Corsi'
+				\item{ii.} Viene caricata la pagina web con l'elenco dei corsi divisi per facoltà.
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+	\item \textbf{Visualizzazione singolo corso}\\
+		Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente finale, di un
+		singolo corso.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Visualizzazione singolo corso\\
+				\hline
+				\textbf{Attore}	&	Utente Finale\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{description}
+				\item{i.} L'utente clicca sulla tab nel menù in alto 'Corsi'
+				\item{ii.} Viene caricata la pagina web con l'elenco dei corsi divisi per facoltà
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{iii.} Cliccando sul nome di un corso si apre la pagina dello stesso
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{i(a).} L'utente passa col mouse sulla tab nel menù in alto 'Corsi' e compare la
+				lista dei corsi (nome corso - facoltà)
+				\item{} Torna al punto iii.
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+\end{enumerate}
+
+
+\begin{figure}[th]
+\centering
+\includegraphics[height=13cm]{CasiUso/DiagrammaDeiCasiDUsoFinale.png}
+\caption{Diagramma dei Casi d'Uso: Utente Finale \label{nome}}
+\end{figure}
+
 \end{document}
