@@ -23,7 +23,6 @@ $(document).ready(function() {
 		},
 		// Dove mettiamo gli errori
 		errorPlacement: function(error, element) {
-			console.log(element);
 			element.after(error);
 		}
 	});
