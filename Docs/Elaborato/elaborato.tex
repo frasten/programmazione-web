@@ -233,7 +233,7 @@ Di seguito vengono analizzate le tabelle utilizzate\\
 \textbf{1 - Pubblicazioni}
 \begin{figure}[h]
 \centering
-\includegraphics[height=10cm]{diagramma-er/pubblicazioni.png}
+\includegraphics[height=8cm]{diagramma-er/pubblicazioni.png}
 \caption{Diagramma ER: Pubblicazioni \label{nome}}
 \end{figure}
 \\
@@ -249,9 +249,9 @@ Gli autori di ogni singola pubblicazione vengono salvati in una tabella a parte,
 semplice proporre gli stessi durante l'inserimento.
 \item Tabella \textit{'unibs\_is\_pubblicazione\_pubautore'}\\
 Tabella di collegamento fra autore e pubblicazione.
-\item Tabella \textit{'unibs\_is\_journal'}
 \end{itemize}
 
+\clearpage
 \textbf{2 - Corsi}\\
 \begin{figure}[h]
 \centering
@@ -313,18 +313,23 @@ Il progetto realizzita si avvale dei seguenti casi d'uso, divisi per due diversi
 		\begin{itemize}
 			\item Visualizzazione delle pubblicazioni
 			\item Inserimento di una nuova pubblicazione
+			%\item Cancellazione di una pubblicazione
 		\end{itemize}
 	\item Gestione Corsi
 		\begin{itemize}
 			\item Visualizzazione dei corsi divisi per facoltà
 			\item Inserimento di un nuovo corso
 			\item Modifica di un corso
+			%\item Cancellazione di un corso
+			%\item Inserimento docenti e facoltà
 		\end{itemize}
 	\item Gestione News
 		\begin{itemize}
 			\item Inserimento di una nuova news
 			\item Modifica ordine delle news
 			\item Nascondere una news
+			\item Cancellazione di una news
+			\item Modifica di una news
 		\end{itemize}
 	\item Gestione Sezioni
 		\begin{itemize}
@@ -815,6 +820,101 @@ utente precedentemente inserito.
 				\hline
 			\end{tabular}
 		\end{center}
+		\item \textit{Cancellazione di una news}\\
+		Si tratta del caso d'uso inerente alla cancellazione, da parte dell'utente amministratore,
+			di una news in un corso precedentemente inserita.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Cancellazione di una news\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole cancellare
+				una news.
+				\item Viene caricata la pagina web del singolo corso
+				\item L'utente clicca sulla voce della barra 'Modifica corso'
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
+				sezione'
+				\item L'utente clicca sulla voce 'Gestione News'
+				\item Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso le 
+				news inserite.
+				\item Accanto ad ogni news c'è l'icona di cancellazione, l'utente clicca su questa icona
+				della news che vuole cancellare. 
+				\item Si apre una finestra pop-up che chiede conferma della cancellazione della news: 
+				'Si è sicuri di voler eliminare questa news?'. L'utente clicca sul pulsante 'Elimina'.
+				In questo modo la news viene cancellata, anche dall'elenco sottostante.
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{xi.} L'utente clicca sul pulsante 'Chiudi' e il pop-up viene chiuso e si ritorna alla
+				pagina web con il form del corso
+				\item{xii.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				per tornare alla pagina con la lista dei corsi divisi per facoltà
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Modifica di una news}\\
+		Si tratta del caso d'uso inerente la modifica, da parte dell'utente amministratore,
+			di una news in un corso precedentemente inserita.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Modifica di una news\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole
+				modificare il contenuto di una news.
+				\item Viene caricata la pagina web del singolo corso
+				\item L'utente clicca sulla voce della barra 'Modifica corso'
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
+				sezione'
+				
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{vii.} L'utente clicca sulla voce 'Gestione News'
+				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso le 
+				news inserite.
+				\item{ix.} Accanto ad ogni news c'è l'icona di modifica (con la matita), l'utente clicca 
+				su questa icona della news che vuole cancellare. 
+				\item{x.} Nella stessa finestra di gestione news, si riempiono i campi con i dati della 
+				news che si vuole modificare. Dopo la modifica dei dati, l'utente clicca sul pulsante
+				'Salva'. In questo modo la news viene salva con la modifica apportata, anche nell'elenco sottostante.
+				\item{xi.} L'utente clicca sul pulsante 'Chiudi' e il pop-up viene chiuso e si ritorna alla
+				pagina web con il form del corso
+				\item{xii.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				per tornare alla pagina con la lista dei corsi divisi per facoltà
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
 	\end{enumerate}
 	
 	%GESTIONE SEZIONE
@@ -1075,6 +1175,25 @@ utente precedentemente inserito.
 				per tornare alla pagina con la lista dei corsi divisi per facoltà
 				\end{description}\\
 				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{vii(a).} L'utente clicca sul titolo della sezione nella quale c'è il file che 
+				vuole modificare
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Alternativo	&	\begin{description}
+				\item{viii(a).} Compare una finestra pop-up della sezione con i campi precompilati 
+				secondo il precedente inserimento. Al di sotto della voce 'Aggiungi nuovo file' 
+				l'utente può visualizzare i file inseriti. Accanto ad ogni file c'è un'icona per la 
+				modifica dei dati del file
+				\item{ix(a).} L'utente clicca tale icona.
+				\item{} Continua al punto viii.
+				\end{description}\\
+				\hline
 			\end{tabular}
 		\end{center}
 	\end{enumerate}
@@ -1102,14 +1221,6 @@ utente precedentemente inserito.
 				modificare i dati di un file
 				\item Viene caricata la pagina web del singolo corso
 				\item L'utente clicca sulla voce della barra 'Modifica corso'
-				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
-				la precedente creazione del corso. In Materiale didattico compare l'elenco delle sezioni 
-				inserite precedentemente con i file a esse legati
-				\item L'utente clicca sul titolo del file che vuole modificare
-				\item Viene aperta una finestra pop-up con i campi precompilati coi dati del file
-				\item L'utente modifica i dati del file
-				\item L'utente clicca sul pulsante 'Salva' e il pop-up viene chiuso e si ritorna alla
-				pagina web con il form del corso in cui compare anche il titolo del file modificato
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -1118,9 +1229,28 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
 				Scenario Principale	&	\begin{description}
+				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. In Materiale didattico compare l'elenco delle sezioni 
+				inserite precedentemente con i file a esse legati
+				\item{vii.} L'utente clicca sul titolo del file che vuole modificare
+				\item{viii.} Viene aperta una finestra pop-up con i campi precompilati coi dati del file
+				\item{ix.} L'utente modifica i dati del file
+				\item{x.} L'utente clicca sul pulsante 'Salva' e il pop-up viene chiuso e si ritorna alla
+				pagina web con il form del corso in cui compare anche il titolo del file modificato
 				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
 				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
 				per tornare alla pagina con la lista dei corsi divisi per facoltà
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{vii(a).} L'utente clicca sul titolo della sezione nella quale c'è il file che 
+				vuole modificare
+				\item{viii(a).} Compare una finestra pop-up della sezione con i campi precompilati 
+				secondo il precedente inserimento. Al di sotto della voce 'Aggiungi nuovo file' 
+				l'utente può visualizzare i file inseriti. Accanto ad ogni file c'è un'icona per la 
+				modifica dei dati del file
+				\item{ix(a).} L'utente clicca tale icona.
+				\item{} Continua al punto viii.
 				\end{description}\\
 				\hline
 			\end{tabular}
