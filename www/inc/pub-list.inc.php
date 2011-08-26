@@ -1,7 +1,9 @@
 		<h2>Pubblicazioni</h2>
+                
+<script type="text/javascript" src="js/pubblicazioni.js"></script>
 <?php
 
-$autori = load_autori();
+$autori = load_autori(); 
 
 stampa_pub( 'rivista' );
 stampa_pub( 'libro' );
@@ -91,7 +93,11 @@ EOF;
 				printf( "%s<h4>%s</h4>\n", str_repeat( "\t", 4), intval( $riga['anno'] ) );
 				echo str_repeat( "\t", 5 ) . "<ul>\n";
 			}
-			echo str_repeat( "\t", 6 ) . "<li>\n";
+			echo str_repeat( "\t", 6 ) . "<li id='pubblicazione_$riga[id_pubblicazione]'>\n";
+                        // Icona elimina
+				echo "<a href='javascript:void(0)' class='iconalink' onclick='askEliminaPubblicazione($riga[id_pubblicazione])' title='Elimina pubblicazione'>\n";
+				echo "<img src='img/icone/newspaper_delete.png' alt='Elimina pubblicazione' />\n";
+				echo "</a>\n ";
 			call_user_func( "stampa_pub_$categoria", $riga );
 			echo str_repeat( "\t", 6 ) . "</li>\n";
 			$old_anno = $riga['anno'];

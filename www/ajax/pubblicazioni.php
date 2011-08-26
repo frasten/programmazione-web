@@ -1,7 +1,7 @@
 <?php
 
 require_once( '../inc/framework.inc.php' );
-require_once( '../inc/json.inc.php' );
+require_once( '../inc/ajax-functions.inc.php' );
 
 
 // Protezione contro accessi non autorizzati
@@ -23,6 +23,37 @@ EOF;
 	}
 
 	echo json_encode( $ret );
+}
+else if ( $_GET['action'] == 'eliminapubblicazione' ) {
+	if ( empty( $_POST['id'] ) ) ajax_esci( 'ID non valido.' );
+	$id_pubblicazione = intval( $_POST['id'] );
+
+	// Controllo che l'id sia valido e gia' che ci sono prendo l'eventuale
+	// file allegato salvato, che andrà dunque eliminato.
+	$query = <<<EOF
+SELECT `file`
+FROM `$config[db_prefix]pubblicazione`
+WHERE `id_pubblicazione` = '$id_pubblicazione'
+LIMIT 1
+EOF;
+	$result = mysql_query( $query, $db );
+	if ( ! mysql_num_rows( $result ) ) ajax_esci( 'ID non valido.' );
+	$riga = mysql_fetch_assoc( $result );
+	if ( ! empty( $riga['file'] ) ) {
+		elimina_file( $riga['file'] );
+	}
+
+	$query = <<<EOF
+DELETE FROM `$config[db_prefix]pubblicazione`
+WHERE `id_pubblicazione` = '$id_pubblicazione'
+LIMIT 1
+EOF;
+	$result = mysql_query( $query, $db );
+	if ( mysql_errno() ) ajax_esci( 'Errore nell\'eliminazione.' );
+
+	$json['id'] = $id_pubblicazione;
+	$json['success'] = 1;
+	ajax_esci();
 }
 
 
