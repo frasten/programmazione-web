@@ -313,15 +313,16 @@ Il progetto realizzita si avvale dei seguenti casi d'uso, divisi per due diversi
 		\begin{itemize}
 			\item Visualizzazione delle pubblicazioni
 			\item Inserimento di una nuova pubblicazione
-			%\item Cancellazione di una pubblicazione
+			\item Cancellazione di una pubblicazione
 		\end{itemize}
 	\item Gestione Corsi
 		\begin{itemize}
 			\item Visualizzazione dei corsi divisi per facoltà
 			\item Inserimento di un nuovo corso
 			\item Modifica di un corso
+			\item Inserimento di un nuovo docente 
+			\item Inserimento di una nuova facoltà
 			%\item Cancellazione di un corso
-			%\item Inserimento docenti e facoltà
 		\end{itemize}
 	\item Gestione News
 		\begin{itemize}
@@ -352,6 +353,7 @@ Il progetto realizzita si avvale dei seguenti casi d'uso, divisi per due diversi
 	\end{itemize}
 \end{itemize}
 
+\clearpage
 \subsubsection{Utente Amministratore}
 \begin{enumerate}
 
@@ -482,7 +484,7 @@ utente precedentemente inserito.
 	\end{enumerate}
 	
 	%GESTIONE PUBBLICAZIONI
-	
+\clearpage
 \item \textbf{Gestione Pubblicazioni}
 	\begin{enumerate}
 		\item \textit{Visualizzazione delle pubblicazioni}\\
@@ -499,7 +501,8 @@ utente precedentemente inserito.
 				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
 				sulla voce 'Gestione pubblicazioni'
 				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata 
-				da un utente non amministratore.
+				da un utente non amministratore con accanto al titolo di ogni pubblicazione l'icona 
+				per la sua cancellazione.
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -518,19 +521,24 @@ utente precedentemente inserito.
 				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
 				sulla voce 'Gestione pubblicazioni'
 				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata 
-				da un utente non amministratore.
+				da un utente non amministratore con accanto al titolo di ogni pubblicazione l'icona
+				per la sua cancellazione.
 				\item L'utente clicca sulla voce nella barra 'Nuova pubblicazione'
-				\item Viene caricata la pagina web con il form per inserire i dati della nuova pubblicazione
-				\item Una volta che l'utente ha inserito i dati, almeno tutti quelli obbligatori 
-				(contrassegnati da un asterisco rosso), clicca sul pulsante 'Salva'
-				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata 
-				da un utente non amministratore, con inserita la pubblicazione appena aggiunta.
+				\item Viene caricata la pagina web con il form per inserire i dati della nuova pubblicazione				
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
 		\end{center}
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale		&	\begin{description}
+				\item{iv.} Una volta che l'utente ha inserito i dati, almeno tutti quelli obbligatori 
+				(contrassegnati da un asterisco rosso), clicca sul pulsante 'Salva'
+				\item{v.} Viene caricata la pagina web delle pubblicazioni così come viene visualizzata 
+				da un utente non amministratore, con inserita la pubblicazione appena aggiunta, con 
+				accanto al titolo di ogni pubblicazione l'icona per la sua cancellazione.
+				\end{description}\\
 				\hline
 				\textbf{Scenario Alternativo}	&	\begin{description}
 				\item{iv(a).} L'utente non inserire uno o più dei campi obbligatori e clicca sul 
@@ -547,13 +555,54 @@ utente precedentemente inserito.
 				\item{} Torna al punto iv per inserire il campo in modo adeguato
 				\end{description}\\
 				\hline
-				\textbf{Scenario Alternativo}	&	\begin{description}
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+			\hline
+			\textbf{Scenario Alternativo}	&	\begin{description}
 				\item{iv(c).} L'utente inserire un pagina iniziale inferiore alla pagina finale o una
 				pagine finale inferiore alla pagina iniziale
 				\item{v(c).} La pagina web non cambia, ma accanto al campo 'Pag. inizio' compare, prima di 
 				cliccare sul pulsante 'Salva', la scritta in rosso 'Inserire un numero minore della pagina di fine.'
 				e accanto al campo 'Pag. fine' compare la scritta in rosso 'Inserire un numero maggiore della pagina d'inizio.'
 				\item{} Torna al punto iv per inserire i campi in modo adeguato
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\item \textit{Cancellazione di una nuova pubblicazione}\\
+			Si tratta del caso d'uso inerente alla cancellazione, da parte dell'utente amministratore,
+			di una pubblicazione.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Cancellazione di una nuova pubblicazione\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione pubblicazioni'
+				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata 
+				da un utente non amministratore con accanto al titolo di ogni pubblicazione l'icona 
+				per la sua cancellazione.
+				\item L'utente clicca sull'icona per la cancellazione della pubblicazione scelta
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{iv.} Compare una finestra di pop-up con la seguente domanda: 'Si è sicuri di voler 
+				eliminare questa pubblicazione?'
+				\item{v.} L'utente clicca sul pulsante 'Elimina'
+				\item{vi.} La finestra di pop-up si chiude e si torna alla pagina web delle pubblicazioni
+				così come viene visualizzata da un utente non amministratore, in cui non compare più 
+				la pubblicazione appena eliminata, con accanto al titolo di ogni pubblicazione rimasta
+				l'icona per la sua cancellazione.
 				\end{description}\\
 				\hline
 			\end{tabular}
@@ -662,10 +711,101 @@ utente precedentemente inserito.
 				\hline
 			\end{tabular}
 		\end{center}
+		\item \textit{Inserimento di un nuovo docente}\\
+		Si tratta del caso d'uso inerente l'inserimento, da parte dell'utente amministratore,
+			di un nuovo docente, visibile poi in tutti i corsi.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Inserimento di un nuovo docente\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\item L'utente clicca sulla voce nella barra 'Nuovo corso'
+				\item Viene caricata la pagina web con il form per inserire i dati di un corso
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{v.} Sotto i nomi dei docenti già inseriti, o comunque sotto la scritta 'Docenti', 
+				l'utente clicca sulla voce 'Nuovo Docente'
+				\item{vi.} Viene aperta una finestra pop-up in cui l'utente può inserire il nome del docente.
+				\item{vii.} L'utente salva l'inserimento cliccando sul pulsante 'Salva'. La finestra 
+				di pop-up si chiude automaticamente e si ritorna alla pagina web con il form per inserire
+				i dati di un corso con l'aggiunta del docente fra le scelte.
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{iii(a).} L'utente clicca sul nome di uno dei corsi presenti nella pagina
+				\item{iv(a).} Viene caricata la pagina web del singolo corso
+				\item{v(a).} L'utente clicca sulla voce della barra 'Modifica corso'
+				\item{vi(a).} Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. 
+				\item{} Continua al punto v.
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		
+		\item \textit{Inserimento di una nuova facoltà}\\
+		Si tratta del caso d'uso inerente l'inserimento, da parte dell'utente amministratore,
+			di una nuova facoltà, visibile poi in tutti i corsi.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Inserimento di una nuova facoltà\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\end{enumerate}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				Scenario Principale	&	\begin{description}
+				\item{ii.} Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				da un utente non amministratore.
+				\item{iii.} L'utente clicca sulla voce nella barra 'Nuovo corso'
+				\item{iv.} Viene caricata la pagina web con il form per inserire i dati di un corso
+				\item{v.} Sotto i nomi delle facoltà già inserite, o accanto alla scritta 'Facoltà', 
+				l'utente clicca sulla voce 'Nuova Facoltà'
+				\item{vi.} Viene aperta una finestra pop-up in cui l'utente può inserire il nome della facoltà.
+				\item{vii.} L'utente salva l'inserimento cliccando sul pulsante 'Salva'. La finestra 
+				di pop-up si chiude automaticamente e si ritorna alla pagina web con il form per inserire
+				i dati di un corso con l'aggiunta della facoltà fra le scelte.
+				\end{description}\\
+				\hline
+				\textbf{Scenario Alternativo}	&	\begin{description}
+				\item{iii(a).} L'utente clicca sul nome di uno dei corsi presenti nella pagina
+				\item{iv(a).} Viene caricata la pagina web del singolo corso
+				\item{v(a).} L'utente clicca sulla voce della barra 'Modifica corso'
+				\item{vi(a).} Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. 
+				\item{vii(a).} Sotto i nomi delle facoltà già inserite, l'utente clicca sulla voce 
+				'Nuova Facoltà'
+				\item{} Continua al punto vi.
+				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
 	\end{enumerate}
 	
 	%GESTIONE NEWS
-	
+	\clearpage
 	\item \textbf{Gestione News}
 	\begin{enumerate}
 		\item \textit{Inserimento di una nuova news}\\
@@ -686,6 +826,14 @@ utente precedentemente inserito.
 				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole aggiungere
 				la news.
 				\item Viene caricata la pagina web del singolo corso
+				\item L'utente clicca sulla voce della barra 'Modifica corso'
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
+				sezione'
+				\item L'utente clicca sulla voce 'Gestione News'
+				\item Viene aperta una finestra pop-up in cui l'utente può inserire il testo della news 
+				nell'editor. Una volta inserito il testo, può inserire anche un file allegato alla news
+				appena inserita.
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -693,15 +841,7 @@ utente precedentemente inserito.
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
-				Scenario Principale	&	\begin{description}
-				\item{v.} L'utente clicca sulla voce della barra 'Modifica corso'
-				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
-				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
-				sezione'
-				\item{vii.} L'utente clicca sulla voce 'Gestione News'
-				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può inserire il testo della news 
-				nell'editor. Una volta inserito il testo, può inserire anche un file allegato alla news
-				appena inserita.
+				Scenario Principale	&	\begin{description}			
 				\item{ix.} L'utente salva l'inserimento cliccando sul pulsante 'Salva'. La news appena 
 				inserita compare nel pop-up in basso
 				\item{x.} L'utente clicca sul pulsante 'Chiudi' e il pop-up viene chiuso e si ritorna alla
@@ -715,14 +855,6 @@ utente precedentemente inserito.
 				\item{viii(a).} Viene aperta una finestra pop-up in cui l'utente può inserire il testo della news 
 				nell'editor. L'utente non inserisce il testo della news nè l'allegato oppure aggiunge 
 				soltanto un allegato
-				\end{description}\\
-				\hline
-			\end{tabular}
-		\end{center}
-		\begin{center}
-			\begin{tabular}{|l|p{0.5\columnwidth}|}
-				\hline
-				Scenario Alternativo	&	\begin{description}
 				\item{ix(a).} Viene aperta una finestra pop-up che contiene la seguente segnalazione:
 				'Errore: Inserire il contenuto della news' e un pulsante 'O.K.'
 				\item{x(a).} L'utente clicca sul pulsante 'O.K.'
@@ -753,6 +885,13 @@ utente precedentemente inserito.
 				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
 				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
 				sezione'
+				\item L'utente clicca sulla voce 'Gestione News'
+				\item Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso le 
+				news inserite. L'ordine che vede è l'ordine di visualizzazzione.
+				\item L'utente clicca sulla news a cui vuole cambiare ordine e la trascina fino 
+				alla posizione desiderata
+				\item L'utente clicca sul pulsante 'Chiudi' e il pop-up viene chiuso e si ritorna alla
+				pagina web con il form del corso
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -760,14 +899,7 @@ utente precedentemente inserito.
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
-				Scenario Principale	&	\begin{description}
-				\item{vii.} L'utente clicca sulla voce 'Gestione News'
-				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso le 
-				news inserite. L'ordine che vede è l'ordine di visualizzazzione.
-				\item{ix.} L'utente clicca sulla news a cui vuole cambiare ordine e la trascina fino 
-				alla posizione desiderata
-				\item{x.} L'utente clicca sul pulsante 'Chiudi' e il pop-up viene chiuso e si ritorna alla
-				pagina web con il form del corso
+				Scenario Principale	&	\begin{description}				
 				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
 				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
 				per tornare alla pagina con la lista dei corsi divisi per facoltà
@@ -790,6 +922,14 @@ utente precedentemente inserito.
 				sulla voce 'Gestione corsi'
 				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
 				da un utente non amministratore.
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole nascondere
+				la news.
+				\item Viene caricata la pagina web del singolo corso
+				\item L'utente clicca sulla voce della barra 'Modifica corso'
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
+				sezione'
+				\item L'utente clicca sulla voce 'Gestione News'
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -798,14 +938,6 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
 				Scenario Principale	&	\begin{description}
-				\item{iii.} L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole nascondere
-				la news.
-				\item{iv.} Viene caricata la pagina web del singolo corso
-				\item{v.} L'utente clicca sulla voce della barra 'Modifica corso'
-				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
-				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
-				sezione'
-				\item{vii.} L'utente clicca sulla voce 'Gestione News'
 				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso le 
 				news inserite.
 				\item{ix.} Accanto ad ogni news c'è l'icona di un occhio, l'utente clicca sull'icona
@@ -837,19 +969,6 @@ utente precedentemente inserito.
 				da un utente non amministratore.
 				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole cancellare
 				una news.
-				\item Viene caricata la pagina web del singolo corso
-				\item L'utente clicca sulla voce della barra 'Modifica corso'
-				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
-				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
-				sezione'
-				\item L'utente clicca sulla voce 'Gestione News'
-				\item Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso le 
-				news inserite.
-				\item Accanto ad ogni news c'è l'icona di cancellazione, l'utente clicca su questa icona
-				della news che vuole cancellare. 
-				\item Si apre una finestra pop-up che chiede conferma della cancellazione della news: 
-				'Si è sicuri di voler eliminare questa news?'. L'utente clicca sul pulsante 'Elimina'.
-				In questo modo la news viene cancellata, anche dall'elenco sottostante.
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -858,6 +977,19 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
 				Scenario Principale	&	\begin{description}
+				\item{iv.} Viene caricata la pagina web del singolo corso
+				\item{v.} L'utente clicca sulla voce della barra 'Modifica corso'
+				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
+				sezione'
+				\item{vii.} L'utente clicca sulla voce 'Gestione News'
+				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso le 
+				news inserite.
+				\item{ix.} Accanto ad ogni news c'è l'icona di cancellazione, l'utente clicca su questa icona
+				della news che vuole cancellare. 
+				\item{x.} Si apre una finestra pop-up che chiede conferma della cancellazione della news: 
+				'Si è sicuri di voler eliminare questa news?'. L'utente clicca sul pulsante 'Elimina'.
+				In questo modo la news viene cancellata, anche dall'elenco sottostante.
 				\item{xi.} L'utente clicca sul pulsante 'Chiudi' e il pop-up viene chiuso e si ritorna alla
 				pagina web con il form del corso
 				\item{xii.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
@@ -889,7 +1021,11 @@ utente precedentemente inserito.
 				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
 				la precedente creazione del corso. Inoltre compaiono le voci 'Gestione News' e 'Nuova
 				sezione'
-				
+				\item L'utente clicca sulla voce 'Gestione News'
+				\item Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso le 
+				news inserite.
+				\item Accanto ad ogni news c'è l'icona di modifica (con la matita), l'utente clicca 
+				su questa icona della news che vuole cancellare. 
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -898,11 +1034,6 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
 				Scenario Principale	&	\begin{description}
-				\item{vii.} L'utente clicca sulla voce 'Gestione News'
-				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso le 
-				news inserite.
-				\item{ix.} Accanto ad ogni news c'è l'icona di modifica (con la matita), l'utente clicca 
-				su questa icona della news che vuole cancellare. 
 				\item{x.} Nella stessa finestra di gestione news, si riempiono i campi con i dati della 
 				news che si vuole modificare. Dopo la modifica dei dati, l'utente clicca sul pulsante
 				'Salva'. In questo modo la news viene salva con la modifica apportata, anche nell'elenco sottostante.
@@ -918,7 +1049,7 @@ utente precedentemente inserito.
 	\end{enumerate}
 	
 	%GESTIONE SEZIONE
-	
+	\clearpage
 	\item \textbf{Gestione Sezioni}
 	\begin{enumerate}
 		\item \textit{Inserimento di una nuova sezione}\\
@@ -1336,12 +1467,19 @@ utente precedentemente inserito.
 			\end{tabular}
 		\end{center}
 \end{enumerate}
-
-
 \begin{figure}[th]
 \centering
 \includegraphics[height=13cm]{CasiUso/DiagrammaDeiCasiDUsoFinale.png}
 \caption{Diagramma dei Casi d'Uso: Utente Finale \label{nome}}
 \end{figure}
+
+\clearpage
+
+\section{Progettazione delle funzionalità}
+\subsection{Descrizione d'alto livello delle funzionalità da implementare}
+\begin{enumerate}
+	\item \textbf{Funzionalità da implementare per l'Utente Amministratore}
+	
+\end{enumerate}
 
 \end{document}
