@@ -192,6 +192,12 @@ strong.errore {
 	line-height: 20px;
 }
 
+.linksenzaicona {
+	background-repeat: no-repeat;
+	padding: 2px 0 2px 2px;
+	line-height: 20px;
+}
+
 .frmchangepassword label {
 	display: block;
 }

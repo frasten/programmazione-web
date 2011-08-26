@@ -195,6 +195,46 @@ EOF;
 		}
 	}
 }
+elseif($_GET['action'] == 'newfacolta'){
+    if ( empty( $_POST['nome-facolta'] ) ) ajax_esci( 'Inserire il nome della Facolt&agrave;' );
+    
+    $nome = mysql_real_escape_string( $_POST['nome-facolta'] );
+    
+    $query = <<<EOF
+INSERT INTO `$config[db_prefix]facolta`
+(`nome`)
+VALUES
+('$nome')
+EOF;
+		mysql_query( $query, $db );
+		$id_facolta = mysql_insert_id( $db );
+
+		if ( ! $id_facolta ) ajax_esci( 'Errore nel salvataggio.' );
+                
+                $json['success'] = 1;
+                $json['id_facolta'] = $id_facolta;
+                ajax_esci();
+}
+elseif($_GET['action'] == 'newdocente'){
+    if ( empty( $_POST['nome-docente'] ) ) ajax_esci( 'Inserire il nome del Docente' );
+    
+    $nome = mysql_real_escape_string( $_POST['nome-docente'] );
+    
+    $query = <<<EOF
+INSERT INTO `$config[db_prefix]docente`
+(`nome`)
+VALUES
+('$nome')
+EOF;
+		mysql_query( $query, $db );
+		$id_docente = mysql_insert_id( $db );
+
+		if ( ! $id_docente ) ajax_esci( 'Errore nel salvataggio.' );
+                
+                $json['success'] = 1;
+                $json['id_docente'] = $id_docente;
+                ajax_esci();
+}
 
 
 ?>
