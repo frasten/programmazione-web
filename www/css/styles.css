@@ -71,6 +71,10 @@ form label.error {
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#137d0e', endColorstr='#41b72f');
 }
 
+.submitbutton::-moz-focus-inner {
+  border: 0;
+}
+
 strong.errore {
 	color: #E30700;
 }
@@ -229,7 +233,15 @@ strong.errore {
 
 .adminmenu a {
 	text-decoration: none;
+	padding-right: 2px;
+	text-shadow: 0px 1px 1px #fff;
 }
+
+.adminmenu a:hover {
+	text-shadow: 0px 1px 1px #050;
+	box-shadow: 0 0 3px #160;
+}
+
 
 .adminmenu ul {
 	display: inline;
