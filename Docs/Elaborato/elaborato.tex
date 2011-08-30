@@ -1330,7 +1330,7 @@ utente precedentemente inserito.
 	\end{enumerate}
 	
 	%GESTIONE FILE
-	
+\clearpage
 	\item \textbf{Gestione File}
 	\begin{enumerate}
 		\item \textit{Modifica dati del file}\\
@@ -1352,6 +1352,12 @@ utente precedentemente inserito.
 				modificare i dati di un file
 				\item Viene caricata la pagina web del singolo corso
 				\item L'utente clicca sulla voce della barra 'Modifica corso'
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
+				la precedente creazione del corso. In Materiale didattico compare l'elenco delle sezioni 
+				inserite precedentemente con i file a esse legati
+				\item L'utente clicca sul titolo del file che vuole modificare
+				\item Viene aperta una finestra pop-up con i campi precompilati coi dati del file
+				\item L'utente modifica i dati del file
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -1360,12 +1366,6 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
 				Scenario Principale	&	\begin{description}
-				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
-				la precedente creazione del corso. In Materiale didattico compare l'elenco delle sezioni 
-				inserite precedentemente con i file a esse legati
-				\item{vii.} L'utente clicca sul titolo del file che vuole modificare
-				\item{viii.} Viene aperta una finestra pop-up con i campi precompilati coi dati del file
-				\item{ix.} L'utente modifica i dati del file
 				\item{x.} L'utente clicca sul pulsante 'Salva' e il pop-up viene chiuso e si ritorna alla
 				pagina web con il form del corso in cui compare anche il titolo del file modificato
 				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
@@ -1479,7 +1479,569 @@ utente precedentemente inserito.
 \subsection{Descrizione d'alto livello delle funzionalità da implementare}
 \begin{enumerate}
 	\item \textbf{Funzionalità da implementare per l'Utente Amministratore}
-	
+	\begin{enumerate}
+		\item Accesso all'area riservata all'utente amministratore tramite apposito form per il login
+		\item Pagina di scelta da parte dell'utente amministratore fra le varie operazione e potrà svolgere
+		\item L'amministratore potrà svolgere operazioni di gestione degli utenti registrati come:
+			\begin{itemize}
+				\item creazione di un nuovo utente
+				\item modifica della password di un utente preesistente
+				\item cancellazione di un utente
+			\end{itemize}
+		\item L'amministratore potrà svolgere operazioni di gestione delle pubblicazioni oltre alla 
+			visualizzazione del loro elenco, come:
+			\begin{itemize}
+				\item creazione di una nuova pubblicazione 
+				\item cancellazione di una pubblicazione preesistente
+			\end{itemize}
+		\item L'amministratore potrà inoltre svolgere operazioni di gestione anche per i corsi, oltre
+			alla loro visualizzazione divisi per facoltà di appartenenze, come:
+			\begin{itemize}
+				\item visualizzazione del contenuto di un singolo corso
+				\item creazioen di un nuovo corso
+				\item modifica di un corso preesistente
+				\item inserimento di un nuovo docente e di una nuova facoltà ad un corso
+			\end{itemize}
+		\item L'amministrazione gestisce anche le operazioni riguardati le news che saranno aggiunte
+			ad un corso precedentemente inserito, ed in particolare:
+			\begin{itemize}
+				\item inserimento di una nuova news
+				\item modifica dell'ordine delle news precedentemente inserite 
+				\item nascondere una news già inserita
+				\item cancellare una news
+				\item modificare i dati di una news
+			\end{itemize}
+		\item L'amministratore dovrà gestire anche il materiale didattico aggiunto ad un particolare
+			corso precedentemente inserito. Per questo dovrà svolgere le seguenti operazioni:
+			\begin{itemize}
+				\item inserimento di una nuova sezione del materiale didattico
+				\item modifica dei dati di una sezione precedentemente inserita
+				\item aggiunta di un file ad una sezione inserita 
+				\item modifica dell'ordine di visualizzazione dei file inseriti 
+				\item possibilità di nascondere un file precedentemente inserito
+				\item modifica dei dati di un file precendentemente inserito
+			\end{itemize}
+	\end{enumerate}
+	\item \textbf{Funzionalità da implementare per l'Utente Finale}\\
+	L'utente finale dovrà avere la possibilità di visualizzare i contenuti inseriti dall'utente 
+	amministratore:
+	\begin{enumerate}
+		\item Visualizzazione dell'elenco delle pubblicazioni divisi per categorie e ancora per anni
+		di publlicazione
+		\item Visualizzazione dell'elenco dei corsi divisi per facoltà in cui si svolgono
+		\item Visualizzazione del contenuto dei singoli corsi
+	\end{enumerate}
 \end{enumerate}
 
+\clearpage
+\section{Progettazione dell'applicazione Web}
+\subsection{Descrizione delle pagine web da implementare e delle funzionalità che realizzano: Utente
+Amministratore}
+\begin{enumerate}
+
+	\item \textbf{Login dell'utente amministratore}		
+		\begin{enumerate}
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente potrà 
+			loggarsi come amministratore tramite un form dove inserirà username e password
+			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
+			('admin.php')
+			\item \textit{Controlli e animazioni implementati nella pagina}: Controlli effettuati:
+			\begin{enumerate}
+				\item Se non ci sono ancora username e password salvati viene generato un nuovo utente
+				tramite la funzione 'check\_default\_user()' in 'proteggi.inc.php'
+				\item Acquisisco i dati di login e verifico se sono corretti, grazie alla funzione
+				'verifica\_login( $user, $pass )'. Inoltre controllo, sempre per il login, se loggare
+				l'utente tramite 'Ricorda accesso'
+			\end{enumerate}
+			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
+			che sono richiamati da questa pagina sono: 
+			\begin{enumerate}
+				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
+				web: titolo della pagina con i loghi, menu in alto
+				\item 'proteggi.inc.php' : mostra il form per inserire i dati di autenticazione. Se 
+				non ci sono ancora username e password salvati viene generato un nuovo utente
+				\item 'funzioni\_login.inc.php': contiene la funzione di controllo di username e password 
+				del login
+				\item 'hmac.inc.php' (incluso anche da 'funzioni\_login.inc.php'): includono le funzioni
+				per non salvare una password in chiaro, ma crittografata
+				\item 'remember-login.inc.php' : funzioni per ricordare i dati di accesso di un utente
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				pagine web
+			\end{enumerate}
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per il login dell'
+			utente vengono letti e creati i dati, in particolare nelle tabelle:
+			\begin{itemize}
+				\item 'unibs\_is\_login'
+				\item 'unibs\_is\_persistent\_login'
+			\end{itemize}
+		\end{enumerate}
+		
+	\item \textbf{Visualizzazione elenco delle operazioni di gestione che l'utente amministratore può fare}		
+		\begin{enumerate}
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore potrà 
+			visualizzare le operazioni che potrà svolgere:
+			\begin{itemize}
+				\item Gestione utenti
+				\item Gestione pubblicazioni
+				\item Gestione corsi
+			\end{itemize}
+			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
+			('admin.php')
+			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
+			che sono richiamati da questa pagina sono: 
+			\begin{enumerate}
+				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
+				web: titolo della pagina con i loghi, menu in alto
+				\item 'admin.php' : mostra il corpo della pagina
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				pagine web
+			\end{enumerate}
+		\end{enumerate}
+		
+	\item \textbf{Gestione utenti}		
+		\begin{enumerate}
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore
+			potrà vedere l'elenco dei login presenti e svolgere delle operazioni su di essi, come
+			\begin{itemize}
+				\item creazione di un nuovo utente
+				\item cambiare la password a utenti esistenti
+				\item cancellazione di un utente
+			\end{itemize}
+			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
+			('admin.php?action=listusers'). Per la creazione di un nuovo utente lo script PHP è 
+			'admin.php?action=newuser', per la modifica della password è 
+			'admin.php?action=changepassword\&user= nome utente a cui si vuole cambiare la password',
+			mentre per la cancellazione è 'admin.php?action=deleteuser\&user= nome utente che si 
+			vuole cancellare'.
+			\item \textit{Controlli e animazioni implementati nella pagina}: Controlli effettuati:
+			\begin{enumerate}
+				\item Nella creazione di un nuovo utente faccio i seguenti controlli:
+				\begin{itemize}
+					\item l'username esiste già
+					\item la password non può essere vuota
+					\item caratteri consentiti per l'username dell'utente				
+				\end{itemize}
+				\item Nella modifica della password di un utente faccio i seguenti controlli:
+				\begin{itemize}
+					\item validità dei dati di login
+					\item validità password vecchia inserita 
+					\item coincidenza delle password inserite
+					\item lunghezza password
+					\item eliminazione di eventuali login persistenti
+				\end{itemize}
+				\item Nella cancellazione di un utente faccio i seguenti controlli:
+				\begin{itemize}
+					\item conferma dalla cancellazione 
+					\item non cancellare l'utente corrente
+					\item eliminazione di eventuali login persistenti
+				\end{itemize}
+			\end{enumerate}
+			\item \textit{File Javascript associati e loro funzione}: I file Javascript utilizzati sono
+			i seguenti:
+			\begin{enumerate}
+				\item 'javascript:history.back()' : per ritornare alla pagina precedente cioè all'elenco delle 
+				operazioni che può svolgere l'utente amministratore
+			\end{enumerate}
+			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
+			che sono richiamati da questa pagina sono: 
+			\begin{enumerate}
+				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
+				web: titolo della pagina con i loghi, menu in alto
+				\item 'admin-user.inc.php' : contiene tutte le azioni richieste
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				pagine web
+			\end{enumerate}
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per il login dell'
+			utente vengono letti, modificati o creati i dati, in particolare nelle tabelle:
+			\begin{itemize}
+				\item 'unibs\_is\_login'
+				\item 'unibs\_is\_persistent\_login'
+			\end{itemize}
+		\end{enumerate}
+		
+	\item \textbf{Gestione Pubblicazioni}		
+		\begin{enumerate}
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore
+			potrà vedere l'elenco delle pubblicazioni e svolgere le seguenti operazioni:
+			\begin{itemize}
+				\item creazione di una nuova pubblicazione
+				\item cancellazione di una pubblicazione
+			\end{itemize}
+			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
+			('pubblicazioni.php'). Per la creazione di una nuova pubblicazione lo script PHP è 
+			'pubblicazioni.php?action=new'.
+			\item \textit{Controlli e animazioni implementati nella pagina}: Controlli effettuati:
+			\begin{enumerate}
+				\item Nella creazione di una nuova pubblicazione faccio i seguenti controlli:
+				\begin{itemize}
+					\item campi obbligatori inseriti
+					\item controllo di tipo e valori nei campi			
+				\end{itemize}
+				Le animazioni implementate riguardano il caricamento di campi diversi a seconda del 
+				tipo di pubblicazione scelto.
+				\item Nella cancellazione di una pubblicazione faccio i seguenti controlli:
+				\begin{itemize}
+					\item conferma dalla cancellazione 
+				\end{itemize}				
+			\end{enumerate}
+			\item \textit{File Javascript associati e loro funzione}: I file Javascript utilizzati sono
+			i seguenti:
+			\begin{enumerate}
+				\item 'javascript:history.back()' : per ritornare alla pagina precedente 
+				\item 'pubblicazioni.js' : le funzioni di questo script sono:
+					\begin{itemize}
+						\item caricare la lista degli autori e mostrare un autocompletamento
+						\item caricamento dei campi a seconda del tipo di pubblicazione scelto
+						\item validazione del form di inserimento dati
+						\item eliminazione della pubblicazione
+					\end{itemize}
+			\end{enumerate}
+			Inoltre viene usato il file ajax 'pubblicazioni.php'
+			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
+			che sono richiamati da questa pagina sono: 
+			\begin{enumerate}
+				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
+				web: titolo della pagina con i loghi, menu in alto
+				\item 'pubblicazione.php' : contiene tutte le azioni richieste
+				\item 'pub-list.inc.php' : serve per mostrare l'elenco
+				delle pubblicazioni.
+				\item 'pub-form-new.inc.php' : serve per mostrare il form di inserimento di una nuova
+				pubblicazione
+				\item 'pub-save.inc.php' : serve per il salvataggio della nuova pubblicazione, con le 
+				funzioni per i controlli dei dati
+				\item 'ajax-functions.inc.php' : contiene le funzioni per la gestione dei file
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				pagine web
+			\end{enumerate}
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione
+			delle pubblicazioni vengono letti, modificati, cancellati o creati i dati delle tabelle:
+			\begin{itemize}
+				\item 'unibs\_is\_pubblicazione'
+				\item 'unibs\_is\_pubautore'
+				\item 'unibs\_is\_pubblicazione\_pubautore'
+			\end{itemize}
+		\end{enumerate}
+		
+		\item \textbf{Gestione corsi}		
+		\begin{enumerate}
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore
+			potrà vedere l'elenco dei corsi inseriti divisi per facoltà e svolgere delle operazioni su di essi, come
+			\begin{itemize}
+				\item visualizzazione singolo corso
+				\item creazione di un nuovo corso
+				\item modifica di un corso esistente
+				\item inserimento di un nuovo docente o di una nuova facoltà
+			\end{itemize}
+			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
+			('corso.php'). Per la visualizzazione di un singolo corso lo script PHP è 'corso.php?id=
+			id del corso che si vuole visualizzare', per la creazione di un nuovo corso è 'corso.php?action=new'
+			e per la modifica di un corso esistente è 'corso.php?action=edit\&id= id del corso che si
+			vuole modificare'
+			\item \textit{Controlli e animazioni implementati nella pagina}: Controlli effettuati:
+			\begin{enumerate}
+				\item Nella creazione di un nuovo corso e nella modifica di un corso esistente faccio
+				i seguenti controlli:
+				\begin{itemize}
+					\item campi obbligatori inseriti
+					\item controllo di tipo e valori nei campi			
+				\end{itemize}
+				\item Nell' inserimento di un nuovo docente o di una nuova facoltà faccio i seguenti
+				controlli:
+				\begin{itemize}
+					\item inserimento del nome del docente o del nome della facoltà 
+				\end{itemize}				
+			\end{enumerate}
+			\item \textit{File Javascript associati e loro funzione}: I file Javascript utilizzati sono
+			i seguenti:
+			\begin{enumerate}
+				\item 'javascript:history.back()' : per ritornare alla pagina precedente 
+				\item 'corsi.js' : le funzioni di questo script sono:
+					\begin{itemize}
+						\item gestione click crocette/radio buttons 
+						\item validazione del form di inserimento dati
+						\item inserimento docente nuovo
+						\item inserimento nuova facoltà
+					\end{itemize}
+			\end{enumerate}
+			Inoltre viene usato il file ajax 'corsi.php'
+			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
+			che sono richiamati da questa pagina sono: 
+			\begin{enumerate}
+				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
+				web: titolo della pagina con i loghi, menu in alto
+				\item 'corso.php' : contiene tutte le azioni richieste
+				\item 'corsi-lista.inc.php' : serve per mostrare l'elenco dei corsi divisi per facoltà
+				\item 'corso-new.inc.php' : serve per fare i controlli dei dati inseriti 
+				\item 'corso-form.inc.php' : mostro il form per l'inserimento dei dati
+				\item 'corso-edit.inc.php' : serve per la modifica del corso scelto
+				\item 'corso-singolo.inc.php' : serve per la visualizzazione dei contenuto di un singolo 
+				corso
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				pagine web
+			\end{enumerate}
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione dei			
+			corsi vengono letti, modificati o creati i dati delle tabelle:
+			\begin{itemize}
+				\item 'unibs\_is\_corso'
+				\item 'unibs\_is\_facolta'
+				\item 'unibs\_is\_docente\_corso'
+				\item 'unibs\_is\_docente'
+			\end{itemize}
+		\end{enumerate}	
+		
+		\item \textbf{Gestione news}		
+		\begin{enumerate}
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore
+			potrà svolgere le seguenti operazioni per quanto riguarda le news di un determinato corso:
+			\begin{itemize}
+				\item inserimento di una nuova news
+				\item modifica dell'ordine di visualizzazione delle news
+				\item nascondere una news
+				\item cancellazione di una news
+				\item modifica di una news
+			\end{itemize}
+			\item \textit{Tipologia di pagina}: la finestra di pop-up che viene visualizzata per le 
+			operazioni sulle news può essere fatta partire dalla pagina di editing un singolo corso 'corso.php?edit\&id=
+			id del corso che si vuole visualizzare'
+			\item \textit{Controlli e animazioni implementati nella pagina}: Controlli effettuati:
+			\begin{enumerate}
+				\item Nell'inserimento di una nuova news e nella modifica in un corso esistente faccio i seguenti controlli:
+				\begin{itemize}
+					\item campi obbligatori inseriti			
+				\end{itemize}			
+			\end{enumerate}
+			\item \textit{File Javascript associati e loro funzione}: I file Javascript utilizzati sono
+			i seguenti:
+			\begin{enumerate}
+				\item 'corsi.js' : le funzioni di questo script sono:
+					\begin{itemize}
+						\item modifica di una news già esistente
+						\item inserimento di una nuova news
+					\end{itemize}
+			\end{enumerate}
+			Inoltre viene usato il file ajax 'corsi.php'
+			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
+			che sono richiamati da questa pagina sono: 
+			\begin{enumerate}
+				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
+				web: titolo della pagina con i loghi, menu in alto
+				\item 'corso-form.inc.php' : mostro l'elenco delle news presenti e la finestra di 
+				pop-up per l'inserimento dei dati
+				\item 'corso-singolo.inc.php' : serve per la visualizzazione dei contenuto di un singolo 
+				corso compreso l'elenco delle news presenti
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				pagine web
+			\end{enumerate}
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione dei			
+			corsi vengono letti, modificati o creati i dati delle tabelle:
+			\begin{itemize}
+				\item 'unibs\_is\_news'
+			\end{itemize}
+		\end{enumerate}
+		
+		\item \textbf{Gestione Sezioni}		
+		\begin{enumerate}
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore
+			potrà svolgere le seguenti operazioni per quanto riguarda le sezioni di un determinato corso:
+			\begin{itemize}
+				\item inserimento di una nuova sezione
+				\item modifica di una sezione
+				\item aggiunta nuovo file
+				\item modifica ordine dei file
+				\item nascondere un file
+			\end{itemize}
+			\item \textit{Tipologia di pagina}: la finestra di pop-up che viene visualizzata per le 
+			operazioni sulle sezioni può essere fatta partire dalla pagina di editing un singolo corso
+			'corso.php?edit\&id=id del corso preso in considerazione'
+			\item \textit{Controlli e animazioni implementati nella pagina}: Controlli effettuati:
+			\begin{enumerate}
+				\item Nell'inserimento di una nuova news e nella modifica in un corso esistente faccio i seguenti controlli:
+				\begin{itemize}
+					\item campi obbligatori inseriti			
+				\end{itemize}
+				\item Nell'aggiunta di un nuovo file ad una sezione esistente faccio i seguenti
+				controlli:
+				\begin{itemize}
+					\item inserimento del titolo e del percorso del file da aggiungere
+				\end{itemize}
+			\end{enumerate}
+			\item \textit{File Javascript associati e loro funzione}: I file Javascript utilizzati sono
+			i seguenti:
+			\begin{enumerate}
+				\item 'corsi.js' : le funzioni di questo script sono:
+					\begin{itemize}
+						\item modifica di una sezione già esistente
+						\item inserimento di una nuova sezione
+						\item inserimento di un file in una sezione
+						\item salvataggio dell'ordine dei file inseriti
+					\end{itemize}
+			\end{enumerate}
+			Inoltre viene usato il file ajax 'corsi.php'
+			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
+			che sono richiamati da questa pagina sono: 
+			\begin{enumerate}
+				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
+				web: titolo della pagina con i loghi, menu in alto
+				\item 'corso-form.inc.php' : mostro l'elenco delle sezioni presenti e la finestra di 
+				pop-up per l'inserimento dei dati
+				\item 'corso-singolo.inc.php' : serve per la visualizzazione dei contenuto di un singolo 
+				corso compreso l'elenco delle sezioni presenti
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				pagine web
+			\end{enumerate}
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione dei			
+			corsi vengono letti, modificati o creati i dati delle tabelle:
+			\begin{itemize}
+				\item 'unibs\_is\_sezione'
+				\item 'unibs\_is\_file\_materiale'
+			\end{itemize}
+		\end{enumerate}
+		
+		\item \textbf{Gestione File}		
+		\begin{enumerate}
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore
+			potrà modificare i dati di un file precedentemente inserito.
+			\item \textit{Tipologia di pagina}: la finestra di pop-up che viene visualizzata per le 
+			operazioni sulle sezioni può essere fatta partire dalla pagina di editing un singolo corso
+			'corso.php?edit\&id=id del corso in cui si vuole modificare i dati di un file'
+			\item \textit{Controlli e animazioni implementati nella pagina}: I controlli effettuati 
+			riguardano l'inserimento dei campi obbligatori.
+			\item \textit{File Javascript associati e loro funzione}: I file Javascript utilizzati sono
+			i seguenti:
+			\begin{enumerate}
+				\item 'corsi.js' : le funzioni di questo script sono:
+					\begin{itemize}
+						\item form per la modifica del contenuto di un file
+					\end{itemize}
+			\end{enumerate}
+			Inoltre viene usato il file ajax 'corsi.php'
+			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
+			che sono richiamati da questa pagina sono: 
+			\begin{enumerate}
+				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
+				web: titolo della pagina con i loghi, menu in alto
+				\item 'corso-form.inc.php' : mostro l'elenco delle sezioni e dei file presenti e la finestra di 
+				pop-up per l'inserimento dei dati
+				\item 'corso-singolo.inc.php' : serve per la visualizzazione dei contenuto di un singolo 
+				corso compreso l'elenco delle sezioni presenti con i file
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				pagine web
+			\end{enumerate}
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione dei			
+			corsi vengono letti, modificati o creati i dati delle tabelle:
+			\begin{itemize}
+				\item 'unibs\_is\_file\_materiale'
+			\end{itemize}
+		\end{enumerate}
+\end{enumerate}
+
+\clearpage
+\subsection{Descrizione delle pagine web da implementare e delle funzionalità che realizzano: Utente
+Finale}
+\begin{enumerate}
+	\item \textbf{Visualizzazione Pubblicazioni}
+		\begin{enumerate}
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente potrà 
+			visualizzare l'elenco delle pubblicazioni divise per categorie e per anno.
+			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
+			('pubblicazioni.php')
+			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
+			che sono richiamati da questa pagina sono: 
+			\begin{enumerate}
+				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
+				web: titolo della pagina con i loghi, menu in alto
+				\item 'pub-list.inc.php' : serve per mostrare il corpo della pagina, cioè l'elenco
+				delle pubblicazioni. In questo modulo ci svolgeranno le query per selezionare le pubblicazioni
+				da database
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				pagine web
+			\end{enumerate}
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la visualizzazione
+			delle pubblicazioni vengono solamente letti i dati da database ed in particolare le tabelle:
+			\begin{itemize}
+				\item 'unibs\_is\_pubblicazione'
+				\item 'unibs\_is\_pubautore'
+				\item 'unibs\_is\_pubblicazione\_pubautore'
+			\end{itemize}
+		\end{enumerate}
+	\item \textbf{Visualizzazione lista corsi divisi per facoltà}
+		\begin{enumerate}
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente potrà 
+			visualizzare l'elenco dei corsi presenti divisi per facoltà.
+			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
+			('corso.php')
+			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
+			che sono richiamati da questa pagina sono: 
+			\begin{enumerate}
+				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
+				web: titolo della pagina con i loghi, menu in alto
+				\item 'corsi-lista.inc.php' : serve per mostrare il corpo della pagina, cioè l'elenco
+				dei corsi divisi per facoltà. In questo modulo ci svolgeranno le query per selezionare
+				i corsi filtrate sulle varie facoltà
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				pagine web
+			\end{enumerate}
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la visualizzazione
+			dei corsi vengono solamente letti i dati da database ed in particolare le tabelle:
+			\begin{itemize}
+				\item 'unibs\_is\_corso'
+				\item 'unibs\_is\_facolta'
+			\end{itemize}
+		\end{enumerate}
+	\item \textbf{Visualizzazione singolo corso}
+		\begin{enumerate}
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente potrà 
+			visualizzare la pagina del singolo corso scelto.
+			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
+			('corso.php?id='id del corso scelto)
+			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
+			che sono richiamati da questa pagina sono: 
+			\begin{enumerate}
+				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
+				web: titolo della pagina con i loghi, menu in alto
+				\item 'corso-singolo.inc.php' : serve per mostrare il corpo della pagina, cioè i dati
+				del corso scelto. In questo modulo ci svolgeranno le query per selezionare i dati del 
+				corso da database
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				pagine web
+			\end{enumerate}
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la visualizzazione
+			del corso singolo vengono solamente letti i dati da database ed in particolare le tabelle:
+			\begin{itemize}
+				\item 'unibs\_is\_corso'
+				\item 'unibs\_is\_docente'
+				\item 'unibs\_is\_docente\_corso'
+				\item 'unibs\_is\_news' 
+				\item 'unibs\_is\_sezione'
+				\item 'unibs\_is\_file\_materiale'
+			\end{itemize}
+		\end{enumerate}
+\end{enumerate}	
+
+\clearpage
+\subsubsection{File generali}
+Il file 'header.inc.php', incluso in tutte le pagine web contiene i seguenti file Javascript:
+\begin{itemize}
+	\item jquery-ui-1.8.15.custom.min.js
+	\item jquery.loadmask.js
+	\item jquery.validate.min.js
+	\item additional-methods.min.js
+	\item messages\_it.js
+	\item onfocus.js
+	\item button.js
+\end{itemize}
+
+Ogni volta che viene effettuato un accesso al database ci sono controllo per verificare la buona 
+riuscita del collegamento.
+
+\clearpage
+\section{Descrizione di uno scenario di utilizzo}
+\subsection{Riportare esempi di utilizzo dell'applicazione Web tramite l'ausilio di screenshot e 
+commenti testuali}
+\begin{enumerate}
+	\item \textbf{Utente Amministratore}
+		\textbf{Accesso all'area riservata all'utente amministratore tramite apposito form per il login}\\
+		
+	\item \textbf{Utente Finale}
+\end{enumerate}
 \end{document}

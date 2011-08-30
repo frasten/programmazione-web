@@ -197,6 +197,7 @@ $(document).ready(function() {
 			else {
                             var nuovonome = $( "#facolta-dialog-form form #nome-facolta").val();
                             $('#link-nome-facolta').parent().before("<li><input type='radio' name='facolta' id='facolta_"+data.id_facolta+"' value='"+data.id_facolta+"' checked='checked'/><label for='facolta_"+data.id_facolta+"'> " + nuovonome + "</label></li>");
+                            $( "#facolta-dialog-form form #nome-facolta").val('');
                             $( "#facolta-dialog-form" ).dialog( "close" );
                         }
                 }
@@ -222,6 +223,7 @@ $(document).ready(function() {
 			else {
                             var nuovonome = $( "#docente-dialog-form form #nome-docente").val();
                             $('#link-nome-docente').parent().parent().before("<tr><td><input type='checkbox' name='docente' id='docente_"+data.id_docente+"' value='"+data.id_docente+"' checked='checked'/><label for='docente_"+data.id_docente+"'> " + nuovonome + "</label></td><td class='option'><input type='radio' name='tipodocente_"+data.id_docente+"' value='0' checked='checked'/></td><td class='option'><input type='radio' name='tipodocente_"+data.id_docente+"' value='1' $checked/></td></tr>");
+                            $( "#docente-dialog-form form #nome-docente").val('');
                             $( "#docente-dialog-form" ).dialog( "close" );
                         }
                 }
