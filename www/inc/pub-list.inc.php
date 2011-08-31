@@ -95,9 +95,11 @@ EOF;
 			}
 			echo str_repeat( "\t", 6 ) . "<li id='pubblicazione_$riga[id_pubblicazione]'>\n";
                         // Icona elimina
+                        if ( ! empty( $_SESSION['loggato'] ) ) {
 				echo "<a href='javascript:void(0)' class='iconalink' onclick='askEliminaPubblicazione($riga[id_pubblicazione])' title='Elimina pubblicazione'>\n";
 				echo "<img src='img/icone/newspaper_delete.png' alt='Elimina pubblicazione' />\n";
 				echo "</a>\n ";
+                        }
 			call_user_func( "stampa_pub_$categoria", $riga );
 			echo str_repeat( "\t", 6 ) . "</li>\n";
 			$old_anno = $riga['anno'];

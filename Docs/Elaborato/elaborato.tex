@@ -19,12 +19,10 @@
 
 \tableofcontents
 
-\chapter{Metodologia}
+\chapter{Analisi dei Requisiti}
 \newpage
 
-\section{Analisi dei Requisiti}
-
-\subsection{Descrizione problema, contesto dell'elaborato e requisiti richiesti}
+\section{Descrizione problema, contesto dell'elaborato e requisiti richiesti}
 L'elaborato tratta la ristrutturazione di due sezioni del sito web del Gruppo di Basi di Dati e Sistemi
 Informativi, in particolare la sezione delle pubblicazioni e quella dei corsi.\\
 \\
@@ -73,7 +71,7 @@ Sono stati realizzati dei mockup della struttura delle pagine da realizzare, sia
 che per i corsi.\\
 
 \newpage
-\subsubsection{Mockup Pubblicazioni}
+\subsection{Mockup Pubblicazioni}
 \textbf{1 - Pubblicazioni su Riviste}
 \begin{figure}[ht]
 \includegraphics[height=10cm]{Mockup/Pubblicazioni/Image/PubblicazioniRiviste.png}
@@ -148,7 +146,7 @@ I campi sono tutti obbligatori tranne 'Abstract'.
 I campi sono tutti obbligatori tranne 'Abstract'.
 
 \newpage
-\subsubsection{Mockup Corsi}
+\subsection{Mockup Corsi}
 
 \textbf{1 - Pagina di creazione e modifica di un corso}
 \begin{figure}[ht]
@@ -206,7 +204,7 @@ modificato tramite drag\&drop
 \includegraphics[height=4.5cm]{Mockup/Corsi/Image/File.png}
 \caption{File \label{nome}}
 \end{figure}
-\\
+\clearpage
 \textit{Caratteristiche:}
 \begin{itemize}
 \item Ogni file aggiunto avrà un titolo e potrà essere un file caricato oppure un link.
@@ -217,8 +215,10 @@ il titolo del file nella pagina web del corso.
 \end{itemize}
 \clearpage
 
-\section{Progettazione della base dati}
-\subsection{Progettazione della struttura dati su cui si basa l'applicazione}
+\chapter{Progettazione della base dati}
+\newpage
+
+\section{Progettazione della struttura dati su cui si basa l'applicazione}
 Di seguito viene mostrato il Diagramma ER relativo alla struttura della base di dati realizzata per 
 il progetto.
 \begin{figure}[h]
@@ -298,7 +298,7 @@ Vengono salvati i dati per riconoscere i login persistenti.
 \end{itemize}
 \clearpage
 
-\subsection{Diagrammi UML: casi d'uso}
+\section{Diagrammi UML: casi d'uso}
 Il progetto realizzita si avvale dei seguenti casi d'uso, divisi per due diversi utenti:
 \begin{itemize}
 \item Utente Amministratore:
@@ -354,7 +354,7 @@ Il progetto realizzita si avvale dei seguenti casi d'uso, divisi per due diversi
 \end{itemize}
 
 \clearpage
-\subsubsection{Utente Amministratore}
+\subsection{Utente Amministratore}
 \begin{enumerate}
 
 %GESTIONE UTENTI
@@ -1397,7 +1397,7 @@ utente precedentemente inserito.
 \end{figure}
 
 \clearpage
-\subsubsection{Utente Finale}
+\subsection{Utente Finale}
 \begin{enumerate}
 	\item \textbf{Visualizzazione delle pubblicazioni}\\
 			Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente finale, 
@@ -1475,13 +1475,15 @@ utente precedentemente inserito.
 
 \clearpage
 
-\section{Progettazione delle funzionalità}
-\subsection{Descrizione d'alto livello delle funzionalità da implementare}
+\chapter{Progettazione delle funzionalità}
+\newpage
+
+\section{Descrizione d'alto livello delle funzionalità da implementare}
 \begin{enumerate}
 	\item \textbf{Funzionalità da implementare per l'Utente Amministratore}
 	\begin{enumerate}
 		\item Accesso all'area riservata all'utente amministratore tramite apposito form per il login
-		\item Pagina di scelta da parte dell'utente amministratore fra le varie operazione e potrà svolgere
+		\item Pagina di scelta da parte dell'utente amministratore fra le varie operazione che potrà svolgere
 		\item L'amministratore potrà svolgere operazioni di gestione degli utenti registrati come:
 			\begin{itemize}
 				\item creazione di un nuovo utente
@@ -1534,8 +1536,9 @@ utente precedentemente inserito.
 \end{enumerate}
 
 \clearpage
-\section{Progettazione dell'applicazione Web}
-\subsection{Descrizione delle pagine web da implementare e delle funzionalità che realizzano: Utente
+\chapter{Progettazione dell'applicazione Web}
+\newpage
+\section{Descrizione delle pagine web da implementare e delle funzionalità che realizzano: Utente
 Amministratore}
 \begin{enumerate}
 
@@ -1936,7 +1939,7 @@ Amministratore}
 \end{enumerate}
 
 \clearpage
-\subsection{Descrizione delle pagine web da implementare e delle funzionalità che realizzano: Utente
+\section{Descrizione delle pagine web da implementare e delle funzionalità che realizzano: Utente
 Finale}
 \begin{enumerate}
 	\item \textbf{Visualizzazione Pubblicazioni}
@@ -2019,7 +2022,7 @@ Finale}
 \end{enumerate}	
 
 \clearpage
-\subsubsection{File generali}
+\subsection{File generali}
 Il file 'header.inc.php', incluso in tutte le pagine web contiene i seguenti file Javascript:
 \begin{itemize}
 	\item jquery-ui-1.8.15.custom.min.js
@@ -2035,13 +2038,316 @@ Ogni volta che viene effettuato un accesso al database ci sono controllo per ver
 riuscita del collegamento.
 
 \clearpage
-\section{Descrizione di uno scenario di utilizzo}
-\subsection{Riportare esempi di utilizzo dell'applicazione Web tramite l'ausilio di screenshot e 
+\chapter{Descrizione di uno scenario di utilizzo}
+\newpage
+
+\section{Riportare esempi di utilizzo dell'applicazione Web tramite l'ausilio di screenshot e 
 commenti testuali}
 \begin{enumerate}
-	\item \textbf{Utente Amministratore}
-		\textbf{Accesso all'area riservata all'utente amministratore tramite apposito form per il login}\\
-		
+	\item \textbf{Utente Amministratore}\\
+		\begin{enumerate}
+			\item \textbf{Accesso all'area riservata all'utente amministratore tramite apposito form per il login}\\
+				\begin{center}
+					\includegraphics[height=8cm]{screenshot/Login.png}
+				\end{center}
+				Accesso tramite login da parte dell'utente amministratore all'area riservata. L'utente immette
+				username e password che verranno salvati in database.\\
+				
+			\item \textbf{Scelta da parte dell'utente amministratore fra le varie operazioni che potrà svolgere}\\
+				L'utente amministratore può visualizzare le operazioni che può svolgere in tale ruolo.
+				\begin{center}
+					\includegraphics[height=3cm]{screenshot/GestioneOperazioni.png}
+				\end{center}
+				
+			\item \textbf{Operazioni di gestione degli utenti: visualizzazione degli utenti presenti}\\
+				Cliccando sul link 'Gestione utenti', l'amministratore può vedere l'elenco degli utenti
+				che possono accedere al portale come amministratori.
+				\begin{center}
+					\includegraphics[height=3cm]{screenshot/Utenti/Utenti.png}
+				\end{center}
+
+			\item \textbf{Operazioni di gestione degli utenti: creazione di un nuovo utente amministratore}\\ 
+				Cliccando sulla voce nella barra 'Nuovo utente', si apre una pagina web con il form 
+				per l'inserimento dei dati del nuovo utente.
+				\begin{center}
+					\includegraphics[height=4cm]{screenshot/Utenti/NuovoUtente.png}
+				\end{center}
+
+				Una volta inseriti i dati, l'utente conferma la creazione di un nuovo utente cliccando
+				sul bottone 'Crea utente' e viene aperta la pagina con l'avvenuto salvataggio.
+				\begin{center}
+					\includegraphics[height=4cm]{screenshot/Utenti/SalvaUtente.png}
+				\end{center}
+
+				Cliccando sul link 'Torna' si va alla pagina precedente con l'elenco degli utenti presenti.
+				
+			\item \textbf{Operazioni di gestione degli utenti: modifica della password di un utente 
+				preesistente}\\
+				Cliccando sull'icona a forma di chiave accanto al nome dell'utente, si apre una pagina 
+				web contenente il form per la modifica della password.
+				\begin{center}
+					\includegraphics[height=4cm]{screenshot/Utenti/ModificaPsw.png}
+				\end{center}
+				
+				Una volta inseriti i dati per la modifica della password, l'utente conferma cliccando
+				sul bottone 'Salva' e viene aperta la pagina con l'avvenuto salvataggio.
+				\begin{center}
+					\includegraphics[height=4cm]{screenshot/Utenti/SalvaPsw.png}
+				\end{center}
+
+				Cliccando sul link 'Torna' si va alla pagina precedente con l'elenco degli utenti presenti.
+				
+			\item \textbf{Operazioni di gestione degli utenti: cancellazione di un utente}\\
+				Cliccando sull'icona per la cancellazione accanto al nome dell'utente, si apre una pagina 
+				web per la conferma della cancellazione.
+				\begin{center}
+					\includegraphics[height=3cm]{screenshot/Utenti/CancellaUtente.png}
+				\end{center}
+				
+				Una volta confermata l'operazione, viene aperta la pagina con l'avvenuta cancellazione.
+				\begin{center}
+					\includegraphics[height=3cm]{screenshot/Utenti/Cancellazione.png}
+				\end{center}
+
+				Cliccando sul link 'Torna' si va alla pagina precedente con l'elenco degli utenti presenti.
+				
+			\item \textbf{Operazioni di gestione delle pubblicazioni: visualizzazione delle pubblicazioni
+			presenti divise per categoria e per anno}\\
+				Cliccando sul link 'Gestione pubblicazioni', l'amministratore può vedere l'elenco delle
+				pubblicazioni inserite divise per le cinque categorie (Pubblicazioni su riviste internazionali,
+				Capitoli in libro, Pubblicazioni in atti di conferenza, Monografie, Curatele).
+				\begin{center}
+					\includegraphics[height=8cm]{screenshot/Pubblicazioni/Pubblicazioni.png}
+				\end{center}	
+
+			\item \textbf{Operazioni di gestione delle pubblicazioni: creazione di un nuova pubblicazione}\\ 
+				Cliccando sulla voce nella barra 'Nuova pubblicazione', si apre una pagina web con il form 
+				per l'inserimento dei dati della nuova pubblicazione.\\
+				Poichè le caterogie sono cinque, i campi del form cambiano in base alla scelta effettuata.\\
+				\clearpage
+				\begin{itemize}
+					\item Pubblicazioni su riviste internazionali
+						\begin{center}
+							\includegraphics[height=8cm]{screenshot/Pubblicazioni/Riviste.png}
+						\end{center}
+					\item Capitoli in libro
+						\begin{center}
+							\includegraphics[height=8cm]{screenshot/Pubblicazioni/Capitoli.png}
+						\end{center}
+					\clearpage
+					\item Pubblicazioni in atti di conferenza
+						\begin{center}
+							\includegraphics[height=8cm]{screenshot/Pubblicazioni/Conferenze.png}
+						\end{center}
+					\item Monografie
+						\begin{center}
+							\includegraphics[height=7cm]{screenshot/Pubblicazioni/Monografie.png}
+						\end{center}
+					\clearpage
+					\item Curatele
+						\begin{center}
+							\includegraphics[height=7cm]{screenshot/Pubblicazioni/Curatele.png}
+						\end{center}
+				\end{itemize}
+
+				Una volta inseriti i dati, l'utente conferma la creazione di una nuova pubblicazione cliccando
+				sul bottone 'Salva' e si viene rediretti alla pagina dell'elenco delle pubblicazioni.
+	
+			\item \textbf{Operazioni di gestione delle pubblicazioni: cancellazione di una pubblicazione}\\
+				Cliccando sull'icona per la cancellazione accanto al titolo della pubblicazione, si 
+				apre una finestra di pop-up per la conferma della cancellazione.
+				\begin{center}
+					\includegraphics[height=7cm]{screenshot/Pubblicazioni/CancellazionePub.png}
+				\end{center}
+				
+				Una volta confermata l'operazione, viene cancellata la pubblicazione e si ritorna
+				alla pagina dell'elenco delle pubblicazioni.
+				
+			\item \textbf{Operazioni di gestione dei corsi: visualizzazione dei corsi divisi per
+			facoltà di appartenenza}\\
+				Cliccando sul link 'Gestione corsi', l'amministratore può vedere l'elenco dei corsi
+				inseriti divisi per facoltà di appartenenza.
+				\begin{center}
+					\includegraphics[height=4cm]{screenshot/Corsi/Corsi.png}
+				\end{center}
+			
+			\item \textbf{Operazioni di gestione dei corsi: visualizzazione di un singolo corso}\\
+				Dall'elenco dei corsi, cliccando sul nome del corso che si desidera visualizzare, si
+				aprirà la pagina web con il contenuto del corso.
+				\begin{center}
+					\includegraphics[height=8cm]{screenshot/Corsi/CorsoSingolo.png}
+				\end{center}
+				Nella pagina è possibile visualizzare i dati del corso quali:
+				\begin{itemize}
+					\item Nome docente ed esercitatore
+					\item Intestazione: corsi a cui è rivolto il corso
+					\item News presenti
+					\item Orario delle lezioni e di ricevimento
+					\item Obiettivi del corso
+					\item Programma e modalità d'esame
+					\item Testi (materiale di riferimento)
+					\item Materiale didattico diviso per sezioni 
+				\end{itemize}
+			
+			\item \textbf{Operazioni di gestione dei corsi: creazione di un nuovo corso}\\ 
+				Cliccando sulla voce nella barra 'Nuovo corso', si apre una pagina web con il form 
+				per l'inserimento dei dati del nuovo corso.\\
+				\begin{center}
+					\includegraphics[height=8cm]{screenshot/Corsi/NuovoCorso.png}
+				\end{center}
+				Ogni dato, eccetto nome corso, anno accademico, facoltà e docenti, si inserisce attraverso un
+				editor di testo.
+				
+			\item \textbf{Operazioni di gestione dei corsi: modifica di un corso}\\ 
+				Dalla pagina di un singolo corso, cliccando sulla voce nella barra 'Modifica corso', 
+				si apre una pagina web con il form precompilato coi dati precedentemente inseriti
+				del corso che si vuole modificare.\\
+				\begin{center}
+					\includegraphics[height=8cm]{screenshot/Corsi/ModificaCorso.png}
+				\end{center}
+				Il form per la modifica di un corso contiene, a differenza del form di creazione di 
+				un nuovo corso, anche la possibilità di gestire le news e il materiale didattico.\\
+				Link per la gestione delle news 'Gestione News':
+				\begin{center}
+					\includegraphics[height=1.5cm]{screenshot/Corsi/GestioneNews.png}
+				\end{center}
+				Link per la gestione del materiale didattico 'Nuova sezione':
+				\begin{center}
+					\includegraphics[height=1.5cm]{screenshot/Corsi/MaterialeDidattico.png}
+				\end{center}
+			
+			\item \textbf{Operazioni di gestione dei corsi: inserimento di un nuovo docente}\\ 
+				Dal form di modifica di un corso oppure dal form di creazione di un nuovo corso, 
+				l'utente può aggiungere un nuovo docente cliccando sul link 'Nuovo docente' sotto la 
+				scritta Docenti.\\
+				Si apre così una finestra di pop-up per l'inserimento del nome del docente.
+				\begin{center}
+					\includegraphics[height=4cm]{screenshot/Corsi/NuovoDocente.png}
+				\end{center}
+			
+			\item \textbf{Operazioni di gestione dei corsi: inserimento di una nuova facoltà}\\ 
+				Dal form di modifica di un corso oppure dal form di creazione di un nuovo corso, 
+				l'utente può aggiungere una nuova facoltà cliccando sul link 'Nuova facoltà' sotto la 
+				scritta Facoltà.\\
+				Si apre così una finestra di pop-up per l'inserimento del nome della facoltà.
+				\begin{center}
+					\includegraphics[height=4cm]{screenshot/Corsi/NuovaFacolta.png}
+				\end{center}
+				
+			\item \textbf{Operazioni di gestione delle news: inserimento di una nuova news}\\ 
+				Dal form di modifica di un corso , l'utente può aggiungere una nuova news cliccando 
+				sul link 'Gestione News'.\\
+				Si apre così una finestra di pop-up per l'inserimento dei dati della nuova news.
+				\begin{center}
+					\includegraphics[height=8cm]{screenshot/News/NuovaNews.png}
+				\end{center}
+				In questa finestra di pop-up è possibile visualizzare l'elenco delle news precendentemente
+				inserite nel corso.
+			
+			\item \textbf{Operazioni di gestione delle news: modifica dell'ordine delle news
+				precedentemente inserite}\\ 
+				Nella finestra di pop-up della gestione delle news è possibile modificare l'ordine 
+				delle news già inserite trascinandole nella posizione che si desidera con il mouse.\\
+			
+			\item \textbf{Operazioni di gestione delle news: nascondere una news}\\ 
+				Sempre nella finestra di pop-up della gestione delle news è possibile nascondere una 
+				news cliccando sull'icona a forma di occhio accanto al titolo nell'elenco delle news.
+				\begin{center}
+					\includegraphics[height=2cm]{screenshot/News/Nascondi.png}
+				\end{center}
+				
+			\item \textbf{Operazioni di gestione delle news: cancellare una news}\\ 
+				Sempre nella finestra di pop-up della gestione delle news è possibile cancellare una 
+				news cliccando sull'icona accanto al titolo nell'elenco delle news.
+				\begin{center}
+					\includegraphics[height=2cm]{screenshot/News/Cancella.png}
+				\end{center}
+				
+			\item \textbf{Operazioni di gestione delle news: modificare una news}\\ 
+				Sempre nella finestra di pop-up della gestione delle news è possibile modifica il contenuto di una 
+				news cliccando sull'icona accanto al titolo nell'elenco delle news. In questo modo
+				vengono caricati i dati della news che si vuole modificare nell'editor di testo.
+				\begin{center}
+					\includegraphics[height=2cm]{screenshot/News/Modifica.png}
+				\end{center}
+				
+			\item \textbf{Operazioni di gestione del materiale didattico: inserimento di una nuova
+				sezione}\\ 
+				Accendendo al link 'Nuova sezione' nella pagina web di modifica di un corso, si apre
+				una finestra di pop-up per l'inserimento dei dati della nuova sezione del materiale 
+				didattico.
+				\begin{center}
+					\includegraphics[height=8cm]{screenshot/MaterialeDidattico/NuovaSezione.png}
+				\end{center}
+				
+			\item \textbf{Operazioni di gestione del materiale didattico: modifica dei dati di una
+				sezione precendentemente inserita}\\ 
+				Cliccando sul titolo di una sezione del materiale didattico nella pagina web di 
+				modifica di un corso, si apre una finestra di pop-up con un form precompilato con i 
+				dati della sezione da modificare e l'elenco dei file alla sezione collegati.
+				\begin{center}
+					\includegraphics[height=8cm]{screenshot/MaterialeDidattico/Modifica.png}
+				\end{center}
+			
+			\item \textbf{Operazioni di gestione del materiale didattico: aggiunta di un file ad una
+				sezione già inserita}\\ 
+				Nella finestra di pop-up che si apre cliccando sul titolo di una sezione del materiale
+				didattico nella pagina web di modifica di un corso, si ha la possibilità di aggiungere
+				file alla sezione cliccando sul link 'Aggiungi un nuovo file'. Si apre quindi un'altra
+				finestra di pop-up per l'inserimento dei dati del file da inserire.
+				\begin{center}
+					\includegraphics[height=6cm]{screenshot/MaterialeDidattico/File.png}
+				\end{center}
+				
+			\item \textbf{Operazioni di gestione del materiale didattico: modifica dell'ordine di 
+				visualizzazione dei file inseriti}\\ 
+				Nella finestra di pop-up per la gestione delle sezioni è possibile modificare l'ordine 
+				dei file già inseriti trascinandoli nella posizione che si desidera con il mouse.\\
+				
+			\item \textbf{Operazioni di gestione del materiale didattico: nascondere un file}\\ 
+				Sempre nella finestra di pop-up della gestione delle sezioni è possibile nascondere 
+				un file cliccando sull'icona a forma di occhio accanto al titolo nell'elenco dei file.
+				\begin{center}
+					\includegraphics[height=2cm]{screenshot/MaterialeDidattico/Nascondi.png}
+				\end{center}
+				
+			\item \textbf{Operazioni di gestione del materiale didattico: modificare un file}\\ 
+				Sempre nella finestra di pop-up della gestione delle sezioni è possibile modifica il contenuto di  
+				un file cliccando sull'icona accanto al titolo nell'elenco dei file. In questo modo 
+				si apre la finestra di pop-up per l'inserimento dei dati di un file con i campi precompilati
+				del file che si vuole modificare.
+				\begin{center}
+					\includegraphics[height=2cm]{screenshot/MaterialeDidattico/ModificaFile.png}
+				\end{center}
+		\end{enumerate}
+\clearpage		
 	\item \textbf{Utente Finale}
+		\begin{enumerate}
+			\item \textbf{Visualizzazione dell'elenco delle pubblicazioni divisi per categorie e per 
+				anni di pubblicazione}\\
+				\begin{center}
+					\includegraphics[height=7cm]{screenshot/UtenteFinale/Pubblicazioni.png}
+				\end{center}
+				Come si può notare a differenza dell'elenco delle pubblicazioni dell'utente amministratore,
+				in questo caso accanto a titolo della pubblicazione non compare ovviamente l'icona 
+				di cancellazione. Ed inoltre non è presente la barra in alto con le operazioni che l'amministratore
+				poteva svolgere\\
+				
+			\item \textbf{Visualizzazione dell'elenco dei corsi divisi per facoltà in cui si svolgono}\\
+				\begin{center}
+					\includegraphics[height=4cm]{screenshot/UtenteFinale/Corsi.png}
+				\end{center}
+				Come si può notare a differenza dell'elenco dei corsi dell'utente amministratore,
+				in questo caso non è presente la barra in alto con le operazioni che l'amministratore
+				poteva svolgere\\
+				
+			\item \textbf{Visualizzazione del contenuto di un singolo corso}\\
+				\begin{center}
+					\includegraphics[height=8cm]{screenshot/UtenteFinale/CorsoSingolo.png}
+				\end{center}
+				Come si può notare a differenza della visualizzazione del singolo corso dell'utente amministratore,
+				in questo caso non è presente la barra in alto con le operazioni che l'amministratore
+				poteva svolgere\\	
+		\end{enumerate}
 \end{enumerate}
 \end{document}
