@@ -235,6 +235,46 @@ EOF;
                 $json['id_docente'] = $id_docente;
                 ajax_esci();
 }
+else if ( $_GET['action'] == 'eliminacorso' ) {
+	if ( empty( $_POST['id'] ) ) ajax_esci( 'ID non valido.' );
+	$id_corso = intval( $_POST['id'] );
+        
+        //Cancello l'eventuale file allegato alle news presenti
+	$query = <<<EOF
+SELECT `file`
+FROM `$config[db_prefix]news`
+WHERE `id_corso` = '$id_corso'
+EOF;
+	
+        $result = mysql_query( $query, $db );
+	while ( $riga = mysql_fetch_assoc( $result ) ) {
+            elimina_file( $riga['file'] );
+        }
+        
+        //Cancello eventuali file delle sezioni
+        $query = <<<EOF
+SELECT `url`
+FROM `$config[db_prefix]file_materiale` as fm, `$config[db_prefix]sezione` as s
+WHERE s.id_corso = '$id_corso' and s.id_sezione=fm.id_sezione
+EOF;
+        $result = mysql_query( $query, $db );
+	while ( $riga = mysql_fetch_assoc( $result ) ) {
+            elimina_file( $riga['url'] );
+        }
+
+	$query = <<<EOF
+DELETE FROM `$config[db_prefix]corso`
+WHERE `id_corso` = '$id_corso'
+LIMIT 1
+EOF;
+	$result = mysql_query( $query, $db );
+	if ( mysql_errno() ) ajax_esci( 'Errore nell\'eliminazione.' );
+        
+        
+	$json['id'] = $id_corso;
+	$json['success'] = 1;
+	ajax_esci();
+}
 
 
 ?>
