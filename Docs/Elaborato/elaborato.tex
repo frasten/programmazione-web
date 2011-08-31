@@ -322,7 +322,7 @@ Il progetto realizzita si avvale dei seguenti casi d'uso, divisi per due diversi
 			\item Modifica di un corso
 			\item Inserimento di un nuovo docente 
 			\item Inserimento di una nuova facoltà
-			%\item Cancellazione di un corso
+			\item Cancellazione di un corso
 		\end{itemize}
 	\item Gestione News
 		\begin{itemize}
@@ -799,6 +799,35 @@ utente precedentemente inserito.
 				'Nuova Facoltà'
 				\item{} Continua al punto vi.
 				\end{description}\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\clearpage
+		\item \textit{Cancellazione di un corso}\\
+			Si tratta del caso d'uso inerente alla cancellazione, da parte dell'utente amministratore,
+			di un corso.
+		\begin{center}
+			\begin{tabular}{|l|p{0.5\columnwidth}|}
+				\hline
+				\textbf{Nome}	&	Cancellazione di un corso\\
+				\hline
+				\textbf{Attore}	&	Utente Amministratore\\
+				\hline
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form,l'utente clicca 
+				sulla voce 'Gestione corsi'
+				\item Viene caricata la pagina web dei corsi così come viene visualizzata 
+				da un utente non amministratore con accanto al nome di ogni corso l'icona 
+				per la sua cancellazione.
+				\item L'utente clicca sull'icona per la cancellazione del corso scelto
+				\item Compare una finestra di pop-up con la seguente domanda: 'Si è sicuri di voler 
+				eliminare questo corso?'
+				\item L'utente clicca sul pulsante 'Elimina'
+				\item La finestra di pop-up si chiude e si torna alla pagina web dei corsi
+				così come viene visualizzata da un utente non amministratore, in cui non compare più 
+				il corso appena eliminato, con accanto al nome di ogni corso rimasto
+				l'icona per la sua cancellazione.
+				\end{enumerate}\\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1503,6 +1532,7 @@ utente precedentemente inserito.
 				\item creazioen di un nuovo corso
 				\item modifica di un corso preesistente
 				\item inserimento di un nuovo docente e di una nuova facoltà ad un corso
+				\item cancellazione di un corso preesistente
 			\end{itemize}
 		\item L'amministrazione gestisce anche le operazioni riguardati le news che saranno aggiunte
 			ad un corso precedentemente inserito, ed in particolare:
@@ -1734,6 +1764,7 @@ Amministratore}
 				\item creazione di un nuovo corso
 				\item modifica di un corso esistente
 				\item inserimento di un nuovo docente o di una nuova facoltà
+				\item cancellazione di corso 
 			\end{itemize}
 			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
 			('corso.php'). Per la visualizzazione di un singolo corso lo script PHP è 'corso.php?id=
@@ -1764,6 +1795,7 @@ Amministratore}
 						\item validazione del form di inserimento dati
 						\item inserimento docente nuovo
 						\item inserimento nuova facoltà
+						\item cancellazione di un corso
 					\end{itemize}
 			\end{enumerate}
 			Inoltre viene usato il file ajax 'corsi.php'
@@ -2045,28 +2077,28 @@ riuscita del collegamento.
 commenti testuali}
 \begin{enumerate}
 	\item \textbf{Utente Amministratore}\\
-		\begin{enumerate}
-			\item \textbf{Accesso all'area riservata all'utente amministratore tramite apposito form per il login}\\
+		\begin{description}
+			\item{*} \textbf{Accesso all'area riservata all'utente amministratore tramite apposito form per il login}\\
 				\begin{center}
 					\includegraphics[height=8cm]{screenshot/Login.png}
 				\end{center}
 				Accesso tramite login da parte dell'utente amministratore all'area riservata. L'utente immette
 				username e password che verranno salvati in database.\\
 				
-			\item \textbf{Scelta da parte dell'utente amministratore fra le varie operazioni che potrà svolgere}\\
+			\item{*} \textbf{Scelta da parte dell'utente amministratore fra le varie operazioni che potrà svolgere}\\
 				L'utente amministratore può visualizzare le operazioni che può svolgere in tale ruolo.
 				\begin{center}
 					\includegraphics[height=3cm]{screenshot/GestioneOperazioni.png}
 				\end{center}
 				
-			\item \textbf{Operazioni di gestione degli utenti: visualizzazione degli utenti presenti}\\
+			\item{*} \textbf{Operazioni di gestione degli utenti: visualizzazione degli utenti presenti}\\
 				Cliccando sul link 'Gestione utenti', l'amministratore può vedere l'elenco degli utenti
 				che possono accedere al portale come amministratori.
 				\begin{center}
 					\includegraphics[height=3cm]{screenshot/Utenti/Utenti.png}
 				\end{center}
 
-			\item \textbf{Operazioni di gestione degli utenti: creazione di un nuovo utente amministratore}\\ 
+			\item{*} \textbf{Operazioni di gestione degli utenti: creazione di un nuovo utente amministratore}\\ 
 				Cliccando sulla voce nella barra 'Nuovo utente', si apre una pagina web con il form 
 				per l'inserimento dei dati del nuovo utente.
 				\begin{center}
@@ -2080,8 +2112,8 @@ commenti testuali}
 				\end{center}
 
 				Cliccando sul link 'Torna' si va alla pagina precedente con l'elenco degli utenti presenti.
-				
-			\item \textbf{Operazioni di gestione degli utenti: modifica della password di un utente 
+			\clearpage	
+			\item{*} \textbf{Operazioni di gestione degli utenti: modifica della password di un utente 
 				preesistente}\\
 				Cliccando sull'icona a forma di chiave accanto al nome dell'utente, si apre una pagina 
 				web contenente il form per la modifica della password.
@@ -2097,7 +2129,7 @@ commenti testuali}
 
 				Cliccando sul link 'Torna' si va alla pagina precedente con l'elenco degli utenti presenti.
 				
-			\item \textbf{Operazioni di gestione degli utenti: cancellazione di un utente}\\
+			\item{*} \textbf{Operazioni di gestione degli utenti: cancellazione di un utente}\\
 				Cliccando sull'icona per la cancellazione accanto al nome dell'utente, si apre una pagina 
 				web per la conferma della cancellazione.
 				\begin{center}
@@ -2111,7 +2143,7 @@ commenti testuali}
 
 				Cliccando sul link 'Torna' si va alla pagina precedente con l'elenco degli utenti presenti.
 				
-			\item \textbf{Operazioni di gestione delle pubblicazioni: visualizzazione delle pubblicazioni
+			\item{*} \textbf{Operazioni di gestione delle pubblicazioni: visualizzazione delle pubblicazioni
 			presenti divise per categoria e per anno}\\
 				Cliccando sul link 'Gestione pubblicazioni', l'amministratore può vedere l'elenco delle
 				pubblicazioni inserite divise per le cinque categorie (Pubblicazioni su riviste internazionali,
@@ -2120,7 +2152,7 @@ commenti testuali}
 					\includegraphics[height=8cm]{screenshot/Pubblicazioni/Pubblicazioni.png}
 				\end{center}	
 
-			\item \textbf{Operazioni di gestione delle pubblicazioni: creazione di un nuova pubblicazione}\\ 
+			\item{*} \textbf{Operazioni di gestione delle pubblicazioni: creazione di un nuova pubblicazione}\\ 
 				Cliccando sulla voce nella barra 'Nuova pubblicazione', si apre una pagina web con il form 
 				per l'inserimento dei dati della nuova pubblicazione.\\
 				Poichè le caterogie sono cinque, i campi del form cambiano in base alla scelta effettuata.\\
@@ -2153,7 +2185,7 @@ commenti testuali}
 				Una volta inseriti i dati, l'utente conferma la creazione di una nuova pubblicazione cliccando
 				sul bottone 'Salva' e si viene rediretti alla pagina dell'elenco delle pubblicazioni.
 	
-			\item \textbf{Operazioni di gestione delle pubblicazioni: cancellazione di una pubblicazione}\\
+			\item{*} \textbf{Operazioni di gestione delle pubblicazioni: cancellazione di una pubblicazione}\\
 				Cliccando sull'icona per la cancellazione accanto al titolo della pubblicazione, si 
 				apre una finestra di pop-up per la conferma della cancellazione.
 				\begin{center}
@@ -2163,7 +2195,7 @@ commenti testuali}
 				Una volta confermata l'operazione, viene cancellata la pubblicazione e si ritorna
 				alla pagina dell'elenco delle pubblicazioni.
 				
-			\item \textbf{Operazioni di gestione dei corsi: visualizzazione dei corsi divisi per
+			\item{*} \textbf{Operazioni di gestione dei corsi: visualizzazione dei corsi divisi per
 			facoltà di appartenenza}\\
 				Cliccando sul link 'Gestione corsi', l'amministratore può vedere l'elenco dei corsi
 				inseriti divisi per facoltà di appartenenza.
@@ -2171,7 +2203,7 @@ commenti testuali}
 					\includegraphics[height=4cm]{screenshot/Corsi/Corsi.png}
 				\end{center}
 			
-			\item \textbf{Operazioni di gestione dei corsi: visualizzazione di un singolo corso}\\
+			\item{*} \textbf{Operazioni di gestione dei corsi: visualizzazione di un singolo corso}\\
 				Dall'elenco dei corsi, cliccando sul nome del corso che si desidera visualizzare, si
 				aprirà la pagina web con il contenuto del corso.
 				\begin{center}
@@ -2189,7 +2221,7 @@ commenti testuali}
 					\item Materiale didattico diviso per sezioni 
 				\end{itemize}
 			
-			\item \textbf{Operazioni di gestione dei corsi: creazione di un nuovo corso}\\ 
+			\item{*} \textbf{Operazioni di gestione dei corsi: creazione di un nuovo corso}\\ 
 				Cliccando sulla voce nella barra 'Nuovo corso', si apre una pagina web con il form 
 				per l'inserimento dei dati del nuovo corso.\\
 				\begin{center}
@@ -2198,7 +2230,7 @@ commenti testuali}
 				Ogni dato, eccetto nome corso, anno accademico, facoltà e docenti, si inserisce attraverso un
 				editor di testo.
 				
-			\item \textbf{Operazioni di gestione dei corsi: modifica di un corso}\\ 
+			\item{*} \textbf{Operazioni di gestione dei corsi: modifica di un corso}\\ 
 				Dalla pagina di un singolo corso, cliccando sulla voce nella barra 'Modifica corso', 
 				si apre una pagina web con il form precompilato coi dati precedentemente inseriti
 				del corso che si vuole modificare.\\
@@ -2216,7 +2248,7 @@ commenti testuali}
 					\includegraphics[height=1.5cm]{screenshot/Corsi/MaterialeDidattico.png}
 				\end{center}
 			
-			\item \textbf{Operazioni di gestione dei corsi: inserimento di un nuovo docente}\\ 
+			\item{*} \textbf{Operazioni di gestione dei corsi: inserimento di un nuovo docente}\\ 
 				Dal form di modifica di un corso oppure dal form di creazione di un nuovo corso, 
 				l'utente può aggiungere un nuovo docente cliccando sul link 'Nuovo docente' sotto la 
 				scritta Docenti.\\
@@ -2225,7 +2257,7 @@ commenti testuali}
 					\includegraphics[height=4cm]{screenshot/Corsi/NuovoDocente.png}
 				\end{center}
 			
-			\item \textbf{Operazioni di gestione dei corsi: inserimento di una nuova facoltà}\\ 
+			\item{*} \textbf{Operazioni di gestione dei corsi: inserimento di una nuova facoltà}\\ 
 				Dal form di modifica di un corso oppure dal form di creazione di un nuovo corso, 
 				l'utente può aggiungere una nuova facoltà cliccando sul link 'Nuova facoltà' sotto la 
 				scritta Facoltà.\\
@@ -2234,7 +2266,17 @@ commenti testuali}
 					\includegraphics[height=4cm]{screenshot/Corsi/NuovaFacolta.png}
 				\end{center}
 				
-			\item \textbf{Operazioni di gestione delle news: inserimento di una nuova news}\\ 
+			\item{*} \textbf{Operazioni di gestione dei corsi: cancellazione di un corso}
+				Cliccando sull'icona per la cancellazione accanto al nome del corso nell'elenco dei corsi, si 
+				apre una finestra di pop-up per la conferma della cancellazione.
+				\begin{center}
+					\includegraphics[height=6cm]{screenshot/Corsi/CancellazioneCorso.png}
+				\end{center}
+				
+				Una volta confermata l'operazione, viene cancellato il corso e si ritorna
+				alla pagina dell'elenco dei corsi divisi per facoltà.
+				
+			\item{*} \textbf{Operazioni di gestione delle news: inserimento di una nuova news}\\ 
 				Dal form di modifica di un corso , l'utente può aggiungere una nuova news cliccando 
 				sul link 'Gestione News'.\\
 				Si apre così una finestra di pop-up per l'inserimento dei dati della nuova news.
@@ -2244,26 +2286,26 @@ commenti testuali}
 				In questa finestra di pop-up è possibile visualizzare l'elenco delle news precendentemente
 				inserite nel corso.
 			
-			\item \textbf{Operazioni di gestione delle news: modifica dell'ordine delle news
+			\item{*} \textbf{Operazioni di gestione delle news: modifica dell'ordine delle news
 				precedentemente inserite}\\ 
 				Nella finestra di pop-up della gestione delle news è possibile modificare l'ordine 
 				delle news già inserite trascinandole nella posizione che si desidera con il mouse.\\
 			
-			\item \textbf{Operazioni di gestione delle news: nascondere una news}\\ 
+			\item{*} \textbf{Operazioni di gestione delle news: nascondere una news}\\ 
 				Sempre nella finestra di pop-up della gestione delle news è possibile nascondere una 
 				news cliccando sull'icona a forma di occhio accanto al titolo nell'elenco delle news.
 				\begin{center}
 					\includegraphics[height=2cm]{screenshot/News/Nascondi.png}
 				\end{center}
 				
-			\item \textbf{Operazioni di gestione delle news: cancellare una news}\\ 
+			\item{*} \textbf{Operazioni di gestione delle news: cancellare una news}\\ 
 				Sempre nella finestra di pop-up della gestione delle news è possibile cancellare una 
 				news cliccando sull'icona accanto al titolo nell'elenco delle news.
 				\begin{center}
 					\includegraphics[height=2cm]{screenshot/News/Cancella.png}
 				\end{center}
 				
-			\item \textbf{Operazioni di gestione delle news: modificare una news}\\ 
+			\item{*} \textbf{Operazioni di gestione delle news: modificare una news}\\ 
 				Sempre nella finestra di pop-up della gestione delle news è possibile modifica il contenuto di una 
 				news cliccando sull'icona accanto al titolo nell'elenco delle news. In questo modo
 				vengono caricati i dati della news che si vuole modificare nell'editor di testo.
@@ -2271,7 +2313,7 @@ commenti testuali}
 					\includegraphics[height=2cm]{screenshot/News/Modifica.png}
 				\end{center}
 				
-			\item \textbf{Operazioni di gestione del materiale didattico: inserimento di una nuova
+			\item{*} \textbf{Operazioni di gestione del materiale didattico: inserimento di una nuova
 				sezione}\\ 
 				Accendendo al link 'Nuova sezione' nella pagina web di modifica di un corso, si apre
 				una finestra di pop-up per l'inserimento dei dati della nuova sezione del materiale 
@@ -2280,7 +2322,7 @@ commenti testuali}
 					\includegraphics[height=8cm]{screenshot/MaterialeDidattico/NuovaSezione.png}
 				\end{center}
 				
-			\item \textbf{Operazioni di gestione del materiale didattico: modifica dei dati di una
+			\item{*} \textbf{Operazioni di gestione del materiale didattico: modifica dei dati di una
 				sezione precendentemente inserita}\\ 
 				Cliccando sul titolo di una sezione del materiale didattico nella pagina web di 
 				modifica di un corso, si apre una finestra di pop-up con un form precompilato con i 
@@ -2289,65 +2331,67 @@ commenti testuali}
 					\includegraphics[height=8cm]{screenshot/MaterialeDidattico/Modifica.png}
 				\end{center}
 			
-			\item \textbf{Operazioni di gestione del materiale didattico: aggiunta di un file ad una
+			\item{*} \textbf{Operazioni di gestione del materiale didattico: aggiunta di un file ad una
 				sezione già inserita}\\ 
 				Nella finestra di pop-up che si apre cliccando sul titolo di una sezione del materiale
 				didattico nella pagina web di modifica di un corso, si ha la possibilità di aggiungere
 				file alla sezione cliccando sul link 'Aggiungi un nuovo file'. Si apre quindi un'altra
 				finestra di pop-up per l'inserimento dei dati del file da inserire.
 				\begin{center}
-					\includegraphics[height=6cm]{screenshot/MaterialeDidattico/File.png}
+					\includegraphics[height=5cm]{screenshot/MaterialeDidattico/File.png}
 				\end{center}
-				
-			\item \textbf{Operazioni di gestione del materiale didattico: modifica dell'ordine di 
+			
+			\clearpage
+			\item{*} \textbf{Operazioni di gestione del materiale didattico: modifica dell'ordine di 
 				visualizzazione dei file inseriti}\\ 
 				Nella finestra di pop-up per la gestione delle sezioni è possibile modificare l'ordine 
 				dei file già inseriti trascinandoli nella posizione che si desidera con il mouse.\\
 				
-			\item \textbf{Operazioni di gestione del materiale didattico: nascondere un file}\\ 
+			\item{*} \textbf{Operazioni di gestione del materiale didattico: nascondere un file}\\ 
 				Sempre nella finestra di pop-up della gestione delle sezioni è possibile nascondere 
 				un file cliccando sull'icona a forma di occhio accanto al titolo nell'elenco dei file.
 				\begin{center}
 					\includegraphics[height=2cm]{screenshot/MaterialeDidattico/Nascondi.png}
 				\end{center}
 				
-			\item \textbf{Operazioni di gestione del materiale didattico: modificare un file}\\ 
-				Sempre nella finestra di pop-up della gestione delle sezioni è possibile modifica il contenuto di  
-				un file cliccando sull'icona accanto al titolo nell'elenco dei file. In questo modo 
-				si apre la finestra di pop-up per l'inserimento dei dati di un file con i campi precompilati
-				del file che si vuole modificare.
+			\item{*} \textbf{Operazioni di gestione del materiale didattico: modificare un file}\\ 
+				Sempre nella finestra di pop-up della gestione delle sezioni è possibile modifica il
+				contenuto di un file cliccando sull'icona accanto al titolo nell'elenco dei file. In
+				questo modo si apre la finestra di pop-up per l'inserimento dei dati di un file con 
+				i campi precompilati del file che si vuole modificare.
 				\begin{center}
 					\includegraphics[height=2cm]{screenshot/MaterialeDidattico/ModificaFile.png}
 				\end{center}
-		\end{enumerate}
+		\end{description}
 \clearpage		
 	\item \textbf{Utente Finale}
-		\begin{enumerate}
-			\item \textbf{Visualizzazione dell'elenco delle pubblicazioni divisi per categorie e per 
+		\begin{description}
+			\item{*} \textbf{Visualizzazione dell'elenco delle pubblicazioni divisi per categorie e per 
 				anni di pubblicazione}\\
 				\begin{center}
 					\includegraphics[height=7cm]{screenshot/UtenteFinale/Pubblicazioni.png}
 				\end{center}
 				Come si può notare a differenza dell'elenco delle pubblicazioni dell'utente amministratore,
-				in questo caso accanto a titolo della pubblicazione non compare ovviamente l'icona 
+				in questo caso accanto al titolo della pubblicazione non compare ovviamente l'icona 
 				di cancellazione. Ed inoltre non è presente la barra in alto con le operazioni che l'amministratore
 				poteva svolgere\\
 				
-			\item \textbf{Visualizzazione dell'elenco dei corsi divisi per facoltà in cui si svolgono}\\
+			\item{*} \textbf{Visualizzazione dell'elenco dei corsi divisi per facoltà in cui si svolgono}\\
 				\begin{center}
 					\includegraphics[height=4cm]{screenshot/UtenteFinale/Corsi.png}
 				\end{center}
 				Come si può notare a differenza dell'elenco dei corsi dell'utente amministratore,
-				in questo caso non è presente la barra in alto con le operazioni che l'amministratore
+				in questo caso accanto al nome del corso non compare ovviamente l'icona 
+				di cancellazione. Ed inoltre non è presente la barra in alto con le operazioni che l'amministratore
 				poteva svolgere\\
 				
-			\item \textbf{Visualizzazione del contenuto di un singolo corso}\\
+			\item{*} \textbf{Visualizzazione del contenuto di un singolo corso}\\
 				\begin{center}
 					\includegraphics[height=8cm]{screenshot/UtenteFinale/CorsoSingolo.png}
 				\end{center}
 				Come si può notare a differenza della visualizzazione del singolo corso dell'utente amministratore,
 				in questo caso non è presente la barra in alto con le operazioni che l'amministratore
 				poteva svolgere\\	
-		\end{enumerate}
+		\end{description}
 \end{enumerate}
 \end{document}
