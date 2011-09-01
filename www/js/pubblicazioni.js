@@ -245,9 +245,26 @@ function eliminaPubblicazione(id) {
 
 			// Faccio sparire la pubblicazione
 			li.animate({
-						"height": "toggle",
-						"opacity": "toggle"
-						}, 600, function() { jQuery(this).remove(); });
+				"height": "toggle",
+				"opacity": "toggle"
+				}, 600, function() {
+					var lista = li.parent()
+					li.remove();
+					if (lista.find("li").length == 0) {
+						// Era l'unica pubblicazione di quell'anno
+						
+						// Elimino il titolo
+						var titolo = lista.prevAll("h4").first();
+						titolo.animate({
+							"height": "toggle",
+							"opacity": "toggle"
+							}, 300, function () { jQuery(this).remove(); }
+						);
+						// Elimino la lista
+						lista.remove();
+					}
+				}
+			);
 		},
 		"json"
 	);
