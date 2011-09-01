@@ -207,9 +207,6 @@ EOF;
 			<p style='margin-bottom: 15px'>
 				<label for="nome-facolta" class='etichetta'>Nome Facolt&agrave;:</label>
 				<input type="text" size="50" id ="nome-facolta" name='nome-facolta'></input>
-				<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn--facolta' style='margin-left: 4em'>
-					<span class="ui-button-text">Salva</span>
-				</button>
 			</p>
 		</fieldset>
 	</form>
@@ -224,9 +221,6 @@ EOF;
 			<p style='margin-bottom: 15px'>
 				<label for="nome-docente" class='etichetta'>Nome Docente:</label>
 				<input type="text" size="50" id ="nome-docente" name='nome-docente'></input>
-				<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn--docente' style='margin-left: 4em'>
-					<span class="ui-button-text">Salva</span>
-				</button>
 			</p>
 		</fieldset>
 	</form>
@@ -255,7 +249,7 @@ EOF;
 			<input type="checkbox" name='hide-news' id='hide-news' />
 			<label for="hide-news">Nascondi questa news</label>
 
-			<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn--news' style='margin-left: 4em'>
+			<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn-news' style='margin-left: 4em'>
 				<span class="ui-button-text">Salva</span>
 			</button>
 		</fieldset>

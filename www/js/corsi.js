@@ -46,40 +46,47 @@ $(document).ready(function() {
 	}
 	$('textarea.tinymce').tinymce(opzioni);
 
-        $("#facolta-dialog-form").dialog({
-            autoOpen: false,
+	$("#facolta-dialog-form").dialog({
+		autoOpen: false,
 		height: 200,
 		width: 600,
 		modal: true,
-                buttons: {
-			"Chiudi": function() {
+		buttons: {
+			"Annulla": function() {
 				$( this ).dialog( "close" );
+			},
+			"Salva": function() {
+				$( this ).find( "form" ).submit();
 			}
 		}
-        });
-        
-        $( "#link-nome-facolta" )
+	});
+
+	$( "#link-nome-facolta" )
 		.click(function() {
 			$( "#facolta-dialog-form" ).dialog( "open" );
 		});
-                
-        $("#docente-dialog-form").dialog({
-            autoOpen: false,
+
+	$("#docente-dialog-form").dialog({
+		autoOpen: false,
 		height: 200,
 		width: 600,
 		modal: true,
-                buttons: {
-			"Chiudi": function() {
+		buttons: {
+			"Annulla": function() {
 				$( this ).dialog( "close" );
+			},
+			"Salva": function() {
+				$( this ).find( "form" ).submit();
 			}
 		}
-        });
-        
-        $( "#link-nome-docente" )
+	});
+
+	$( "#link-nome-docente" )
 		.click(function() {
 			$( "#docente-dialog-form" ).dialog( "open" );
 		});
-        
+
+
 	$( "#news-dialog-form" ).dialog({
 		autoOpen: false,
 		height: 500,
@@ -129,9 +136,6 @@ $(document).ready(function() {
 		// !? Come mai non lo devo assegnare? Mistero.
 	});
 
-	var swap_eye_icon = function( data ) {
-		
-	}
 
 	var save_visibility = function(elem) {
 		var txt_nascosto, txt_visibile;
@@ -177,9 +181,9 @@ $(document).ready(function() {
 
 
 	$(".eyeicon").click(save_visibility)
-        
-        if ($("#facolta-dialog-form").size()) {
-            $('#facolta-dialog-form form').iframePostForm({
+
+	if ($("#facolta-dialog-form").size()) {
+		$('#facolta-dialog-form form').iframePostForm({
 		json: true,
 		post: function() {
 			$('#facolta-dialog-form').mask("Salvataggio...", 200);
@@ -192,44 +196,50 @@ $(document).ready(function() {
 				if ( data.error )
 					txt += ": " + data.error;
 				alert(txt);
+				$("#nome-facolta").focus();
 				return;
 			}
 			else {
-                            var nuovonome = $( "#facolta-dialog-form form #nome-facolta").val();
-                            $('#link-nome-facolta').parent().before("<li><input type='radio' name='facolta' id='facolta_"+data.id_facolta+"' value='"+data.id_facolta+"' checked='checked'/><label for='facolta_"+data.id_facolta+"'> " + nuovonome + "</label></li>");
-                            $( "#facolta-dialog-form form #nome-facolta").val('');
-                            $( "#facolta-dialog-form" ).dialog( "close" );
-                        }
-                }
-            });
-        }
-        
-        if ($("#docente-dialog-form").size()) {
-            $('#docente-dialog-form form').iframePostForm({
-		json: true,
-		post: function() {
-			$('#docente-dialog-form').mask("Salvataggio...", 200);
-		},
-		complete: function(data) {
-			$('#docente-dialog-form').unmask();
-			if ( ! data || ! data.success ) {
-				// Errore
-				var txt = 'Errore';
-				if ( data.error )
-					txt += ": " + data.error;
-				alert(txt);
-				return;
+				var nuovonome = $( "#facolta-dialog-form form #nome-facolta").val();
+				$('#link-nome-facolta')
+					.parent()
+					.before("<li><input type='radio' name='facolta' id='facolta_"+data.id_facolta+"' value='"+data.id_facolta+"' checked='checked'/><label for='facolta_"+data.id_facolta+"'> " + nuovonome + "</label></li>");
+				$( "#facolta-dialog-form form #nome-facolta").val('');
+				$( "#facolta-dialog-form" ).dialog( "close" );
 			}
-			else {
-                            var nuovonome = $( "#docente-dialog-form form #nome-docente").val();
-                            $('#link-nome-docente').parent().parent().before("<tr><td><input type='checkbox' name='docente' id='docente_"+data.id_docente+"' value='"+data.id_docente+"' checked='checked'/><label for='docente_"+data.id_docente+"'> " + nuovonome + "</label></td><td class='option'><input type='radio' name='tipodocente_"+data.id_docente+"' value='0' checked='checked'/></td><td class='option'><input type='radio' name='tipodocente_"+data.id_docente+"' value='1' $checked/></td></tr>");
-                            $( "#docente-dialog-form form #nome-docente").val('');
-                            $( "#docente-dialog-form" ).dialog( "close" );
-                        }
-                }
-            });
-        }
-        
+			}
+		});
+	}
+
+	if ($("#docente-dialog-form").size()) {
+		$('#docente-dialog-form form').iframePostForm({
+			json: true,
+			post: function() {
+				$('#docente-dialog-form').mask("Salvataggio...", 200);
+			},
+			complete: function(data) {
+				$('#docente-dialog-form').unmask();
+				if ( ! data || ! data.success ) {
+					// Errore
+					var txt = 'Errore';
+					if ( data.error )
+						txt += ": " + data.error;
+					alert(txt);
+					$("#nome-docente").focus()
+					return;
+				}
+				else {
+					var nuovonome = $( "#docente-dialog-form form #nome-docente").val();
+					$('#link-nome-docente')
+						.parent().parent()
+						.before("<tr><td><input type='checkbox' name='docente' id='docente_"+data.id_docente+"' value='"+data.id_docente+"' checked='checked'/><label for='docente_"+data.id_docente+"'> " + nuovonome + "</label></td><td class='option'><input type='radio' name='tipodocente_"+data.id_docente+"' value='0' checked='checked'/></td><td class='option'><input type='radio' name='tipodocente_"+data.id_docente+"' value='1' $checked/></td></tr>");
+					$( "#docente-dialog-form form #nome-docente").val('');
+					$( "#docente-dialog-form" ).dialog( "close" );
+				}
+			}
+		});
+	}
+
 
 	if ($("#news-dialog-form").size()) {
 	$('#news-dialog-form form').iframePostForm({
