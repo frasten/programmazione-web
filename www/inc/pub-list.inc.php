@@ -75,7 +75,7 @@ function stampa_pub( $categoria ) {
 SELECT *
 FROM `$config[db_prefix]pubblicazione`
 WHERE `categoria` = '$categoria'
-ORDER BY `$config[db_prefix]pubblicazione`.`anno` DESC
+ORDER BY `anno` DESC, `id_pubblicazione` DESC
 EOF;
 	$result = mysql_query( $query, $db );
 	if ( ! $result ) {
