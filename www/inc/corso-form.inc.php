@@ -268,9 +268,7 @@ WHERE `id_corso` = '$corso[id_corso]'
 ORDER BY `ordine` ASC
 EOF;
 			$result = mysql_query( $query, $db );
-			if ( ! mysql_num_rows( $result ) ) {
-				echo "Nessuna news presente.";
-			}
+			echo "<span id='avviso-no-news'>Nessuna news presente.</span>\n";
 			echo "<ul id='lista-news' class='lista-dnd'>\n";
 
 			while ( $riga = mysql_fetch_assoc( $result ) ) {

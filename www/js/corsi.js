@@ -99,6 +99,10 @@ $(document).ready(function() {
 			$('#attachment').val('');
 			if (typeof($('#testo-news').tinymce) != "undefined")
 				$('#testo-news').tinymce().focus();
+			if ($("#lista-news").find("li").length == 0)
+				$("#avviso-no-news").show();
+			else
+				$("#avviso-no-news").hide();
 		},
 		buttons: {
 			"Chiudi": function() {
@@ -272,6 +276,8 @@ $(document).ready(function() {
 				}
 				else {
 					// Inserimento di una nuova news
+					if ($("#lista-news").find("li").length == 0)
+						$("#avviso-no-news").hide();
 					$("#lista-news")
 						.prepend($("<li />", {
 							class: 'ui-corner-all',
@@ -716,9 +722,13 @@ function eliminaNews(id) {
 
 				// Faccio sparire la news
 				li.animate({
-							"height": "toggle",
-							"opacity": "toggle"
-							}, 600, function() { jQuery(this).remove(); });
+					"height": "toggle",
+					"opacity": "toggle"
+					}, 600, function() {
+						jQuery(this).remove()
+						if (jQuery("#lista-news").find("li").length == 0)
+							$("#avviso-no-news").show();
+					});
 			},
 		"json"
 		);

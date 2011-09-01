@@ -336,6 +336,10 @@ strong.errore {
 	padding-bottom: 2em;
 }
 
+#avviso-no-news {
+	display: none;
+}
+
 
 /*** SEZIONI MATERIALE DIDATTICO ***/
 
