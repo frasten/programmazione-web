@@ -136,7 +136,7 @@ else if ( $_GET['action'] == 'getnews' ) {
 	$id_news = intval( $_POST['id'] );
 
 	$query = <<<EOF
-SELECT `id_news`, `nascondi`, `testo`
+SELECT `id_news`, `nascondi`, `testo`, `file`
 FROM `$config[db_prefix]news`
 WHERE `id_news` = '$id_news'
 LIMIT 1
@@ -146,6 +146,8 @@ EOF;
 	$news = mysql_fetch_assoc( $result );
 
 	$json = array_merge( $json, $news );
+
+	$json['file'] = ! empty( $json['file'] );
 
 	$json['success'] = 1;
 	ajax_esci();

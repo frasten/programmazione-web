@@ -654,7 +654,7 @@ function caricaListaSezioni() {
 }
 
 function caricaNews(id) {
-	$('#news-dialog-form').mask("Salvataggio...", 200);
+	$('#news-dialog-form').mask("Caricamento...", 200);
 	jQuery.post('ajax/news.php?action=getnews', {
 			id: id
 			},
@@ -672,6 +672,15 @@ function caricaNews(id) {
 				jQuery('#testo-news').html(data.testo);
 				jQuery('#hide-news').attr('checked', data.nascondi == '1');
 				jQuery('#attachment').val('');
+				if (data.file) {
+					jQuery("#news-dialog-form fieldset").addClass('esteso');
+					jQuery("#news-saved-attachment").show();
+				}
+				else {
+					jQuery("#news-dialog-form fieldset").removeClass('esteso');
+					jQuery("#news-saved-attachment").hide();
+				}
+
 				jQuery('#testo-news').tinymce().focus();
 				jQuery("#news-dialog-form [name='id_news']").val(data.id_news);
 			},

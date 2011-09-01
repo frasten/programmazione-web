@@ -324,6 +324,19 @@ strong.errore {
 	margin-right: 5px;
 }
 
+#news-saved-attachment {
+	position: absolute;
+	margin-top: 2.5em;
+	left: 7em;
+	color: #666;
+	display: none;
+}
+
+#news-dialog-form fieldset.esteso {
+	padding-bottom: 2em;
+}
+
+
 /*** SEZIONI MATERIALE DIDATTICO ***/
 
 #titolo-sezione {
