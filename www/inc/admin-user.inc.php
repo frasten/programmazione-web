@@ -59,8 +59,6 @@ else if ( $_GET['action'] == 'changepassword' ) {
 
 	if ( empty( $_POST['password'] ) ) {
 		// Non l'ha ancora inviata, mostro un form per il cambiamento
-		// TODO: se si ha voglia, fare il controllo anche via javascript che
-		// le due password siano uguali
 		stampa_form_change_password();
 	}
 	else {
@@ -209,7 +207,9 @@ function stampa_form_change_password() {
 		<p>
 			<strong>Cambio password per l'utente <em><?php echo htmlspecialchars( $_GET['user'] ) ?></em></strong>
 		</p>
-		<form action='<?php
+		<script type='text/javascript' src='js/validate/jquery.validate.min.js'></script>
+		<script type='text/javascript' src='js/validate/messages_it.js'></script>
+		<form id='frm-edit-password' action='<?php
 			echo htmlspecialchars( "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]", ENT_QUOTES );
 		?>' method='post'>
 			<ul class='form_list'>
@@ -228,6 +228,37 @@ function stampa_form_change_password() {
 			</ul>
 			<input type='submit' class='submitbutton' value='Salva' style='margin-left: 100px' />
 		</form>
+		<script type='text/javascript'>
+(function($) {
+$(function() {
+	$("#frm-edit-password").validate({
+		rules: {
+			oldpassword: "required",
+			password: {
+				required: true,
+				minlength: 5
+			},
+			repeatpassword: {
+				required: true,
+				minlength: 5,
+				equalTo: "#password"
+			}
+		},
+		messages: {
+			repeatpassword: {
+				equalTo: "Le password non coincidono."
+			}
+		},
+
+		// Dove mettiamo gli errori
+		errorPlacement: function(error, element) {
+			error.appendTo( element.parent() );
+		}
+	});
+
+});
+})(jQuery);
+		</script>
 		<?php
 }
 
