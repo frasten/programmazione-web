@@ -21,12 +21,13 @@ function load_autori() {
 	$autori = array();
 
 	$query = <<<EOF
-SELECT `$config[db_prefix]pubblicazione`.`id_pubblicazione`, `nome`
-FROM `$config[db_prefix]pubblicazione`
+SELECT p.`id_pubblicazione`, a.`nome`
+FROM `$config[db_prefix]pubblicazione` AS p
 JOIN `$config[db_prefix]pubblicazione_pubautore`
 	USING (`id_pubblicazione`)
-JOIN `$config[db_prefix]pubautore`
+JOIN `$config[db_prefix]pubautore` AS a
 	USING (`id_autore`)
+ORDER BY p.`id_pubblicazione` ASC, `ordine` ASC
 EOF;
 	$result = mysql_query( $query, $db );
 	if ( ! $result ) return $autori;

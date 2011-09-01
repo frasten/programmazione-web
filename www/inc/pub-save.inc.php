@@ -149,12 +149,12 @@ function get_id_autori( $str ) {
 
 function salva_autori_pub( $id_pub, $id_autori ) {
 	global $config, $db;
-	foreach ( $id_autori as $id_a ) {
+	for ( $i = 0; $i < sizeof( $id_autori ); $i++ ) {
 		$query = <<<EOF
 INSERT INTO `$config[db_prefix]pubblicazione_pubautore`
-(id_pubblicazione, id_autore)
+(`id_pubblicazione`, `id_autore`, `ordine`)
 VALUES
-('$id_pub', '$id_a')
+('$id_pub', '$id_autori[$i]', '$i')
 EOF;
 		mysql_query( $query, $db );
 	}

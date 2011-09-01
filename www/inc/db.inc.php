@@ -99,6 +99,7 @@ EOF;
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubblicazione_pubautore` (
 	`id_pubblicazione` INTEGER  NOT NULL,
 	`id_autore` INTEGER  NOT NULL,
+	`ordine` INTEGER  NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id_pubblicazione`, `id_autore`),
 	CONSTRAINT `fk_$config[db_prefix]pubblicazione_pubautore_pubblicazione`
 		FOREIGN KEY (`id_pubblicazione` )
@@ -167,7 +168,7 @@ EOF;
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]news` (
 	`id_news` INTEGER  NOT NULL AUTO_INCREMENT,
 	`id_corso` INTEGER NOT NULL,
-	`ordine` INTEGER NOT NULL,
+	`ordine` INTEGER NOT NULL DEFAULT 0,
 	`nascondi` ENUM('0','1') NOT NULL DEFAULT '0',
 	`testo` TEXT NOT NULL,
 	`file` VARCHAR(255),
