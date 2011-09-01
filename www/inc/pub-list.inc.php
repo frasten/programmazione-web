@@ -1,7 +1,9 @@
 		<h2>Pubblicazioni</h2>
-
-<script type="text/javascript" src="js/pubblicazioni.js"></script>
 <?php
+
+if ( ! empty( $_SESSION['loggato'] ) )
+	echo "<script type='text/javascript' src='js/pubblicazioni.js'></script>\n";
+
 
 $autori = load_autori();
 

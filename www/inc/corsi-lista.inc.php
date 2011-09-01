@@ -1,7 +1,8 @@
-
-<script type="text/javascript" src="js/corsi.js"></script>
-
 <?php
+
+if ( ! empty( $_SESSION['loggato'] ) )
+	echo "<script type='text/javascript' src='js/corsi.js'></script>\n";
+
 
 $query = <<<EOF
 SELECT
