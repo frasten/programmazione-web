@@ -125,6 +125,7 @@ function stampa_pub_rivista( $riga ) {
 	stampa_autori( $autori, $riga['id_pubblicazione'] );
 	echo ", " . "";
 
+	// Nome del journal
 	if ( $riga['titolo_contesto'] ) {
 		echo htmlspecialchars( $riga['titolo_contesto'] );
 		echo ", ";
@@ -140,12 +141,6 @@ function stampa_pub_rivista( $riga ) {
 		echo ":$riga[pag_inizio]-$riga[pag_fine]";
 	}
 	echo ", ";
-
-	// Nome del journal
-	if ( $riga['titolo_contesto'] ) {
-		echo htmlspecialchars( $riga['titolo_contesto'] );
-		echo ", ";
-	}
 
 	echo "$riga[anno].";
 
