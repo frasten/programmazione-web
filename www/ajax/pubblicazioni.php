@@ -4,10 +4,15 @@ require_once( '../inc/framework.inc.php' );
 require_once( '../inc/ajax-functions.inc.php' );
 
 
-// Protezione contro accessi non autorizzati
-if ( empty( $_SESSION['loggato'] ) ) die( '-1' );
+$json = array(
+	'success' => 0,
+	'error' => ''
+);
 
-if ( empty( $_GET['action'] ) ) die( '-1' );
+// Protezione contro accessi non autorizzati
+if ( empty( $_SESSION['loggato'] ) ) ajax_esci( 'Accesso non autorizzato.' );
+
+if ( empty( $_GET['action'] ) ) ajax_esci();
 
 if ( $_GET['action'] == 'get_lista_autori' ) {
 	$query = <<<EOF
@@ -16,13 +21,15 @@ FROM `$config[db_prefix]pubautore`
 ORDER BY `nome` ASC
 EOF;
 	$result = mysql_query( $query, $db );
-	if ( ! $result ) die( -1 );
-	$ret = array();
+	if ( ! $result ) ajax_esci( 'Errore interno.' );
+	$autori = array();
 	while ( $riga = mysql_fetch_assoc( $result ) ) {
-		$ret[] = $riga['nome'];
+		$autori[] = $riga['nome'];
 	}
 
-	echo json_encode( $ret );
+	$json['autori'] = $autori;
+	$json['success'] = 1;
+	ajax_esci();
 }
 else if ( $_GET['action'] == 'eliminapubblicazione' ) {
 	if ( empty( $_POST['id'] ) ) ajax_esci( 'ID non valido.' );

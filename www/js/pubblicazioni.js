@@ -3,9 +3,16 @@
 	// Carichiamo la lista di autori
 	var pub_autori;
 	$.getJSON('ajax/pubblicazioni.php?action=get_lista_autori', function(data) {
-		if (data.constructor.toString().indexOf("Array") == -1)
+		if ( ! data || ! data.success ) {
+			// Errore
+			var txt = 'Errore';
+			if ( data.error )
+				txt += ": " + data.error;
+			alert(txt);
 			pub_autori = new Array();
-		else pub_autori = data;
+			return;
+		}
+		pub_autori = data.autori;
 	});
 
 	function split( val ) {
