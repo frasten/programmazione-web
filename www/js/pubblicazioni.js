@@ -244,27 +244,36 @@ function eliminaPubblicazione(id) {
 			}
 
 			// Faccio sparire la pubblicazione
+			var lista = li.parent()
 			li.animate({
 				"height": "toggle",
 				"opacity": "toggle"
 				}, 600, function() {
-					var lista = li.parent()
 					li.remove();
-					if (lista.find("li").length == 0) {
-						// Era l'unica pubblicazione di quell'anno
-						
-						// Elimino il titolo
-						var titolo = lista.prevAll("h4").first();
-						titolo.animate({
-							"height": "toggle",
-							"opacity": "toggle"
-							}, 300, function () { jQuery(this).remove(); }
-						);
-						// Elimino la lista
-						lista.remove();
-					}
 				}
 			);
+
+			if (lista.find("li").length == 1) {
+				// Era l'unica pubblicazione di quell'anno
+
+				// Elimino il titolo
+				var titolo = lista.prevAll("h4").first();
+				titolo.animate({
+					"height": "toggle",
+					"opacity": "toggle"
+					}, 600, function () {
+						// Controllo se quell'anno era l'unico di tale tipo di pubblicazione
+						if (! titolo.prevAll("h4, h3").first().is("h4") &&
+								! titolo.nextAll("h4, h3").first().is("h4") ) {
+							titolo.prevAll("h3").first().after("Non &egrave; presente alcuna pubblicazione.")
+						}
+						titolo.remove();
+					}
+				);
+				// Elimino la lista
+				lista.remove();
+			}
+
 		},
 		"json"
 	);
