@@ -101,10 +101,11 @@ else if ( $_GET['action'] == 'newuser' ) {
 
 	if ( empty( $_POST['username'] ) ) {
 		// Form
+		includi_scripts_validazione();
 		?>
 		<form action='<?php
 		echo htmlspecialchars( "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]", ENT_QUOTES );
-		?>' method='post'>
+		?>' method='post' id='frm-new-user'>
 			<ul class='form_list'>
 				<li>
 					<label for='username'>Username:</label>
@@ -113,6 +114,10 @@ else if ( $_GET['action'] == 'newuser' ) {
 				<li>
 					<label for='password'>Password:</label>
 					<input type='password' id='password' name='password' />
+				</li>
+				<li>
+					<label for='repeatpassword'>Ripeti password:</label>
+					<input type='password' id='repeatpassword' name='repeatpassword' />
 				</li>
 			</ul>
 			<input type='submit' class='submitbutton' value='Crea utente' />
@@ -130,6 +135,9 @@ else if ( $_GET['action'] == 'newuser' ) {
 
 		if ( empty( $_POST['password'] ) ) {
 			echo 'Errore: la password non pu&ograve; essere vuota.';
+		}
+		else if ( $_POST['password'] != $_POST['repeatpassword'] ) {
+			echo 'Errore: le password inserite non coincidono.';
 		}
 		else if ( ! preg_match( '#^[a-z0-9^-_.,:@+-=()/!]+$#i', $_POST['username'] ) ) {
 			echo 'Errore: il nome utente contiene caratteri non consentiti.';
@@ -203,12 +211,11 @@ else if ( $_GET['action'] == 'deleteuser' ) {
 }
 
 function stampa_form_change_password() {
+	includi_scripts_validazione();
 			?>
 		<p>
 			<strong>Cambio password per l'utente <em><?php echo htmlspecialchars( $_GET['user'] ) ?></em></strong>
 		</p>
-		<script type='text/javascript' src='js/validate/jquery.validate.min.js'></script>
-		<script type='text/javascript' src='js/validate/messages_it.js'></script>
 		<form id='frm-edit-password' action='<?php
 			echo htmlspecialchars( "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]", ENT_QUOTES );
 		?>' method='post'>
@@ -229,35 +236,6 @@ function stampa_form_change_password() {
 			<input type='submit' class='submitbutton' value='Salva' style='margin-left: 100px' />
 		</form>
 		<script type='text/javascript'>
-(function($) {
-$(function() {
-	$("#frm-edit-password").validate({
-		rules: {
-			oldpassword: "required",
-			password: {
-				required: true,
-				minlength: 5
-			},
-			repeatpassword: {
-				required: true,
-				minlength: 5,
-				equalTo: "#password"
-			}
-		},
-		messages: {
-			repeatpassword: {
-				equalTo: "Le password non coincidono."
-			}
-		},
-
-		// Dove mettiamo gli errori
-		errorPlacement: function(error, element) {
-			error.appendTo( element.parent() );
-		}
-	});
-
-});
-})(jQuery);
 		</script>
 		<?php
 }
@@ -272,4 +250,9 @@ EOF;
 	mysql_query( $query, $db );
 }
 
+function includi_scripts_validazione() {
+	echo <<<EOF
+	<script type='text/javascript' src='js/admin-users.js'></script>
+EOF;
+}
 ?>
