@@ -70,9 +70,9 @@ EOF;
 			echo "</li>\n";
 		}
 		?>
-                    <li>
-                        <a class="linksenzaicona" href="javascript:void(0);" id="link-nome-facolta">Nuova Facolt&agrave;</a>
-                    </li>
+			<li>
+				<a class="linksenzaicona" href="javascript:void(0);" id="link-nome-facolta">Nuova Facolt&agrave;</a>
+			</li>
 		</ul>
 	</div>
 
@@ -133,16 +133,16 @@ EOF;
 			echo "</tr>\n";
 		}
 		?>
-                            <tr>
-                                <td>
-                                    <a class="linksenzaicona" href="javascript:void(0);" id="link-nome-docente">Nuovo Docente</a>
-                                </td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+				<tr>
+					<td>
+						<a class="linksenzaicona" href="javascript:void(0);" id="link-nome-docente">Nuovo Docente</a>
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
 			</tbody>
 		</table>
-                
+
 	</div>
 
 	<div class='clear'></div>
@@ -198,35 +198,41 @@ EOF;
 
 <script type='text/javascript' src='js/jquery.iframe-post-form.js'></script>
 
+
+<!-- Dialogo per la creazione di una nuova facolta' -->
 <div id="facolta-dialog-form" title='Nuova Facolt&agrave;'>
-    <form action="ajax/corsi.php?action=newfacolta" method="post">
-        <fieldset>
-            <h4>Inserisci una nuova facolt&agrave;</h4>
-            <p style='margin-bottom: 15px'>
-		<label for="nome-facolta" class='etichetta'>Nome Facolt&agrave;:</label>
-                <input type="text" size="50" id ="nome-facolta" name='nome-facolta'></input>
-		<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn--facolta' style='margin-left: 4em'>
-				<span class="ui-button-text">Salva</span>
-		</button>
-	    </p>
-        </fieldset>
-    </form>
+	<form action="ajax/corsi.php?action=newfacolta" method="post">
+		<fieldset>
+			<h4>Inserisci una nuova facolt&agrave;</h4>
+			<p style='margin-bottom: 15px'>
+				<label for="nome-facolta" class='etichetta'>Nome Facolt&agrave;:</label>
+				<input type="text" size="50" id ="nome-facolta" name='nome-facolta'></input>
+				<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn--facolta' style='margin-left: 4em'>
+					<span class="ui-button-text">Salva</span>
+				</button>
+			</p>
+		</fieldset>
+	</form>
 </div> <!-- /#facolta-dialog-form -->
 
+
+<!-- Dialogo per l'aggiunta di un nuovo Docente -->
 <div id="docente-dialog-form" title='Nuovo Docente'>
-    <form action="ajax/corsi.php?action=newdocente" method="post">
-        <fieldset>
-            <h4>Inserisci un nuovo docente</h4>
-            <p style='margin-bottom: 15px'>
-		<label for="nome-docente" class='etichetta'>Nome Docente:</label>
-                <input type="text" size="50" id ="nome-docente" name='nome-docente'></input>
-		<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn--docente' style='margin-left: 4em'>
-				<span class="ui-button-text">Salva</span>
-		</button>
-	    </p>
-        </fieldset>
-    </form>
-</div> <!-- /#facolta-dialog-form -->
+	<form action="ajax/corsi.php?action=newdocente" method="post">
+		<fieldset>
+			<h4>Inserisci un nuovo docente</h4>
+			<p style='margin-bottom: 15px'>
+				<label for="nome-docente" class='etichetta'>Nome Docente:</label>
+				<input type="text" size="50" id ="nome-docente" name='nome-docente'></input>
+				<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn--docente' style='margin-left: 4em'>
+					<span class="ui-button-text">Salva</span>
+				</button>
+			</p>
+		</fieldset>
+	</form>
+</div> <!-- /#docente-dialog-form -->
+
+
 
 <?php if ( $corso ): ?>
 

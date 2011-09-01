@@ -230,27 +230,27 @@ function eliminaPubblicazione(id) {
 	var li = $("li#pubblicazione_" + id);
 	li.mask("Eliminazione...", 200);
 	jQuery.post('ajax/pubblicazioni.php?action=eliminapubblicazione', {
-			id: id
-			},
-			function (data) {
-				li.unmask();
-				if ( ! data || ! data.success ) {
-					// Errore
-					var txt = 'Errore';
-					if ( data.error )
-						txt += ": " + data.error;
-					alert(txt);
-					return;
-				}
+		id: id
+		},
+		function (data) {
+			li.unmask();
+			if ( ! data || ! data.success ) {
+				// Errore
+				var txt = 'Errore';
+				if ( data.error )
+					txt += ": " + data.error;
+				alert(txt);
+				return;
+			}
 
-				// Faccio sparire la pubblicazione
-				li.animate({
-							"height": "toggle",
-							"opacity": "toggle"
-							}, 600, function() { jQuery(this).remove(); });
-			},
+			// Faccio sparire la pubblicazione
+			li.animate({
+						"height": "toggle",
+						"opacity": "toggle"
+						}, 600, function() { jQuery(this).remove(); });
+		},
 		"json"
-		);
+	);
 }
 
 function askEliminaPubblicazione(id) {

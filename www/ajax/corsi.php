@@ -196,71 +196,71 @@ EOF;
 	}
 }
 elseif($_GET['action'] == 'newfacolta'){
-    if ( empty( $_POST['nome-facolta'] ) ) ajax_esci( 'Inserire il nome della Facolt&agrave;' );
-    
-    $nome = mysql_real_escape_string( $_POST['nome-facolta'] );
-    
-    $query = <<<EOF
+	if ( empty( $_POST['nome-facolta'] ) ) ajax_esci( 'Inserire il nome della Facolt&agrave;' );
+
+	$nome = mysql_real_escape_string( $_POST['nome-facolta'] );
+
+	$query = <<<EOF
 INSERT INTO `$config[db_prefix]facolta`
 (`nome`)
 VALUES
 ('$nome')
 EOF;
-		mysql_query( $query, $db );
-		$id_facolta = mysql_insert_id( $db );
+	mysql_query( $query, $db );
+	$id_facolta = mysql_insert_id( $db );
 
-		if ( ! $id_facolta ) ajax_esci( 'Errore nel salvataggio.' );
-                
-                $json['success'] = 1;
-                $json['id_facolta'] = $id_facolta;
-                ajax_esci();
+	if ( ! $id_facolta ) ajax_esci( 'Errore nel salvataggio.' );
+
+	$json['success'] = 1;
+	$json['id_facolta'] = $id_facolta;
+	ajax_esci();
 }
 elseif($_GET['action'] == 'newdocente'){
-    if ( empty( $_POST['nome-docente'] ) ) ajax_esci( 'Inserire il nome del Docente' );
-    
-    $nome = mysql_real_escape_string( $_POST['nome-docente'] );
-    
-    $query = <<<EOF
+	if ( empty( $_POST['nome-docente'] ) ) ajax_esci( 'Inserire il nome del Docente' );
+
+	$nome = mysql_real_escape_string( $_POST['nome-docente'] );
+
+	$query = <<<EOF
 INSERT INTO `$config[db_prefix]docente`
 (`nome`)
 VALUES
 ('$nome')
 EOF;
-		mysql_query( $query, $db );
-		$id_docente = mysql_insert_id( $db );
+	mysql_query( $query, $db );
+	$id_docente = mysql_insert_id( $db );
 
-		if ( ! $id_docente ) ajax_esci( 'Errore nel salvataggio.' );
-                
-                $json['success'] = 1;
-                $json['id_docente'] = $id_docente;
-                ajax_esci();
+	if ( ! $id_docente ) ajax_esci( 'Errore nel salvataggio.' );
+
+	$json['success'] = 1;
+	$json['id_docente'] = $id_docente;
+	ajax_esci();
 }
 else if ( $_GET['action'] == 'eliminacorso' ) {
 	if ( empty( $_POST['id'] ) ) ajax_esci( 'ID non valido.' );
 	$id_corso = intval( $_POST['id'] );
-        
-        //Cancello l'eventuale file allegato alle news presenti
+
+	//Cancello l'eventuale file allegato alle news presenti
 	$query = <<<EOF
 SELECT `file`
 FROM `$config[db_prefix]news`
 WHERE `id_corso` = '$id_corso'
 EOF;
-	
-        $result = mysql_query( $query, $db );
+
+	$result = mysql_query( $query, $db );
 	while ( $riga = mysql_fetch_assoc( $result ) ) {
-            elimina_file( $riga['file'] );
-        }
-        
-        //Cancello eventuali file delle sezioni
-        $query = <<<EOF
+		elimina_file( $riga['file'] );
+	}
+
+	//Cancello eventuali file delle sezioni
+	$query = <<<EOF
 SELECT `url`
-FROM `$config[db_prefix]file_materiale` as fm, `$config[db_prefix]sezione` as s
-WHERE s.id_corso = '$id_corso' and s.id_sezione=fm.id_sezione
+FROM `$config[db_prefix]file_materiale` AS fm, `$config[db_prefix]sezione` AS s
+WHERE s.`id_corso` = '$id_corso' AND s.`id_sezione` = fm.`id_sezione`
 EOF;
-        $result = mysql_query( $query, $db );
+	$result = mysql_query( $query, $db );
 	while ( $riga = mysql_fetch_assoc( $result ) ) {
-            elimina_file( $riga['url'] );
-        }
+		elimina_file( $riga['url'] );
+	}
 
 	$query = <<<EOF
 DELETE FROM `$config[db_prefix]corso`
@@ -269,8 +269,8 @@ LIMIT 1
 EOF;
 	$result = mysql_query( $query, $db );
 	if ( mysql_errno() ) ajax_esci( 'Errore nell\'eliminazione.' );
-        
-        
+
+
 	$json['id'] = $id_corso;
 	$json['success'] = 1;
 	ajax_esci();
