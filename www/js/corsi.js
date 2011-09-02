@@ -44,7 +44,8 @@ $(document).ready(function() {
 		theme_advanced_resizing : true,
 		plugin_insertdate_dateFormat : "%d/%m/%Y",
 	}
-	$('textarea.tinymce').tinymce(opzioni);
+	if ($('textarea.tinymce').length > 0)
+		$('textarea.tinymce').tinymce(opzioni);
 
 	$("#facolta-dialog-form").dialog({
 		autoOpen: false,
@@ -280,18 +281,16 @@ $(document).ready(function() {
 						$("#avviso-no-news").hide();
 					$("#lista-news")
 						.prepend($("<li />", {
-							class: 'ui-corner-all',
 							id: 'news_' + data.id,
 							css: {display: 'none'} // per farlo comparire dopo
-						}))
+						}).addClass("ui-corner-all"))
 						.find(":first")
 							.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
 							.append($("<a/>", {
 									href: 'javascript:void(0)',
-									class: 'iconalink eyeicon',
 									title: data.nascondi ? 'News nascosta' : 'News visibile',
 									click: save_visibility
-								}))
+								}).addClass("iconalink").addClass("eyeicon"))
 								.find(":last")
 								.append($("<img>", {
 									src: 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'),
@@ -301,10 +300,9 @@ $(document).ready(function() {
 							.append(" ")
 							.append($("<a/>", {
 									href: 'javascript:void(0)',
-									class: 'iconalink',
 									title: 'Modifica news',
 									click: function() {caricaNews(data.id)}
-								}))
+								}).addClass("iconalink"))
 								.find(":last")
 								.append($("<img>", {
 									src: 'img/icone/newspaper_edit.png',
@@ -314,10 +312,9 @@ $(document).ready(function() {
 							.append(" ")
 							.append($("<a/>", {
 									href: 'javascript:void(0)',
-									class: 'iconalink',
 									title: 'Elimina news',
 									click: function() {askEliminaNews(data.id);}
-								}))
+								}).addClass("iconalink"))
 								.find(":last")
 								.append($("<img>", {
 									src: 'img/icone/newspaper_delete.png',
@@ -325,10 +322,10 @@ $(document).ready(function() {
 									}))
 							.parent()
 							.append(" ")
-							.append($("<span />", {
-								class: 'testo'
-								})
-								.append(data.testo)
+							.append(
+								$("<span />")
+									.addClass("testo")
+									.append(data.testo)
 							)
 						.animate({
 							"height": "toggle",
@@ -502,18 +499,16 @@ $(document).ready(function() {
 					// Aggiorniamo la lista di files nell'altro dialogo
 					$("#lista-file-sezione")
 						.prepend($("<li />", {
-							class: 'ui-corner-all',
 							id: 'file_' + data.id_file,
 							css: {display: 'none'}
-						}))
+						}).addClass("ui-corner-all"))
 						.find(":first")
 							.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
 							.append($("<a/>", {
 									href: 'javascript:void(0)',
-									class: 'iconalink eyeicon',
 									title: data.nascondi ? 'File nascosto' : 'File visibile',
 									click: save_visibility
-								}))
+								}).addClass("iconalink").addClass("eyeicon"))
 								.find(":last")
 								.append($("<img>", {
 									src: 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'),
@@ -523,9 +518,8 @@ $(document).ready(function() {
 							.append(" ")
 							.append($("<a/>", {
 									href: 'javascript:void(0)',
-									class: 'iconalink',
 									title: 'Modifica'
-								})
+								}).addClass("iconalink")
 								.click(data.id_file, function(ev){apriDialogoFile(ev.data)})
 								)
 								.find(":last")
@@ -598,17 +592,15 @@ $(document).ready(function() {
 					var f = data.files[key];
 					$("#lista-file-sezione")
 						.append($("<li />", {
-							class: 'ui-corner-all',
 							id: 'file_' + f.id_file
-						}))
+						}).addClass("ui-corner-all"))
 						.find(":last")
 							.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
 							.append($("<a/>", {
 									href: 'javascript:void(0)',
-									class: 'iconalink eyeicon',
 									title: f.nascondi ? 'File nascosto' : 'File visibile',
 									click: save_visibility
-								}))
+								}).addClass("iconalink").addClass("eyeicon"))
 								.find(":last")
 								.append($("<img>", {
 									src: 'img/icone/' + (f.nascondi ? 'eye_no.png' : 'eye.png'),
@@ -618,9 +610,8 @@ $(document).ready(function() {
 							.append(" ")
 							.append($("<a/>", {
 									href: 'javascript:void(0)',
-									class: 'iconalink',
 									title: 'Modifica'
-								})
+								}).addClass("iconalink")
 								.click(f.id_file, function(ev){apriDialogoFile(ev.data)})
 								)
 								.find(":last")
