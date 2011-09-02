@@ -286,6 +286,17 @@ strong.errore {
 	clear: both;
 }
 
+#frm_corso #lista_facolta ul {
+	width: 350px;
+}
+
+#tbl_insert_docenti input[type="checkbox"],
+#lista_facolta input[type="radio"] {
+	float: left;
+	margin-right: 7px;
+	margin-top: 0;
+}
+
 #frm_corso #nomecorso {
 	width: 500px;
 }

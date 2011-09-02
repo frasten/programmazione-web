@@ -77,10 +77,9 @@ EOF;
 	</div>
 
 	<div id='lista_docenti'>
-		<span class='etichetta'>Docenti:</span>
 		<table id='tbl_insert_docenti'>
 			<thead>
-				<th></th>
+				<th style='text-align: left'>Docenti:</th>
 				<th>Docente</th>
 				<th>Esercitat.</th>
 			</thead>
