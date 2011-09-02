@@ -293,9 +293,23 @@ strong.errore {
 #tbl_insert_docenti input[type="checkbox"],
 #lista_facolta input[type="radio"] {
 	float: left;
-	margin-right: 7px;
 	margin-top: 0;
 }
+
+#tbl_insert_docenti label,
+#lista_facolta label {
+	margin-left: 23px;
+	display: block;
+}
+
+#tbl_insert_docenti td {
+	vertical-align: top;
+}
+
+#tbl_insert_docenti input[type="radio"] {
+	margin-top: 0;
+}
+
 
 #frm_corso #nomecorso {
 	width: 500px;
