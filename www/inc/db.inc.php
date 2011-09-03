@@ -310,6 +310,19 @@ EOF;
 	mysql_query( $query, $db );
 
 
+	/* INSERIMENTO DEI DATI DI DEFAULT */
+	$query = <<<EOF
+INSERT INTO `$config[db_prefix]facolta`
+	(`nome`)
+	SELECT 'Università degli Studi di Brescia'
+	FROM DUAL
+	WHERE NOT EXISTS (
+		SELECT *
+		FROM `$config[db_prefix]facolta`
+	)
+EOF;
+	mysql_query( $query, $db );
+
 }
 
 
