@@ -62,6 +62,9 @@ EOF;
 	$json['success'] = 1;
 	ajax_esci();
 }
+else {
+	ajax_esci();
+}
 
 
 ?>

@@ -147,6 +147,42 @@ EOF;
 	ajax_esci();
 
 }
+else if ( $_GET['action'] == 'eliminafile' ) {
+	if ( empty( $_POST['id'] ) ) ajax_esci();
+	$id = intval( $_POST['id'] );
+
+	$query = <<<EOF
+SELECT `url`
+FROM `$config[db_prefix]file_materiale`
+WHERE `id_file` = '$id'
+LIMIT 1
+EOF;
+	$result = mysql_query( $query, $db );
+	$riga = mysql_fetch_assoc( $result );
+	if ( empty( $riga ) ) ajax_esci( 'ID non valido.' );
+
+	if ( ! preg_match( "#^(?:http|https|ftp?)://#i", $riga['url'] ) ) {
+		// Era un path relativo, un file caricato con il form di upload
+		elimina_file( $riga['url'] );
+	}
+
+	$query = <<<EOF
+DELETE FROM `$config[db_prefix]file_materiale`
+WHERE `id_file` = '$id'
+LIMIT 1
+EOF;
+	$result = mysql_query( $query, $db );
+
+
+	if ( mysql_errno() ) ajax_esci( 'Errore nell\'eliminazione.' );
+
+	$json['id'] = $id;
+	$json['success'] = 1;
+	ajax_esci();
+}
+else {
+	ajax_esci();
+}
 
 
 

@@ -186,6 +186,18 @@ $(document).ready(function() {
 									alt: 'Modifica'
 									}))
 							.parent()
+							.append(" ")
+							.append($("<a/>", {
+									href: 'javascript:void(0)',
+									title: 'Elimina file',
+									click: function() {askEliminaFile(data.id_file);}
+								}).addClass("iconalink"))
+								.find(":last")
+								.append($("<img>", {
+									src: 'img/icone/page_delete.png',
+									alt: 'Elimina file'
+									}))
+							.parent()
 							.append(" " + data.titolo)
 						.animate({
 							"height": "toggle",
@@ -278,6 +290,18 @@ $(document).ready(function() {
 									alt: 'Modifica'
 									}))
 							.parent()
+							.append(" ")
+							.append($("<a/>", {
+									href: 'javascript:void(0)',
+									title: 'Elimina file',
+									click: function() {askEliminaFile(f.id_file);}
+								}).addClass("iconalink"))
+								.find(":last")
+								.append($("<img>", {
+									src: 'img/icone/page_delete.png',
+									alt: 'Elimina file'
+									}))
+							.parent()
 							.append(" " + f.titolo);
 				}
 			},
@@ -309,3 +333,51 @@ function caricaListaSezioni() {
 		})
 }
 
+function eliminaFile(id) {
+	var li = $("li#file_" + id);
+	li.mask("Eliminazione...", 200);
+	jQuery.post('ajax/files.php?action=eliminafile', {
+			id: id
+			},
+			function (data) {
+				li.unmask();
+				if ( ! data || ! data.success ) {
+					// Errore
+					var txt = 'Errore';
+					if ( data.error )
+						txt += ": " + data.error;
+					alert(txt);
+					return;
+				}
+
+				// Faccio sparire il file
+				li.animate({
+					"height": "toggle",
+					"opacity": "toggle"
+					}, 600, function() {
+						jQuery(this).remove()
+					});
+				caricaListaSezioni();
+			},
+		"json"
+		);
+}
+
+
+function askEliminaFile(id) {
+	jQuery("<p>Si &egrave; sicuri di voler eliminare questo file?</p>")
+		.dialog({
+			resizable: false,
+			height: 130,
+			modal: true,
+			buttons: {
+				"Annulla": function() {
+					jQuery( this ).dialog( "close" );
+				},
+				"Elimina": function() {
+					eliminaFile(id);
+					jQuery( this ).dialog( "close" );
+				}
+			}
+		});
+}

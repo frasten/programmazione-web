@@ -195,7 +195,7 @@ EOF;
 		}
 	}
 }
-elseif($_GET['action'] == 'newfacolta'){
+else if( $_GET['action'] == 'newfacolta' ) {
 	if ( empty( $_POST['nome-facolta'] ) ) ajax_esci( 'Inserire il nome della Facolt&agrave;' );
 
 	$nome = mysql_real_escape_string( $_POST['nome-facolta'] );
@@ -215,7 +215,7 @@ EOF;
 	$json['id_facolta'] = $id_facolta;
 	ajax_esci();
 }
-elseif($_GET['action'] == 'newdocente'){
+else if( $_GET['action'] == 'newdocente' ) {
 	if ( empty( $_POST['nome-docente'] ) ) ajax_esci( 'Inserire il nome del Docente' );
 
 	$nome = mysql_real_escape_string( $_POST['nome-docente'] );
@@ -259,7 +259,10 @@ WHERE s.`id_corso` = '$id_corso' AND s.`id_sezione` = fm.`id_sezione`
 EOF;
 	$result = mysql_query( $query, $db );
 	while ( $riga = mysql_fetch_assoc( $result ) ) {
-		elimina_file( $riga['url'] );
+		if ( ! preg_match( "#^(?:http|https|ftp?)://#i", $riga['url'] ) ) {
+			// Era un path relativo, un file caricato con il form di upload
+			elimina_file( $riga['url'] );
+		}
 	}
 
 	$query = <<<EOF
@@ -273,6 +276,9 @@ EOF;
 
 	$json['id'] = $id_corso;
 	$json['success'] = 1;
+	ajax_esci();
+}
+else {
 	ajax_esci();
 }
 
