@@ -300,6 +300,7 @@ strong.errore {
 #lista_facolta label {
 	margin-left: 23px;
 	display: block;
+	line-height: 150%;
 }
 
 #tbl_insert_docenti td {

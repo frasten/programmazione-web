@@ -159,6 +159,11 @@ EOF;
 		<script type="text/javascript" src="js/tiny_mce/jquery.tinymce.js"></script>
 		<script type="text/javascript" src="js/corsi.js"></script>
 
+		<?php if ( $corso ): ?>
+		<script type="text/javascript" src="js/news.js"></script>
+		<script type="text/javascript" src="js/files.js"></script>
+		<?php endif; ?>
+
 		<label for='intestaz'>Intestazione:</label>
 		<textarea class='tinymce' cols='90' rows='6' name='intestaz' id='intestaz'><?php riempi( $corso['intestazione'], 'html' ) ?></textarea>
 
