@@ -27,10 +27,10 @@
 L'elaborato tratta la ristrutturazione di due sezioni del sito web del Gruppo di Basi di Dati e Sistemi
 Informativi, in particolare la sezione delle pubblicazioni e quella dei corsi.\\
 \\
-\textit{Descrizione Problema}: La gestione delle pubblicazioni e dei corsi, nel portale preesistente, 
+\textit{Descrizione Problema}: La gestione delle pubblicazioni e dei corsi, nel portale preesistente,
 è non strutturata ed è anzi basata su un sistema di archiviazione su file di testo. Inoltre non esiste
 un'interfaccia di back-office che permetta l'immissione e la modifica di questi dati.\\
-Questa struttura comporta un notevole lavoro per la modifica di corsi già esistenti o la creazione di 
+Questa struttura comporta un notevole lavoro per la modifica di corsi già esistenti o la creazione di
 nuovi, così come per l'immissione di nuove pubblicazioni o la loro modifica.\\
 \\
 \textit{Contesto}: Attualmente la sezione del portale relativa a pubblicazioni è divisa fra le seguenti
@@ -52,11 +52,11 @@ I corsi sono invece divisi per facoltà in cui vengono svolti e hanno la seguente
 \item Materiale di riferimento
 \item Materiale didattico diviso in diverse sezioni (Lucidi lezioni, Lucidi esercitazioni, ...)
 \end{itemize}
-Il problema è nato quindi dall'esigenza di avere la comodità di un'interfaccia web chiara, semplice 
+Il problema è nato quindi dall'esigenza di avere la comodità di un'interfaccia web chiara, semplice
 e veloce per la gestione degli inserimenti e della modifica di pubblicazioni e di corsi.\\
 \\
-\textit{Requisiti richiesti}: Viene richiesta la realizzazione di un database per l'archiviazione dei 
-dati che verranno inseriti. Inoltre deve essere realizzata un'interfaccia web per l'inserimento di 
+\textit{Requisiti richiesti}: Viene richiesta la realizzazione di un database per l'archiviazione dei
+dati che verranno inseriti. Inoltre deve essere realizzata un'interfaccia web per l'inserimento di
 pubblicazioni e corsi in modo semplice e strutturato.\\
 Per quanto riguarda le pubblicazioni le categorie da considerare sono le seguenti:
 \begin{itemize}
@@ -85,7 +85,7 @@ che per i corsi.\\
 \item Nome del journal: da scegliere da una lista che si genera con nuovi inserimenti
 \item Volume e numero: sono numerici e devono essere visualizzati nella forma Volume(numero): esempio
 43(8) volume = 43 numero = 8. Se il numero non è presente va visualizzato solo il Volume
-\item Pag. Inizio e Pag. Fine: il valore numerico del campo Pag. Inizio deve essere minore o uguale 
+\item Pag. Inizio e Pag. Fine: il valore numerico del campo Pag. Inizio deve essere minore o uguale
 rispetto al valore numerico del campo Pag. Fine
 \end{itemize}
 I campi sono tutti obbligatori tranne 'Abstract', 'Numero' e l'allegare un file.
@@ -100,10 +100,10 @@ I campi sono tutti obbligatori tranne 'Abstract', 'Numero' e l'allegare un file.
 \textit{Caratteristiche:}
 \begin{itemize}
 \item Autori: sono da scegliere da una lista che si genera con nuovi inserimenti
-\item Curatore del libro: quando viene visualizzato deve essere seguito da 'ed.' e deve stare tra 
+\item Curatore del libro: quando viene visualizzato deve essere seguito da 'ed.' e deve stare tra
 parentesi tonde
 \item Editore: conterrà sia il nome dell'editore che la città
-\item Pag. Inizio e Pag. Fine: il valore numerico del campo Pag. Inizio deve essere minore o uguale 
+\item Pag. Inizio e Pag. Fine: il valore numerico del campo Pag. Inizio deve essere minore o uguale
 rispetto al valore numerico del campo Pag. Fine
 \end{itemize}
 I campi sono tutti obbligatori tranne 'Abstract' e l'allegare un file.
@@ -119,7 +119,7 @@ I campi sono tutti obbligatori tranne 'Abstract' e l'allegare un file.
 \begin{itemize}
 \item Autori: sono da scegliere da una lista che si genera con nuovi inserimenti
 \item Nome della conferenza: quando viene visualizzato deve essere preceduto da 'Proc. of'
-\item Pag. Inizio e Pag. Fine: il valore numerico del campo Pag. Inizio deve essere minore o uguale 
+\item Pag. Inizio e Pag. Fine: il valore numerico del campo Pag. Inizio deve essere minore o uguale
 rispetto al valore numerico del campo Pag. Fine
 \end{itemize}
 I campi sono tutti obbligatori tranne 'Abstract' e l'allegare un file.
@@ -168,7 +168,7 @@ Pagina per l'inserimento di un nuovo corso e per la modifica di un corso preesis
 \item Nome del corso, Anno Accademico e Facoltà sono campi obbligatori
 \item I restanti campi possono essere alcune volte omessi, quindi il loro inserimento non è
 obbligatorio
-\item Gestione News e Materiale didattico: sono presenti solo modificando un corso inserito 
+\item Gestione News e Materiale didattico: sono presenti solo modificando un corso inserito
 precedentemente e non nell'inserimento di un nuovo corso
 \end{itemize}
 
@@ -182,7 +182,7 @@ precedentemente e non nell'inserimento di un nuovo corso
 \\
 \textit{Caratteristiche:}
 \begin{itemize}
-\item Le news salvate vengono mostrate nel riquadro in basso 'News correnti', dove l'ordine di tale 
+\item Le news salvate vengono mostrate nel riquadro in basso 'News correnti', dove l'ordine di tale
 news può essere modificato tramite drag\&drop
 \item Ogni news può essere 'nascosta', in questo modo non apparirà più nella pagina web del corso. Può
 essere inoltre 'cancellata' se non si vuole proprio più lasciare nemmeno nel database e nell'elenco
@@ -200,9 +200,9 @@ sottostante, oppure può essere modificata nel suo contenuto
 \\
 \textit{Caratteristiche:}
 \begin{itemize}
-\item L'inserimento di una nuova sezione richiede solo il 'Titolo della Sezione' obbligatorio, e il 
+\item L'inserimento di una nuova sezione richiede solo il 'Titolo della Sezione' obbligatorio, e il
 campo 'Note' non obbligatorio
-\item Una volta inserita una sezione, si ha la possibilità di aggiungere file a questa sezione, che 
+\item Una volta inserita una sezione, si ha la possibilità di aggiungere file a questa sezione, che
 vengono mostrati nel riquadro in basso 'File in questa sezione', dove l'ordine di tale file può essere
 modificato tramite drag\&drop
 \end{itemize}
@@ -221,7 +221,7 @@ modificato tramite drag\&drop
 'aggiornato', in questo modo apparirà nella pagina web con un simbolo particolare in modo da far notare
 che è un file caricato di recente, oppure nessuna delle precedenti, in questo modo apparirà semplicemente
 il titolo del file nella pagina web del corso
-\item Dalla lista dei file, nella sezione, è possibile inoltre cancellare un file o modificarne il 
+\item Dalla lista dei file, nella sezione, è possibile inoltre cancellare un file o modificarne il
 contenuto.
 \end{itemize}
 \clearpage
@@ -230,7 +230,7 @@ contenuto.
 \newpage
 
 \section{Progettazione della struttura dati su cui si basa l'applicazione}
-Di seguito viene mostrato il Diagramma ER relativo alla struttura della base di dati realizzata per 
+Di seguito viene mostrato il Diagramma ER relativo alla struttura della base di dati realizzata per
 il progetto.
 \begin{figure}[h]
 \centering
@@ -256,7 +256,7 @@ Le categoria della pubblicazione sono elencate attraverso il campo \textit{categ
 enum('rivista','libro','conferenza','monografia','curatela').
 \end{center}
 \item Tabella \textit{'unibs\_is\_pubautore'}\\
-Gli autori di ogni singola pubblicazione vengono salvati in una tabella a parte, in modo che sia 
+Gli autori di ogni singola pubblicazione vengono salvati in una tabella a parte, in modo che sia
 semplice proporre gli stessi durante l'inserimento.
 \item Tabella \textit{'unibs\_is\_pubblicazione\_pubautore'}\\
 Tabella di collegamento fra autore e pubblicazione.
@@ -273,7 +273,7 @@ Tabella di collegamento fra autore e pubblicazione.
 \begin{itemize}
 \item Tabella \textit{'unibs\_is\_corso'}\\
 Contiene il singolo corso.
-E' collegata alla tabella \textit{'unibs\_is\_facolta'}, che contiene le facoltà nelle quale si 
+E' collegata alla tabella \textit{'unibs\_is\_facolta'}, che contiene le facoltà nelle quale si
 svolgono i corsi.
 \item Tabella \textit{'unibs\_is\_docente'}\\
 Contiene i docenti, che possono essere esercitatori o docenti del corso.
@@ -331,7 +331,7 @@ Il progetto si avvale dei seguenti casi d'uso, divisi per due diversi utenti:
 			\item Visualizzazione dell'elenco dei corsi divisi per facoltà
 			\item Inserimento di un nuovo corso
 			\item Modifica di un corso esistente
-			\item Inserimento di un nuovo docente 
+			\item Inserimento di un nuovo docente
 			\item Inserimento di una nuova facoltà
 			\item Cancellazione di un corso
 		\end{itemize}
@@ -345,8 +345,8 @@ Il progetto si avvale dei seguenti casi d'uso, divisi per due diversi utenti:
 		\end{itemize}
 	\item Gestione Sezioni
 		\begin{itemize}
-			\item Inserimento di una nuova sezione 
-			\item Modifica di una sezione 
+			\item Inserimento di una nuova sezione
+			\item Modifica di una sezione
 			\item Aggiunta di un nuovo file
 			\item Modifica dell'ordine di visualizzazione dei file
 			\item Nascondere un file
@@ -382,15 +382,15 @@ utente.
 				\hline
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
-				\textbf{Scenario Principale}	&	\begin{enumerate} 
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione utenti'
-				\item La pagina web che viene caricata mostra l'elenco degli utenti presenti. L'utente 
+				\item La pagina web che viene caricata mostra l'elenco degli utenti presenti. L'utente
 				clicca sulla voce nella barra 'Nuovo utente'
 				\item Viene quindi caricata la pagina web con il form in cui l'amministratore inserirà
 				username e password (da digitare due volte) del nuovo utente
 				\item L'utente conferma il salvataggio cliccando sul bottone 'Crea utente'
-				\item Viene caricata una pagina di avvenuto salvataggio del nuovo utente inserito e 
+				\item Viene caricata una pagina di avvenuto salvataggio del nuovo utente inserito e
 				un tasto 'Torna' che riporta all'elenco degli utenti
 				\end{enumerate}\\
 				\hline
@@ -403,11 +403,11 @@ utente.
 				\end{description}\\
 				\hline
 			\end{tabular}
-			
-			
+
+
 		\end{center}
 		\item \textit{Cambio della password a utenti esistenti}\\
-		Si tratta del caso d'uso inerente alla modifica, da parte dell'utente amministratore, della 
+		Si tratta del caso d'uso inerente alla modifica, da parte dell'utente amministratore, della
 		password di un utente precedentemente inserito.
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
@@ -416,16 +416,16 @@ utente.
 				\hline
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
-				\textbf{Scenario Principale}	&	 \begin{enumerate} 
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\textbf{Scenario Principale}	&	 \begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce nella barra 'Gestione utenti'
 				\item La pagina web che viene caricata mostra l'elenco degli utenti presenti, l'utente clicca
 				sull'icona a forma di chiave posta accanto allo username dell'utente di cui vuole cambiare
 				la password
-				\item La pagina web che viene caricata mostra il form in cui l'utente immette la password 
+				\item La pagina web che viene caricata mostra il form in cui l'utente immette la password
 				vecchia e la nuova password (da digitare due volte)
 				\item L'utente conferma la modifica cliccando su 'Salva'
-				\item Viene caricata una pagina di avvenuta modifica della password dell'utente e un tasto 'Torna' che 
+				\item Viene caricata una pagina di avvenuta modifica della password dell'utente e un tasto 'Torna' che
 				riporta all'elenco degli utenti
 				\end{enumerate}\\
 				\hline
@@ -439,16 +439,16 @@ utente.
 		\end{center}
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
-				\hline						
+				\hline
 				Scenario Alternativo	&	\begin{description}
-				\item{iii(b).} La pagina web che viene caricata mostra il form in cui l'utente immette la password 
+				\item{iii(b).} La pagina web che viene caricata mostra il form in cui l'utente immette la password
 				vecchia e la nuova password (da digitare due volte). Ma la password vecchia risulta sbagliata
 				\item{iv(b).} L'utente conferma la modifica cliccando su 'Salva'
 				\item Torna al punto ii e la pagina mostra in alto la scritta 'Errore: password errata.'
 				\end{description}\\
 				\hline
 				\textbf{Scenario Alternativo}	&	\begin{description}
-				\item{iii(c).} La pagina web che viene caricata mostra il form in cui l'utente immette la password 
+				\item{iii(c).} La pagina web che viene caricata mostra il form in cui l'utente immette la password
 				vecchia e la nuova password (da digitare due volte). Ma le due nuove password non coincidono
 				\item{iv(c).} L'utente conferma la modifica cliccando su 'Salva'
 				\item Torna al punto ii e la pagina mostra in alto la scritta 'Errore: le password inserite non coincidono'
@@ -466,8 +466,8 @@ utente precedentemente inserito.
 				\hline
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
-				\textbf{Scenario Principale}	&	\begin{enumerate} 
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce nella barra 'Gestione utenti'
 				\item La pagina web che viene caricata mostra l'elenco degli utenti presenti. L'utente clicca
 				sull'icona con l'omino e il divieto, posta accanto allo username dell'utente che si vuole cancellare
@@ -482,7 +482,7 @@ utente precedentemente inserito.
 				\item{iii.} La pagina web che viene caricata mostra la seguente domanda 'Si è \textbf{davvero}
 				sicuri di voler eliminare l'utente \textit{username utente che si vuole cancellare}?'
 				\item{iv.} L'utente conferma la cancellazione cliccando su 'Elimina'
-				\item{v.} Viene caricata una pagina di avvenuta cancellazione dell'utente e un tasto 'Torna' che 
+				\item{v.} Viene caricata una pagina di avvenuta cancellazione dell'utente e un tasto 'Torna' che
 				riporta all'elenco degli utenti
 				\end{description}\\
 				\hline
@@ -495,13 +495,13 @@ utente precedentemente inserito.
 			\end{tabular}
 		\end{center}
 	\end{enumerate}
-	
+
 	%GESTIONE PUBBLICAZIONI
 \clearpage
 \item \textbf{Gestione Pubblicazioni}
 	\begin{enumerate}
 		\item \textit{Visualizzazione dell'elenco delle pubblicazioni divise per categorie e per anno}\\
-			Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente amministratore, 
+			Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente amministratore,
 			dell'elenco delle pubblicazioni inserite divise per categorie e per anno.
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
@@ -510,11 +510,11 @@ utente precedentemente inserito.
 				\hline
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
-				\textbf{Scenario Principale}	&	\begin{enumerate} 
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\textbf{Scenario Principale}	&	\begin{enumerate}
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione pubblicazioni'
-				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata 
-				da un utente non amministratore con accanto al titolo di ogni pubblicazione l'icona 
+				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata
+				da un utente non amministratore con accanto al titolo di ogni pubblicazione l'icona
 				per la sua cancellazione.
 				\end{enumerate}\\
 				\hline
@@ -531,13 +531,13 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione pubblicazioni'
-				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata 
+				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata
 				da un utente non amministratore con accanto al titolo di ogni pubblicazione l'icona
 				per la sua cancellazione.
 				\item L'utente clicca sulla voce nella barra 'Nuova pubblicazione'
-							
+
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -546,16 +546,16 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
 				Scenario Principale		&	\begin{description}
-				\item{iv.} Viene caricata la pagina web con il form per inserire i dati della nuova pubblicazione	
-				\item{v.} Una volta che l'utente ha inserito i dati, almeno tutti quelli obbligatori 
+				\item{iv.} Viene caricata la pagina web con il form per inserire i dati della nuova pubblicazione
+				\item{v.} Una volta che l'utente ha inserito i dati, almeno tutti quelli obbligatori
 				(contrassegnati da un asterisco rosso), clicca sul pulsante 'Salva'
-				\item{vi.} Viene caricata la pagina web delle pubblicazioni così come viene visualizzata 
-				da un utente non amministratore, con inserita la pubblicazione appena aggiunta, con 
+				\item{vi.} Viene caricata la pagina web delle pubblicazioni così come viene visualizzata
+				da un utente non amministratore, con inserita la pubblicazione appena aggiunta, con
 				accanto al titolo di ogni pubblicazione l'icona per la sua cancellazione.
 				\end{description}\\
 				\hline
 				\textbf{Scenario Alternativo}	&	\begin{description}
-				\item{v(a).} L'utente non inserire uno o più dei campi obbligatori e clicca sul 
+				\item{v(a).} L'utente non inserire uno o più dei campi obbligatori e clicca sul
 				pulsante 'Salva'
 				\item{vi(a).} La pagina web non cambia, ma accanto al/i campo/i compare la scritta in
 				rosso 'Campo obbligatorio' e la pubblicazione non è salvata.
@@ -564,7 +564,7 @@ utente precedentemente inserito.
 				\hline
 				\textbf{Scenario Alternativo}	&	\begin{description}
 				\item{v(b).} L'utente inserire un anno non compreso fra il 1900 e l'attuale
-				\item{vi(b).} La pagina web non cambia, ma accanto al campo compare, prima di 
+				\item{vi(b).} La pagina web non cambia, ma accanto al campo compare, prima di
 				cliccare sul pulsante 'Salva', la scritta in rosso 'Inserisci un valore compreso tra 1900 e 2011.'
 				\item{} Torna al punto v per inserire il campo in modo adeguato
 				\end{description}\\
@@ -575,9 +575,9 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 			\hline
 			\textbf{Scenario Alternativo}	&	\begin{description}
-				\item{iv(c).} L'utente inserire un valore numerico nel campo Pag. inizio inferiore 
+				\item{iv(c).} L'utente inserire un valore numerico nel campo Pag. inizio inferiore
 				a quello del campo Pag. Fine
-				\item{v(c).} La pagina web non cambia, ma accanto al campo 'Pag. inizio' compare, prima di 
+				\item{v(c).} La pagina web non cambia, ma accanto al campo 'Pag. inizio' compare, prima di
 				cliccare sul pulsante 'Salva', la scritta in rosso 'Inserire un numero minore della pagina di fine.'
 				e accanto al campo 'Pag. fine' compare la scritta in rosso 'Inserire un numero maggiore della pagina d'inizio.'
 				\item{} Torna al punto iv per inserire i campi in modo adeguato
@@ -596,15 +596,15 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione pubblicazioni'
-				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata 
-				da un utente non amministratore con accanto al titolo di ogni pubblicazione l'icona 
+				\item Viene caricata la pagina web delle pubblicazioni così come viene visualizzata
+				da un utente non amministratore con accanto al titolo di ogni pubblicazione l'icona
 				per la sua cancellazione.
 				\item L'utente clicca sull'icona per la cancellazione della pubblicazione scelta
-				\item Compare una finestra pop-up con la seguente domanda: 'Si è sicuri di voler 
+				\item Compare una finestra pop-up con la seguente domanda: 'Si è sicuri di voler
 				eliminare questa pubblicazione?'
-				
+
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -615,7 +615,7 @@ utente precedentemente inserito.
 				Scenario Principale	&	\begin{description}
 				\item{v.} L'utente clicca sul pulsante 'Elimina'
 				\item{vi.} La finestra pop-up si chiude e si torna alla pagina web delle pubblicazioni
-				così come viene visualizzata da un utente non amministratore, in cui non compare più 
+				così come viene visualizzata da un utente non amministratore, in cui non compare più
 				la pubblicazione appena eliminata, con accanto al titolo di ogni pubblicazione rimasta
 				l'icona per la sua cancellazione.
 				\end{description}\\
@@ -623,14 +623,14 @@ utente precedentemente inserito.
 			\end{tabular}
 		\end{center}
 	\end{enumerate}
-	
+
 	%GESTIONE CORSI
-	
+
 	\clearpage
 	\item \textbf{Gestione Corsi}
 	\begin{enumerate}
 		\item \textit{Visualizzazione dell'elenco dei corsi divisi per facoltà}\\
-		Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente amministratore, 
+		Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente amministratore,
 			dell'elenco dei corsi inseriti divisi per facoltà.
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
@@ -640,7 +640,7 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
 				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come
 				viene visualizzata da un utente non amministratore con accanto al nome di ogni corso
@@ -660,9 +660,9 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
-				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come viene visualizzata 
+				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come viene visualizzata
 				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua
 				cancellazione
 				\item L'utente clicca sulla voce nella barra 'Nuovo corso'
@@ -675,14 +675,14 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
 				Scenario Principale	&	\begin{description}
-				\item{v.} Una volta che l'utente ha inserito i dati, almeno il campo 'Nome corso', 
+				\item{v.} Una volta che l'utente ha inserito i dati, almeno il campo 'Nome corso',
 				anno accademico e facoltà(campi obbligatori), clicca sul pulsante 'Salva'
-				\item{vi.} Viene caricata la pagina web del singolo corso appena inserito così come viene visualizzata 
+				\item{vi.} Viene caricata la pagina web del singolo corso appena inserito così come viene visualizzata
 				da un utente non amministratore.
 				\end{description}\\
 				\hline
 				\textbf{Scenario Alternativo}	&	\begin{description}
-				\item{v(a).} L'utente non inserire uno o più dei campi obbligatori e clicca sul 
+				\item{v(a).} L'utente non inserire uno o più dei campi obbligatori e clicca sul
 				pulsante 'Salva'
 				\item{vi(a).} La pagina web non cambia, ma accanto al/i campo/i compare la scritta in
 				rosso 'Campo obbligatorio' e il corso non è salvato.
@@ -702,12 +702,12 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
-				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come viene visualizzata 
+				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come viene visualizzata
 				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua
 				cancellazione
-				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina			
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -718,12 +718,12 @@ utente precedentemente inserito.
 				Scenario Principale	&	\begin{description}
 				\item{iv.} Viene caricata la pagina web del singolo corso scelto
 				\item{v.} L'utente clicca sulla voce nella barra 'Modifica corso'
-				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
+				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo
 				il precedente inserimento del corso. Inoltre compaiono le voci 'Gestione News' in alto
 				e 'Nuova sezione' sotto Materiale didattico.
 				\item{vii.} Dopo che l'utente ha modificato i campi del form che desidera, clicca sul pulsante
 				'Salva'
-				\item{viii.} Viene caricata la pagina web del singolo corso appena modificato così come viene visualizzata 
+				\item{viii.} Viene caricata la pagina web del singolo corso appena modificato così come viene visualizzata
 				da un utente non amministratore.
 				\end{description}\\
 				\hline
@@ -740,9 +740,9 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
-				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come viene visualizzata 
+				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come viene visualizzata
 				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua
 				cancellazione
 				\end{enumerate}\\
@@ -755,10 +755,10 @@ utente precedentemente inserito.
 				Scenario Principale	&	\begin{description}
 				\item{iii.} L'utente clicca sulla voce nella barra 'Nuovo corso'
 				\item{iv.} Viene caricata la pagina web con il form per inserire i dati di un nuovo corso
-				\item{v.} Sotto i nomi dei docenti già inseriti, o comunque sotto la scritta 'Docenti', 
+				\item{v.} Sotto i nomi dei docenti già inseriti, o comunque sotto la scritta 'Docenti',
 				l'utente clicca sulla voce 'Nuovo Docente'
 				\item{vi.} Viene aperta una finestra pop-up in cui l'utente può inserire il nome del docente.
-				\item{vii.} L'utente salva l'inserimento cliccando sul pulsante 'Salva'. La finestra 
+				\item{vii.} L'utente salva l'inserimento cliccando sul pulsante 'Salva'. La finestra
 				di pop-up si chiude automaticamente e si ritorna alla pagina web con il form per inserire
 				i dati di un nuovo corso con l'aggiunta del docente appena inserito fra le scelte.
 				\end{description}\\
@@ -767,14 +767,14 @@ utente precedentemente inserito.
 				\item{iii(a).} L'utente clicca sul nome di uno dei corsi presenti nella pagina
 				\item{iv(a).} Viene caricata la pagina web del singolo corso scelto
 				\item{v(a).} L'utente clicca sulla voce nella barra 'Modifica corso'
-				\item{vi(a).} Compare la pagina web con il form del corso con i campi precompilati secondo 
-				il precedente inserimento del corso. 
+				\item{vi(a).} Compare la pagina web con il form del corso con i campi precompilati secondo
+				il precedente inserimento del corso.
 				\item{} Continua al punto v.
 				\end{description}\\
 				\hline
 			\end{tabular}
 		\end{center}
-		
+
 		\item \textit{Inserimento di una nuova facoltà}\\
 		Si tratta del caso d'uso inerente all'inserimento, da parte dell'utente amministratore,
 			di una nuova facoltà, visibile poi in tutti i corsi.
@@ -786,17 +786,17 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
-				sulla voce 'Gestione corsi'	
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
+				sulla voce 'Gestione corsi'
 				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così
-				come viene visualizzata da un utente non amministratore con accanto al nome di ogni 
+				come viene visualizzata da un utente non amministratore con accanto al nome di ogni
 				corso l'icona per la sua cancellazione.
 				\item L'utente clicca sulla voce nella barra 'Nuovo corso'
 				\item Viene caricata la pagina web con il form per inserire i dati di un nuovo corso
-				\item Sotto i nomi delle facoltà già inseriti, o accanto alla scritta 'Facoltà', 
+				\item Sotto i nomi delle facoltà già inseriti, o accanto alla scritta 'Facoltà',
 				l'utente clicca sulla voce 'Nuova Facoltà'
 				\item Viene aperta una finestra pop-up in cui l'utente può inserire il nome della facoltà.
-				\item L'utente salva l'inserimento cliccando sul pulsante 'Salva'. La finestra 
+				\item L'utente salva l'inserimento cliccando sul pulsante 'Salva'. La finestra
 				pop-up si chiude automaticamente e si ritorna alla pagina web con il form per inserire
 				i dati di un nuovo corso con l'aggiunta della facoltà appena inserita fra le scelte.
 				\end{enumerate}\\
@@ -813,16 +813,16 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
 				Scenario Alternativo	&	\begin{description}
-				\item{vi(a).} Compare la pagina web con il form del corso con i campi precompilati secondo 
-				il precedente inserimento del corso. 
-				\item{vii(a).} Sotto i nomi delle facoltà già inserite, l'utente clicca sulla voce 
+				\item{vi(a).} Compare la pagina web con il form del corso con i campi precompilati secondo
+				il precedente inserimento del corso.
+				\item{vii(a).} Sotto i nomi delle facoltà già inserite, l'utente clicca sulla voce
 				'Nuova Facoltà'
 				\item{} Continua al punto vi.
 				\end{description}\\
 				\hline
 			\end{tabular}
 		\end{center}
-		
+
 		\item \textit{Cancellazione di un corso}\\
 			Si tratta del caso d'uso inerente alla cancellazione, da parte dell'utente amministratore,
 			di un corso.
@@ -834,13 +834,13 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
-				\item Viene caricata la pagina web dell'elenco dei corsi così come viene visualizzata 
-				da un utente non amministratore con accanto al nome di ogni corso l'icona 
+				\item Viene caricata la pagina web dell'elenco dei corsi così come viene visualizzata
+				da un utente non amministratore con accanto al nome di ogni corso l'icona
 				per la sua cancellazione.
 				\item L'utente clicca sull'icona per la cancellazione del corso scelto
-				\item Compare una finestra pop-up con la seguente domanda: 'Si è sicuri di voler 
+				\item Compare una finestra pop-up con la seguente domanda: 'Si è sicuri di voler
 				eliminare questo corso?'
 				\item L'utente clicca sul pulsante 'Elimina'
 				\end{enumerate}\\
@@ -852,7 +852,7 @@ utente precedentemente inserito.
 				\hline
 				Scenario Principale 	&	\begin{description}
 				\item{vi.} La finestra pop-up si chiude e si torna alla pagina web dell'elenco dei corsi
-				così come viene visualizzata da un utente non amministratore, in cui non compare più 
+				così come viene visualizzata da un utente non amministratore, in cui non compare più
 				il corso appena eliminato, con accanto al nome di ogni corso rimasto
 				l'icona per la sua cancellazione.
 				\end{description}\\
@@ -860,7 +860,7 @@ utente precedentemente inserito.
 			\end{tabular}
 		\end{center}
 	\end{enumerate}
-	
+
 	%GESTIONE NEWS
 	\clearpage
 	\item \textbf{Gestione News}
@@ -876,7 +876,7 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
 				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come
 				viene visualizzata da un utente non amministratore con accanto al nome di ogni corso
@@ -885,11 +885,11 @@ utente precedentemente inserito.
 				la news.
 				\item Viene caricata la pagina web del singolo corso scelto.
 				\item L'utente clicca sulla voce nella barra 'Modifica corso'
-				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
-				il precedente inserimento del corso. Inoltre compaiono le voci 'Gestione News' in alto 
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo
+				il precedente inserimento del corso. Inoltre compaiono le voci 'Gestione News' in alto
 				e 'Nuova sezione' sotto Materiale didattico.
 				\item L'utente clicca sulla voce 'Gestione News'
-				\item Viene aperta una finestra pop-up in cui l'utente può inserire il testo della news 
+				\item Viene aperta una finestra pop-up in cui l'utente può inserire il testo della news
 				nell'apposito editor. Una volta inserito il testo, può inserire anche un file allegato alla news
 				\end{enumerate}\\
 				\hline
@@ -898,19 +898,19 @@ utente precedentemente inserito.
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
-				Scenario Principale	&	\begin{description}			
-				\item{ix.} L'utente salva l'inserimento cliccando sul pulsante 'Salva'. La news appena 
-				inserita compare in basso nella stessa finestra pop-up 
+				Scenario Principale	&	\begin{description}
+				\item{ix.} L'utente salva l'inserimento cliccando sul pulsante 'Salva'. La news appena
+				inserita compare in basso nella stessa finestra pop-up
 				\item{x.} L'utente clicca sul pulsante 'Chiudi' e la finestra pop-up viene chiusa e si ritorna alla
 				pagina web con il form del corso.
 				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
-				pagina del singolo corso, oppure può cliccare sulla voce nella barra 'Lista corsi' 
+				pagina del singolo corso, oppure può cliccare sulla voce nella barra 'Lista corsi'
 				per tornare alla pagina con l'elenco dei corsi divisi per facoltà.
 				\end{description}\\
 				\hline
 				\textbf{Scenario Alternativo}	&	\begin{description}
-				\item{viii(a).} Viene aperta una finestra pop-up in cui l'utente può inserire il testo della news 
-				nell'editor. L'utente non inserisce il testo della news né un'allegato oppure aggiunge 
+				\item{viii(a).} Viene aperta una finestra pop-up in cui l'utente può inserire il testo della news
+				nell'editor. L'utente non inserisce il testo della news né un'allegato oppure aggiunge
 				soltanto un allegato
 				\item{ix(a).} Viene aperta una finestra pop-up che contiene la seguente segnalazione:
 				'Errore: Inserire il contenuto della news' e un pulsante 'O.K.'
@@ -931,22 +931,22 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
 				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come
 				viene visualizzata da un utente non amministratore con accanto al nome di ogni corso
 				l'icona per la sua cancellazione.
-				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole 
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole
 				modificare l'ordine di visualizzazione delle news esistenti.
 				\item Viene caricata la pagina web del singolo corso
 				\item L'utente clicca sulla voce della barra 'Modifica corso'
-				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo
 				il precedente inserimento del corso. Inoltre compaiono le voci 'Gestione News' in alto
 				e 'Nuova sezione' sotto Materiale didattico.
 				\item L'utente clicca sulla voce 'Gestione News'
-				\item Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso l'elenco 
+				\item Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso l'elenco
 				delle news inserite. L'ordine delle news che vede è il loro ordine di visualizzazione.
-				\item L'utente clicca sulla news a cui vuole cambiare ordine e la trascina fino 
+				\item L'utente clicca sulla news a cui vuole cambiare ordine e la trascina fino
 				alla posizione desiderata
 				\item L'utente clicca sul pulsante 'Chiudi' e la finestra pop-up viene chiusa e si ritorna alla
 				pagina web con il form del corso
@@ -957,9 +957,9 @@ utente precedentemente inserito.
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
-				Scenario Principale	&	\begin{description}				
+				Scenario Principale	&	\begin{description}
 				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
-				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi'
 				per tornare alla pagina con l'elenco dei corsi divisi per facoltà
 				\end{description}\\
 				\hline
@@ -976,19 +976,19 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
-				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come viene visualizzata 
+				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come viene visualizzata
 				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua
 				cancellazione.
 				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole nascondere
 				una o più news.
 				\item Viene caricata la pagina web del singolo corso
 				\item L'utente clicca sulla voce della barra 'Modifica corso'
-				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo
 				il precedente inserimento del corso. Inoltre compaiono le voci 'Gestione News' in alto
 				e 'Nuova sezione' sotto Materiale didattico
-				
+
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -1006,7 +1006,7 @@ utente precedentemente inserito.
 				\item{x.} L'utente clicca sul pulsante 'Chiudi' e la finestra pop-up viene chiusa e si ritorna alla
 				pagina web con il form del corso
 				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
-				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi'
 				per tornare alla pagina con l'elenco dei corsi divisi per facoltà
 				\end{description}\\
 				\hline
@@ -1023,8 +1023,8 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
-				sulla voce 'Gestione corsi'				
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
+				sulla voce 'Gestione corsi'
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -1033,18 +1033,18 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
 				Scenario Principale	&	\begin{description}
-				\item{ii.} Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come viene visualizzata 
-				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua 
+				\item{ii.} Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come viene visualizzata
+				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua
 				cancellazione.
 				\item{iii.} L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole cancellare
 				una news.
 				\item{iv.} Viene caricata la pagina web del singolo corso scelto
 				\item{v.} L'utente clicca sulla voce nella barra 'Modifica corso'
-				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
+				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo
 				il precedente inserimento del corso. Inoltre compaiono le voci 'Gestione News' in alto
 				e 'Nuova sezione' sotto Materiale didattico.
 				\item{vii.} L'utente clicca sulla voce 'Gestione News'
-				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso 
+				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso
 				l'elenco delle news inserite.
 				\item{ix.} Accanto ad ogni news c'è l'icona per la cancellazione, l'utente clicca su questa icona
 				della news che vuole cancellare.
@@ -1056,14 +1056,14 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
 				Scenario Principale	&	\begin{description}
-				\item{x.} Si apre una finestra pop-up che chiede conferma della cancellazione della news: 
+				\item{x.} Si apre una finestra pop-up che chiede conferma della cancellazione della news:
 				'Si è sicuri di voler eliminare questa news?'. L'utente clicca sul pulsante 'Elimina'.
 				In questo modo la news viene cancellata, anche dall'elenco sottostante, e non sarà più
 				visualizzata nella pagina del singolo corso.
 				\item{xi.} L'utente clicca sul pulsante 'Chiudi' e la finestra pop-up viene chiuso e si ritorna alla
 				pagina web con il form del corso
 				\item{xii.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
-				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi'
 				per tornare alla pagina con l'elenco dei corsi divisi per facoltà
 				\end{description}\\
 				\hline
@@ -1080,11 +1080,11 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
-				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come viene visualizzata 
+				\item Viene caricata la pagina web dell'elenco dei corsi divisi per facoltà così come viene visualizzata
 				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua
-				cancellazione.		
+				cancellazione.
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -1094,18 +1094,18 @@ utente precedentemente inserito.
 				\hline
 				Scenario Principale	&	\begin{description}
 				\item{iii.} L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole
-				modificare il contenuto di una news.	
+				modificare il contenuto di una news.
 				\item{iv.} Viene caricata la pagina web del singolo corso
 				\item{v.} L'utente clicca sulla voce nella barra 'Modifica corso'
-				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
+				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo
 				il precedente inserimento del corso. Inoltre compaiono le voci 'Gestione News' in alto
 				e 'Nuova sezione' sotto Materiale didattico.
 				\item{vii.} L'utente clicca sulla voce 'Gestione News'
-				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso 
+				\item{viii.} Viene aperta una finestra pop-up in cui l'utente può visualizzare in basso
 				l'elenco delle news inserite.
-				\item{ix.} Accanto ad ogni news c'è l'icona di modifica, l'utente clicca 
-				su questa icona della news che vuole cancellare. 
-				\item{x.} Nella stessa finestra pop-up per la gestione delle news, si riempiono i campi con i dati della 
+				\item{ix.} Accanto ad ogni news c'è l'icona di modifica, l'utente clicca
+				su questa icona della news che vuole cancellare.
+				\item{x.} Nella stessa finestra pop-up per la gestione delle news, si riempiono i campi con i dati della
 				news che si vuole modificare. Dopo la modifica dei dati, l'utente clicca sul pulsante
 				'Salva'. In questo modo la news viene salva con la modifica apportata, anche nell'elenco sottostante.
 				\item{xi.} L'utente clicca sul pulsante 'Chiudi' e la finestra pop-up viene chiuso e si ritorna alla
@@ -1119,14 +1119,14 @@ utente precedentemente inserito.
 				\hline
 				Scenario Principale	&	\begin{description}
 				\item{xii.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
-				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi'
 				per tornare alla pagina con l'elenco dei corsi divisi per facoltà
 				\end{description}\\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{enumerate}
-	
+
 	%GESTIONE SEZIONE
 	\clearpage
 	\item \textbf{Gestione Sezioni}
@@ -1142,20 +1142,20 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
-				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata
 				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua
 				cancellazione
 				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole aggiungere
 				una nuova sezione.
 				\item Viene caricata la pagina web del singolo corso scelto
 				\item L'utente clicca sulla voce della barra 'Modifica corso'
-				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
-				il precedente inserimento del corso. Inoltre compaiono le voci 'Gestione News' in alto 
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo
+				il precedente inserimento del corso. Inoltre compaiono le voci 'Gestione News' in alto
 				e 'Nuova sezione' sotto Materiale didattico
 				\item L'utente clicca sulla voce 'Nuova sezione'
-				\item Viene aperta una finestra pop-up in cui l'utente può inserire il titolo della 
+				\item Viene aperta una finestra pop-up in cui l'utente può inserire il titolo della
 				sezione e nell'editor eventuali note alla sezione
 				\end{enumerate}\\
 				\hline
@@ -1166,16 +1166,16 @@ utente precedentemente inserito.
 				\hline
 				Scenario Principale	&	\begin{description}
 				\item{ix.} L'utente salva l'inserimento cliccando sul pulsante 'Salva'. La finestra
-				pop-up viene automaticamente chiusa e il titolo della sezione compare nella pagine web 
+				pop-up viene automaticamente chiusa e il titolo della sezione compare nella pagine web
 				con il form del corso sotto Materiale didattico.
 				\item{x.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
-				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi'
 				per tornare alla pagina con l'elenco dei corsi divisi per facoltà
 				\end{description}\\
 				\hline
 				\textbf{Scenario Alternativo}	&	\begin{description}
-				\item{viii(a).} Viene aperta una finestra pop-up in cui l'utente può inserire il titolo della 
-				sezione e nell'editor eventuali note. L'utente non inserisce il titolo della sezione né 
+				\item{viii(a).} Viene aperta una finestra pop-up in cui l'utente può inserire il titolo della
+				sezione e nell'editor eventuali note. L'utente non inserisce il titolo della sezione né
 				le note oppure aggiunge soltanto le note.
 				\item{ix(a).} Viene aperta una finestra pop-up che contiene la seguente segnalazione:
 				'Errore: Inserire un titolo!' e un pulsante 'O.K.'
@@ -1196,24 +1196,24 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
-				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata
 				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua
 				cancellazione
 				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole
 				modificare una sezione.
 				\item Viene caricata la pagina web del singolo corso
 				\item L'utente clicca sulla voce della barra 'Modifica corso'
-				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
-				il precedente inserimento del corso. In Materiale didattico compare l'elenco delle sezioni 
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo
+				il precedente inserimento del corso. In Materiale didattico compare l'elenco delle sezioni
 				inserite precedentemente
 				\item L'utente clicca sul titolo della sezione che vuole modificare
 				\item Compare una finestra pop-up della sezione con i campi precompilati secondo il precedente
 				inserimento della sezione scelta. Inoltre compare la voce 'Aggiungi un nuovo file' sotto l'editor delle note
 				\item Dopo che l'utente ha modificato i campi che desidera clicca sul pulsante
-				'Salva'. La finestra pop-up viene automaticamente chiusa e il titolo della sezione modificata 
-				compare nella pagine web con il form del corso 
+				'Salva'. La finestra pop-up viene automaticamente chiusa e il titolo della sezione modificata
+				compare nella pagine web con il form del corso
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -1223,7 +1223,7 @@ utente precedentemente inserito.
 				\hline
 				Scenario Principale	&	\begin{description}
 				\item{x.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
-				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi'
 				per tornare alla pagina con l'elenco dei corsi divisi per facoltà
 				\end{description}\\
 				\hline
@@ -1240,15 +1240,15 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
-				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata
 				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua
 				cancellazione
 				\item Viene caricata la pagina web del singolo corso
 				\item L'utente clicca sulla voce nella barra 'Modifica corso'
-				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
-				il precedente inserimento del corso. In Materiale didattico compare l'elenco delle sezioni 
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo
+				il precedente inserimento del corso. In Materiale didattico compare l'elenco delle sezioni
 				inserite precedentemente
 				\item L'utente clicca sul titolo della sezione a cui vuole aggiungere un file
 				\end{enumerate}\\
@@ -1263,21 +1263,21 @@ utente precedentemente inserito.
 				inserimento della sezione. Inoltre compare la voce 'Aggiungi nuovo file' sotto l'editor delle note
 				\item{viii.} L'utente clicca sulla voce 'Aggiungi nuovo file' e compare una finestra pop-up
 				con il form per inserire i dati del file da aggiungere
-				\item{ix.} Dopo che l'utente ha inserito i dati, titolo e un file da caricare, può scegliere 
+				\item{ix.} Dopo che l'utente ha inserito i dati, titolo e un file da caricare, può scegliere
 				se il file è aggiornato (comparirà con un'icona nella pagina web) oppure
-				nascosto (non verrà mostrato nella pagina web) e clicca sul pulsante 'Salva'. La finestra 
-				pop-up viene automaticamente chiusa e il titolo del file aggiunto compare nella 
+				nascosto (non verrà mostrato nella pagina web) e clicca sul pulsante 'Salva'. La finestra
+				pop-up viene automaticamente chiusa e il titolo del file aggiunto compare nella
 				finestra pop-up con i dati della sezione.
 				\item{x.} L'utente può chiudere la finestra pop-up della sezione e tornare alla
 				pagina web con il form del corso con il titolo del file aggiunto sotto la relativa sezione.
 				\item{x.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
-				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi'
 				per tornare alla pagina con l'elenco dei corsi divisi per facoltà
 				\end{description}\\
 				\hline
 				\textbf{Scenario Alternativo}	&	\begin{description}
-				\item{ix(a).} L'utente non inserisce un titolo del file da caricare e clicca sul pulsante 
-				'Salva'. 
+				\item{ix(a).} L'utente non inserisce un titolo del file da caricare e clicca sul pulsante
+				'Salva'.
 				\end{description}\\
 				\hline
 			\end{tabular}
@@ -1285,7 +1285,7 @@ utente precedentemente inserito.
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
-				Scenario Alternativo	&	\begin{description}	
+				Scenario Alternativo	&	\begin{description}
 				\item{x(a).} Viene aperta una finestra pop-up che contiene la seguente segnalazione:
 				'Errore: Inserire un titolo per il file' e un pulsante 'O.K.'
 				\item{xi(a).} L'utente clicca sul pulsante 'O.K.'
@@ -1293,8 +1293,8 @@ utente precedentemente inserito.
 				\end{description}\\
 				\hline
 				\textbf{Scenario Alternativo}	&	\begin{description}
-				\item{ix(b).} L'utente non inserisce il file da caricare e clicca sul pulsante 
-				'Salva'. 
+				\item{ix(b).} L'utente non inserisce il file da caricare e clicca sul pulsante
+				'Salva'.
 				\item{x(b).} Viene aperta una finestra pop-up che contiene la seguente segnalazione:
 				'Errore: Selezionare un file da caricare.' e un pulsante 'O.K.'
 				\item{xi(b).} L'utente clicca sul pulsante 'O.K.'
@@ -1305,7 +1305,7 @@ utente precedentemente inserito.
 		\end{center}
 		\item \textit{Modifica dell'ordine di visualizzazione dei file}\\
 		Si tratta del caso d'uso inerente alla modifica, da parte dell'utente amministratore,
-			dell'ordine di visualizzazione dei file precedentemente inseriti in una sezione in un 
+			dell'ordine di visualizzazione dei file precedentemente inseriti in una sezione in un
 			corso esistente.
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
@@ -1315,11 +1315,11 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
-				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata
 				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua
-				cancellazione.					
+				cancellazione.
 				\end{enumerate}\\
 				\hline
 			\end{tabular}
@@ -1328,24 +1328,24 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
 				Scenario Principale	&	\begin{description}
-				\item{iii.} L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole 
+				\item{iii.} L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole
 				modificare l'ordine di visualizzazione dei file.
 				\item{iv.} Viene caricata la pagina web del singolo corso
 				\item{v.} L'utente clicca sulla voce nella barra 'Modifica corso'
-				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo 
-				il precedente inserimento del corso. In Materiale didattico compare l'elenco delle sezioni 
+				\item{vi.} Compare la pagina web con il form del corso con i campi precompilati secondo
+				il precedente inserimento del corso. In Materiale didattico compare l'elenco delle sezioni
 				inserite precedentemente con i relativi file
 				\item{vii.} L'utente clicca sul titolo della sezione in cui vuole modificare l'ordine
 				dei file sottostanti
 				\item{viii.} Compare una finestra pop-up con i campi precompilati secondo il precedente
 				inserimento della sezione. Inoltre al di sotto della voce 'Aggiungi nuovo file' l'utente può visualizzare
 				i file inseriti. L'ordine che vede è l'ordine di visualizzazione dei file
-				\item{ix.} L'utente clicca sul file a cui vuole cambiare ordine e lo trascina fino 
+				\item{ix.} L'utente clicca sul file a cui vuole cambiare ordine e lo trascina fino
 				alla posizione desiderata
 				\item{x.} L'utente clicca sul pulsante 'Salva' e la finestra pop-up viene chiusa e si ritorna alla
 				pagina web con il form del corso e l'ordine di visualizzazione dei file è modificato.
 				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
-				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi'
 				per tornare alla pagina con l'elenco dei corsi divisi per facoltà
 				\end{description}\\
 				\hline
@@ -1362,17 +1362,17 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
-				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
-				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua 
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata
+				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua
 				cancellazione.
-				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole 
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole
 				nascondere un file
 				\item Viene caricata la pagina web del singolo corso
 				\item L'utente clicca sulla voce della barra 'Modifica corso'
-				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
-				il precedente inserimento del corso. In Materiale didattico compare l'elenco delle sezioni 
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo
+				il precedente inserimento del corso. In Materiale didattico compare l'elenco delle sezioni
 				inserite precedentemente con i file a esse legati
 				\item L'utente clicca sul titolo del file che vuole nascondere
 				\item Viene aperta una finestra pop-up con i campi precompilati coi dati del file
@@ -1386,20 +1386,20 @@ utente precedentemente inserito.
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
 				\hline
 				Scenario Principale	&	\begin{description}
-				
+
 				\item{x.} L'utente clicca sul pulsante 'Salva' e la finestra pop-up viene chiusa e si ritorna alla
 				pagina web con il form del corso in cui non compare più il titolo del file nascosto
 				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
-				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi'
 				per tornare alla pagina con l'elenco dei corsi divisi per facoltà
 				\end{description}\\
 				\hline
 				\textbf{Scenario Alternativo}	&	\begin{description}
-				\item{vii(a).} L'utente clicca sul titolo della sezione nella quale c'è il file che 
+				\item{vii(a).} L'utente clicca sul titolo della sezione nella quale c'è il file che
 				vuole modificare
-				\item{viii(a).} Compare una finestra pop-up con i campi precompilati 
-				secondo il precedente inserimento della sezione. Al di sotto della voce 'Aggiungi nuovo file' 
-				l'utente può visualizzare i file inseriti. Accanto ad ogni file c'è un'icona per la 
+				\item{viii(a).} Compare una finestra pop-up con i campi precompilati
+				secondo il precedente inserimento della sezione. Al di sotto della voce 'Aggiungi nuovo file'
+				l'utente può visualizzare i file inseriti. Accanto ad ogni file c'è un'icona per la
 				modifica dei dati del file
 				\item{ix(a).} L'utente clicca tale icona.
 				\item{} Continua al punto viii.
@@ -1408,7 +1408,7 @@ utente precedentemente inserito.
 			\end{tabular}
 		\end{center}
 	\end{enumerate}
-	
+
 	%GESTIONE FILE
 \clearpage
 	\item \textbf{Gestione File}
@@ -1424,17 +1424,17 @@ utente precedentemente inserito.
 				\textbf{Attore}	&	Utente Amministratore\\
 				\hline
 				\textbf{Scenario Principale}	&	\begin{enumerate}
-				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca 
+				\item Dopo essersi loggato tramite l'apposito form, l'utente clicca
 				sulla voce 'Gestione corsi'
-				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata 
+				\item Viene caricata la pagina web dei corsi divisi per facoltà così come viene visualizzata
 				da un utente non amministratore con accanto al nome di ogni corso l'icona per la sua
 				cancellazione
-				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole 
+				\item L'utente clicca sul nome di uno dei corsi presenti nella pagina a cui vuole
 				modificare i dati di un file
 				\item Viene caricata la pagina web del singolo corso
 				\item L'utente clicca sulla voce nella barra 'Modifica corso'
-				\item Compare la pagina web con il form del corso con i campi precompilati secondo 
-				il precedente inserimento del corso. In Materiale didattico compare l'elenco delle sezioni 
+				\item Compare la pagina web con il form del corso con i campi precompilati secondo
+				il precedente inserimento del corso. In Materiale didattico compare l'elenco delle sezioni
 				inserite precedentemente con i file a esse legati
 				\item L'utente clicca sul titolo del file che vuole modificare
 				\item Viene aperta una finestra pop-up con i campi precompilati coi dati del file
@@ -1450,16 +1450,16 @@ utente precedentemente inserito.
 				\item{x.} L'utente clicca sul pulsante 'Salva' e la finestra pop-up viene chiusa e si ritorna alla
 				pagina web con il form del corso in cui compare anche il titolo del file modificato
 				\item{xi.} L'utente può cliccare sul pulsante 'Salva' della pagina web e ritorna alla
-				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi' 
+				pagina del singolo corso, oppure può cliccare sulla voce della barra 'Lista corsi'
 				per tornare alla pagina con l'elenco dei corsi divisi per facoltà
 				\end{description}\\
 				\hline
 				\textbf{Scenario Alternativo}	&	\begin{description}
-				\item{vii(a).} L'utente clicca sul titolo della sezione nella quale c'è il file che 
+				\item{vii(a).} L'utente clicca sul titolo della sezione nella quale c'è il file che
 				vuole modificare
-				\item{viii(a).} Compare una finestra pop-up  con i campi precompilati 
-				secondo il precedente inserimento della sezione. Al di sotto della voce 'Aggiungi nuovo file' 
-				l'utente può visualizzare i file inseriti. Accanto ad ogni file c'è un'icona per la 
+				\item{viii(a).} Compare una finestra pop-up  con i campi precompilati
+				secondo il precedente inserimento della sezione. Al di sotto della voce 'Aggiungi nuovo file'
+				l'utente può visualizzare i file inseriti. Accanto ad ogni file c'è un'icona per la
 				modifica dei dati del file
 				\item{ix(a).} L'utente clicca tale icona.
 				\item{} Continua al punto viii.
@@ -1481,7 +1481,7 @@ utente precedentemente inserito.
 \subsection{Utente Finale}
 \begin{enumerate}
 	\item \textbf{Visualizzazione dell'elenco delle pubblicazioni divise per categorie e per anno}\\
-			Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente finale, 
+			Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente finale,
 			dell'elenco delle pubblicazioni inserite divise per categorie e per anno.
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
@@ -1490,7 +1490,7 @@ utente precedentemente inserito.
 				\hline
 				\textbf{Attore}	&	Utente Finale\\
 				\hline
-				\textbf{Scenario Principale}	&	\begin{description} 
+				\textbf{Scenario Principale}	&	\begin{description}
 				\item{i.} L'utente clicca sulla tab nel menù in alto 'Pubblicazioni'
 				\item{ii.} Viene caricata la pagina web con l'elenco di tutte le pubblicazioni divise per
 				categorie e per anno.
@@ -1499,7 +1499,7 @@ utente precedentemente inserito.
 			\end{tabular}
 		\end{center}
 	\item \textbf{Visualizzazione dell'elenco dei corsi divisi per facoltà}\\
-		Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente finale, 
+		Si tratta del caso d'uso inerente alla visualizzazione, da parte dell'utente finale,
 			dell'elenco dei corsi inseriti divisi per facoltà.
 		\begin{center}
 			\begin{tabular}{|l|p{0.5\columnwidth}|}
@@ -1563,10 +1563,10 @@ utente precedentemente inserito.
 				\item modifica della password di un utente preesistente
 				\item cancellazione di un utente
 			\end{itemize}
-		\item L'amministratore potrà svolgere operazioni di gestione delle pubblicazioni oltre alla 
+		\item L'amministratore potrà svolgere operazioni di gestione delle pubblicazioni oltre alla
 			visualizzazione del loro elenco, come:
 			\begin{itemize}
-				\item inserimento di una nuova pubblicazione 
+				\item inserimento di una nuova pubblicazione
 				\item cancellazione di una pubblicazione preesistente
 			\end{itemize}
 		\item L'amministratore potrà inoltre svolgere operazioni di gestione anche per i corsi, oltre
@@ -1582,7 +1582,7 @@ utente precedentemente inserito.
 			ad un corso precedentemente inserito, ed in particolare:
 			\begin{itemize}
 				\item inserimento di una nuova news
-				\item modifica dell'ordine di visualizzazione delle news precedentemente inserite 
+				\item modifica dell'ordine di visualizzazione delle news precedentemente inserite
 				\item nascondere una news già inserita
 				\item cancellazione di una news
 				\item modifica dei dati di una news
@@ -1592,15 +1592,15 @@ utente precedentemente inserito.
 			\begin{itemize}
 				\item inserimento di una nuova sezione del materiale didattico
 				\item modifica dei dati di una sezione precedentemente inserita
-				\item aggiunta di un file ad una sezione inserita 
-				\item modifica dell'ordine di visualizzazione dei file inseriti 
+				\item aggiunta di un file ad una sezione inserita
+				\item modifica dell'ordine di visualizzazione dei file inseriti
 				\item possibilità di nascondere un file precedentemente inserito
 				\item cancellazione di un file
 				\item modifica dei dati di un file precendentemente inserito
 			\end{itemize}
 	\end{enumerate}
 	\item \textbf{Funzionalità da implementare per l'Utente Finale}\\
-	L'utente finale dovrà avere la possibilità di visualizzare i contenuti inseriti dall'utente 
+	L'utente finale dovrà avere la possibilità di visualizzare i contenuti inseriti dall'utente
 	amministratore:
 	\begin{enumerate}
 		\item Visualizzazione dell'elenco delle pubblicazioni divise per categorie e ancora per anni
@@ -1617,9 +1617,9 @@ utente precedentemente inserito.
 Amministratore}
 \begin{enumerate}
 
-	\item \textbf{Login dell'utente amministratore}		
+	\item \textbf{Login dell'utente amministratore}
 		\begin{enumerate}
-			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente potrà 
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente potrà
 			loggarsi come amministratore tramite un form dove inserirà username e password
 			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
 			('admin.php')
@@ -1632,18 +1632,18 @@ Amministratore}
 				l'utente tramite 'Ricorda accesso'
 			\end{enumerate}
 			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
-			che sono richiamati da questa pagina sono: 
+			che sono richiamati da questa pagina sono:
 			\begin{enumerate}
 				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
 				web: titolo della pagina con i loghi, menu in alto
-				\item 'proteggi.inc.php' : mostra il form per inserire i dati di autenticazione. Se 
+				\item 'proteggi.inc.php' : mostra il form per inserire i dati di autenticazione. Se
 				non ci sono ancora username e password salvati viene generato un nuovo utente
-				\item 'funzioni\_login.inc.php': contiene la funzione di controllo di username e password 
+				\item 'funzioni\_login.inc.php': contiene la funzione di controllo di username e password
 				del login
 				\item 'hmac.inc.php' (incluso anche da 'funzioni\_login.inc.php'): includono le funzioni
 				per non salvare una password in chiaro, ma crittografata
 				\item 'remember-login.inc.php' : funzioni per ricordare i dati di accesso di un utente
-				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le
 				pagine web
 			\end{enumerate}
 			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per il login dell'
@@ -1653,10 +1653,10 @@ Amministratore}
 				\item 'unibs\_is\_persistent\_login'
 			\end{itemize}
 		\end{enumerate}
-		
-	\item \textbf{Visualizzazione elenco delle operazioni di gestione che l'utente amministratore può fare}		
+
+	\item \textbf{Visualizzazione elenco delle operazioni di gestione che l'utente amministratore può fare}
 		\begin{enumerate}
-			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore potrà 
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore potrà
 			visualizzare le operazioni che potrà svolgere:
 			\begin{itemize}
 				\item Gestione utenti
@@ -1666,17 +1666,17 @@ Amministratore}
 			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
 			('admin.php')
 			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
-			che sono richiamati da questa pagina sono: 
+			che sono richiamati da questa pagina sono:
 			\begin{enumerate}
 				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
 				web: titolo della pagina con i loghi, menu in alto
 				\item 'admin.php' : mostra il corpo della pagina
-				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le
 				pagine web
 			\end{enumerate}
 		\end{enumerate}
-		
-	\item \textbf{Gestione utenti}		
+
+	\item \textbf{Gestione utenti}
 		\begin{enumerate}
 			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore
 			potrà vedere l'elenco degli utenti presenti e svolgere delle operazioni su di essi, come
@@ -1686,10 +1686,10 @@ Amministratore}
 				\item cancellazione di un utente
 			\end{itemize}
 			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
-			('admin.php?action=listusers'). Per la creazione di un nuovo utente lo script PHP è 
-			'admin.php?action=newuser', per la modifica della password è 
+			('admin.php?action=listusers'). Per la creazione di un nuovo utente lo script PHP è
+			'admin.php?action=newuser', per la modifica della password è
 			'admin.php?action=changepassword\&user= nome utente a cui si vuole cambiare la password',
-			mentre per la cancellazione è 'admin.php?action=deleteuser\&user= nome utente che si 
+			mentre per la cancellazione è 'admin.php?action=deleteuser\&user= nome utente che si
 			vuole cancellare'.
 			\item \textit{Controlli e animazioni implementati nella pagina}: Controlli effettuati:
 			\begin{enumerate}
@@ -1704,14 +1704,14 @@ Amministratore}
 				\item Nella modifica della password di un utente faccio i seguenti controlli:
 				\begin{itemize}
 					\item validità dei dati di login
-					\item validità password vecchia inserita 
+					\item validità password vecchia inserita
 					\item coincidenza delle password inserite
 					\item lunghezza password
 					\item eliminazione di eventuali login persistenti
 				\end{itemize}
 				\item Nella cancellazione di un utente faccio i seguenti controlli:
 				\begin{itemize}
-					\item conferma dalla cancellazione 
+					\item conferma dalla cancellazione
 					\item non cancellare l'utente corrente
 					\item eliminazione di eventuali login persistenti
 				\end{itemize}
@@ -1719,16 +1719,16 @@ Amministratore}
 			\item \textit{File Javascript associati e loro funzione}: I file Javascript utilizzati sono
 			i seguenti:
 			\begin{enumerate}
-				\item 'javascript:history.back()' : per ritornare alla pagina precedente cioè all'elenco delle 
+				\item 'javascript:history.back()' : per ritornare alla pagina precedente cioè all'elenco delle
 				operazioni che può svolgere l'utente amministratore
 			\end{enumerate}
 			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
-			che sono richiamati da questa pagina sono: 
+			che sono richiamati da questa pagina sono:
 			\begin{enumerate}
 				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
 				web: titolo della pagina con i loghi, menu in alto
 				\item 'admin-user.inc.php' : contiene tutte le azioni richieste
-				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le
 				pagine web
 			\end{enumerate}
 			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per il login dell'
@@ -1738,8 +1738,8 @@ Amministratore}
 				\item 'unibs\_is\_persistent\_login'
 			\end{itemize}
 		\end{enumerate}
-		
-	\item \textbf{Gestione Pubblicazioni}		
+
+	\item \textbf{Gestione Pubblicazioni}
 		\begin{enumerate}
 			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore
 			potrà vedere l'elenco delle pubblicazioni e svolgere le seguenti operazioni:
@@ -1748,26 +1748,26 @@ Amministratore}
 				\item cancellazione di una pubblicazione
 			\end{itemize}
 			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
-			('pubblicazioni.php'). Per la creazione di una nuova pubblicazione lo script PHP è 
+			('pubblicazioni.php'). Per la creazione di una nuova pubblicazione lo script PHP è
 			'pubblicazioni.php?action=new'.
 			\item \textit{Controlli e animazioni implementati nella pagina}: Controlli effettuati:
 			\begin{enumerate}
 				\item Nella creazione di una nuova pubblicazione faccio i seguenti controlli:
 				\begin{itemize}
 					\item campi obbligatori inseriti
-					\item controllo di tipo e valori nei campi			
+					\item controllo di tipo e valori nei campi
 				\end{itemize}
-				Le animazioni implementate riguardano il caricamento di campi diversi a seconda della 
+				Le animazioni implementate riguardano il caricamento di campi diversi a seconda della
 				categoria di pubblicazione scelta.
 				\item Nella cancellazione di una pubblicazione faccio i seguenti controlli:
 				\begin{itemize}
-					\item conferma dalla cancellazione 
-				\end{itemize}				
+					\item conferma dalla cancellazione
+				\end{itemize}
 			\end{enumerate}
 			\item \textit{File Javascript associati e loro funzione}: I file Javascript utilizzati sono
 			i seguenti:
 			\begin{enumerate}
-				\item 'javascript:history.back()' : per ritornare alla pagina precedente 
+				\item 'javascript:history.back()' : per ritornare alla pagina precedente
 				\item 'pubblicazioni.js' : le funzioni di questo script sono:
 					\begin{itemize}
 						\item caricare la lista degli autori e mostrare un autocompletamento
@@ -1778,7 +1778,7 @@ Amministratore}
 			\end{enumerate}
 			Inoltre viene usato il file ajax 'pubblicazioni.php'
 			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
-			che sono richiamati da questa pagina sono: 
+			che sono richiamati da questa pagina sono:
 			\begin{enumerate}
 				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
 				web: titolo della pagina con i loghi, menu in alto
@@ -1787,10 +1787,10 @@ Amministratore}
 				delle pubblicazioni.
 				\item 'pub-form-new.inc.php' : serve per mostrare il form di inserimento di una nuova
 				pubblicazione
-				\item 'pub-save.inc.php' : serve per il salvataggio della nuova pubblicazione, con le 
+				\item 'pub-save.inc.php' : serve per il salvataggio della nuova pubblicazione, con le
 				funzioni per i controlli dei dati
 				\item 'ajax-functions.inc.php' : contiene le funzioni per la gestione dei file
-				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le
 				pagine web
 			\end{enumerate}
 			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione
@@ -1801,8 +1801,8 @@ Amministratore}
 				\item 'unibs\_is\_pubblicazione\_pubautore'
 			\end{itemize}
 		\end{enumerate}
-		
-		\item \textbf{Gestione corsi}		
+
+		\item \textbf{Gestione corsi}
 		\begin{enumerate}
 			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore
 			potrà vedere l'elenco dei corsi inseriti divisi per facoltà e svolgere delle operazioni su di essi, come
@@ -1811,7 +1811,7 @@ Amministratore}
 				\item inserimento di un nuovo corso
 				\item modifica di un corso esistente
 				\item inserimento di un nuovo docente o di una nuova facoltà
-				\item cancellazione di un corso 
+				\item cancellazione di un corso
 			\end{itemize}
 			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
 			('corso.php'). Per la visualizzazione di un singolo corso lo script PHP è 'corso.php?id=
@@ -1824,21 +1824,21 @@ Amministratore}
 				i seguenti controlli:
 				\begin{itemize}
 					\item campi obbligatori inseriti
-					\item controllo di tipo e valori nei campi			
+					\item controllo di tipo e valori nei campi
 				\end{itemize}
 				\item Nell' inserimento di un nuovo docente o di una nuova facoltà faccio i seguenti
 				controlli:
 				\begin{itemize}
-					\item inserimento del nome del docente o del nome della facoltà 
-				\end{itemize}				
+					\item inserimento del nome del docente o del nome della facoltà
+				\end{itemize}
 			\end{enumerate}
 			\item \textit{File Javascript associati e loro funzione}: I file Javascript utilizzati sono
 			i seguenti:
 			\begin{enumerate}
-				\item 'javascript:history.back()' : per ritornare alla pagina precedente 
+				\item 'javascript:history.back()' : per ritornare alla pagina precedente
 				\item 'corsi.js' : le funzioni di questo script sono:
 					\begin{itemize}
-						\item gestione click crocette/radio buttons 
+						\item gestione click crocette/radio buttons
 						\item validazione del form di inserimento dati
 						\item inserimento di un nuovo docente
 						\item inserimento di una nuova facoltà
@@ -1847,21 +1847,21 @@ Amministratore}
 			\end{enumerate}
 			Inoltre viene usato il file ajax 'corsi.php'
 			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
-			che sono richiamati da questa pagina sono: 
+			che sono richiamati da questa pagina sono:
 			\begin{enumerate}
 				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
 				web: titolo della pagina con i loghi, menu in alto
 				\item 'corso.php' : contiene tutte le azioni richieste
 				\item 'corsi-lista.inc.php' : serve per mostrare l'elenco dei corsi divisi per facoltà
-				\item 'corso-new.inc.php' : serve per fare i controlli dei dati inseriti 
+				\item 'corso-new.inc.php' : serve per fare i controlli dei dati inseriti
 				\item 'corso-form.inc.php' : mostro il form per l'inserimento dei dati
 				\item 'corso-edit.inc.php' : serve per la modifica del corso scelto
-				\item 'corso-singolo.inc.php' : serve per la visualizzazione del contenuto di un singolo 
+				\item 'corso-singolo.inc.php' : serve per la visualizzazione del contenuto di un singolo
 				corso
-				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le
 				pagine web
 			\end{enumerate}
-			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione dei			
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione dei
 			corsi vengono letti, modificati o creati i dati delle tabelle:
 			\begin{itemize}
 				\item 'unibs\_is\_corso'
@@ -1869,9 +1869,9 @@ Amministratore}
 				\item 'unibs\_is\_docente\_corso'
 				\item 'unibs\_is\_docente'
 			\end{itemize}
-		\end{enumerate}	
-		
-		\item \textbf{Gestione news}		
+		\end{enumerate}
+
+		\item \textbf{Gestione news}
 		\begin{enumerate}
 			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore
 			potrà svolgere le seguenti operazioni per quanto riguarda le news di un determinato corso:
@@ -1882,15 +1882,15 @@ Amministratore}
 				\item cancellazione di una news
 				\item modifica di una news
 			\end{itemize}
-			\item \textit{Tipologia di pagina}: la finestra pop-up che viene visualizzata per le 
+			\item \textit{Tipologia di pagina}: la finestra pop-up che viene visualizzata per le
 			operazioni sulle news può essere fatta partire dalla pagina di editing un singolo corso 'corso.php?edit\&id=
 			id del corso che si vuole visualizzare'
 			\item \textit{Controlli e animazioni implementati nella pagina}: Controlli effettuati:
 			\begin{enumerate}
 				\item Nell'inserimento di una nuova news e nella modifica in un corso esistente faccio i seguenti controlli:
 				\begin{itemize}
-					\item campi obbligatori inseriti			
-				\end{itemize}			
+					\item campi obbligatori inseriti
+				\end{itemize}
 			\end{enumerate}
 			\item \textit{File Javascript associati e loro funzione}: I file Javascript utilizzati sono
 			i seguenti:
@@ -1905,25 +1905,25 @@ Amministratore}
 			\end{enumerate}
 			Inoltre viene usato il file ajax 'news.php'
 			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
-			che sono richiamati da questa pagina sono: 
+			che sono richiamati da questa pagina sono:
 			\begin{enumerate}
 				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
 				web: titolo della pagina con i loghi, menu in alto
-				\item 'corso-form.inc.php' : mostro l'elenco delle news presenti e la finestra di 
+				\item 'corso-form.inc.php' : mostro l'elenco delle news presenti e la finestra di
 				pop-up per l'inserimento dei dati
-				\item 'corso-singolo.inc.php' : serve per la visualizzazione dei contenuto di un singolo 
+				\item 'corso-singolo.inc.php' : serve per la visualizzazione dei contenuto di un singolo
 				corso compreso l'elenco delle news presenti
-				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le
 				pagine web
 			\end{enumerate}
-			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione delle		
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione delle
 			news vengono letti, modificati o creati i dati delle tabelle:
 			\begin{itemize}
 				\item 'unibs\_is\_news'
 			\end{itemize}
 		\end{enumerate}
-		
-		\item \textbf{Gestione Sezioni}		
+
+		\item \textbf{Gestione Sezioni}
 		\begin{enumerate}
 			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore
 			potrà svolgere le seguenti operazioni per quanto riguarda le sezioni di un determinato corso:
@@ -1934,14 +1934,14 @@ Amministratore}
 				\item modifica dell'ordine di visualizzazione dei file
 				\item nascondere un file
 			\end{itemize}
-			\item \textit{Tipologia di pagina}: la finestra pop-up che viene visualizzata per le 
+			\item \textit{Tipologia di pagina}: la finestra pop-up che viene visualizzata per le
 			operazioni sulle sezioni può essere fatta partire dalla pagina di editing un singolo corso
 			'corso.php?edit\&id=id del corso preso in considerazione'
 			\item \textit{Controlli e animazioni implementati nella pagina}: Controlli effettuati:
 			\begin{enumerate}
 				\item Nell'inserimento di una nuova sezione e nella modifica in una esistente faccio i seguenti controlli:
 				\begin{itemize}
-					\item campi obbligatori inseriti			
+					\item campi obbligatori inseriti
 				\end{itemize}
 				\item Nell'aggiunta di un nuovo file ad una sezione esistente faccio i seguenti
 				controlli:
@@ -1964,32 +1964,32 @@ Amministratore}
 			\end{enumerate}
 			Inoltre viene usato il file ajax 'file.php'
 			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
-			che sono richiamati da questa pagina sono: 
+			che sono richiamati da questa pagina sono:
 			\begin{enumerate}
 				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
 				web: titolo della pagina con i loghi, menu in alto
-				\item 'corso-form.inc.php' : mostro l'elenco delle sezioni presenti e la finestra di 
+				\item 'corso-form.inc.php' : mostro l'elenco delle sezioni presenti e la finestra di
 				pop-up per l'inserimento dei dati
-				\item 'corso-singolo.inc.php' : serve per la visualizzazione dei contenuto di un singolo 
+				\item 'corso-singolo.inc.php' : serve per la visualizzazione dei contenuto di un singolo
 				corso compreso l'elenco delle sezioni presenti
-				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le
 				pagine web
 			\end{enumerate}
-			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione delle			
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione delle
 			sezioni vengono letti, modificati o creati i dati delle tabelle:
 			\begin{itemize}
 				\item 'unibs\_is\_sezione'
 				\item 'unibs\_is\_file\_materiale'
 			\end{itemize}
 		\end{enumerate}
-		
-		\item \textbf{Gestione File}		
+
+		\item \textbf{Gestione File}
 		\begin{enumerate}
 			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente amministratore
 			potrà modificare i dati di un file precedentemente inserito.
-			\item \textit{Tipologia di pagina}: la finestra pop-up che viene visualizzata per le 
+			\item \textit{Tipologia di pagina}: la finestra pop-up che viene visualizzata per le
 			operazioni sui file può essere fatta partire dalla finestra pop-up delle sezioni
-			\item \textit{Controlli e animazioni implementati nella pagina}: I controlli effettuati 
+			\item \textit{Controlli e animazioni implementati nella pagina}: I controlli effettuati
 			riguardano l'inserimento dei campi obbligatori.
 			\item \textit{File Javascript associati e loro funzione}: I file Javascript utilizzati sono
 			i seguenti:
@@ -2001,18 +2001,18 @@ Amministratore}
 			\end{enumerate}
 			Inoltre viene usato il file ajax 'file.php'
 			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
-			che sono richiamati da questa pagina sono: 
+			che sono richiamati da questa pagina sono:
 			\begin{enumerate}
 				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
 				web: titolo della pagina con i loghi, menu in alto
-				\item 'corso-form.inc.php' : mostro l'elenco delle sezioni e dei file presenti e la finestra di 
+				\item 'corso-form.inc.php' : mostro l'elenco delle sezioni e dei file presenti e la finestra di
 				pop-up per l'inserimento dei dati
-				\item 'corso-singolo.inc.php' : serve per la visualizzazione dei contenuto di un singolo 
+				\item 'corso-singolo.inc.php' : serve per la visualizzazione dei contenuto di un singolo
 				corso compreso l'elenco delle sezioni presenti con i file
-				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le
 				pagine web
 			\end{enumerate}
-			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione dei			
+			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la gestione dei
 			file vengono letti, modificati o creati i dati delle tabelle:
 			\begin{itemize}
 				\item 'unibs\_is\_file\_materiale'
@@ -2026,19 +2026,19 @@ Finale}
 \begin{enumerate}
 	\item \textbf{Visualizzazione dell'elenco delle Pubblicazioni divise per categorie e per anno}
 		\begin{enumerate}
-			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente potrà 
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente potrà
 			visualizzare l'elenco delle pubblicazioni divise per categorie e per anno.
 			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
 			('pubblicazioni.php')
 			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
-			che sono richiamati da questa pagina sono: 
+			che sono richiamati da questa pagina sono:
 			\begin{enumerate}
 				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
 				web: titolo della pagina con i loghi, menu in alto
 				\item 'pub-list.inc.php' : serve per mostrare il corpo della pagina, cioè l'elenco
 				delle pubblicazioni. In questo modulo ci svolgeranno le query per selezionare le pubblicazioni
 				da database
-				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le
 				pagine web
 			\end{enumerate}
 			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la visualizzazione
@@ -2051,19 +2051,19 @@ Finale}
 		\end{enumerate}
 	\item \textbf{Visualizzazione dell'elenco corsi divisi per facoltà}
 		\begin{enumerate}
-			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente potrà 
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente potrà
 			visualizzare l'elenco dei corsi presenti divisi per facoltà.
 			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
 			('corso.php')
 			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
-			che sono richiamati da questa pagina sono: 
+			che sono richiamati da questa pagina sono:
 			\begin{enumerate}
 				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
 				web: titolo della pagina con i loghi, menu in alto
 				\item 'corsi-lista.inc.php' : serve per mostrare il corpo della pagina, cioè l'elenco
 				dei corsi divisi per facoltà. In questo modulo ci svolgeranno le query per selezionare
 				i corsi filtrati sulle varie facoltà
-				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le
 				pagine web
 			\end{enumerate}
 			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la visualizzazione
@@ -2075,19 +2075,19 @@ Finale}
 		\end{enumerate}
 	\item \textbf{Visualizzazione del contenuto di un singolo corso}
 		\begin{enumerate}
-			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente potrà 
+			\item \textit{Descrizione pagina web e funzionalità che realizza}: L'utente potrà
 			visualizzare la pagina del singolo corso scelto.
 			\item \textit{Tipologia di pagina}: la pagina è generata dinamicamente da uno script PHP
 			('corso.php?id='id del corso scelto)
 			\item \textit{Moduli PHP realizzati e associati alla pagina e loro funzione}: i moduli PHP
-			che sono richiamati da questa pagina sono: 
+			che sono richiamati da questa pagina sono:
 			\begin{enumerate}
 				\item 'header.inc.php' : serve per visualizzare la parte di header di tutte le pagine
 				web: titolo della pagina con i loghi, menu in alto
 				\item 'corso-singolo.inc.php' : serve per mostrare il corpo della pagina, cioè i dati
-				del corso scelto. In questo modulo ci svolgeranno le query per selezionare i dati del 
+				del corso scelto. In questo modulo ci svolgeranno le query per selezionare i dati del
 				corso da database
-				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le 
+				\item 'footer.inc.php' : serve per visualizzare la parte di footer di tutte le
 				pagine web
 			\end{enumerate}
 			\item \textit{Strutture dati lette, modificate o create nella pagina}: Per la visualizzazione
@@ -2096,12 +2096,12 @@ Finale}
 				\item 'unibs\_is\_corso'
 				\item 'unibs\_is\_docente'
 				\item 'unibs\_is\_docente\_corso'
-				\item 'unibs\_is\_news' 
+				\item 'unibs\_is\_news'
 				\item 'unibs\_is\_sezione'
 				\item 'unibs\_is\_file\_materiale'
 			\end{itemize}
 		\end{enumerate}
-\end{enumerate}	
+\end{enumerate}
 
 \clearpage
 \subsection{File generali}
@@ -2117,7 +2117,7 @@ Finale}
 	\item button.js
 \end{itemize}
 
-\item Ogni volta che viene effettuato un accesso al database ci sono controlli per verificare la buona 
+\item Ogni volta che viene effettuato un accesso al database ci sono controlli per verificare la buona
 riuscita del collegamento.
 \end{itemize}
 
@@ -2125,7 +2125,7 @@ riuscita del collegamento.
 \chapter{Descrizione di scenari di utilizzo divisi per tipologia di utente}
 \newpage
 
-\section{Riportare esempi di utilizzo dell'applicazione Web tramite l'ausilio di screenshot e 
+\section{Riportare esempi di utilizzo dell'applicazione Web tramite l'ausilio di screenshot e
 commenti testuali}
 \begin{enumerate}
 	\item \textbf{Utente Amministratore}\\
@@ -2136,7 +2136,7 @@ commenti testuali}
 				\end{center}
 				Accesso tramite login da parte dell'utente amministratore all'area riservata. L'utente immette
 				username e password che verranno controllati con i dati salvati in database.\\
-				
+
 			\item{*} \textbf{Scelta da parte dell'utente amministratore fra le varie operazioni che potrà svolgere}\\
 				L'utente amministratore può visualizzare le operazioni che può svolgere in tale ruolo.\\
 				\begin{center}
@@ -2150,8 +2150,8 @@ commenti testuali}
 				\begin{center}
 					\includegraphics[height=3cm]{screenshot/Utenti/Utenti.png}
 				\end{center}
-				\item \textbf{Creazione di un nuovo utente amministratore}\\ 
-				Cliccando sulla voce nella barra 'Nuovo utente', si apre una pagina web con il form 
+				\item \textbf{Creazione di un nuovo utente amministratore}\\
+				Cliccando sulla voce nella barra 'Nuovo utente', si apre una pagina web con il form
 				per l'inserimento dei dati del nuovo utente.\\
 				\begin{center}
 					\includegraphics[height=4cm]{screenshot/Utenti/NuovoUtente.png}
@@ -2162,31 +2162,31 @@ commenti testuali}
 				\begin{center}
 					\includegraphics[height=4cm]{screenshot/Utenti/SalvaUtente.png}
 				\end{center}
-				
+
 				Cliccando sul link ``Torna'' si va alla pagina precedente con l'elenco degli utenti presenti.
-				
+
 				\item \textbf{Modifica della password di un utente preesistente}\\
-				Cliccando sull'icona a forma di chiave accanto al nome dell'utente, si apre una pagina 
+				Cliccando sull'icona a forma di chiave accanto al nome dell'utente, si apre una pagina
 				web contenente il form per la modifica della password.\\
 				\begin{center}
 					\includegraphics[height=4cm]{screenshot/Utenti/ModificaPsw.png}
 				\end{center}
-				
+
 				Una volta inseriti i dati per la modifica della password, l'utente conferma cliccando
 				sul bottone 'Salva' e viene aperta la pagina con l'avvenuto salvataggio.\\
 				\begin{center}
 					\includegraphics[height=4cm]{screenshot/Utenti/SalvaPsw.png}
 				\end{center}
-			
+
 				Cliccando sul link 'Torna' si va alla pagina precedente con l'elenco degli utenti presenti.
-				
+
 				\item \textbf{Cancellazione di un utente}\\
-				Cliccando sull'icona per la cancellazione accanto al nome dell'utente, si apre una pagina 
+				Cliccando sull'icona per la cancellazione accanto al nome dell'utente, si apre una pagina
 				web per la conferma della cancellazione.\\
 				\begin{center}
 					\includegraphics[height=3cm]{screenshot/Utenti/CancellaUtente.png}
 				\end{center}
-				
+
 				Una volta confermata l'operazione, viene aperta la pagina dell'avvenuta cancellazione.\\
 				\begin{center}
 					\includegraphics[height=3cm]{screenshot/Utenti/Cancellazione.png}
@@ -2202,10 +2202,10 @@ commenti testuali}
 				Capitoli in libro, Pubblicazioni in atti di conferenza, Monografie, Curatele).\\
 				\begin{center}
 					\includegraphics[height=8cm]{screenshot/Pubblicazioni/Pubblicazioni.png}
-				\end{center}	
+				\end{center}
 
-				\item \textbf{Inserimento di un nuova pubblicazione}\\ 
-				Cliccando sulla voce nella barra 'Nuova pubblicazione', si apre una pagina web con il form 
+				\item \textbf{Inserimento di un nuova pubblicazione}\\
+				Cliccando sulla voce nella barra 'Nuova pubblicazione', si apre una pagina web con il form
 				per l'inserimento dei dati della nuova pubblicazione.\\
 				Poiché le categorie sono cinque, i campi del form cambiano in base alla scelta di categoria effettuata.\\
 				\clearpage
@@ -2236,14 +2236,14 @@ commenti testuali}
 
 				Una volta inseriti i dati, l'utente conferma la creazione di una nuova pubblicazione cliccando
 				sul bottone 'Salva' e si viene rediretti alla pagina dell'elenco delle pubblicazioni.
-	
+
 				\item \textbf{Cancellazione di una pubblicazione}\\
-				Cliccando sull'icona per la cancellazione accanto al titolo della pubblicazione, si 
+				Cliccando sull'icona per la cancellazione accanto al titolo della pubblicazione, si
 				apre una finestra di pop-up per la conferma della cancellazione.\\
 				\begin{center}
 					\includegraphics[height=7cm]{screenshot/Pubblicazioni/CancellazionePub.png}
 				\end{center}
-				
+
 				Una volta confermata l'operazione, viene cancellata la pubblicazione e si ritorna
 				alla pagina dell'elenco delle pubblicazioni.
 			\end{enumerate}
@@ -2255,7 +2255,7 @@ commenti testuali}
 				\begin{center}
 					\includegraphics[height=4cm]{screenshot/Corsi/Corsi.png}
 				\end{center}
-			
+
 				\item \textbf{Visualizzazione di un singolo corso}\\
 				Dall'elenco dei corsi, cliccando sul nome del corso che si desidera visualizzare, si
 				aprirà la pagina web con il contenuto del corso.\\
@@ -2271,26 +2271,26 @@ commenti testuali}
 					\item Obiettivi del corso
 					\item Programma e modalità d'esame
 					\item Testi (materiale di riferimento)
-					\item Materiale didattico diviso per sezioni 
+					\item Materiale didattico diviso per sezioni
 				\end{itemize}
-			
-				\item \textbf{Inserimento di un nuovo corso}\\ 
-				Cliccando sulla voce nella barra 'Nuovo corso', si apre una pagina web con il form 
+
+				\item \textbf{Inserimento di un nuovo corso}\\
+				Cliccando sulla voce nella barra 'Nuovo corso', si apre una pagina web con il form
 				per l'inserimento dei dati del nuovo corso.\\
 				\begin{center}
 					\includegraphics[height=8cm]{screenshot/Corsi/NuovoCorso.png}
 				\end{center}
 				Ogni dato, eccetto nome corso, anno accademico, facoltà e docenti, si inserisce attraverso un
 				editor di testo.
-				
-				\item \textbf{Modifica di un corso}\\ 
-				Dalla pagina di un singolo corso, cliccando sulla voce nella barra 'Modifica corso', 
+
+				\item \textbf{Modifica di un corso}\\
+				Dalla pagina di un singolo corso, cliccando sulla voce nella barra 'Modifica corso',
 				si apre una pagina web con il form precompilato coi dati precedentemente inseriti
 				del corso che si vuole modificare.\\
 				\begin{center}
 					\includegraphics[height=8cm]{screenshot/Corsi/ModificaCorso.png}
 				\end{center}
-				Il form per la modifica di un corso contiene, a differenza del form di inserimento di 
+				Il form per la modifica di un corso contiene, a differenza del form di inserimento di
 				un nuovo corso, anche la possibilità di gestire le news e il materiale didattico.\\
 				Link per la gestione delle news 'Gestione News':\\
 				\begin{center}
@@ -2300,40 +2300,40 @@ commenti testuali}
 				\begin{center}
 					\includegraphics[height=1.5cm]{screenshot/Corsi/MaterialeDidattico.png}
 				\end{center}
-			
-				\item \textbf{Inserimento di un nuovo docente}\\ 
-				Dal form di modifica di un corso oppure dal form di inserimento di un nuovo corso, 
-				l'utente può aggiungere un nuovo docente cliccando sul link 'Nuovo docente' sotto la 
+
+				\item \textbf{Inserimento di un nuovo docente}\\
+				Dal form di modifica di un corso oppure dal form di inserimento di un nuovo corso,
+				l'utente può aggiungere un nuovo docente cliccando sul link 'Nuovo docente' sotto la
 				scritta Docenti.\\
 				Si apre così una finestra pop-up per l'inserimento del nome del docente.\\
 				\begin{center}
 					\includegraphics[height=4cm]{screenshot/Corsi/NuovoDocente.png}
 				\end{center}
-			
-				\item \textbf{Inserimento di una nuova facoltà}\\ 
-				Dal form di modifica di un corso oppure dal form di inserimento di un nuovo corso, 
-				l'utente può aggiungere una nuova facoltà cliccando sul link 'Nuova facoltà' sotto la 
+
+				\item \textbf{Inserimento di una nuova facoltà}\\
+				Dal form di modifica di un corso oppure dal form di inserimento di un nuovo corso,
+				l'utente può aggiungere una nuova facoltà cliccando sul link 'Nuova facoltà' sotto la
 				scritta Facoltà.\\
 				Si apre così una finestra di pop-up per l'inserimento del nome della facoltà.\\
 				\begin{center}
 					\includegraphics[height=4cm]{screenshot/Corsi/NuovaFacolta.png}
 				\end{center}
-				
+
 				\item \textbf{Cancellazione di un corso}
-				Cliccando sull'icona per la cancellazione accanto al nome del corso nell'elenco dei corsi, si 
+				Cliccando sull'icona per la cancellazione accanto al nome del corso nell'elenco dei corsi, si
 				apre una finestra di pop-up per la conferma della cancellazione.\\
 				\begin{center}
 					\includegraphics[height=6cm]{screenshot/Corsi/CancellazioneCorso.png}
 				\end{center}
-				
+
 				Una volta confermata l'operazione, viene cancellato il corso e si ritorna
 				alla pagina dell'elenco dei corsi divisi per facoltà.
 			\end{enumerate}
-			
+
 			\item{*} \textbf{Operazioni di gestione delle news:}
 			\begin{enumerate}
-				\item \textbf{Inserimento di una nuova news}\\ 
-				Dal form di modifica di un corso , l'utente può aggiungere una nuova news cliccando 
+				\item \textbf{Inserimento di una nuova news}\\
+				Dal form di modifica di un corso , l'utente può aggiungere una nuova news cliccando
 				sul link 'Gestione News'.\\
 				Si apre così una finestra pop-up per l'inserimento dei dati della nuova news.\\
 				\begin{center}
@@ -2341,55 +2341,55 @@ commenti testuali}
 				\end{center}
 				In questa finestra pop-up è possibile visualizzare in basso l'elenco delle news precendentemente
 				inserite nel corso.
-			
+
 				\item \textbf{Modifica dell'ordine delle news
-				precedentemente inserite}\\ 
-				Nella finestra pop-up della gestione delle news è possibile modificare l'ordine 
+				precedentemente inserite}\\
+				Nella finestra pop-up della gestione delle news è possibile modificare l'ordine
 				delle news già inserite trascinandole nella posizione che si desidera con il mouse.\\
-			
-				\item \textbf{Nascondere una news}\\ 
-				Sempre nella finestra di pop-up della gestione delle news è possibile nascondere una 
+
+				\item \textbf{Nascondere una news}\\
+				Sempre nella finestra di pop-up della gestione delle news è possibile nascondere una
 				news cliccando sull'icona a forma di occhio accanto al titolo nell'elenco delle news
 				in basso.\\
 				\begin{center}
 					\includegraphics[height=2cm]{screenshot/News/Nascondi.png}
 				\end{center}
-				
-				\item \textbf{Cancellazione di una news}\\ 
-				Sempre nella finestra pop-up della gestione delle news è possibile cancellare una 
+
+				\item \textbf{Cancellazione di una news}\\
+				Sempre nella finestra pop-up della gestione delle news è possibile cancellare una
 				news cliccando sull'icona accanto al titolo nell'elenco delle news.\\
 				\begin{center}
 					\includegraphics[height=2cm]{screenshot/News/Cancella.png}
 				\end{center}
-				
-				\item \textbf{Modifica di una news}\\ 
-				Sempre nella finestra pop-up della gestione delle news è possibile modificare il contenuto di una 
+
+				\item \textbf{Modifica di una news}\\
+				Sempre nella finestra pop-up della gestione delle news è possibile modificare il contenuto di una
 				news cliccando sull'icona accanto al titolo nell'elenco delle news. In questo modo
 				vengono caricati i dati della news che si vuole modificare nell'editor di testo.\\
 				\begin{center}
 					\includegraphics[height=2cm]{screenshot/News/Modifica.png}
 				\end{center}
 				\end{enumerate}
-				
+
 			\item{*} \textbf{Operazioni di gestione del materiale didattico:}
 			\begin{enumerate}
-				\item \textbf{Inserimento di una nuova sezione}\\ 
+				\item \textbf{Inserimento di una nuova sezione}\\
 				Cliccando sul link 'Nuova sezione' nella pagina web di modifica di un corso, si apre
-				una finestra pop-up per l'inserimento dei dati della nuova sezione del materiale 
+				una finestra pop-up per l'inserimento dei dati della nuova sezione del materiale
 				didattico.\\
 				\begin{center}
 					\includegraphics[height=7.5cm]{screenshot/MaterialeDidattico/NuovaSezione.png}
 				\end{center}
-				
-				\item \textbf{Modifica dei dati di una sezione precendentemente inserita}\\ 
-				Cliccando sul titolo di una sezione del materiale didattico nella pagina web di 
-				modifica di un corso, si apre una finestra pop-up con un form precompilato con i 
+
+				\item \textbf{Modifica dei dati di una sezione precendentemente inserita}\\
+				Cliccando sul titolo di una sezione del materiale didattico nella pagina web di
+				modifica di un corso, si apre una finestra pop-up con un form precompilato con i
 				dati della sezione da modificare e l'elenco dei file collegati alla sezione.\\
 				\begin{center}
 					\includegraphics[height=8cm]{screenshot/MaterialeDidattico/Modifica.png}
 				\end{center}
-			
-				\item \textbf{Aggiunta di un file ad una sezione}\\ 
+
+				\item \textbf{Aggiunta di un file ad una sezione}\\
 				Nella finestra pop-up che si apre cliccando sul titolo di una sezione del materiale
 				didattico nella pagina web di modifica di un corso, si ha la possibilità di aggiungere
 				un file alla sezione cliccando sul link 'Aggiungi un nuovo file'. Si apre quindi un'altra
@@ -2398,56 +2398,56 @@ commenti testuali}
 					\includegraphics[height=5.5cm]{screenshot/MaterialeDidattico/File.png}
 				\end{center}
 
-				\item \textbf{Modifica dell'ordine di visualizzazione dei file inseriti}\\ 
-				Nella finestra pop-up per la gestione delle sezioni è possibile modificare l'ordine 
+				\item \textbf{Modifica dell'ordine di visualizzazione dei file inseriti}\\
+				Nella finestra pop-up per la gestione delle sezioni è possibile modificare l'ordine
 				dei file già inseriti trascinandoli nella posizione che si desidera con il mouse.\\
-				
-				\item \textbf{Nascondere un file}\\ 
-				Sempre nella finestra pop-up della gestione delle sezioni è possibile nascondere 
+
+				\item \textbf{Nascondere un file}\\
+				Sempre nella finestra pop-up della gestione delle sezioni è possibile nascondere
 				un file cliccando sull'icona a forma di occhio accanto al titolo del file nell'elenco.\\
 				\begin{center}
 					\includegraphics[height=2cm]{screenshot/MaterialeDidattico/Nascondi.png}
 				\end{center}
-				
-				\item \textbf{Modificare un file}\\ 
+
+				\item \textbf{Modificare un file}\\
 				Sempre nella finestra pop-up della gestione delle sezioni è possibile modifica il
 				contenuto di un file cliccando sull'icona accanto al titolo nell'elenco dei file. In
-				questo modo si apre la finestra pop-up per l'inserimento dei dati di un file con 
+				questo modo si apre la finestra pop-up per l'inserimento dei dati di un file con
 				i campi precompilati del file che si vuole modificare.\\
 				\begin{center}
 					\includegraphics[height=2cm]{screenshot/MaterialeDidattico/ModificaFile.png}
 				\end{center}
 			\end{enumerate}
 		\end{description}
-\clearpage		
+\clearpage
 	\item \textbf{Utente Finale}
 		\begin{description}
-			\item{*} \textbf{Visualizzazione dell'elenco delle pubblicazioni divise per categorie e per 
+			\item{*} \textbf{Visualizzazione dell'elenco delle pubblicazioni divise per categorie e per
 				anni di pubblicazione}\\
 				\begin{center}
 					\includegraphics[height=7cm]{screenshot/UtenteFinale/Pubblicazioni.png}
 				\end{center}
 				Come si può notare a differenza dell'elenco delle pubblicazioni dell'utente amministratore,
-				in questo caso accanto al titolo della pubblicazione non compare ovviamente l'icona 
+				in questo caso accanto al titolo della pubblicazione non compare ovviamente l'icona
 				di cancellazione. Ed inoltre non è presente la barra in alto con le operazioni che l'amministratore
 				poteva svolgere\\
-				
+
 			\item{*} \textbf{Visualizzazione dell'elenco dei corsi divisi per facoltà in cui si svolgono}\\
 				\begin{center}
 					\includegraphics[height=4cm]{screenshot/UtenteFinale/Corsi.png}
 				\end{center}
 				Come si può notare a differenza dell'elenco dei corsi dell'utente amministratore,
-				in questo caso accanto al nome del corso non compare ovviamente l'icona 
+				in questo caso accanto al nome del corso non compare ovviamente l'icona
 				di cancellazione. Ed inoltre non è presente la barra in alto con le operazioni che l'amministratore
 				poteva svolgere.\\
-				
+
 			\item{*} \textbf{Visualizzazione del contenuto di un singolo corso}\\
 				\begin{center}
 					\includegraphics[height=8cm]{screenshot/UtenteFinale/CorsoSingolo.png}
 				\end{center}
 				Come si può notare, a differenza della visualizzazione del singolo corso dell'utente amministratore,
 				in questo caso non è presente la barra in alto con le operazioni che l'amministratore
-				poteva svolgere.\\	
+				poteva svolgere.\\
 		\end{description}
 \end{enumerate}
 \end{document}
