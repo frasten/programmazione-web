@@ -382,7 +382,7 @@ strong.errore {
 
 #file-dialog-form .dx {
 	position: absolute;
-	left: 8em;
+	left: 9em;
 }
 
 #file-dialog-form p {
@@ -409,6 +409,7 @@ strong.errore {
 	color: #555;
 	padding:3px;
 	outline:none;
+	margin-left: 3px;
 
 	border: 1px solid #c5c5c5;
 
@@ -421,9 +422,9 @@ strong.errore {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eee', endColorstr='#fff',GradientType=0 );
 	background: linear-gradient(top, #fff 0%,#eee 4%,#fff 100%);
 
-	-webkit-box-shadow: 0 0 8px rgba(0,0,0,0.1);
-	   -moz-box-shadow: 0 0 8px rgba(0,0,0,0.1);
-	        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 0 6px rgba(0,0,0,0.1);
+	   -moz-box-shadow: 0 0 6px rgba(0,0,0,0.1);
+	        box-shadow: 0 0 6px rgba(0,0,0,0.1);
 
 	-webkit-border-radius: 3px;
 	   -moz-border-radius: 3px;
@@ -437,9 +438,9 @@ strong.errore {
 
 .testo:hover {
 	border-color: #999;
-	   -moz-box-shadow: 0 0 8px rgba(0,0,0,0.15);
-	-webkit-box-shadow: 0 0 8px rgba(0,0,0,0.15);
-	        box-shadow: 0 0 8px rgba(0,0,0,0.15);
+	   -moz-box-shadow: 0 0 6px rgba(0,0,0,0.15);
+	-webkit-box-shadow: 0 0 6px rgba(0,0,0,0.15);
+	        box-shadow: 0 0 6px rgba(0,0,0,0.15);
 }
 
 .testo:focus {

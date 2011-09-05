@@ -81,7 +81,7 @@ $(document).ready(function() {
 	$( "#file-dialog-form" ).dialog({
 		autoOpen: false,
 		height: 300,
-		width: 600,
+		width: 470,
 		modal: true,
 		open: function() {
 			var id = parseInt($("#id_file").val());
@@ -220,8 +220,12 @@ $(document).ready(function() {
 	});
 	}
 
-	$("#url-file").focus(function() {
+	$("#url-file").focus(function(event) {
 		$("#tipourl_url").attr('checked', true);
+	});
+
+	$("#tipourl_url").click(function() {
+		$("#url-file").focus();
 	});
 
 	function salvaOrdineFiles() {

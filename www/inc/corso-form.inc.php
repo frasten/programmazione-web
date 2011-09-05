@@ -341,14 +341,14 @@ EOF;
 
 		<p>
 			<label for="titolo-file" class='etichetta'>Titolo file:</label>
-			<input type='text' class='testo' name='titolo' id='titolo-file'class='dx' />
+			<input type='text' class='testo dx' style='left: 6em; margin-top: -0.22em' name='titolo' id='titolo-file'class='dx' />
 		</p>
 
 		<p>
 			<input type='radio' name='tipourl' id='tipourl_url' value='url' />
 			<label for='tipourl_url' class='etichetta'>
 				URL:
-				<input type='text' class='testo' name='url' id='url-file' class='dx'/>
+				<input type='text' class='testo dx' style='left: 6em' name='url' id='url-file' class='dx'/>
 			</label>
 		</p>
 
