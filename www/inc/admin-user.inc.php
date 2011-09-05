@@ -109,15 +109,15 @@ else if ( $_GET['action'] == 'newuser' ) {
 			<ul class='form_list'>
 				<li>
 					<label for='username'>Username:</label>
-					<input type='text' id='username' name='username' />
+					<input type='text' class='testo' id='username' name='username' />
 				</li>
 				<li>
 					<label for='password'>Password:</label>
-					<input type='password' id='password' name='password' />
+					<input type='password' class='testo' id='password' name='password' />
 				</li>
 				<li>
 					<label for='repeatpassword'>Ripeti password:</label>
-					<input type='password' id='repeatpassword' name='repeatpassword' />
+					<input type='password' class='testo' id='repeatpassword' name='repeatpassword' />
 				</li>
 			</ul>
 			<input type='submit' class='submitbutton' value='Crea utente' />
@@ -222,15 +222,15 @@ function stampa_form_change_password() {
 			<ul class='form_list'>
 				<li>
 					<label for='oldpassword'>Vecchia password:</label>
-					<input type='password' name='oldpassword' id='oldpassword' />
+					<input type='password' class='testo' name='oldpassword' id='oldpassword' />
 				</li>
 				<li>
 					<label for='password'>Nuova password:</label>
-					<input type='password' name='password' id='password' />
+					<input type='password' class='testo' name='password' id='password' />
 				</li>
 				<li>
 					<label for='repeatpassword'>Ripeti password:</label>
-					<input type='password' name='repeatpassword' id='repeatpassword' />
+					<input type='password' class='testo' name='repeatpassword' id='repeatpassword' />
 				</li>
 			</ul>
 			<input type='submit' class='submitbutton' value='Salva' style='margin-left: 100px' />

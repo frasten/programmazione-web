@@ -401,3 +401,28 @@ strong.errore {
 .listafiles li {
 	margin-bottom: 2px;
 }
+
+.testo {
+	color: #555;
+	padding:3px;
+	border:1px solid #ccc;
+	background:#fbfbfb;
+	outline:none;
+	-moz-box-shadow:inset 1px 1px 3px #e9e9e9;
+	-webkit-box-shadow:inset 1px 1px 3px #e9e9e9;
+	box-shadow:inset 1px 1px 3px #e9e9e9;
+
+	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+}
+
+.testo:focus {
+	border-color: #e9e9e9;
+	box-shadow: inset 1px 1px 3px #e9e9e9,
+	            0 0 5px #37C52A;
+	-webkit-box-shadow: inset 1px 1px 3px #e9e9e9,
+	                    0 0 5px #37C52A;
+	-moz-box-shadow: inset 1px 1px 3px #e9e9e9,
+	                 0 0 5px #37C52A;
+}

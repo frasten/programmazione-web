@@ -12,7 +12,7 @@
 ?>
 	<h3>Corso:</h3>
 	<label for='nome' class='etichetta'>Nome corso:</label>
-	<input type='text' name='nome' id='nomecorso' value='<?php riempi( $corso['nome'], 'attr' ) ?>'/>
+	<input type='text' class='testo' name='nome' id='nomecorso' value='<?php riempi( $corso['nome'], 'attr' ) ?>'/>
 
 	<p>
 		<label for='annoaccademico' class='etichetta'>Anno accademico:</label>
@@ -314,7 +314,7 @@ EOF;
 		<input type='hidden' id='id_sezione' name='id_sezione' value='' />
 		<h4>Sezione:</h4>
 		<label for="titolo-sezione" class='etichetta'>Titolo sezione:</label>
-		<input type='text' name='titolo' id='titolo-sezione' /><br />
+		<input type='text' class='testo' name='titolo' id='titolo-sezione' /><br />
 
 		<p style='margin-bottom: 4px'>
 			<label for="note-sezione" class='etichetta'>Note:</label>
@@ -341,14 +341,14 @@ EOF;
 
 		<p>
 			<label for="titolo-file" class='etichetta'>Titolo file:</label>
-			<input type='text' name='titolo' id='titolo-file'class='dx' />
+			<input type='text' class='testo' name='titolo' id='titolo-file'class='dx' />
 		</p>
 
 		<p>
 			<input type='radio' name='tipourl' id='tipourl_url' value='url' />
 			<label for='tipourl_url' class='etichetta'>
 				URL:
-				<input type='text' name='url' id='url-file' class='dx'/>
+				<input type='text' class='testo' name='url' id='url-file' class='dx'/>
 			</label>
 		</p>
 
