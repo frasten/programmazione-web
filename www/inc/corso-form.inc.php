@@ -298,7 +298,7 @@ EOF;
 				echo "<img src='img/icone/newspaper_delete.png' alt='Elimina news' />\n";
 				echo "</a>\n ";
 
-				echo "<span class='testo'>";
+				echo "<span class='lbltesto'>";
 				echo strip_tags( $riga['testo'] );
 				echo "</span>";
 				echo "</li>\n";

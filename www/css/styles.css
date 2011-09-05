@@ -4,6 +4,7 @@
 
 .iconalink {
 	text-decoration: none !important;
+	cursor: pointer;
 }
 
 .iconalink:hover {

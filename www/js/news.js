@@ -86,7 +86,7 @@ $(document).ready(function() {
 						.attr("src", 'img/icone/' + (data.nascondi ? 'eye_no.png' : 'eye.png'))
 						.attr("alt", data.nascondi ? 'News nascosta' : 'News visibile')
 						.parent().attr("title", data.nascondi ? 'News nascosta' : 'News visibile');
-					li.find(".testo").html(data.testo);
+					li.find(".lbltesto").html(data.testo);
 				}
 				else {
 					// Inserimento di una nuova news
@@ -137,7 +137,7 @@ $(document).ready(function() {
 							.append(" ")
 							.append(
 								$("<span />")
-									.addClass("testo")
+									.addClass("lbltesto")
 									.append(data.testo)
 							)
 						.animate({
