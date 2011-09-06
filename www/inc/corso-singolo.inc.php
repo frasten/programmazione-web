@@ -42,13 +42,13 @@ while( $riga = mysql_fetch_assoc( $result ) ) {
 		$esercitatori[] = "$riga[nome]";
 }
 printf( "Docent%s: ", sizeof( $docenti ) == 1 ? 'e': 'i');
-echo implode( ', ', $docenti );
+echo htmlspecialchars( implode( ', ', $docenti ) );
 unset( $docenti );
 echo "<br />\n";
 
 if ( sizeof( $esercitatori ) ) {
 	echo "Esercitazioni: ";
-	echo implode( ', ', $esercitatori );
+	echo htmlspecialchars( implode( ', ', $esercitatori ) );
 }
 unset( $esercitatori );
 
