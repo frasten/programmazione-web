@@ -149,12 +149,12 @@ else if ( $_GET['action'] == 'newuser' ) {
 			// Ok, salvo.
 			$_POST['username'] = mysql_real_escape_string( $_POST['username'] );
 			// Genero un salt
-			$salt = sha1( uniqid( rand(), true ) );
-			$salt = substr( $salt, 0, 20 ); // Solo i primi 20 caratteri
+			$salt = genera_random_string( 30 );
 
 			// Calcolo l'hash
 			$hash = hmac_sha1( $config['hmac_psk'], "$_POST[password]$salt" );
 
+			$salt = mysql_real_escape_string( $salt );
 			$query = <<<EOF
 INSERT INTO `$config[db_prefix]login`
 (`username`,`salt`,`password`)

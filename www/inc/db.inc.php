@@ -281,7 +281,7 @@ EOF;
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]login` (
 	`username` VARCHAR(20)  NOT NULL,
-	`salt` VARCHAR(20)  NOT NULL,
+	`salt` VARCHAR(30)  NOT NULL,
 	`password` VARCHAR(40)  NOT NULL,
 	PRIMARY KEY (`username`)
 )
@@ -294,7 +294,7 @@ EOF;
 	$query = <<<EOF
 CREATE TABLE IF NOT EXISTS `$config[db_prefix]persistent_login` (
 	`username` VARCHAR(20)  NOT NULL,
-	`salt` VARCHAR(20) NOT NULL,
+	`salt` VARCHAR(30) NOT NULL,
 	`tokenhash` VARCHAR(40) NOT NULL,
 	`timestamp` DATETIME NOT NULL,
 	CONSTRAINT `fk_$config[db_prefix]persistent_login_username`

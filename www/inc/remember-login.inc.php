@@ -78,8 +78,8 @@ EOF;
 function crea_persistent_cookie( $user ) {
 	global $config, $db;
 
-	$token = genera_random_string( 20 );
-	$salt = genera_random_string( 20 );
+	$token = genera_random_string( 30 );
+	$salt = genera_random_string( 30 );
 
 	// Salvo il cookie sull'utente
 	$expire = time() + $config['persistent_cookies_timeout'];

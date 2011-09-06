@@ -97,11 +97,11 @@ function check_default_user() {
 		// Non esiste alcun utente, creiamolo.
 		$user = 'admin';
 		$pass = genera_random_string( $config['default_pass_len'] );
-		$salt = sha1( uniqid( rand(), true ) );
-		$salt = substr( $salt, 0, 20 ); // Solo i primi 20 caratteri
+		$salt = genera_random_string( 30 );
 
 		$hash = hmac_sha1( $config['hmac_psk'], "$pass$salt" );
 
+		$salt = mysql_real_escape_string( $salt );
 		$query = <<<EOF
 INSERT INTO `$config[db_prefix]login`
 (`username`, `salt`, `password`)
