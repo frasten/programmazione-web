@@ -88,6 +88,7 @@ strong.errore {
 #form-pubblicazione #titolo_contesto,
 #form-pubblicazione #editore,
 #form-pubblicazione #isbn,
+#form-pubblicazione #abstract,
 #form-pubblicazione #autori_libro {
 	width: 30em;
 }
