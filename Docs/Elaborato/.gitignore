@@ -2,6 +2,7 @@
 *.log
 *.aux
 *.toc
+*.out
 
 # PDF finale di LaTeX
 elaborato.pdf
