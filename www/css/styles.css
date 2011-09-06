@@ -264,7 +264,9 @@ strong.errore {
 	   -moz-box-shadow: 0 0 3px rgba(17, 102, 0, 0.4);
 	-webkit-box-shadow: 0 0 3px rgba(17, 102, 0, 0.4);
 	        box-shadow: 0 0 3px rgba(17, 102, 0, 0.4);
-	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+	        border-radius: 3px;
 }
 
 
