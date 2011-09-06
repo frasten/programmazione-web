@@ -248,6 +248,7 @@ strong.errore {
 	background-image: none !important;
 	padding-left: 0 !important;
 	margin-right: 10px;
+	line-height: 20px !important;
 }
 
 .adminmenu a {

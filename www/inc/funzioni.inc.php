@@ -43,15 +43,20 @@ function admin_menu( $links = array( array( '', '', '' ) ) ) {
 
 function stampa_admin_link( $url, $testo, $icona, $hint = '' ) {
 	echo "<li>\n";
-	$style = '';
-	if ( ! empty( $icona ) )
-		$style = " style='background-image: url(img/icone/$icona)'";
+	if ( ! empty( $url ) ) {
+		$style = '';
+		if ( ! empty( $icona ) )
+			$style = " style='background-image: url(img/icone/$icona)'";
 
-	$title = '';
-	if ( ! empty( $hint ) )
-		$title = sprintf( " title='%s'", htmlspecialchars( $hint, ENT_QUOTES ) );
+		$title = '';
+		if ( ! empty( $hint ) )
+			$title = sprintf( " title='%s'", htmlspecialchars( $hint, ENT_QUOTES ) );
 
-	printf( "<a href='%s' class='linkconicona'%s%s>%s</a>", htmlspecialchars( $url ), $style, $title, htmlspecialchars( $testo ) );
+		printf( "<a href='%s' class='linkconicona'%s%s>%s</a>", htmlspecialchars( $url ), $style, $title, htmlspecialchars( $testo ) );
+	}
+	else {
+		echo "&nbsp;";
+	}
 	echo "</li>\n";
 }
 
