@@ -5,6 +5,7 @@
 \usepackage{makeidx}
 \usepackage[pdfborder=0]{hyperref}
 \usepackage{graphicx}
+\usepackage{amsmath}
 
 \title{\Huge\textbf{Elaborato\\di\\Programmazione Web}\\ \vspace{1cm} \huge Sito Web del Gruppo di Basi di Dati e Sistemi Informativi: Pubblicazioni e Corsi}
 \author{\textit{Lorenzi Roberta} Matricola: 72361\and \textit{Piccinelli Andrea} Matricola: 83392}
@@ -2020,6 +2021,114 @@ Amministratore}
 			\end{itemize}
 		\end{enumerate}
 \end{enumerate}
+
+\clearpage
+\subsection{Autenticazione}
+
+Dato che il sito web realizzato è visibile al pubblico, si è posta
+particolare attenzione all'aspetto sicurezza, per rendere il sistema
+robusto ad attacchi di malintenzionati.\\
+
+Per rendere il processo di autenticazione sicuro, si è scelto di implementare
+un protocollo \textbf{PAP}\footnote{Password Authentication Protocol}
+basato su funzione di hash crittografica \textbf{HMAC}\footnote{Hash-based MAC}
+e l'aggiunta di \textbf{salt} al database.\\
+
+La funzione HMAC permette di ottenere una funzione di
+MAC\footnote{Message Authentication Code} dipendente da una chiave,
+partendo da una funzione di MDC\footnote{Modification Detection Code} standard,
+ad esempio MD5 o SHA-1. \\
+
+Si è scelto di utilizzare HMAC-SHA-1, tra i più sicuri degli standard
+internazionali; per la relativa implementazione si rimanda alla letteratura,
+o alla lettura del codice in \texttt{hmac.inc.php}.\\
+
+Il salt è una stringa casuale di 30 caratteri, ognuno scelto tra 76 valori,
+ottenendo uno spazio di dimensione $ 76^{30} $, corrispondente ad
+una dimensione di una chiave binaria di circa $187$ bits.
+Esso rende inutili attacchi basati su dizionario o \textbf{rainbow tables};
+inoltre in corrispondenza di due password uguali si avranno due valori
+di hash differenti, quindi sarebbe molto complesso cercare di risalire
+alla password nell'ipotetico caso in cui un aggressore riuscisse ad ottenere
+l'accesso al database.\\
+
+Durante la creazione di un nuovo utente viene generato un nuovo salt
+associato ad esso e memorizzato nel database, insieme al nome utente e
+all'hash generato utilizzando tale salt.\\
+
+
+Ecco come avviene il processo di autenticazione:
+\begin{itemize}
+	\item l'utente invia il proprio username e la password (in chiaro);
+	\item vengono letti dal database il salt e l'hash della password corrispondenti
+		a tale username: se non sono presenti il login non è valido;
+	\item viene successivamente calcolato $ \text{HMAC}_k(password\_inserita\ ||\ salt) $,
+		utilizzando come chiave $k$ il contenuto della variabile \texttt{\$config['hmac\_psk']}
+		nel file \texttt{config.inc.php};
+	\item si confronta l'hash ottenuto con quello salvato nel database, e
+		se essi sono uguali si provvede ad impostare il login come valido.
+\end{itemize}
+
+Si noti che la chiave in \texttt{\$config['hmac\_psk']} è configurabile
+a piacere come stringa casuale sufficientemente lunga, ma la sua modifica
+invalida tutti i login presenti. È quindi consigliabile provvedere ad una pulizia
+della tabella `unibs\_is\_login' dopo questa azione.\\
+
+Nel caso in cui l'operazione di login sia avvenuta con successo, si imposta un
+flag della sessione, \texttt{\$\_SESSION['loggato']}, al valore \texttt{true}
+e all'interno della variabile di sessione \texttt{\$\_SESSION['user']}
+viene memorizzato il nome dell'utente, in modo che esso sia disponibile
+su qualsiasi pagina della sessione corrente.\\
+
+È bene notare che le credenziali dell'utente vengono trasmesse non
+cifrate tra il terminale utilizzato e il server. È quindi
+consigliabile fare molta attenzione nel caso si utilizzino reti wifi
+pubbliche o non fidate. Una soluzione a questo problema sarebbe
+l'utilizzo del protocollo HTTPS, che cifra la connessione con il
+protocollo TLS/SSL.\\
+
+\subsection{Memorizzazione del login}
+
+Per semplificare la procedura di accesso è stata implementata la
+possibilità di memorizzare le credenziali per evitare di doverle
+reinserire all'accesso successivo. Chiaramente l'utilizzo di questa
+funzionalità è \textbf{assolutamente da evitare} nel caso di postazioni
+pubbliche o non fidate, perché si consentirebbe l'accesso al proprio
+account sul sito web.\\
+
+Per memorizzare le credenziali si utilizzano dei \textbf{cookies}, 
+che restano salvati sul browser dell'utente per un determinato 
+periodo di tempo, configurabile nel file \texttt{config.inc.php}.\\
+
+È però pericoloso memorizzare l'username e la password (o un hash di 
+essa) in chiaro, poiché essi potrebbero essere facilmente sottratti 
+con un attacco di tipo XSS\footnote{Cross Site Scripting}, 
+garantendo comunque al malintenzionato un accesso illimitato.\\
+
+La scelta migliore è stata qundi quella di salvare nel cookie una 
+chiave che abbia una scadenza, collegata all'utente e generata ad 
+hoc, che garantisca uno ed un solo accesso autorizzato: una \textbf
+{one-time key} presa da uno spazio delle chiavi di dimensione $ 
+76^{30} $, corrispondente ad una dimensione di una chiave binaria di 
+circa $187$ bits.\\
+
+Quando questa chiave viene utilizzata con successo, si procede alla sua
+invalidazione nel database, così facendo se un attaccante fosse riuscito
+in precedenza ad ottenere la chiave, non riuscirebbe a riutilizzarla
+per più di un accesso.\\
+
+Inoltre si procede periodicamente ad eliminare le chiavi scadute,
+secondo il parametro \texttt{\$config['persistent\_cookies\_timeout']},
+configurabile nel file \texttt{config.inc.php}.\\
+
+Anche in questo caso la one-time key non viene memorizzata in chiaro nel
+database ma si procede a salvarne un hash HMAC, con salt generato per
+l'occasione.\\
+
+È importante ricordare che per ovvi motivi di sicurezza tutte le one-time
+key di un utente vengono eliminate in caso di modifica della password
+o di eliminazione dell'utente stesso.
+
 
 \clearpage
 \section{Descrizione delle pagine web da implementare e delle funzionalità che realizzano: Utente
