@@ -238,9 +238,9 @@ strong.errore {
 	        border-radius: 4px;
 
 
-	   -moz-box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
-	-webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
-	        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+	   -moz-box-shadow: 3px 3px 3px rgba(0,0,0,0.12);
+	-webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.12);
+	        box-shadow: 2px 2px 5px rgba(0,0,0,0.12);
 }
 
 .adminmenu li {
@@ -253,15 +253,18 @@ strong.errore {
 
 .adminmenu a {
 	text-decoration: none;
-	padding-right: 2px;
+	padding-right: 4px;
 	text-shadow: 0px 1px 1px #fff;
+	padding-left: 22px !important;
+	background-position: 2px 0px;
 }
 
 .adminmenu a:hover {
 	text-shadow: 0px 1px 1px #050;
-	   -moz-box-shadow: 0 0 3px #160;
-	-webkit-box-shadow: 0 0 3px #160;
-	        box-shadow: 0 0 3px #160;
+	   -moz-box-shadow: 0 0 3px rgba(17, 102, 0, 0.4);
+	-webkit-box-shadow: 0 0 3px rgba(17, 102, 0, 0.4);
+	        box-shadow: 0 0 3px rgba(17, 102, 0, 0.4);
+	border-radius: 3px;
 }
 
 
