@@ -25,7 +25,7 @@ $old_facolta = false;
 while ( $riga = mysql_fetch_assoc( $result ) ) {
 	if ( $riga['nome_facolta'] != $old_facolta ) {
 		if ( $riga !== false ) echo "</ul>\n";
-		printf( "<h2>%s</h2>\n", htmlspecialchars( $riga['nome_facolta'] ) );
+		printf( "<h2>%s</h2>\n", htmlspecialchars( $riga['nome_facolta'], ENT_NOQUOTES, 'UTF-8' ) );
 		echo "<ul>\n";
 	}
 
@@ -37,7 +37,8 @@ while ( $riga = mysql_fetch_assoc( $result ) ) {
 		echo "</a>\n ";
 	}
 
-	printf( "<a href='?id=%d'>%s</a>\n", $riga['id_corso'], htmlspecialchars( $riga['nome_corso'] ) );
+	printf( "<a href='?id=%d'>%s</a>\n", $riga['id_corso'],
+		htmlspecialchars( $riga['nome_corso'], ENT_NOQUOTES, 'UTF-8' ) );
 	echo "</li>\n";
 
 	$old_facolta = $riga['nome_facolta'];

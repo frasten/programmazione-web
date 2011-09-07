@@ -120,9 +120,11 @@ function stampa_pub_rivista( $riga ) {
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>\n";
 	if ( ! empty( $riga['file'] ) )
-		printf( "<a href='%s'>%s</a>", htmlspecialchars( $riga['file'], ENT_QUOTES ), htmlspecialchars( $riga['titolo'] ) );
+		printf( "<a href='%s'>%s</a>",
+			htmlspecialchars( $riga['file'], ENT_QUOTES, 'UTF-8' ),
+			htmlspecialchars( $riga['titolo'], ENT_NOQUOTES, 'UTF-8' ) );
 	else
-		echo htmlspecialchars( $riga['titolo'] );
+		echo htmlspecialchars( $riga['titolo'], ENT_NOQUOTES, 'UTF-8' );
 	echo "</span><br />";
 
 
@@ -133,25 +135,26 @@ function stampa_pub_rivista( $riga ) {
 
 	// Nome del journal
 	if ( $riga['titolo_contesto'] ) {
-		echo htmlspecialchars( $riga['titolo_contesto'] );
+		echo htmlspecialchars( $riga['titolo_contesto'], ENT_NOQUOTES, 'UTF-8' );
 		echo ", ";
 	}
 
 	/* 13(1-2):3-31 */
 	echo intval( $riga['volume'] );
 	if ( $riga['numero'] ) {
-		echo "($riga[numero])";
+		printf( "(%d)", intval( $riga['numero'] ) );
 	}
 
 	if ( $riga['pag_inizio'] && $riga['pag_fine'] ) {
-		echo ":$riga[pag_inizio]-$riga[pag_fine]";
+		printf( ":%d-%d", intval( $riga['pag_inizio'] ), intval( $riga['pag_fine'] ) );
 	}
 	echo ", ";
 
-	echo "$riga[anno].";
+	printf( "%d.", $riga['anno'] );
 
 	if ( ! empty( $riga['abstract'] ) )
-		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'] ) );
+		printf( "<br /><em>Abstract:</em> %s\n",
+			htmlspecialchars( $riga['abstract'], ENT_NOQUOTES, 'UTF-8' ) );
 
 	echo "</span>\n";
 }
@@ -162,9 +165,11 @@ function stampa_pub_libro( $riga ) {
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>\n";
 	if ( ! empty( $riga['file'] ) )
-		printf( "<a href='%s'>%s</a>", htmlspecialchars( $riga['file'], ENT_QUOTES ), htmlspecialchars( $riga['titolo'] ) );
+		printf( "<a href='%s'>%s</a>",
+			htmlspecialchars( $riga['file'], ENT_QUOTES, 'UTF-8' ),
+			htmlspecialchars( $riga['titolo'], ENT_NOQUOTES, 'UTF-8' ) );
 	else
-		echo htmlspecialchars( $riga['titolo'] );
+		echo htmlspecialchars( $riga['titolo'], ENT_NOQUOTES, 'UTF-8' );
 	echo "</span><br />";
 
 
@@ -174,26 +179,26 @@ function stampa_pub_libro( $riga ) {
 	echo ", " . "";
 
 	if ( $riga['titolo_contesto'] ) {
-		echo htmlspecialchars( $riga['titolo_contesto'] );
+		echo htmlspecialchars( $riga['titolo_contesto'], ENT_NOQUOTES, 'UTF-8' );
 		echo ", ";
 	}
 
 	if ( $riga['curatori_libro'] )
-		printf( "(ed. %s), ", htmlspecialchars( $riga['curatori_libro'] ) );
+		printf( "(%s ed.), ", htmlspecialchars( $riga['curatori_libro'], ENT_NOQUOTES, 'UTF-8' ) );
 
-	echo htmlspecialchars( $riga['editore'] ) . ", ";
+	echo htmlspecialchars( $riga['editore'], ENT_NOQUOTES, 'UTF-8' ) . ", ";
 
 	if ( $riga['pag_inizio'] && $riga['pag_fine'] ) {
-		echo "pages $riga[pag_inizio]-$riga[pag_fine], ";
+		printf( "pages %d-%d, ", intval( $riga['pag_inizio'] ), intval( $riga['pag_fine'] ) );
 	}
 
 	if ( ! empty( $riga['isbn'] ) )
-		printf( "ISBN/ISSN: %s, ", htmlspecialchars( $riga['isbn'] ) );
+		printf( "ISBN/ISSN: %s, ", htmlspecialchars( $riga['isbn'], ENT_NOQUOTES, 'UTF-8' ) );
 
-	echo "$riga[anno].";
+	printf( "%d.", $riga['anno'] );
 
 	if ( ! empty( $riga['abstract'] ) )
-		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'] ) );
+		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'], ENT_NOQUOTES, 'UTF-8' ) );
 
 	echo "</span>\n";
 }
@@ -204,9 +209,11 @@ function stampa_pub_conferenza( $riga ) {
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>\n";
 	if ( ! empty( $riga['file'] ) )
-		printf( "<a href='%s'>%s</a>", htmlspecialchars( $riga['file'], ENT_QUOTES ), htmlspecialchars( $riga['titolo'] ) );
+		printf( "<a href='%s'>%s</a>",
+			htmlspecialchars( $riga['file'], ENT_QUOTES, 'UTF-8' ),
+			htmlspecialchars( $riga['titolo'], ENT_NOQUOTES, 'UTF-8' ) );
 	else
-		echo htmlspecialchars( $riga['titolo'] );
+		echo htmlspecialchars( $riga['titolo'], ENT_NOQUOTES, 'UTF-8' );
 	echo "</span><br />";
 
 
@@ -216,18 +223,18 @@ function stampa_pub_conferenza( $riga ) {
 	echo ", " . "";
 
 	if ( $riga['titolo_contesto'] ) {
-		echo "Proc. of " . htmlspecialchars( $riga['titolo_contesto'] );
+		echo "Proc. of " . htmlspecialchars( $riga['titolo_contesto'], ENT_NOQUOTES, 'UTF-8' );
 		echo ", ";
 	}
 
 	if ( $riga['pag_inizio'] && $riga['pag_fine'] ) {
-		echo "pages $riga[pag_inizio]-$riga[pag_fine], ";
+		printf( "pages %d-%d, ", intval( $riga['pag_inizio'] ), intval( $riga['pag_fine'] ) );
 	}
 
-	echo "$riga[anno].";
+	printf( "%d.", $riga['anno'] );
 
 	if ( ! empty( $riga['abstract'] ) )
-		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'] ) );
+		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'], ENT_NOQUOTES, 'UTF-8' ) );
 
 	echo "</span>\n";
 }
@@ -237,7 +244,7 @@ function stampa_pub_monografia( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>\n";
-	echo htmlspecialchars( $riga['titolo'] );
+	echo htmlspecialchars( $riga['titolo'], ENT_NOQUOTES, 'UTF-8' );
 	echo "</span><br />\n";
 
 
@@ -246,14 +253,14 @@ function stampa_pub_monografia( $riga ) {
 	stampa_autori( $autori, $riga['id_pubblicazione'] );
 	echo ", " . "";
 
-	echo htmlspecialchars( $riga['editore'] ) . ", ";
+	echo htmlspecialchars( $riga['editore'], ENT_NOQUOTES, 'UTF-8' ) . ", ";
 
-	echo "n. of pages: $riga[num_pagine], ";
+	printf( "n. of pages: %d, ", $riga['num_pagine'] );
 
-	echo "$riga[anno].";
+	printf( "%d.", $riga['anno'] );
 
 	if ( ! empty( $riga['abstract'] ) )
-		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'] ) );
+		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'], ENT_NOQUOTES, 'UTF-8' ) );
 
 	echo "</span>\n";
 }
@@ -263,7 +270,7 @@ function stampa_pub_curatela( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>\n";
-	echo htmlspecialchars( $riga['titolo'] );
+	echo htmlspecialchars( $riga['titolo'], ENT_NOQUOTES, 'UTF-8' );
 	echo "</span><br />\n";
 
 
@@ -273,13 +280,13 @@ function stampa_pub_curatela( $riga ) {
 	echo ", " . "";
 
 	if ( $riga['editore'] ) {
-		echo htmlspecialchars( $riga['editore'] ) . ", ";
+		echo htmlspecialchars( $riga['editore'], ENT_NOQUOTES, 'UTF-8' ) . ", ";
 	}
 
-	echo "$riga[anno].";
+	printf( "%d.", $riga['anno'] );
 
 	if ( ! empty( $riga['abstract'] ) )
-		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'] ) );
+		printf( "<br /><em>Abstract:</em> %s\n", htmlspecialchars( $riga['abstract'], ENT_NOQUOTES, 'UTF-8' ) );
 
 	echo "</span>\n";
 }

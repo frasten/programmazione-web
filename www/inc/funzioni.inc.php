@@ -28,7 +28,8 @@ function admin_menu( $links = array( array( '', '', '' ) ) ) {
 	}
 
 	// Icone fisse
-	$right[] = array( 'admin.php', htmlspecialchars( $_SESSION['user'] ), 'user_suit.png', "Accedi all'area amministrativa" );
+	$user = htmlspecialchars( $_SESSION['user'], ENT_NOQUOTES, 'UTF-8' );
+	$right[] = array( 'admin.php', $user, 'user_suit.png', "Accedi all'area amministrativa" );
 	$right[] = array( 'logout.php', 'Esci', 'user_go.png' );
 	echo "<li><ul>\n";
 	foreach ( $right as $l ) {
@@ -50,9 +51,11 @@ function stampa_admin_link( $url, $testo, $icona, $hint = '' ) {
 
 		$title = '';
 		if ( ! empty( $hint ) )
-			$title = sprintf( " title='%s'", htmlspecialchars( $hint, ENT_QUOTES ) );
+			$title = sprintf( " title='%s'", htmlspecialchars( $hint, ENT_QUOTES, 'UTF-8' ) );
 
-		printf( "<a href='%s' class='linkconicona'%s%s>%s</a>", htmlspecialchars( $url ), $style, $title, htmlspecialchars( $testo ) );
+		printf( "<a href='%s' class='linkconicona'%s%s>%s</a>",
+			htmlspecialchars( $url, ENT_QUOTES, 'UTF-8' ), $style, $title,
+			htmlspecialchars( $testo, ENT_NOQUOTES, 'UTF-8' ) );
 	}
 	else {
 		echo "&nbsp;";

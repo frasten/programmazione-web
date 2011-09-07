@@ -21,8 +21,14 @@ if ( ! $result || ! mysql_num_rows( $result ) ) {
 
 $corso = mysql_fetch_assoc( $result );
 ?>
-<h2><?php echo htmlspecialchars( $corso['nome'] );
-echo " - a.a. $corso[annoaccademico]/" . ( $corso['annoaccademico'] + 1 ) ?></h2>
+<h2><?php
+printf( "%s - a.a. %d/%d",
+	htmlspecialchars( $corso['nome'], ENT_NOQUOTES, 'UTF-8' ),
+	intval( $corso['annoaccademico'] ),
+	intval( $corso['annoaccademico'] ) + 1
+);
+?>
+</h2>
 <span class='docente'>
 <?php
 $query = <<<EOF
@@ -42,13 +48,13 @@ while( $riga = mysql_fetch_assoc( $result ) ) {
 		$esercitatori[] = "$riga[nome]";
 }
 printf( "Docent%s: ", sizeof( $docenti ) == 1 ? 'e': 'i' );
-echo htmlspecialchars( implode( ', ', $docenti ) );
+echo htmlspecialchars( implode( ', ', $docenti ), ENT_NOQUOTES, 'UTF-8' );
 unset( $docenti );
 echo "<br />\n";
 
 if ( sizeof( $esercitatori ) ) {
 	echo "Esercitazioni: ";
-	echo htmlspecialchars( implode( ', ', $esercitatori ) );
+	echo htmlspecialchars( implode( ', ', $esercitatori ), ENT_NOQUOTES, 'UTF-8' );
 }
 unset( $esercitatori );
 
@@ -76,7 +82,8 @@ else {
 			$file = basename( $news['file'] );
 			$img = get_img_tipofile( $file );
 			echo "<span class='scaricafile'>";
-			printf( "<a href='%s' class='iconalink' title='Scarica il file'>", htmlspecialchars( $news['file'], ENT_QUOTES ) );
+			printf( "<a href='%s' class='iconalink' title='Scarica il file'>",
+				htmlspecialchars( $news['file'], ENT_QUOTES, 'UTF-8' ) );
 			echo "<img src='img/icone/$img' alt='Scarica il file' />";
 			echo "</a>";
 			echo "</span>\n";
@@ -154,7 +161,8 @@ EOF;
 	while ( $riga = mysql_fetch_assoc( $result ) ) {
 		if ( $oldsez != $riga['id_sezione'] ) {
 			if ( $oldsez !== false ) echo "</ul>\n";
-			printf( "<h4>%s</h4>\n", htmlspecialchars( $riga['titolo_sez'] ) );
+			printf( "<h4>%s</h4>\n",
+				htmlspecialchars( $riga['titolo_sez'], ENT_NOQUOTES, 'UTF-8' ) );
 			if ( trim( strip_tags( $riga['note'] ) ) )
 				echo $riga['note'];
 
@@ -174,9 +182,9 @@ EOF;
 		$img = get_img_tipofile( $file );
 
 		printf( "<a href='%s' class='iconalink' title='Scarica il file'><img src='img/icone/%s' alt='Scarica il file' /></a>\n",
-			htmlspecialchars( $url, ENT_QUOTES ),
+			htmlspecialchars( $url, ENT_QUOTES, 'UTF-8' ),
 			$img );
-		echo htmlspecialchars( $riga['titolo_file'] ) . "\n";
+		echo htmlspecialchars( $riga['titolo_file'], ENT_NOQUOTES, 'UTF-8' ) . "\n";
 		if ( $riga['aggiornato'] )
 			updated_icon();
 		echo "</li>\n";

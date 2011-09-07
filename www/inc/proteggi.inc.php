@@ -60,7 +60,7 @@ if ( ! empty( $_POST['username'] ) || ! empty( $_POST['password'] ) ) {
 
 		<form id="loginform" action='?<?php
 		// htmlspecialchars() per protezione da attacchi XSS
-		echo htmlspecialchars( "$_SERVER[QUERY_STRING]", ENT_QUOTES );
+		echo htmlspecialchars( "$_SERVER[QUERY_STRING]", ENT_QUOTES, 'UTF-8' );
 		?>' method="post" >
 			<p>
 				<label for="username">Nome utente:<br />

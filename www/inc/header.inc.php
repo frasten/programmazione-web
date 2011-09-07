@@ -59,7 +59,7 @@ pageTracker._trackPageview();
 <body <?php
 	$page = basename( $_SERVER['PHP_SELF'] );
 	preg_match( "/^(.+)\.php$/", $page, $match );
-	echo "class='" . htmlspecialchars( $match[1], ENT_QUOTES ) . "' ";
+	echo "class='" . htmlspecialchars( $match[1], ENT_QUOTES, 'UTF-8' ) . "' ";
 ?>id="body">
 <div id="container">
 
@@ -94,7 +94,10 @@ EOF;
 	while ( $riga = mysql_fetch_assoc( $result ) ) {
 		echo str_repeat( "\t", 3 ) . "<li>";
 		echo "<a href='corso.php?id=$riga[id_corso]'>";
-		echo htmlspecialchars( $riga['nome_corso'] ) . ' - ' . htmlspecialchars( $riga['nome_facolta'] );
+		printf( "%s - %s",
+			htmlspecialchars( $riga['nome_corso'], ENT_NOQUOTES, 'UTF-8' ),
+			htmlspecialchars( $riga['nome_facolta'], ENT_NOQUOTES, 'UTF-8' )
+		);
 		echo "</a>";
 		echo "</li>\n";
 	}

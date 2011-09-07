@@ -22,10 +22,11 @@ EOF;
 	echo "<ul class='iconlist' style='margin-bottom: 20px;'>\n";
 	while ( $riga = mysql_fetch_assoc( $result ) ) {
 		echo "<li>\n";
-		printf( "<strong>%s</strong> ", htmlspecialchars( $riga['username'] ) );
+		printf( "<strong>%s</strong> ",
+			htmlspecialchars( $riga['username'], ENT_NOQUOTES, 'UTF-8' ) );
 
 		echo "<a href='";
-		echo htmlspecialchars( "?action=changepassword&user=" . rawurlencode( $riga['username'] ), ENT_QUOTES );
+		echo htmlspecialchars( "?action=changepassword&user=" . rawurlencode( $riga['username'] ), ENT_QUOTES, 'UTF-8' );
 		echo "' class='iconalink' title='Cambia password'>";
 		echo "<img src='img/icone/key.png' alt='Cambia password' />";
 		echo "</a> ";
@@ -33,7 +34,7 @@ EOF;
 		if ( $riga['username'] != $_SESSION['user'] ) {
 			// Non posso eliminare l'utente corrente.
 			echo "<a href='";
-			echo htmlspecialchars( "?action=deleteuser&user=" . rawurlencode( $riga['username'] ), ENT_QUOTES );
+			echo htmlspecialchars( "?action=deleteuser&user=" . rawurlencode( $riga['username'] ), ENT_QUOTES, 'UTF-8' );
 			echo "' class='iconalink' title='Elimina'>";
 			echo "<img src='img/icone/user_delete.png' alt='Elimina' />";
 			echo "</a> ";
@@ -106,7 +107,7 @@ else if ( $_GET['action'] == 'newuser' ) {
 		includi_scripts_validazione();
 		?>
 		<form action='<?php
-		echo htmlspecialchars( "?$_SERVER[QUERY_STRING]", ENT_QUOTES );
+		echo htmlspecialchars( "?$_SERVER[QUERY_STRING]", ENT_QUOTES, 'UTF-8' );
 		?>' method='post' id='frm-new-user'>
 			<ul class='form_list'>
 				<li>
@@ -194,11 +195,11 @@ else if ( $_GET['action'] == 'deleteuser' ) {
 
 	if ( empty( $_GET['conferma'] ) ) {
 		// Chiediamo conferma
-		echo "<p>Si &egrave; <strong>davvero</strong> sicuri di voler eliminare";
-		echo " l'utente <em>" . htmlspecialchars( $_GET['user'] ) . "</em>?</p>";
+		echo "<p>Si è <strong>davvero</strong> sicuri di voler eliminare";
+		echo " l'utente <em>" . htmlspecialchars( $_GET['user'], ENT_NOQUOTES, 'UTF-8' ) . "</em>?</p>";
 		echo "<a href='?action=listusers'>Annulla</a>";
 		echo " <a href='";
-		echo htmlspecialchars( "?$_SERVER[QUERY_STRING]&conferma=1", ENT_QUOTES );
+		echo htmlspecialchars( "?$_SERVER[QUERY_STRING]&conferma=1", ENT_QUOTES, 'UTF-8' );
 		echo "' class='btn_pericolo'>Elimina</a>";
 	}
 	else {
@@ -218,10 +219,12 @@ function stampa_form_change_password() {
 	includi_scripts_validazione();
 			?>
 		<p>
-			<strong>Cambio password per l'utente <em><?php echo htmlspecialchars( $_GET['user'] ) ?></em></strong>
+			<strong>Cambio password per l'utente <em><?php
+				echo htmlspecialchars( $_GET['user'], ENT_NOQUOTES, 'UTF-8' );
+			?></em></strong>
 		</p>
 		<form id='frm-edit-password' action='<?php
-			echo htmlspecialchars( "?$_SERVER[QUERY_STRING]", ENT_QUOTES );
+			echo htmlspecialchars( "?$_SERVER[QUERY_STRING]", ENT_QUOTES, 'UTF-8' );
 		?>' method='post'>
 			<ul class='form_list'>
 				<li>

@@ -6,7 +6,7 @@
 	}
 ?>
 <form action='?<?php
-	echo htmlspecialchars( $_SERVER['QUERY_STRING'], ENT_QUOTES );
+	echo htmlspecialchars( $_SERVER['QUERY_STRING'], ENT_QUOTES, 'UTF-8' );
 	?>' method='post' id='frm_corso'>
 <?php
 	if ( $corso )
@@ -68,7 +68,8 @@ EOF;
 			}
 			echo "<input type='radio' name='facolta' id='facolta_$riga[id_facolta]' value='$riga[id_facolta]' $checked/>\n";
 
-			printf( "<label for='facolta_$riga[id_facolta]'>%s</label>\n", htmlspecialchars( $riga['nome'] ) );
+			printf( "<label for='facolta_$riga[id_facolta]'>%s</label>\n",
+				htmlspecialchars( $riga['nome'], ENT_NOQUOTES, 'UTF-8' ) );
 			echo "</li>\n";
 		}
 		?>
@@ -117,7 +118,8 @@ EOF;
 				$checked = 'checked="checked" ';
 			echo "<input type='checkbox' name='docente[]' id='docente_$riga[id_docente]' value='$riga[id_docente]' $checked/>\n";
 
-			printf( "<label for='docente_$riga[id_docente]'>%s</label>\n", htmlspecialchars( $riga['nome'] ) );
+			printf( "<label for='docente_$riga[id_docente]'>%s</label>\n",
+				htmlspecialchars( $riga['nome'], ENT_NOQUOTES, 'UTF-8' ) );
 			echo "</td>\n";
 
 			// Docente
@@ -392,10 +394,10 @@ function riempi( $valore, $tipo ) {
 			$out = intval( $valore );
 			break;
 		case 'attr':
-			$out = htmlspecialchars( $valore, ENT_QUOTES );
+			$out = htmlspecialchars( $valore, ENT_QUOTES, 'UTF-8' );
 			break;
 		case 'html':
-			$out = htmlspecialchars( $valore );
+			$out = htmlspecialchars( $valore, ENT_NOQUOTES, 'UTF-8' );
 			break;
 	}
 
