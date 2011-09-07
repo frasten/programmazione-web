@@ -15,6 +15,10 @@ if ( empty( $_GET['action'] ) ) ajax_esci();
 
 
 if ( $_GET['action'] == 'togglevisibility' ) {
+	/******************************************
+	 * RENDI VISIBILE/INVISIBILE UN FILE/NEWS *
+	 ******************************************/
+
 	$id = intval( $_POST['id'] );
 	if ( $id <= 0 ) ajax_esci();
 
@@ -65,6 +69,10 @@ EOF;
 	ajax_esci();
 }
 else if ( $_GET['action'] == 'getsezione' ) {
+	/*********************************
+	 * RICHIESTA DATI DI UNA SEZIONE *
+	 *********************************/
+
 	if ( empty( $_POST['id'] ) ) ajax_esci();
 	$id = intval( $_POST['id'] );
 
@@ -99,6 +107,10 @@ EOF;
 	ajax_esci();
 }
 else if ( $_GET['action'] == 'savesezione' ) {
+	/************************************
+	 * SALVATAGGIO DI UNA SEZIONE FILES *
+	 ************************************/
+
 	if ( ! isset( $_POST['id'] ) ) ajax_esci();
 	if ( empty( $_POST['id_corso'] ) ) ajax_esci();
 	if ( ! isset( $_POST['note'] ) ) ajax_esci();
@@ -140,6 +152,10 @@ EOF;
 	ajax_esci();
 }
 else if ( $_GET['action'] == 'loadlistasezioni' ) {
+	/*****************************************
+	 * CARICAMENTO LISTA DI SEZIONI DI FILES *
+	 *****************************************/
+
 	if ( empty( $_GET['id_corso'] ) ) ajax_esci( 'ID non valido.' );
 
 	$id_corso = intval( $_GET['id_corso'] );
@@ -177,7 +193,7 @@ EOF;
 		$sezioni[] = $s;
 	}
 
-
+	// Stampo la lista di sezioni e relativi files
 	if ( sizeof( $sezioni ) ) {
 		foreach ( $sezioni as $sez ) {
 			printf( "<a href='javascript:;' onclick='apriDialogoSezione(%d)' style='font-weight: bold'>%s</a>\n",
@@ -196,6 +212,10 @@ EOF;
 	}
 }
 else if( $_GET['action'] == 'newfacolta' ) {
+	/****************************
+	 * CREAZIONE NUOVA FACOLTA` *
+	 ****************************/
+
 	if ( empty( $_POST['nome-facolta'] ) ) ajax_esci( 'Inserire il nome della Facolt&agrave;' );
 
 	$nome = mysql_real_escape_string( $_POST['nome-facolta'] );
@@ -216,6 +236,10 @@ EOF;
 	ajax_esci();
 }
 else if( $_GET['action'] == 'newdocente' ) {
+	/***************************
+	 * CREAZIONE NUOVO DOCENTE *
+	 ***************************/
+
 	if ( empty( $_POST['nome-docente'] ) ) ajax_esci( 'Inserire il nome del Docente' );
 
 	$nome = mysql_real_escape_string( $_POST['nome-docente'] );
@@ -236,6 +260,10 @@ EOF;
 	ajax_esci();
 }
 else if ( $_GET['action'] == 'eliminacorso' ) {
+	/**********************
+	 * ELIMINAZIONE CORSO *
+	 **********************/
+
 	if ( empty( $_POST['id'] ) ) ajax_esci( 'ID non valido.' );
 	$id_corso = intval( $_POST['id'] );
 

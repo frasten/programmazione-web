@@ -16,7 +16,9 @@ if ( empty( $_GET['action'] ) ) ajax_esci();
 
 
 if ( $_GET['action'] == 'savenews' ) {
-	/* Creazione di una nuova news */
+	/********************
+	 * SALVATAGGIO NEWS *
+	 ********************/
 
 	if ( empty( $_POST['testo'] ) ) ajax_esci( 'Inserire il contenuto della news.' );
 	if ( empty( $_POST['id_corso'] ) ) ajax_esci( 'ID non valido.' );
@@ -30,7 +32,9 @@ if ( $_GET['action'] == 'savenews' ) {
 	$testo = mysql_real_escape_string( $_POST['testo'] );
 
 	if ( empty( $_POST['id_news'] ) ) {
-		/* INSERIMENTO NUOVA NEWS */
+		/**************************
+		 * INSERIMENTO NUOVA NEWS *
+		 **************************/
 
 		// La mettiamo nella posizione 0, quindi facciamo scorrere di 1 le
 		// precedenti news per questo corso.
@@ -54,7 +58,10 @@ EOF;
 		if ( ! $id_news ) ajax_esci( 'Errore nel salvataggio.' );
 	}
 	else {
-		/* MODIFICA DI UNA NEWS ESISTENTE */
+	/**********************************
+	 * MODIFICA DI UNA NEWS ESISTENTE *
+	 **********************************/
+
 		$id_news = intval( $_POST['id_news'] );
 		$query = <<<EOF
 UPDATE `$config[db_prefix]news`
@@ -112,6 +119,10 @@ EOF;
 	ajax_esci();
 }
 else if ( $_GET['action'] == 'savenewsorder' ) {
+	/***************************
+	 * SALVATAGGIO ORDINE NEWS *
+	 ***************************/
+
 	$id_corso = intval( $_GET['id_corso'] );
 	if ( $id_corso <= 0 ) ajax_esci( 'ID corso non valido.' );
 
@@ -132,6 +143,10 @@ EOF;
 	ajax_esci();
 }
 else if ( $_GET['action'] == 'getnews' ) {
+	/******************************
+	 * RICHIESTA DATI DI UNA NEWS *
+	 ******************************/
+
 	if ( empty( $_POST['id'] ) ) ajax_esci( 'ID non valido.' );
 	$id_news = intval( $_POST['id'] );
 
@@ -153,6 +168,10 @@ EOF;
 	ajax_esci();
 }
 else if ( $_GET['action'] == 'eliminanews' ) {
+	/****************************
+	 * ELIMINAZIONE DI UNA NEWS *
+	 ****************************/
+
 	if ( empty( $_POST['id'] ) ) ajax_esci( 'ID non valido.' );
 	$id_news = intval( $_POST['id'] );
 

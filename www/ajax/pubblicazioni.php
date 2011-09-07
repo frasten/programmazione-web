@@ -14,6 +14,10 @@ if ( empty( $_SESSION['loggato'] ) ) ajax_esci( 'Accesso non autorizzato.' );
 if ( empty( $_GET['action'] ) ) ajax_esci();
 
 if ( $_GET['action'] == 'get_lista_autori' ) {
+	/****************
+	 * LISTA AUTORI *
+	 ****************/
+
 	$query = <<<EOF
 SELECT `nome`
 FROM `$config[db_prefix]pubautore`
@@ -31,6 +35,10 @@ EOF;
 	ajax_esci();
 }
 else if ( $_GET['action'] == 'eliminapubblicazione' ) {
+	/*************************
+	 * ELIMINA PUBBLICAZIONE *
+	 *************************/
+
 	if ( empty( $_POST['id'] ) ) ajax_esci( 'ID non valido.' );
 	$id_pubblicazione = intval( $_POST['id'] );
 

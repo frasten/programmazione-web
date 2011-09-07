@@ -15,6 +15,10 @@ if ( empty( $_GET['action'] ) ) ajax_esci();
 
 
 if ( $_GET['action'] == 'savefileorder' ) {
+	/********************************
+	 * SALVATAGGIO ORDINE DEI FILES *
+	 ********************************/
+
 	$id_sezione = intval( $_GET['id_sezione'] );
 	if ( $id_sezione <= 0 ) ajax_esci( 'ID sezione non valido.' );
 
@@ -35,6 +39,10 @@ EOF;
 	ajax_esci();
 }
 else if ( $_GET['action'] == 'getfile' ) {
+	/***********************************
+	 * CARICAMENTO DEI DATI DI UN FILE *
+	 ***********************************/
+
 	if ( empty( $_POST['id'] ) ) ajax_esci();
 	$id = intval( $_POST['id'] );
 
@@ -57,6 +65,9 @@ EOF;
 	ajax_esci();
 }
 else if ( $_GET['action'] == 'savefile' ) {
+	/**************************
+	 * SALVATAGGIO DI UN FILE *
+	 **************************/
 
 	if ( empty( $_POST['titolo'] ) ) ajax_esci( 'Inserire un titolo per il file.' );
 	$titolo = strip_tags( $_POST['titolo'] ); // Anti XSS
@@ -76,7 +87,10 @@ else if ( $_GET['action'] == 'savefile' ) {
 	$titolo_esc = mysql_real_escape_string( $titolo );
 
 	if ( empty( $_POST['id_file'] ) ) {
-		// Nuovo file
+		/**************
+		 * FILE NUOVO *
+		 *************/
+
 		if ( empty( $_POST['id_sezione'] ) ) ajax_esci( 'ID sezione non valido.' );
 		$id_sezione = intval( $_POST['id_sezione'] );
 
@@ -126,7 +140,10 @@ EOF;
 
 	}
 	else {
-		// Aggiorno un file esistente
+		/***********************
+		 * FILE GIA` ESISTENTE *
+		 ***********************/
+
 		$id = intval( $_POST['id_file'] );
 
 		// Salvataggio file
@@ -157,6 +174,10 @@ EOF;
 
 }
 else if ( $_GET['action'] == 'eliminafile' ) {
+	/***************************
+	 * ELIMINAZIONE DI UN FILE *
+	 ***************************/
+
 	if ( empty( $_POST['id'] ) ) ajax_esci();
 	$id = intval( $_POST['id'] );
 
@@ -196,7 +217,7 @@ else {
 
 
 /*
- * metto un URL
+ * Chiedo di salvare un URL:
  *  => era uguale => non faccio niente
  *  => e' diverso
  *    => era un path relativo => cancello il vecchio file => scrivo il nuovo url (assoluto)
