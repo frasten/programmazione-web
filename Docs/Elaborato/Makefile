@@ -1,7 +1,7 @@
 all: elaborato
 
 elaborato:
-	pdflatex -shell-escape elaborato.tex
+	pdflatex -shell-escape --jobname="Elaborato_PW_Piccinelli_Lorenzi" elaborato.tex
 
 clean:
-	rm -f elaborato.aux elaborato.idx elaborato.log elaborato.toc elaborato.pdf elaborato.out
+	rm -f *.aux *.idx *.log *.toc *.out *.pdf
