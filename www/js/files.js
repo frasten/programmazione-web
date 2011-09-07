@@ -297,9 +297,10 @@ $(document).ready(function() {
 							.append(" ")
 							.append($("<a/>", {
 									href: 'javascript:;',
-									title: 'Elimina file',
-									click: function() {askEliminaFile(f.id_file);}
-								}).addClass("iconalink"))
+									title: 'Elimina file'
+								}).addClass("iconalink")
+								.click(f.id_file, function(ev){askEliminaFile(ev.data)})
+								)
 								.find(":last")
 								.append($("<img>", {
 									src: 'img/icone/page_delete.png',
