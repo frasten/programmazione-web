@@ -90,7 +90,7 @@ strong.errore {
 #form-pubblicazione #isbn,
 #form-pubblicazione #abstract,
 #form-pubblicazione #autori_libro {
-	width: 30em;
+	width: 400px;
 }
 
 
@@ -144,10 +144,10 @@ strong.errore {
 
 	background: #fff;
 	border: 1px solid #e5e5e5;
-	   -moz-box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
-	-webkit-box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
-	 -khtml-box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
-	        box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
+	   -moz-box-shadow: 0 4px 10px rgba(200,200,200,0.5);
+	-webkit-box-shadow: 0 4px 10px rgba(200,200,200,0.5);
+	 -khtml-box-shadow: 0 4px 10px rgba(200,200,200,0.5);
+	        box-shadow: 0 4px 10px rgba(200,200,200,0.5);
 }
 
 #loginform p {
@@ -222,7 +222,7 @@ strong.errore {
     ADMIN
 ***********/
 .adminmenu {
-	background: #f9f9f9; /* Old browsers */
+	background: #f2f2f2; /* Old browsers */
 	background: -moz-linear-gradient(top, #f9f9f9 0%, #ececec 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(100%,#ececec)); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top, #f9f9f9 0%,#ececec 100%); /* Chrome10+,Safari5.1+ */
@@ -466,6 +466,12 @@ strong.errore {
 .testo:focus {
 	border-color: rgba(55,197,43, 0.2);
 
+	/* Browsers che non supportano inset: */
+	-webkit-box-shadow: 0 0 5px #37C52A;
+	   -moz-box-shadow: 0 0 5px #37C52A;
+	        box-shadow: 0 0 5px #37C52A;
+
+	/* Browsers che supportano inset: */
 	-webkit-box-shadow: inset 1px 1px 3px #e9e9e9,
 	                    0 0 5px #37C52A;
 	   -moz-box-shadow: inset 1px 1px 3px #e9e9e9,
