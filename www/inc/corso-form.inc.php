@@ -255,7 +255,7 @@ EOF;
 
 			<span id='news-saved-attachment'>(Allegato gi&agrave; salvato)</span>
 
-			<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn-news' style='margin-left: 4em'>
+			<button class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' id='btn-news' style='margin-left: 4em;'>
 				<span class="ui-button-text">Salva</span>
 			</button>
 		</fieldset>

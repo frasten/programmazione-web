@@ -11,6 +11,7 @@ require_once( 'framework.inc.php' );
 <title>Database and Information System Group</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="MSSmartTagsPreventParsing" content="TRUE" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
