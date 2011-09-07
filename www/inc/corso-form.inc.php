@@ -73,7 +73,7 @@ EOF;
 		}
 		?>
 			<li>
-				<a class="linksenzaicona" href="javascript:;" id="link-nome-facolta">Nuova Facolt&agrave;</a>
+				<a class="linksenzaicona" href="javascript:;" id="link-nome-facolta">Nuova Facoltà</a>
 			</li>
 		</ul>
 	</div>

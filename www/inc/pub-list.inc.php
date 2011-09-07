@@ -119,7 +119,10 @@ function stampa_pub_rivista( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>\n";
-	printf( $riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
+	if ( ! empty( $riga['file'] ) )
+		printf( "<a href='%s'>%s</a>", htmlspecialchars( $riga['file'], ENT_QUOTES ), htmlspecialchars( $riga['titolo'] ) );
+	else
+		echo htmlspecialchars( $riga['titolo'] );
 	echo "</span><br />";
 
 
@@ -158,7 +161,10 @@ function stampa_pub_libro( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>\n";
-	printf( $riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
+	if ( ! empty( $riga['file'] ) )
+		printf( "<a href='%s'>%s</a>", htmlspecialchars( $riga['file'], ENT_QUOTES ), htmlspecialchars( $riga['titolo'] ) );
+	else
+		echo htmlspecialchars( $riga['titolo'] );
 	echo "</span><br />";
 
 
@@ -197,7 +203,10 @@ function stampa_pub_conferenza( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>\n";
-	printf( $riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
+	if ( ! empty( $riga['file'] ) )
+		printf( "<a href='%s'>%s</a>", htmlspecialchars( $riga['file'], ENT_QUOTES ), htmlspecialchars( $riga['titolo'] ) );
+	else
+		echo htmlspecialchars( $riga['titolo'] );
 	echo "</span><br />";
 
 
