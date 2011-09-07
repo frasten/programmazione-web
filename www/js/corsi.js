@@ -149,7 +149,7 @@ $(document).ready(function() {
 					var nuovonome = $( "#docente-dialog-form form #nome-docente").val();
 					$('#link-nome-docente')
 						.parent().parent()
-						.before("<tr><td><input type='checkbox' name='docente' id='docente_"+data.id_docente+"' value='"+data.id_docente+"' checked='checked'/><label for='docente_"+data.id_docente+"'> " + nuovonome + "</label></td><td class='option'><input type='radio' name='tipodocente_"+data.id_docente+"' value='0' checked='checked'/></td><td class='option'><input type='radio' name='tipodocente_"+data.id_docente+"' value='1' /></td></tr>");
+						.before("<tr><td><input type='checkbox' name='docente[]' id='docente_"+data.id_docente+"' value='"+data.id_docente+"' checked='checked'/><label for='docente_"+data.id_docente+"'> " + nuovonome + "</label></td><td class='option'><input type='radio' name='tipodocente_"+data.id_docente+"' value='0' checked='checked'/></td><td class='option'><input type='radio' name='tipodocente_"+data.id_docente+"' value='1' /></td></tr>");
 					// Assegno gli eventi
 					$("#tbl_insert_docenti [id^='docente_']").filter(":last").click(autoRadioDocenti);
 					$("#tbl_insert_docenti [name^='tipodocente_']").slice(-2).click(autoCheckboxDocenti);
