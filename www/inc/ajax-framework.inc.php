@@ -1,5 +1,9 @@
 <?php
 
+$CONTENT_TYPE = 'application/json';
+
+require_once( 'framework.inc.php' );
+
 require_once( 'json.inc.php' );
 
 function ajax_esci( $msg = '' ) {

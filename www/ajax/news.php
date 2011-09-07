@@ -1,7 +1,7 @@
 <?php
 
-require_once( '../inc/framework.inc.php' );
-require_once( '../inc/ajax-functions.inc.php' );
+require_once( '../inc/ajax-framework.inc.php' );
+
 
 $json = array(
 	'success' => 0,

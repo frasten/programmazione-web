@@ -1,7 +1,7 @@
 <?php
 
-require_once( '../inc/framework.inc.php' );
-require_once( '../inc/ajax-functions.inc.php' );
+require_once( '../inc/ajax-framework.inc.php' );
+
 
 $json = array(
 	'success' => 0,
@@ -102,7 +102,16 @@ EOF;
 			$url = gestisci_file_upload( "d$id", true );
 		}
 
-		if ( ! $url ) ajax_esci( 'Errore nel salvataggio del file.' );
+		if ( ! $url ) {
+			// Annullo l'inserimento:
+			$query = <<<EOF
+DELETE FROM `$config[db_prefix]file_materiale`
+WHERE `id_file` = '$id'
+LIMIT 1
+EOF;
+			mysql_query( $query, $db );
+			ajax_esci( 'Errore nel salvataggio del file.' );
+		}
 
 		$url = mysql_real_escape_string( $url );
 		$query = <<<EOF

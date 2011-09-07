@@ -27,6 +27,12 @@ if ( substr( $config['upload_path'], -1 ) !== '/' ) $config['upload_path'] .= '/
 
 require_once( 'db.inc.php' );
 
+if ( empty( $CONTENT_TYPE ) ) {
+	$CONTENT_TYPE = "text/html";
+}
+header( "Content-Type: $CONTENT_TYPE; charset=UTF-8" );
+
+
 require_once( 'funzioni.inc.php' );
 
 require_once( 'remember-login.inc.php' );
