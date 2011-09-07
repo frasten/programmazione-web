@@ -472,10 +472,10 @@ strong.errore {
 	        box-shadow: 0 0 5px #37C52A;
 
 	/* Browsers che supportano inset: */
-	-webkit-box-shadow: inset 1px 1px 3px #e9e9e9,
-	                    0 0 5px #37C52A;
-	   -moz-box-shadow: inset 1px 1px 3px #e9e9e9,
-	                    0 0 5px #37C52A;
-	        box-shadow: inset 1px 1px 3px #e9e9e9,
-	                    0 0 5px #37C52A;
+	-webkit-box-shadow: 0 0 5px #37C52A,
+	                    inset 1px 1px 3px #e9e9e9;
+	   -moz-box-shadow: 0 0 5px #37C52A,
+	                    inset 1px 1px 3px #e9e9e9;
+	        box-shadow: 0 0 5px #37C52A,
+	                    inset 1px 1px 3px #e9e9e9;
 }
