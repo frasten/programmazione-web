@@ -5,7 +5,9 @@
 		echo "<script type='text/javascript'>var id_corso = $corso[id_corso];</script>\n";
 	}
 ?>
-<form action='<?php echo "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]" ?>' method='post' id='frm_corso'>
+<form action='?<?php
+	echo htmlspecialchars( $_SERVER['QUERY_STRING'], ENT_QUOTES );
+	?>' method='post' id='frm_corso'>
 <?php
 	if ( $corso )
 		printf( "<input type='hidden' name='id' value='%d' />\n", $corso['id_corso'] );

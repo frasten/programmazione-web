@@ -24,14 +24,16 @@ EOF;
 		echo "<li>\n";
 		printf( "<strong>%s</strong> ", htmlspecialchars( $riga['username'] ) );
 
-		echo "<a href='$_SERVER[PHP_SELF]?action=changepassword&user=" . urlencode( $riga['username'] );
+		echo "<a href='";
+		echo htmlspecialchars( "?action=changepassword&user=" . rawurlencode( $riga['username'] ), ENT_QUOTES );
 		echo "' class='iconalink' title='Cambia password'>";
 		echo "<img src='img/icone/key.png' alt='Cambia password' />";
 		echo "</a> ";
 
 		if ( $riga['username'] != $_SESSION['user'] ) {
 			// Non posso eliminare l'utente corrente.
-			echo "<a href='$_SERVER[PHP_SELF]?action=deleteuser&user=" . urlencode( $riga['username'] );
+			echo "<a href='";
+			echo htmlspecialchars( "?action=deleteuser&user=" . rawurlencode( $riga['username'] ), ENT_QUOTES );
 			echo "' class='iconalink' title='Elimina'>";
 			echo "<img src='img/icone/user_delete.png' alt='Elimina' />";
 			echo "</a> ";
@@ -104,7 +106,7 @@ else if ( $_GET['action'] == 'newuser' ) {
 		includi_scripts_validazione();
 		?>
 		<form action='<?php
-		echo htmlspecialchars( "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]", ENT_QUOTES );
+		echo htmlspecialchars( "?$_SERVER[QUERY_STRING]", ENT_QUOTES );
 		?>' method='post' id='frm-new-user'>
 			<ul class='form_list'>
 				<li>
@@ -195,7 +197,9 @@ else if ( $_GET['action'] == 'deleteuser' ) {
 		echo "<p>Si &egrave; <strong>davvero</strong> sicuri di voler eliminare";
 		echo " l'utente <em>" . htmlspecialchars( $_GET['user'] ) . "</em>?</p>";
 		echo "<a href='?action=listusers'>Annulla</a>";
-		echo " <a href='?$_SERVER[QUERY_STRING]&conferma=1' class='btn_pericolo'>Elimina</a>";
+		echo " <a href='";
+		echo htmlspecialchars( "?$_SERVER[QUERY_STRING]&conferma=1", ENT_QUOTES );
+		echo "' class='btn_pericolo'>Elimina</a>";
 	}
 	else {
 		// Confermato, eliminazione vera e propria.
@@ -217,7 +221,7 @@ function stampa_form_change_password() {
 			<strong>Cambio password per l'utente <em><?php echo htmlspecialchars( $_GET['user'] ) ?></em></strong>
 		</p>
 		<form id='frm-edit-password' action='<?php
-			echo htmlspecialchars( "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]", ENT_QUOTES );
+			echo htmlspecialchars( "?$_SERVER[QUERY_STRING]", ENT_QUOTES );
 		?>' method='post'>
 			<ul class='form_list'>
 				<li>

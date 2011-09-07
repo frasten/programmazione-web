@@ -59,7 +59,7 @@ pageTracker._trackPageview();
 <body <?php
 	$page = basename( $_SERVER['PHP_SELF'] );
 	preg_match( "/^(.+)\.php$/", $page, $match );
-	echo "class='" . htmlspecialchars( $match[1] ) . "' ";
+	echo "class='" . htmlspecialchars( $match[1], ENT_QUOTES ) . "' ";
 ?>id="body">
 <div id="container">
 

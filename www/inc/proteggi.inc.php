@@ -33,9 +33,12 @@ if ( ! empty( $_POST['username'] ) || ! empty( $_POST['password'] ) ) {
 			crea_persistent_cookie( $_POST['username'] );
 		}
 
-		// FIXME: come mai non da errore? Ho gia' scritto in output delle cose,
-		// dovrebbe darmi errore.
-		header( "Location: $_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]" );
+		// Fare attenzione alla creazione di questa variabile, per motivi di
+		// sicurezza.
+		// (evitiamo che vengano concatenate vari header, potenzialmente molto pericoloso.
+		$self = "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]";
+		$self = substr( $self, 0,  strcspn( $self, "\n\r" ) );
+		header( "Location: $self" );
 
 		return 0;
 	}
@@ -55,11 +58,10 @@ if ( ! empty( $_POST['username'] ) || ! empty( $_POST['password'] ) ) {
 		if ( ! empty( $err ) ) echo "<p><strong class='errore'>Errore di autenticazione.</strong></p>";
 		?>
 
-		<form id="loginform" action="<?php
-		echo $_SERVER['PHP_SELF'];
-		// htmlentities() per protezione da attacchi XSS
-		echo '?' . htmlentities( "$_SERVER[QUERY_STRING]", ENT_NOQUOTES );
-		?>" method="post" >
+		<form id="loginform" action='?<?php
+		// htmlspecialchars() per protezione da attacchi XSS
+		echo htmlspecialchars( "$_SERVER[QUERY_STRING]", ENT_QUOTES );
+		?>' method="post" >
 			<p>
 				<label for="username">Nome utente:<br />
 				<input type="text" id="username" name="username" class='input' /></label>
