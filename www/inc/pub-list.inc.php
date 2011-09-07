@@ -93,7 +93,7 @@ EOF;
 			if ( $old_anno != $riga['anno'] ) {
 				if ( $old_anno != -1 ) // se non sono all'inizio della lista di pubblicazioni
 					echo str_repeat( "\t", 5 ) . "</ul>\n"; // devo chiudere il vecchio elenco
-				printf( "%s<h4>%s</h4>\n", str_repeat( "\t", 4), intval( $riga['anno'] ) );
+				printf( "%s<h4>%s</h4>\n", str_repeat( "\t", 4 ), intval( $riga['anno'] ) );
 				echo str_repeat( "\t", 5 ) . "<ul>\n";
 			}
 			echo str_repeat( "\t", 6 ) . "<li id='pubblicazione_$riga[id_pubblicazione]'>\n";
@@ -119,7 +119,7 @@ function stampa_pub_rivista( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>\n";
-	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
+	printf( $riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
 	echo "</span><br />";
 
 
@@ -158,7 +158,7 @@ function stampa_pub_libro( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>\n";
-	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
+	printf( $riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
 	echo "</span><br />";
 
 
@@ -197,7 +197,7 @@ function stampa_pub_conferenza( $riga ) {
 	global $autori;
 	// Titolo pubblicazione
 	echo "<span class='evidenza'>\n";
-	printf($riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
+	printf( $riga['file'] ? "<a href='$riga[file]'>%s</a>" : "%s", htmlspecialchars( $riga['titolo'] ) );
 	echo "</span><br />";
 
 

@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `$config[db_prefix]pubblicazione_pubautore` (
 		FOREIGN KEY (`id_pubblicazione` )
 		REFERENCES `$config[db_prefix]pubblicazione` (`id_pubblicazione` )
 		ON DELETE CASCADE
-		ON UPDATE CASCADE, 
+		ON UPDATE CASCADE,
 	CONSTRAINT `fk_$config[db_prefix]pubblicazione_pubautore_autore`
 		FOREIGN KEY (`id_autore` )
 		REFERENCES `$config[db_prefix]pubautore` (`id_autore` )

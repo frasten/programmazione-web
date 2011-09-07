@@ -2,7 +2,7 @@
 
 if ( ! isset( $_POST['salva'] ) ) { // Mostro form per l'inserimento
 
-	include 'corso-form.inc.php';
+	include( 'corso-form.inc.php' );
 
 } else {
 	// Salvo i dati nel database
@@ -66,16 +66,16 @@ EOF;
 		$query = <<<EOF
 INSERT INTO `$config[db_prefix]docente_corso`
 (`id_docente`,`id_corso`,`esercitatore`)
-VALUES 
+VALUES
 EOF;
 		$chunks = array();
 		foreach ( $docenti as $doc ) {
 			$es = 0;
 			if ( isset( $_POST["tipodocente_$doc"] ) )
 				$es = intval( $_POST["tipodocente_$doc"] );
-			$chunks[] = "('$doc','$id','$es')";
+			$chunks[] = " ('$doc','$id','$es')";
 		}
-		$query .= implode( ', ', $chunks );
+		$query .= implode( ',', $chunks );
 		mysql_query( $query, $db );
 	}
 

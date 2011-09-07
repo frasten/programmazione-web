@@ -12,7 +12,7 @@ if ( intval( $_POST['anno'] ) != $_POST['anno'] ) return "L'anno deve essere un 
 if ( intval( $_POST['anno'] ) > intval( date( "Y" ) ) ) return "Impossibile salvare un anno nel futuro.";
 
 
-$_POST = array_map('mysql_real_escape_string', $_POST);
+$_POST = array_map( 'mysql_real_escape_string', $_POST );
 
 // Metto a NULL i dati opzionali, vengono eventualmente riempiti poco sotto.
 $data['titolo_contesto'] = $data['volume'] = $data['numero'] =
@@ -53,19 +53,19 @@ switch ( $_POST['categoria'] ) {
 		echo "Errore nei dati.";
 		return;
 }
-if ( check_empty( 'titolo_contesto') ) return "Nome contesto mancante.";
-if ( check_empty( 'volume') ) return "Volume mancante.";
-if ( check_int( 'volume') ) return "Il volume deve essere un numero intero.";
-if ( check_int( 'numero') ) return "Il numero deve essere un numero intero.";
-if ( check_empty( 'pag_inizio') ) return "Numero di pagina d'inizio mancante.";
-if ( check_int( 'pag_inizio') ) return "Il numero di pagina iniziale deve essere un numero intero.";
-if ( check_empty( 'pag_fine') ) return "Numero di pagina finale mancante.";
-if ( check_int( 'pag_fine') ) return "Il numero di pagina finale deve essere un numero intero.";
+if ( check_empty( 'titolo_contesto' ) ) return "Nome contesto mancante.";
+if ( check_empty( 'volume' ) ) return "Volume mancante.";
+if ( check_int( 'volume' ) ) return "Il volume deve essere un numero intero.";
+if ( check_int( 'numero' ) ) return "Il numero deve essere un numero intero.";
+if ( check_empty( 'pag_inizio' ) ) return "Numero di pagina d'inizio mancante.";
+if ( check_int( 'pag_inizio' ) ) return "Il numero di pagina iniziale deve essere un numero intero.";
+if ( check_empty( 'pag_fine' ) ) return "Numero di pagina finale mancante.";
+if ( check_int( 'pag_fine' ) ) return "Il numero di pagina finale deve essere un numero intero.";
 if ( $data['pag_inizio'] != 'NULL' && $_POST['pag_inizio'] > $_POST['pag_fine'] ) return "Il numero di pagina d'inizio deve essere minore di quello di fine.";
-if ( check_empty( 'curatori_libro') ) return "Curatori del libro mancanti.";
-if ( check_empty( 'editore') ) return "Editore mancante.";
-if ( check_empty( 'num_pagine') ) return "Numero di pagine mancante.";
-if ( check_int( 'num_pagine') ) return "Il numero di pagine deve essere un numero intero.";
+if ( check_empty( 'curatori_libro' ) ) return "Curatori del libro mancanti.";
+if ( check_empty( 'editore' ) ) return "Editore mancante.";
+if ( check_empty( 'num_pagine' ) ) return "Numero di pagine mancante.";
+if ( check_int( 'num_pagine' ) ) return "Il numero di pagine deve essere un numero intero.";
 
 
 $query = <<<EOF
@@ -131,7 +131,7 @@ function get_id_autori( $str ) {
 		if ( ! $result ) continue;
 		if ( mysql_num_rows( $result ) == 0 ) {
 			// Nuovo autore, inseriamolo nel DB.
-			$query = "INSERT INTO `$config[db_prefix]pubautore` (nome) VALUES ('$a')";
+			$query = "INSERT INTO `$config[db_prefix]pubautore` (`nome`) VALUES ('$a')";
 			mysql_query( $query, $db );
 			$id_autore = mysql_insert_id( $db );
 		}

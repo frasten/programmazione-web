@@ -48,8 +48,8 @@ EOF;
 	if ( ! mysql_num_rows( $result ) ) ajax_esci( 'ID non valido.' );
 
 	$riga = mysql_fetch_assoc( $result );
-	$riga['aggiornato'] = intval($riga['aggiornato']);
-	$riga['nascondi'] = intval($riga['nascondi']);
+	$riga['aggiornato'] = intval( $riga['aggiornato'] );
+	$riga['nascondi'] = intval( $riga['nascondi'] );
 
 	$json = array_merge( $json, $riga );
 

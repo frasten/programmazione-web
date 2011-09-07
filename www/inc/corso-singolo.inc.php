@@ -41,7 +41,7 @@ while( $riga = mysql_fetch_assoc( $result ) ) {
 	else
 		$esercitatori[] = "$riga[nome]";
 }
-printf( "Docent%s: ", sizeof( $docenti ) == 1 ? 'e': 'i');
+printf( "Docent%s: ", sizeof( $docenti ) == 1 ? 'e': 'i' );
 echo htmlspecialchars( implode( ', ', $docenti ) );
 unset( $docenti );
 echo "<br />\n";

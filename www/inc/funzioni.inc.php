@@ -2,7 +2,7 @@
 
 function genera_random_string( $len ) {
 	global $config;
-	mt_srand( (double) microtime() * 1000000 );
+	mt_srand( ( double ) microtime() * 1000000 );
 
 	$chars = 'abcdefghijklmnopqrstuvwxyz0123456789,.-;:_()+^=/!%';
 

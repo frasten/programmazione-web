@@ -30,13 +30,13 @@ while ( $riga = mysql_fetch_assoc( $result ) ) {
 	}
 
 	echo "<li id='corso_$riga[id_corso]'>\n";
-        
-        if ( ! empty( $_SESSION['loggato'] ) ) {
+
+	if ( ! empty( $_SESSION['loggato'] ) ) {
 		echo "<a href='javascript:;' class='iconalink' onclick='askEliminaCorso($riga[id_corso])' title='Elimina corso'>\n";
 		echo "<img src='img/icone/newspaper_delete.png' alt='Elimina corso' />\n";
 		echo "</a>\n ";
-        }
-        
+	}
+
 	printf( "<a href='?id=%d'>%s</a>\n", $riga['id_corso'], htmlspecialchars( $riga['nome_corso'] ) );
 	echo "</li>\n";
 

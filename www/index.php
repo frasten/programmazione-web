@@ -1,10 +1,10 @@
 <?php
 
-require_once('inc/header.inc.php');
+require_once( 'inc/header.inc.php' );
 
-echo "CONTENUTO";
+echo "Benvenuti!";
 
-require_once('inc/footer.inc.php');
+require_once( 'inc/footer.inc.php' );
 
 
 ?>

@@ -22,7 +22,7 @@ EOF;
 	$corso = mysql_fetch_assoc( $result );
 
 	// Includo il form, che riempira' i vari campi con questi caricati dal DB.
-	include 'inc/corso-form.inc.php';
+	include( 'inc/corso-form.inc.php' );
 
 else: // Richiedo il salvataggio vero e proprio.
 
@@ -72,7 +72,7 @@ SET
 WHERE `id_corso` = '$id'
 LIMIT 1
 EOF;
-	mysql_query( $query, $db);
+	mysql_query( $query, $db );
 
 	if ( mysql_errno() ) {
 		echo "Errore nel salvataggio, riprovare.";
@@ -94,16 +94,16 @@ EOF;
 		$query = <<<EOF
 INSERT INTO `$config[db_prefix]docente_corso`
 (`id_docente`,`id_corso`,`esercitatore`)
-VALUES 
+VALUES
 EOF;
 		$chunks = array();
 		foreach ( $docenti as $doc ) {
 			$es = 0;
 			if ( isset( $_POST["tipodocente_$doc"] ) )
 				$es = intval( $_POST["tipodocente_$doc"] );
-			$chunks[] = "('$doc','$id','$es')";
+			$chunks[] = " ('$doc','$id','$es')";
 		}
-		$query .= implode( ', ', $chunks );
+		$query .= implode( ',', $chunks );
 		mysql_query( $query, $db );
 	}
 

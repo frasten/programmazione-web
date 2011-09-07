@@ -55,7 +55,7 @@ pageTracker._trackPageview();
 <script type="text/javascript" src="js/button.js"></script>
 </head>
 
-<body <?php 
+<body <?php
 	$page = basename( $_SERVER['PHP_SELF'] );
 	preg_match( "/^(.+)\.php$/", $page, $match );
 	echo "class='" . htmlspecialchars( $match[1] ) . "' ";

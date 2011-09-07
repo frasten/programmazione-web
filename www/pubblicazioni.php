@@ -14,14 +14,14 @@ if ( empty( $_GET['action'] ) ) {
 	admin_menu( array(
 		array( '?action=new', 'Nuova pubblicazione', 'page_add.png' )
 	) );
-	include 'inc/pub-list.inc.php';
+	include( 'inc/pub-list.inc.php' );
 }
 else if ( $_GET['action'] == 'new' ) {
 	// Mostro il form per l'inserimento di una pubblicazione
 	admin_menu( array(
 		array( '?', 'Lista pubblicazioni', 'page.png' )
 	) );
-	include 'inc/pub-form-new.inc.php';
+	include( 'inc/pub-form-new.inc.php' );
 }
 else if ( $_GET['action'] == 'savenew' ) {
 	// Effettuo il salvataggio nel database di una pubblicazione
@@ -35,6 +35,6 @@ else if ( $_GET['action'] == 'savenew' ) {
 
 
 
-require_once('inc/footer.inc.php');
+require_once( 'inc/footer.inc.php' );
 
 ?>

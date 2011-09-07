@@ -15,11 +15,11 @@ if ( empty( $_GET['action'] ) ) {
 		admin_menu( array(
 			array( '?action=new', 'Nuovo corso', 'corso_add.png' )
 		) );
-		include 'inc/corsi-lista.inc.php';
+		include( 'inc/corsi-lista.inc.php' );
 	}
 	else {
 		// Pagina di un corso
-		include 'inc/corso-singolo.inc.php';
+		include( 'inc/corso-singolo.inc.php' );
 	}
 }
 else if ( $_GET['action'] == 'new' ) {
@@ -27,17 +27,17 @@ else if ( $_GET['action'] == 'new' ) {
 	admin_menu( array(
 		array( '?', 'Lista corsi', 'corso.png' )
 	) );
-	include 'inc/corso-new.inc.php';
+	include( 'inc/corso-new.inc.php' );
 }
 else if ( $_GET['action'] == 'edit' ) {
 	// Mostro il form per la modifica dei dati di un corso
 	admin_menu( array(
 		array( '?', 'Lista corsi', 'corso.png' )
 	) );
-	include 'inc/corso-edit.inc.php';
+	include( 'inc/corso-edit.inc.php' );
 }
 
 
-require_once('inc/footer.inc.php');
+require_once( 'inc/footer.inc.php' );
 
 ?>

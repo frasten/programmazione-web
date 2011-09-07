@@ -122,7 +122,7 @@ EOF;
 }
 
 function esci() {
-	echo str_repeat("</div>", 3); // #container, #centrale, #corpo
+	echo str_repeat( "</div>", 3 ); // #container, #centrale, #corpo
 	echo "</body></html>";
 	exit;
 }
