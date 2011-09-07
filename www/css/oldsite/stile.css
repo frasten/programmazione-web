@@ -58,7 +58,6 @@ a:hover, a:focus, a:active {
 /********* INTESTAZIONE *********/
 #intestazione{
 	margin: 2px 2px 0px 2px;
-	background: url(../../img/intestazione2.jpg) no-repeat center;
 	width: 764px;
 	height: 96px;
 	overflow: hidden;
