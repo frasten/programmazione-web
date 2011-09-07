@@ -163,7 +163,7 @@ $(document).ready(function() {
 						.find(":first")
 							.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
 							.append($("<a/>", {
-									href: 'javascript:void(0)',
+									href: 'javascript:;',
 									title: data.nascondi ? 'File nascosto' : 'File visibile',
 									click: save_visibility
 								}).addClass("iconalink").addClass("eyeicon"))
@@ -175,7 +175,7 @@ $(document).ready(function() {
 							.parent()
 							.append(" ")
 							.append($("<a/>", {
-									href: 'javascript:void(0)',
+									href: 'javascript:;',
 									title: 'Modifica'
 								}).addClass("iconalink")
 								.click(data.id_file, function(ev){apriDialogoFile(ev.data)})
@@ -188,7 +188,7 @@ $(document).ready(function() {
 							.parent()
 							.append(" ")
 							.append($("<a/>", {
-									href: 'javascript:void(0)',
+									href: 'javascript:;',
 									title: 'Elimina file',
 									click: function() {askEliminaFile(data.id_file);}
 								}).addClass("iconalink"))
@@ -271,7 +271,7 @@ $(document).ready(function() {
 						.find(":last")
 							.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
 							.append($("<a/>", {
-									href: 'javascript:void(0)',
+									href: 'javascript:;',
 									title: f.nascondi ? 'File nascosto' : 'File visibile',
 									click: save_visibility
 								}).addClass("iconalink").addClass("eyeicon"))
@@ -283,7 +283,7 @@ $(document).ready(function() {
 							.parent()
 							.append(" ")
 							.append($("<a/>", {
-									href: 'javascript:void(0)',
+									href: 'javascript:;',
 									title: 'Modifica'
 								}).addClass("iconalink")
 								.click(f.id_file, function(ev){apriDialogoFile(ev.data)})
@@ -296,7 +296,7 @@ $(document).ready(function() {
 							.parent()
 							.append(" ")
 							.append($("<a/>", {
-									href: 'javascript:void(0)',
+									href: 'javascript:;',
 									title: 'Elimina file',
 									click: function() {askEliminaFile(f.id_file);}
 								}).addClass("iconalink"))

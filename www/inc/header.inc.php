@@ -68,16 +68,16 @@ pageTracker._trackPageview();
 
 <div id="menu">
 <ul class="menuNavigazione">
-	<li><a id="home" href="javascript:void(0)">Home</a></li>
-	<li><a id="team" href="javascript:void(0)" class="continua">Team</a>
+	<li><a id="home" href="javascript:;">Home</a></li>
+	<li><a id="team" href="javascript:;" class="continua">Team</a>
 		<ul>
-			<li><a href="javascript:void(0)">Valeria De Antonellis</a></li>
-			<li><a href="javascript:void(0)">Devis Bianchini</a></li>
-			<li><a href="javascript:void(0)">Michele Melchiori</a></li>
-			<li><a href="javascript:void(0)">Denise Salvi</a></li>
+			<li><a href="javascript:;">Valeria De Antonellis</a></li>
+			<li><a href="javascript:;">Devis Bianchini</a></li>
+			<li><a href="javascript:;">Michele Melchiori</a></li>
+			<li><a href="javascript:;">Denise Salvi</a></li>
 		</ul>
 	</li>
-	<li><a id="progetti" href="javascript:void(0)">Research Projects</a></li>
+	<li><a id="progetti" href="javascript:;">Research Projects</a></li>
 	<li><a id="pubblicazioni" href="pubblicazioni.php">Publications</a></li>
 	<li id="long"><a id="corso" href="corso.php" class="continua">Teaching (ita)</a>
 		<ul>
@@ -100,13 +100,13 @@ EOF;
 ?>
 		</ul>
 	</li>
-	<li><a id="tesi" href="javascript:void(0)">Thesis (ita)</a></li>
+	<li><a id="tesi" href="javascript:;">Thesis (ita)</a></li>
 </ul>
 </div><!-- #menu -->
 
 <div id="flags">
-	<a id="linguaITA" href="javascript:void(0)" title="Vai al sito italiano!"></a>
-	<a id="linguaENG" href="javascript:void(0)" title="Go to English site!"></a>
+	<a id="linguaITA" href="javascript:;" title="Vai al sito italiano!"></a>
+	<a id="linguaENG" href="javascript:;" title="Go to English site!"></a>
 </div>
 
 <div id="centrale">

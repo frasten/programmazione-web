@@ -180,13 +180,13 @@ EOF;
 
 	if ( sizeof( $sezioni ) ) {
 		foreach ( $sezioni as $sez ) {
-			printf( "<a href='javascript:void(0)' onclick='apriDialogoSezione(%d)' style='font-weight: bold'>%s</a>\n",
+			printf( "<a href='javascript:;' onclick='apriDialogoSezione(%d)' style='font-weight: bold'>%s</a>\n",
 				intval( $sez['id'] ), htmlspecialchars( $sez['titolo'] ) );
 
 			echo "<ul>\n";
 			foreach ( $sez['files'] as $f ) {
 				echo "<li>\n";
-				printf( "<a href='javascript:void(0)' onclick='apriDialogoFile(%s)'>%s</a>\n",
+				printf( "<a href='javascript:;' onclick='apriDialogoFile(%s)'>%s</a>\n",
 					intval( $f['id'] ),
 					htmlspecialchars( $f['titolo'] ) );
 				echo "</li>\n";

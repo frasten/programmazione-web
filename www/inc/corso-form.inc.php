@@ -71,7 +71,7 @@ EOF;
 		}
 		?>
 			<li>
-				<a class="linksenzaicona" href="javascript:void(0);" id="link-nome-facolta">Nuova Facolt&agrave;</a>
+				<a class="linksenzaicona" href="javascript:;" id="link-nome-facolta">Nuova Facolt&agrave;</a>
 			</li>
 		</ul>
 	</div>
@@ -134,7 +134,7 @@ EOF;
 		?>
 				<tr>
 					<td>
-						<a class="linksenzaicona" href="javascript:void(0);" id="link-nome-docente">Nuovo Docente</a>
+						<a class="linksenzaicona" href="javascript:;" id="link-nome-docente">Nuovo Docente</a>
 					</td>
 					<td></td>
 					<td></td>
@@ -149,7 +149,7 @@ EOF;
 	<div class='contenuti'>
 		<h3>Pagina corso:</h3>
 		<?php if ( $corso ): ?>
-		<a href='javascript:void(0)' class='linkconicona' id='link-gestione-news' style='background-image: url(img/icone/newspaper.png)'>
+		<a href='javascript:;' class='linkconicona' id='link-gestione-news' style='background-image: url(img/icone/newspaper.png)'>
 			Gestione News</a><br />
 		<?php endif; ?>
 
@@ -189,7 +189,7 @@ EOF;
 <?php if ( $corso ): ?>
 	<h3>Materiale didattico</h3>
 	<p>
-		<a href='javascript:void(0)' class='linkconicona' id='link-nuova-sezione' style='background-image: url(img/icone/page_add.png)'>
+		<a href='javascript:;' class='linkconicona' id='link-nuova-sezione' style='background-image: url(img/icone/page_add.png)'>
 			Nuova sezione</a>
 	</p>
 	<div id='lista-sezioni'></div>
@@ -281,7 +281,7 @@ EOF;
 
 				// Icona mostra/nascondi
 				$title = $riga['nascondi'] ? 'News nascosta' : 'News visibile';
-				echo "<a href='javascript:void(0)' class='iconalink eyeicon' title='$title'>\n";
+				echo "<a href='javascript:;' class='iconalink eyeicon' title='$title'>\n";
 				if ( ! $riga['nascondi'] )
 					echo "<img src='img/icone/eye.png' alt='$title' />\n";
 				else
@@ -289,12 +289,12 @@ EOF;
 				echo "</a>\n ";
 
 				// Icona modifica
-				echo "<a href='javascript:void(0)' class='iconalink' onclick='caricaNews($riga[id_news])' title='Modifica news'>\n";
+				echo "<a href='javascript:;' class='iconalink' onclick='caricaNews($riga[id_news])' title='Modifica news'>\n";
 				echo "<img src='img/icone/newspaper_edit.png' alt='Modifica news' />\n";
 				echo "</a>\n ";
 
 				// Icona elimina
-				echo "<a href='javascript:void(0)' class='iconalink' onclick='askEliminaNews($riga[id_news])' title='Elimina news'>\n";
+				echo "<a href='javascript:;' class='iconalink' onclick='askEliminaNews($riga[id_news])' title='Elimina news'>\n";
 				echo "<img src='img/icone/newspaper_delete.png' alt='Elimina news' />\n";
 				echo "</a>\n ";
 
@@ -309,7 +309,7 @@ EOF;
 
 
 <div id="sezioni-dialog-form" title='Sezione per materiale didattico:'>
-	<form action='javascript:void(0)' method='post'>
+	<form action='javascript:;' method='post'>
 		<input type='hidden' name='id_corso' value='<?php riempi( $corso['id_corso'], 'int' ) ?>' />
 		<input type='hidden' id='id_sezione' name='id_sezione' value='' />
 		<h4>Sezione:</h4>
@@ -325,7 +325,7 @@ EOF;
 	<div id='sezione-blocco-listafile'>
 		<!-- Lista di files -->
 		<h4>File in questa sezione:</h4>
-			<a href='javascript:void(0)' class='linkconicona' onclick='apriDialogoFile(0)' style='background-image: url(img/icone/file_add.png)'>Aggiungi nuovo file</a>
+			<a href='javascript:;' class='linkconicona' onclick='apriDialogoFile(0)' style='background-image: url(img/icone/file_add.png)'>Aggiungi nuovo file</a>
 			<?php
 				echo "<ul id='lista-file-sezione' class='lista-dnd'></ul>\n";
 			?>

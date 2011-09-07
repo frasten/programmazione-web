@@ -100,7 +100,7 @@ $(document).ready(function() {
 						.find(":first")
 							.append("<span class='ui-icon ui-icon-arrowthick-2-n-s' />")
 							.append($("<a/>", {
-									href: 'javascript:void(0)',
+									href: 'javascript:;',
 									title: data.nascondi ? 'News nascosta' : 'News visibile',
 									click: save_visibility
 								}).addClass("iconalink").addClass("eyeicon"))
@@ -112,7 +112,7 @@ $(document).ready(function() {
 							.parent()
 							.append(" ")
 							.append($("<a/>", {
-									href: 'javascript:void(0)',
+									href: 'javascript:;',
 									title: 'Modifica news',
 									click: function() {caricaNews(data.id)}
 								}).addClass("iconalink"))
@@ -124,7 +124,7 @@ $(document).ready(function() {
 							.parent()
 							.append(" ")
 							.append($("<a/>", {
-									href: 'javascript:void(0)',
+									href: 'javascript:;',
 									title: 'Elimina news',
 									click: function() {askEliminaNews(data.id);}
 								}).addClass("iconalink"))
