@@ -1,6 +1,9 @@
 <?php
 
-$CONTENT_TYPE = 'application/json';
+// Per problemi con alcune librerie, a volte ci si trova ad aver problemi
+// con il MIME type di json.
+if ( ! isset( $_GET['nojson'] ) )
+	$CONTENT_TYPE = 'application/json';
 
 require_once( 'framework.inc.php' );
 

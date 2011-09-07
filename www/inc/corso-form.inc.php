@@ -207,7 +207,7 @@ EOF;
 
 <!-- Dialogo per la creazione di una nuova facolta' -->
 <div id="facolta-dialog-form" title='Nuova Facolt&agrave;'>
-	<form action="ajax/corsi.php?action=newfacolta" method="post">
+	<form action="ajax/corsi.php?action=newfacolta&amp;nojson" method="post">
 		<fieldset>
 			<h4>Inserisci una nuova facolt&agrave;</h4>
 			<p style='margin-bottom: 15px'>
@@ -221,7 +221,7 @@ EOF;
 
 <!-- Dialogo per l'aggiunta di un nuovo Docente -->
 <div id="docente-dialog-form" title='Nuovo Docente'>
-	<form action="ajax/corsi.php?action=newdocente" method="post">
+	<form action="ajax/corsi.php?action=newdocente&amp;nojson" method="post">
 		<fieldset>
 			<h4>Inserisci un nuovo docente</h4>
 			<p style='margin-bottom: 15px'>
@@ -239,7 +239,7 @@ EOF;
 
 <div id="news-dialog-form" title='Gestione news'>
 	<!-- Inserimento di una nuova news -->
-	<form action='ajax/news.php?action=savenews' method='post' enctype="multipart/form-data">
+	<form action='ajax/news.php?action=savenews&amp;nojson' method='post' enctype="multipart/form-data">
 		<input type='hidden' name='id_corso' value='<?php riempi( $corso['id_corso'], 'int' ) ?>' />
 		<input type='hidden' name='id_news' value='' />
 		<fieldset>
@@ -335,7 +335,7 @@ EOF;
 </div><!-- /#sezioni-dialog-form -->
 
 <div id="file-dialog-form" title='File:'>
-	<form action='ajax/files.php?action=savefile' method='post' enctype="multipart/form-data">
+	<form action='ajax/files.php?action=savefile&amp;nojson' method='post' enctype="multipart/form-data">
 		<input type='hidden' name='id_sezione' value='' />
 		<input type='hidden' id='id_file' name='id_file' value='' />
 

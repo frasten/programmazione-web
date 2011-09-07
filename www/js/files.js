@@ -332,7 +332,7 @@ function caricaListaSezioni() {
 	if ( typeof(id_corso) == 'undefined' ) return;
 	jQuery("#lista-sezioni").mask("Caricamento...", 200);
 	jQuery("#lista-sezioni")
-		.load('ajax/corsi.php?action=loadlistasezioni&id_corso=' + id_corso, function() {
+		.load('ajax/corsi.php?action=loadlistasezioni&nojson&id_corso=' + id_corso, function() {
 			jQuery("#lista-sezioni").unmask();
 		})
 }
