@@ -1,6 +1,8 @@
-= Università degli Studi di Brescia =
+Università degli Studi di Brescia
 
 Elaborato per il corso di Programmazione Web - a.a. 2010/2011
+=============================================================
+
 Andrea Piccinelli - 83392
 Roberta Lorenzi   - 72361
 
@@ -10,7 +12,8 @@ Progetto hostato su GitHub:
 https://github.com/frasten/programmazione-web
 
 
-= Configurazione iniziale =
+Configurazione iniziale
+-----------------------
 
 * È necessario configurare i parametri relativi al proprio hosting nel
   file `www/inc/config.inc.php`, prestando attenzione soprattutto ai
@@ -45,17 +48,20 @@ https://github.com/frasten/programmazione-web
 * Nel caso si debba creare da zero il database e l'utente associato,
   è possibile dare i seguenti comandi d'esempio al prompt di MySQL:
 
+  ```sql
   CREATE DATABASE pw2011;
   CREATE USER 'pw'@'localhost' IDENTIFIED BY '12345';
   GRANT ALL PRIVILEGES ON pw2011.* TO 'pw'@'localhost' WITH GRANT OPTION;
   FLUSH PRIVILEGES;
+  ```
 
   Ovviamente è bene modificare tutti i parametri di configurazione come
   si preferisce; non si dimentichi di modificare i parametri nel file
   www/inc/config.inc.php, così come impostati in fase di creazione.
 
 
-= Il primo utilizzo =
+Il primo utilizzo
+-----------------
 
 Al primo utilizzo non esiste ancora un utente amministratore.
 Esso viene creato al primo accesso alla pagina /admin.php.
@@ -63,7 +69,8 @@ Verranno così comunicate le credenziali d'accesso, che saranno comunque
 modificabili a piacere accedendo alla gestione utenti nel portale.
 
 
-= La documentazione =
+La documentazione
+-----------------
 
 È presente una relazione nella directory Docs/Elaborato/, in formato
 LaTeX.
