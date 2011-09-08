@@ -276,12 +276,19 @@ strong.errore {
 	        border-radius: 3px;
 }
 
-
 .adminmenu ul {
-	display: inline;
-	float: right;
 	margin: 0 !important;
 	padding: 0;
+	display: inline;
+}
+
+
+.adminmenu ul.adminleft {
+	float: left;
+}
+
+.adminmenu ul.adminright {
+	float: right;
 }
 
 /****************

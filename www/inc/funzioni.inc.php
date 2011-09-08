@@ -22,16 +22,20 @@ function admin_menu( $links = array( array( '', '', '' ) ) ) {
 	if ( empty( $_SESSION['loggato'] ) ) return false;
 
 	echo "<ul class='adminmenu'>\n";
+	echo "<li>\n";
+	echo "<ul class='adminleft'>\n";
 	foreach ( $links as $l ) {
 		list( $url, $testo, $icona ) = $l;
 		stampa_admin_link( $url, $testo, $icona );
 	}
+	echo "</ul>\n";
+	echo "</li>\n";
 
 	// Icone fisse
 	$user = htmlspecialchars( $_SESSION['user'], ENT_NOQUOTES, 'UTF-8' );
 	$right[] = array( 'admin.php', $user, 'user_suit.png', "Accedi all'area amministrativa" );
 	$right[] = array( 'logout.php', 'Esci', 'user_go.png' );
-	echo "<li><ul>\n";
+	echo "<li><ul class='adminright'>\n";
 	foreach ( $right as $l ) {
 		@list( $url, $testo, $icona, $hint ) = $l;
 		stampa_admin_link( $url, $testo, $icona, $hint );
