@@ -2,6 +2,7 @@
 	float: none !important; /* Come mai??? */
 }
 
+/* Fix temporanei con IE */
 .menuNavigazione a {
 	height: 18px;
 }
@@ -13,6 +14,7 @@
 .menuNavigazione ul {
 	margin-top: -1px;
 }
+/* End fix IE */
 
 .iconalink {
 	text-decoration: none !important;
