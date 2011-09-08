@@ -31,10 +31,9 @@ Configurazione iniziale
   solo alla directory di upload con questa procedura manuale:
   - creare una directory chiamata `uploads` nella directory `www/`
   - Dare accesso in scrittura al webserver per tale directory (il metodo
-    più rapido per i sistemi unix-like è di dare il seguente comando:
-    ```
+    più rapido per i sistemi Unix-like è di dare il seguente comando:
+
     chmod 777 <path_del_sito>/www/uploads/
-    ```
 
     È possibile fare lo stesso anche con un client FTP che supporti la
     gestione dei permessi (ad esempio
@@ -86,10 +85,8 @@ pacchetti di LaTeX.
 
 Ad esempio sotto Ubuntu è possibile installarli attraverso il comando:
 
-  ```
-  sudo apt-get install texlive-latex-base texlive-latex-recommended \
-    texlive-lang-italian texlive-fonts-recommended
-  ```
+    sudo apt-get install texlive-latex-base texlive-latex-recommended \
+         texlive-lang-italian texlive-fonts-recommended
 
 
 Sono consultabili anche dei mockup, creati con
