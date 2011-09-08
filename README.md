@@ -3,10 +3,10 @@
 Elaborato per il corso di Programmazione Web - a.a. 2010/2011
 =============================================================
 
-Andrea Piccinelli - 83392
-Roberta Lorenzi   - 72361
+* Andrea Piccinelli - 83392
+* Roberta Lorenzi   - 72361
 
-Sito Web del Gruppo di Basi di Dati e Sistemi Informativi: Pubblicazioni e Corsi
+*Sito Web del Gruppo di Basi di Dati e Sistemi Informativi: Pubblicazioni e Corsi*
 
 Progetto hostato su GitHub:
 https://github.com/frasten/programmazione-web
@@ -26,12 +26,13 @@ Configurazione iniziale
 
 * È inoltre importante che il webserver abbia accesso in scrittura alla
   directory di installazione.
+
   Se ciò non fosse possibile, limitarsi a fornire l'accesso in scrittura
   solo alla directory di upload con questa procedura manuale:
   - creare una directory chiamata `uploads` nella directory `www/`
   - Dare accesso in scrittura al webserver per tale directory (il metodo
     più rapido per i sistemi unix-like è di dare il seguente comando:
-    ```bash
+    ```
     chmod 777 <path_del_sito>/www/uploads/
     ```
 
@@ -44,10 +45,11 @@ Configurazione iniziale
   quello di default per l'upload, assicurandosi che sia già
   scrivibile dal webserver e che sia accessibile tramite protocollo
   HTTP.
+
   Per fare ciò basta modificare il valore della variabile
   `$config['upload_path']` nel file `www/inc/config.inc.php`.
 
-* Nel caso si debba creare da zero il database e l'utente associato,
+* Nel caso si debbano creare da zero il database e l'utente associato,
   è possibile dare i seguenti comandi d'esempio al prompt di MySQL:
 
   ```sql
@@ -67,6 +69,7 @@ Il primo utilizzo
 
 Al primo utilizzo non esiste ancora un utente amministratore.
 Esso viene creato al primo accesso alla pagina `/admin.php`.
+
 Verranno così comunicate le credenziali d'accesso, che saranno comunque
 modificabili a piacere accedendo alla gestione utenti nel portale.
 
@@ -76,11 +79,14 @@ La documentazione
 
 È presente una relazione nella directory `Docs/Elaborato/`, in formato
 [LaTeX](http://www.latex-project.org/).
+
 Sotto Linux il file in formato PDF è generabile entrando in tale
 directory e dando il comando `make`, previa l'installazione dei
 pacchetti di LaTeX.
+
 Ad esempio sotto Ubuntu è possibile installarli attraverso il comando:
-  ```bash
+
+  ```
   sudo apt-get install texlive-latex-base texlive-latex-recommended \
     texlive-lang-italian texlive-fonts-recommended
   ```
