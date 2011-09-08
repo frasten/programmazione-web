@@ -16,6 +16,8 @@ $config['default_pass_len'] = 8;
 $config['min_pass_len'] = 6;
 
 $config['persistent_cookies_timeout'] = 60 * 60 * 24 * 7; // Una settimana
+$config['persistent_cookie_name'] = 'unibs_is_remember_auth';
+
 
 // Relativo alla root del sito
 $config['upload_path'] = 'uploads/';

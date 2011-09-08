@@ -9,8 +9,8 @@ function controlla_persistent_login() {
 	if ( ! empty( $_SESSION['loggato'] ) ) return true;
 
 	// Controlliamo se loggare l'utente tramite "Ricorda accesso"
-	if ( ! empty( $_COOKIE['remember_auth'] ) ) {
-		list( $user, $token ) = explode( '|', $_COOKIE['remember_auth'] );
+	if ( ! empty( $_COOKIE[$config['persistent_cookie_name']] ) ) {
+		list( $user, $token ) = explode( '|', $_COOKIE[$config['persistent_cookie_name']] );
 		$myuser = mysql_real_escape_string( $user );
 		$query = <<<EOF
 SELECT *
@@ -72,7 +72,7 @@ EOF;
 	}
 
 	// Elimino il cookie
-	setcookie ( 'remember_auth', '', time() - 3600 * 25 );
+	setcookie ( $config['persistent_cookie_name'], '', time() - 3600 * 24 * 30, '/' );
 }
 
 function crea_persistent_cookie( $user ) {
@@ -83,7 +83,7 @@ function crea_persistent_cookie( $user ) {
 
 	// Salvo il cookie sull'utente
 	$expire = time() + $config['persistent_cookies_timeout'];
-	setcookie( 'remember_auth', "$user|$token", $expire ); // , path, domain
+	setcookie( $config['persistent_cookie_name'], "$user|$token", $expire, '/' );
 
 	$hash = hmac_sha1( $config['hmac_psk'], "$token$salt" );
 	$salt = mysql_real_escape_string( $salt );
