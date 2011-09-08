@@ -2,6 +2,10 @@
 	float: none !important; /* Come mai??? */
 }
 
+.menuNavigazione a {
+	height: 18px;
+}
+
 .iconalink {
 	text-decoration: none !important;
 	cursor: pointer;
