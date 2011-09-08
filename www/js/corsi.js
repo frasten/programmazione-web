@@ -117,6 +117,7 @@ $(document).ready(function() {
 			}
 			else {
 				var nuovonome = $( "#facolta-dialog-form form #nome-facolta").val();
+				$("#lista_facolta input[type='radio']").attr('checked', false);
 				$('#link-nome-facolta')
 					.parent()
 					.before("<li><input type='radio' name='facolta' id='facolta_"+data.id_facolta+"' value='"+data.id_facolta+"' checked='checked'/><label for='facolta_"+data.id_facolta+"'> " + nuovonome + "</label></li>");
