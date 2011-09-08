@@ -337,9 +337,8 @@ strong.errore {
 
 #tbl_insert_docenti label,
 #lista_facolta label {
-	margin-left: 23px;
-	display: block;
-	line-height: 150%;
+	margin-left: 3px;
+	line-height: 160%;
 }
 
 #lista_facolta li {
@@ -350,8 +349,9 @@ strong.errore {
 	vertical-align: top;
 }
 
+#tbl_insert_docenti input[type="checkbox"],
 #tbl_insert_docenti input[type="radio"] {
-	margin-top: 0;
+	margin-top: 1px;
 }
 
 
