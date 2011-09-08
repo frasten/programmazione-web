@@ -41,7 +41,7 @@ function admin_menu( $links = array( array( '', '', '' ) ) ) {
 		stampa_admin_link( $url, $testo, $icona, $hint );
 	}
 	echo "</ul></li>\n";
-
+	echo "<li class='clear'></li>";
 	echo "</ul>\n";
 }
 
