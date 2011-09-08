@@ -199,7 +199,7 @@ function askEliminaCorso(id) {
 	jQuery("<p>Si &egrave; sicuri di voler eliminare questo corso?</p>")
 		.dialog({
 			resizable: false,
-			height: 130,
+			height: 'auto',
 			modal: true,
 			buttons: {
 				"Annulla": function() {

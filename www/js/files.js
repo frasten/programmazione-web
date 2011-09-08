@@ -373,7 +373,7 @@ function askEliminaFile(id) {
 	jQuery("<p>Si &egrave; sicuri di voler eliminare questo file?</p>")
 		.dialog({
 			resizable: false,
-			height: 130,
+			height: 'auto',
 			modal: true,
 			buttons: {
 				"Annulla": function() {

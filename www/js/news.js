@@ -240,7 +240,7 @@ function askEliminaNews(id) {
 	jQuery("<p>Si &egrave; sicuri di voler eliminare questa news?</p>")
 		.dialog({
 			resizable: false,
-			height: 130,
+			height: 'auto',
 			modal: true,
 			buttons: {
 				"Annulla": function() {
