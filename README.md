@@ -35,10 +35,10 @@ Configurazione iniziale
 
     chmod 777 <path_del_sito>/www/uploads/
 
-    È possibile fare lo stesso anche con un client FTP che supporti la
-    gestione dei permessi (ad esempio
-    [FileZilla](http://filezilla-project.org/) è gratuito, opensource
-    e multipiattaforma).
+  È possibile fare lo stesso anche con un client FTP che supporti la 
+  gestione dei permessi (ad esempio 
+  [FileZilla](http://filezilla-project.org/) è gratuito, opensource 
+  e multipiattaforma).
 
   In alternativa è possibile specificare un path differente da
   quello di default per l'upload, assicurandosi che sia già
