@@ -439,7 +439,7 @@ strong.errore {
 }
 
 .listafiles img {
-	vertical-align: sub;
+	vertical-align: middle;
 }
 
 .listafiles li {
