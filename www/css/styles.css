@@ -368,6 +368,7 @@ strong.errore {
 /*** GESTIONE NEWS ***/
 .lista-dnd {
 	padding: 0;
+	margin: 0;
 }
 
 .lista-dnd li {
