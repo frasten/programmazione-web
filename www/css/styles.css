@@ -6,6 +6,14 @@
 	height: 18px;
 }
 
+.menuNavigazione ul li {
+	margin: 0 !important;
+}
+
+.menuNavigazione ul {
+	margin-top: -1px;
+}
+
 .iconalink {
 	text-decoration: none !important;
 	cursor: pointer;
